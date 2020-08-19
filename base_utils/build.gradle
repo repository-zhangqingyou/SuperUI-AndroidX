@@ -1,0 +1,50 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+}
+
+dependencies {
+    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+
+    //最全最强工具库  1.25.9
+    api 'com.blankj:utilcode:1.29.0'
+
+    //判断虚拟机
+    api 'com.lahm.library:easy-protector-release:latest.release'//
+
+    //json解析库
+    api 'com.google.code.gson:gson:2.8.5'
+    //glide图片加载库
+    api('com.github.bumptech.glide:glide:4.7.1') {
+        exclude group: 'com.android.support'
+    }
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+
+
+    //极光推送
+    api 'cn.jiguang.sdk:jpush:3.6.8'
+    api 'cn.jiguang.sdk:jcore:2.4.0'
+    //极光页面统计
+    api 'cn.jiguang.sdk:janalytics:2.1.0'
+    //极光分享
+    api 'cn.jiguang.sdk:jshare:1.6.0'
+    // 此处以JShare 1.6.0 版本为例，具体版本请参考压缩包libs的jar包版本。
+    api 'cn.jiguang.sdk:jshare-qqmodel:1.6.0'
+    // 此处以jshare-qqmodel 1.6.0  版本为例，具体版本请参考压缩包libs的jar包版本。
+    api 'cn.jiguang.sdk:jshare-wechatmodel:1.6.0'
+    // 此处以jshare-wechatmodel 1.6.0  版本为例，具体版本请参考压缩包libs的jar包版本。
+    api 'cn.jiguang.sdk:jshare-sinamodel:1.6.0'
+
+
+}

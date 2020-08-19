@@ -1,0 +1,30 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+
+
+
+
+}
+
+dependencies {
+    implementation project(path: ':base_utils')
+    //必须使用
+    api 'com.lzy.net:okgo:3.0.4'
+
+
+}
+
+

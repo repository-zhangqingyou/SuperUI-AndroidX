@@ -10,7 +10,7 @@ public class API {
     /**
      * 统一协议
      */
-    public static final String SYSTEM_URL_DEFAULT = "http://192.168.5.108:8080";//app统一协议
+    public static final String SYSTEM_URL_DEFAULT = "http://47.101.128.137:8989";//app统一协议
 
 
     /**

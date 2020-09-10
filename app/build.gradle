@@ -5,7 +5,6 @@ def time = "${new Date().format("yyyyMMdd")}"//
 def codename = "1"//当日迭代号
 android {
     compileSdkVersion 29
-
     defaultConfig {
         applicationId "com.zqy.gamemange"
         minSdkVersion 21
@@ -91,37 +90,22 @@ android {
             //重命名输出apk文件名
             outputFileName = "${getName()}(${new Date().format("yyyyMMddHHmm")}_${variant.versionName}_${variant.versionCode}).apk"
         }
-
-        def buglyAppId = "924a7c9e75";
-        def buglyAppKey = "89e5b916-77f3-44c6-ad23-a49dd06b69f1";
-        variant.ext.buglyAppId = buglyAppId
-        variant.ext.buglyAppKey = buglyAppKey
-
     }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-
     implementation 'androidx.multidex:multidex:2.0.1'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
-
-
     implementation project(path: ':base_request')
     implementation project(path: ':base_utils')
+    implementation project(path: ':base_ui')
 
-
-    //集成全量更新和热更新一体的平台
-    //compile 'com.tencent.bugly:crashreport:latest.release'//其中latest.release指代最新版本号，也可以指定明确的版本号，例如1.3.4
-    implementation 'com.tencent.bugly:crashreport_upgrade:1.4.5'
+    //集成全量更新和热更新一体的平台  注意： 升级SDK已经集成crash上报功能，已经集成Bugly的用户需要注释掉原来Bugly的jcenter库
+    implementation 'com.tencent.bugly:crashreport_upgrade:1.4.2'
     //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
-    implementation 'com.tencent.bugly:nativecrashreport:3.7.3'
+    implementation 'com.tencent.bugly:nativecrashreport:3.7.471'
     //指定tinker依赖版本（注：应用升级1.3.5版本起，不再内置tinker）
     implementation('com.tencent.tinker:tinker-android-lib:1.9.14.7') {
-        exclude group: 'com.android.support'
+        exclude group: 'androidx.appcompat'
     }
 }

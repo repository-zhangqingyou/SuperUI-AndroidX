@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zqy.baseui.ui.view.imageview.ColorStateImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/iv_back_image_bar"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp"
+    android:scaleType="fitCenter"
+    android:src="@mipmap/bui_back_black"
+    app:zqy_csiv_clickImgAlpha="0.5"
+    app:zqy_csiv_imgColor="@color/bui_black_light1"></com.zqy.baseui.ui.view.imageview.ColorStateImageView>
+
+
+

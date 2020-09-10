@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingDefaultResource">
+
+
+    <color name="bui_white">#FFFFFF</color>
+    <color name="bui_black">#000000</color>
+
+    <color name="bui_transparent_black">#66000000</color>
+    <color name="bui_graySegmentation">#E8E8E8</color>
+    <color name="bui_grayBar">#F4F5F7</color>
+    <color name="bui_gray_high_light">#dddddd</color>
+    <color name="bui_gray">#CCCCCC</color>
+    <color name="bui_gray2">#F1F1F1</color>
+    <color name="bui_gray_dividing_line_light">#DBDBDB</color>
+    <color name="bui_background_red">#FF4081</color>
+    <color name="bui_sign_text_color">#ffffff</color>
+    <color name="bui_span_blue">#1997E8</color>
+
+
+    <color name="bui_black_light1">#333333</color>
+    <color name="bui_black_light">#666666</color>
+    <color name="bui_black_light2">#999999</color>
+    <color name="bui_black_dark">#0E050A</color>
+    <color name="bui_red_light">#EA534E</color>
+    <color name="bui_background_light">#F4F4F4</color>
+
+    <!--三方-->
+    <color name="multiple_image_select_primaryDark">#5CC2A9</color>
+</resources>

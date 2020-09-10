@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="HorizontalProgressBarWithNumber">
+        <attr name="progress_unreached_color" format="color" />
+        <attr name="progress_reached_color" format="color" />
+        <attr name="progress_reached_bar_height" format="dimension" />
+        <attr name="progress_unreached_bar_height" format="dimension" />
+        <attr name="progress_text_size" format="dimension" />
+        <attr name="progress_text_color" format="color" />
+        <attr name="progress_text_offset" format="dimension" />
+        <attr name="progress_text_visibility" format="enum">
+            <enum name="visible" value="0" />
+            <enum name="invisible" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="TabLayoutX">
+        <attr name="zqy_tabIndicatorColor" format="color" />
+        <attr name="zqy_tabIndicatorHeight" format="dimension" />
+        <attr name="zqy_tabContentStart" format="dimension" />
+        <attr name="zqy_tabBackground" format="reference" />
+        <attr name="zqy_tabMode">
+            <enum name="scrollable" value="0" />
+            <enum name="fixed" value="1" />
+        </attr>
+        <attr name="zqy_tabGravity">
+            <enum name="fill" value="0" />
+            <enum name="center" value="1" />
+        </attr>
+        <attr name="zqy_tabMinWidth" format="dimension" />
+        <attr name="zqy_tabMaxWidth" format="dimension" />
+        <attr name="zqy_tabTextAppearance" format="reference" />
+        <attr name="zqy_tabTextColor" format="color" />
+        <attr name="zqy_tabSelectedTextColor" format="color" />
+        <attr name="zqy_tabPaddingStart" format="dimension" />
+        <attr name="zqy_tabPaddingTop" format="dimension" />
+        <attr name="zqy_tabPaddingEnd" format="dimension" />
+        <attr name="zqy_tabPaddingBottom" format="dimension" />
+        <attr name="zqy_tabPadding" format="dimension" />
+
+        <!--底部分隔栏的颜色-->
+        <attr name="zqy_bottomLineColor" format="color" />
+        <!--竖直分隔线的颜色-->
+        <attr name="zqy_dividerColor" format="color" />
+        <!--底部分隔栏的高度-->
+        <attr name="zqy_bottomLineHeight" format="dimension" />
+        <!--竖直分隔线的宽与高-->
+        <attr name="zqy_dividerWidth" format="dimension" />、
+        <attr name="zqy_dividerHeight" format="dimension" />
+        <attr name="zqy_bottomLineMode">
+            <!--不显示底部分割栏-->
+            <enum name="none" value="0" />
+            <!--显示在滑动栏外面-->
+            <enum name="outer" value="1" />
+            <!--显示在滑动栏里面-->
+            <enum name="inner" value="2" />
+        </attr>
+
+        <attr name="zqy_textStyle">
+            <!--正常-->
+            <enum name="normal" value="0" />
+            <!--加粗-->
+            <enum name="bold" value="1" />
+            <!--斜体-->
+            <enum name="italic" value="2" />
+            <!--加粗斜体-->
+            <enum name="bold_italic" value="3" />
+        </attr>
+        <!--下划线的宽度-->
+        <attr name="zqy_tabLineOffset" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundProgressBarWidthNumber">
+        <attr name="radius" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="PasswordInputView">
+        <attr name="pwv_maxLength" format="integer" />
+
+        <attr name="pwv_borderColor" format="color" />
+        <attr name="pwv_pwdColor" format="color" />
+        <attr name="pwv_haveInputBorderColor" format="color" />
+
+        <attr name="pwv_strokeWidth" format="dimension" />
+        <attr name="pwv_radius" format="dimension" />
+        <attr name="pwv_spacing" format="dimension" />
+        <attr name="pwv_asterisk" format="string" />
+
+        <attr name="pwv_borderStyle" format="enum">
+            <enum name="box" value="0" />
+            <enum name="line" value="1" />
+        </attr>
+        <attr name="pwv_pwdStyle" format="enum">
+            <enum name="circle" value="0" />
+            <enum name="asterisk" value="1" />
+            <enum name="plaintext" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="Banner">
+        <attr name="delay_time" format="integer" />
+        <attr name="scroll_time" format="integer" />
+        <attr name="is_auto_play" format="boolean" />
+        <attr name="title_background" format="color|reference" />
+        <attr name="title_textcolor" format="color" />
+        <attr name="title_textsize" format="dimension" />
+        <attr name="title_height" format="dimension" />
+        <attr name="indicator_width" format="dimension" />
+        <attr name="indicator_height" format="dimension" />
+        <attr name="indicator_selected_width" format="dimension" />
+        <attr name="indicator_selected_height" format="dimension" />
+        <attr name="indicator_margin" format="dimension" />
+        <attr name="indicator_drawable_selected" format="reference" />
+        <attr name="indicator_drawable_unselected" format="reference" />
+        <attr name="banner_layout" format="reference" />
+        <attr name="banner_default_image" format="reference" />
+        <attr name="image_scale_type" format="enum">
+            <enum name="center" value="0" />
+            <enum name="center_crop" value="1" />
+            <enum name="center_inside" value="2" />
+            <enum name="fit_center" value="3" />
+            <enum name="fit_end" value="4" />
+            <enum name="fit_start" value="5" />
+            <enum name="fit_xy" value="6" />
+            <enum name="matrix" value="7" />
+        </attr>
+
+    </declare-styleable>
+
+    <!--自定义阴影-->
+    <declare-styleable name="ShadowLayout">
+        <attr name="shadowColor" format="color" />
+        <attr name="shadowRadius" format="dimension" />
+        <attr name="shadowRoundRadius" format="dimension" />
+        <attr name="shadowShape">
+            <flag name="rectangle" value="0x0001" />
+            <flag name="round_rectangle" value="0x0100" />
+        </attr>
+        <attr name="shadowSide">
+            <flag name="all" value="0x1111" />
+            <flag name="left" value="0x0001" />
+            <flag name="top" value="0x0010" />
+            <flag name="right" value="0x0100" />
+            <flag name="bottom" value="0x1000" />
+        </attr>
+        <attr name="round_corner">
+            <flag name="corner_all" value="0x1111" />
+            <flag name="corner_leftTop" value="0x0001" />
+            <flag name="corner_leftBottom" value="0x0010" />
+            <flag name="corner_rightTop" value="0x0100" />
+            <flag name="corner_rightBottom" value="0x1000" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="SuperTextView">
+        <!-- 按下时 背景颜色和字体颜色 透明度 默认0.7f-->
+        <attr name="zqy_stv_clickAlpha" format="float" />
+        <!-- 背景颜色-->
+        <attr name="zqy_stv_backgroundColor" format="color" />
+        <!-- 边框颜色 -->
+        <attr name="zqy_stv_borderColor" format="color" />
+        <!-- 边框宽度-->
+        <attr name="zqy_stv_borderWidth" format="integer" />
+
+        <!-- 按下背景颜色-->
+        <attr name="zqy_stv_clickColorBg" format="color" />
+        <!-- 按下边框颜色-->
+        <attr name="zqy_stv_clickColorBorder" format="color" />
+
+        <attr name="zqy_stv_isRadiusAdjustBounds" format="boolean" />
+        <!-- 圆角弧度，默认5dp -->
+        <attr name="zqy_stv_radius" format="integer" />
+        <attr name="zqy_stv_radiusTopLeft" format="integer" />
+        <attr name="zqy_stv_radiusTopRight" format="integer" />
+        <attr name="zqy_stv_radiusBottomLeft" format="integer" />
+        <attr name="zqy_stv_radiusBottomRight" format="integer" />
+
+        <!--渐变开始颜色-->
+        <attr name="zqy_stv_startColor" format="color" />
+        <!--渐变结束颜色-->
+        <attr name="zqy_stv_endColor" format="color" />
+
+        <!--linear_gradient 设置线性渐变，sweep_gradient（扫描式渐变），radial_gradient（圆形渐变）-->
+        <attr name="zqy_stv_gradient" format="enum">
+            <enum name="linear_gradient" value="0" />
+            <enum name="sweep_gradient" value="2" />
+            <enum name="radial_gradient" value="1" />
+        </attr>
+        <!--设置渐变方向-->
+        <!--
+        top_bottom,从上到下
+
+        tr_bl,从右上到左下
+
+        right_left,从右到左
+
+        br_tl,从右下到左上
+
+        bottom_top,从下到上
+
+        bl_tr,从左下到右上
+
+        left_right,从左到右
+
+        tl_br,从左上到右下
+        -->
+        <attr name="zqy_stv_orientation" format="enum">
+            <enum name="top_bottom" value="0" />
+            <enum name="tr_bl" value="1" />
+            <enum name="right_left" value="2" />
+            <enum name="br_tl" value="3" />
+            <enum name="bottom_top" value="4" />
+            <enum name="bl_tr" value="5" />
+            <enum name="left_right" value="6" />
+            <enum name="tl_br" value="7" />
+        </attr>
+    </declare-styleable>
+
+
+    <!-- declare-styleable name和view名字一样才能自动提示 -->
+    <declare-styleable name="SuperButton">
+        <!-- 按下时 背景颜色和字体颜色 透明度 默认0.7f-->
+        <attr name="zqy_sb_clickAlpha" format="float" />
+        <!-- 背景颜色-->
+        <attr name="zqy_sb_backgroundColor" format="color" />
+        <!-- 边框颜色 -->
+        <attr name="zqy_sb_borderColor" format="color" />
+        <!-- 边框宽度-->
+        <attr name="zqy_sb_borderWidth" format="integer" />
+
+        <!-- 按下背景颜色-->
+        <attr name="zqy_sb_clickColorBg" format="color" />
+        <!-- 按下边框颜色-->
+        <attr name="zqy_sb_clickColorBorder" format="color" />
+
+        <attr name="zqy_sb_isRadiusAdjustBounds" format="boolean" />
+        <!-- 圆角弧度，默认5dp -->
+        <attr name="zqy_sb_radius" format="integer" />
+        <attr name="zqy_sb_radiusTopLeft" format="integer" />
+        <attr name="zqy_sb_radiusTopRight" format="integer" />
+        <attr name="zqy_sb_radiusBottomLeft" format="integer" />
+        <attr name="zqy_sb_radiusBottomRight" format="integer" />
+
+        <!--渐变开始颜色-->
+        <attr name="zqy_sb_startColor" format="color" />
+        <!--渐变结束颜色-->
+        <attr name="zqy_sb_endColor" format="color" />
+
+        <!--linear_gradient 设置线性渐变，sweep_gradient（扫描式渐变），radial_gradient（圆形渐变）-->
+        <attr name="zqy_sb_gradient" format="enum">
+            <enum name="linear_gradient" value="0" />
+            <enum name="sweep_gradient" value="2" />
+            <enum name="radial_gradient" value="1" />
+        </attr>
+        <!--设置渐变方向-->
+        <!--
+        top_bottom,从上到下
+
+        tr_bl,从右上到左下
+
+        right_left,从右到左
+
+        br_tl,从右下到左上
+
+        bottom_top,从下到上
+
+        bl_tr,从左下到右上
+
+        left_right,从左到右
+
+        tl_br,从左上到右下
+        -->
+        <attr name="zqy_sb_orientation" format="enum">
+            <enum name="top_bottom" value="0" />
+            <enum name="tr_bl" value="1" />
+            <enum name="right_left" value="2" />
+            <enum name="br_tl" value="3" />
+            <enum name="bottom_top" value="4" />
+            <enum name="bl_tr" value="5" />
+            <enum name="left_right" value="6" />
+            <enum name="tl_br" value="7" />
+        </attr>
+    </declare-styleable>
+
+
+    <!-- declare-styleable name和view名字一样才能自动提示 -->
+    <declare-styleable name="ColorStateImageView">
+        <!-- 设置图标颜色-->
+        <attr name="zqy_csiv_imgColor" format="color" />
+        <!-- 设置图标按下颜色-->
+        <attr name="zqy_csiv_clickImgColor" format="color" />
+        <!-- 按下时 图标颜色 透明度 默认0.7f -->
+        <attr name="zqy_csiv_clickImgAlpha" format="float" />
+
+    </declare-styleable>
+
+    <!-- declare-styleable name和view名字一样才能自动提示 -->
+    <declare-styleable name="SuperLinearLayout">
+        <!-- 是否有点击效果-->
+        <attr name="zqy_sll_clickEffect" format="boolean" />
+        <!-- 按下时 背景颜色和字体颜色 透明度 默认0.7f-->
+        <attr name="zqy_sll_clickAlpha" format="float" />
+        <!-- 背景颜色-->
+        <attr name="zqy_sll_backgroundColor" format="color" />
+        <!-- 边框颜色 -->
+        <attr name="zqy_sll_borderColor" format="color" />
+        <!-- 边框宽度-->
+        <attr name="zqy_sll_borderWidth" format="integer" />
+        <!-- 按下背景颜色-->
+        <attr name="zqy_sll_clickColorBg" format="color" />
+        <!-- 按下边框颜色-->
+        <attr name="zqy_sll_clickColorBorder" format="color" />
+
+        <attr name="zqy_sll_isRadiusAdjustBounds" format="boolean" />
+        <!-- 圆角弧度，默认5dp -->
+        <attr name="zqy_sll_radius" format="integer" />
+        <attr name="zqy_sll_radiusTopLeft" format="integer" />
+        <attr name="zqy_sll_radiusTopRight" format="integer" />
+        <attr name="zqy_sll_radiusBottomLeft" format="integer" />
+        <attr name="zqy_sll_radiusBottomRight" format="integer" />
+
+        <!--渐变开始颜色-->
+        <attr name="zqy_sll_startColor" format="color" />
+        <!--渐变结束颜色-->
+        <attr name="zqy_sll_endColor" format="color" />
+
+        <!--linear_gradient 设置线性渐变，sweep_gradient（扫描式渐变），radial_gradient（圆形渐变）-->
+        <attr name="zqy_sll_gradient" format="enum">
+            <enum name="linear_gradient" value="0" />
+            <enum name="sweep_gradient" value="2" />
+            <enum name="radial_gradient" value="1" />
+        </attr>
+        <!--设置渐变方向-->
+        <!--
+        top_bottom,从上到下
+
+        tr_bl,从右上到左下
+
+        right_left,从右到左
+
+        br_tl,从右下到左上
+
+        bottom_top,从下到上
+
+        bl_tr,从左下到右上
+
+        left_right,从左到右
+
+        tl_br,从左上到右下
+        -->
+        <attr name="zqy_sll_orientation" format="enum">
+            <enum name="top_bottom" value="0" />
+            <enum name="tr_bl" value="1" />
+            <enum name="right_left" value="2" />
+            <enum name="br_tl" value="3" />
+            <enum name="bottom_top" value="4" />
+            <enum name="bl_tr" value="5" />
+            <enum name="left_right" value="6" />
+            <enum name="tl_br" value="7" />
+        </attr>
+    </declare-styleable>
+
+    <!-- 垂直方向的虚线 -->
+    <declare-styleable name="DividerView">
+        <!-- 虚线颜色 -->
+        <attr name="zqy_divider_line_color" format="color"/>
+        <!-- 虚线宽度 -->
+        <attr name="zqy_dashThickness" format="dimension"/>
+        <!-- 虚线dash宽度 -->
+        <attr name="zqy_dashLength" format="dimension"/>
+        <!-- 虚线dash间隔 -->
+        <attr name="zqy_dashGap" format="dimension"/>
+        <!-- 虚线朝向 -->
+        <attr name="zqy_divider_orientation" format="enum">
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
+        </attr>
+    </declare-styleable>
+
+</resources>
+

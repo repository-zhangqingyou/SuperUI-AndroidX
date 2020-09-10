@@ -4,16 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/tv_test"
+
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:id="@+id/rbt_test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="测试" />
+        android:layout_marginTop="8dp"
+        android:textColor="@color/bui_white"
+        android:text="测试"
+        app:rb_backgroundColor="@color/colorAccent"
+        app:rb_radius="5dp" />
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -22,7 +28,6 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/atv_content"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

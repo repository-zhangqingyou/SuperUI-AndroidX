@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/base_request" />
+            <option value="$PROJECT_DIR$/base_ui" />
             <option value="$PROJECT_DIR$/base_utils" />
           </set>
         </option>

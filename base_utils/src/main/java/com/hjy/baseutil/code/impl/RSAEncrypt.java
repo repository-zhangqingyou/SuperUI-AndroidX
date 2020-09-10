@@ -60,6 +60,9 @@ public class RSAEncrypt {
      * 获取公钥的key
      */
     public static final String PUBLIC_KEY = "MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJ4WmuBh0jRfdeUyQA59sP3nxWw8ygGLOeAYd/jIsU6MeTwVM8bCWvvzytoXXzVfsH5lmRXOIH1dg/LuAgRSnCkCAwEAAQ==";
+    /**
+     *
+     */
     public static final String PRIVATE_KEY = "MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAnhaa4GHSNF915TJADn2w/efFbDzKAYs54Bh3+MixTox5PBUzxsJa+/PK2hdfNV+wfmWZFc4gfV2D8u4CBFKcKQIDAQABAkBVfGXNtjgEKCbJhK3M6D0AYAeK6yhVQ2NNgg3GE0iF72jBRWZ7QKWhjZT0CbRQbVwKCJWg1Da0FcNlaSunvwexAiEAyXK6zB1JnB5542gIhiY1FW8I9QR4DY9RXObRlGxhDlUCIQDI5fq+V2jj8zfKD/aAZRR7wchDAAliLb/ul85CmyOChQIgEaMz668cxMh+T4TKSkSKHUhNdnZftIA51XJ4IxCiJskCIQCVPKJjuzMkAo0zAWCwSGZK+Mz3WJOf5zRo3URPnkdmsQIgeS8xNwMccdnvM/hHsbtn3k/vjc/ar/m9paAauUyr02g=";
 
 

@@ -2,3 +2,4 @@ include ':base_request'
 include ':base_utils'
 include ':app'
 rootProject.name = "GameMangeApp"
+

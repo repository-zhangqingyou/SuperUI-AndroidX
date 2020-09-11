@@ -5,8 +5,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.ColorRes;
 
-import com.hjy.baseui.R;
 import com.xuexiang.xui.widget.button.RippleView;
+import com.zqy.baseui.R;
 
 /**
  * 作者: zhangqingyou

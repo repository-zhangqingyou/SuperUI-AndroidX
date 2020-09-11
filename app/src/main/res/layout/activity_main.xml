@@ -7,18 +7,26 @@
     android:fitsSystemWindows="true"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:padding="12dp"
     tools:context=".activity.MainActivity">
 
 
-    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+    <com.zqy.baseui.ui.view.textview.ButtonView
         android:id="@+id/rbt_test"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textColor="@color/bui_white"
+        android:gravity="center"
+        android:paddingTop="@dimen/mine_margin"
+        android:paddingBottom="@dimen/mine_margin"
         android:text="测试"
-        app:rb_backgroundColor="@color/colorAccent"
-        app:rb_radius="5dp" />
+        android:textColor="@color/bui_white"
+        app:clickAlpha="0.5"
+        app:textNormalTextColor="@color/bui_white"
+        app:textRadius="5dp"
+        app:textSolidColor="@color/colorPrimary"
+        app:zqy_endColor="@color/colorPrimaryDark"
+        app:zqy_startColor="@color/colorAccent" />
 
 
     <androidx.core.widget.NestedScrollView

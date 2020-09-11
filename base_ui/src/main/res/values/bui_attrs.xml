@@ -362,17 +362,64 @@
     <!-- 垂直方向的虚线 -->
     <declare-styleable name="DividerView">
         <!-- 虚线颜色 -->
-        <attr name="zqy_divider_line_color" format="color"/>
+        <attr name="zqy_divider_line_color" format="color" />
         <!-- 虚线宽度 -->
-        <attr name="zqy_dashThickness" format="dimension"/>
+        <attr name="zqy_dashThickness" format="dimension" />
         <!-- 虚线dash宽度 -->
-        <attr name="zqy_dashLength" format="dimension"/>
+        <attr name="zqy_dashLength" format="dimension" />
         <!-- 虚线dash间隔 -->
-        <attr name="zqy_dashGap" format="dimension"/>
+        <attr name="zqy_dashGap" format="dimension" />
         <!-- 虚线朝向 -->
         <attr name="zqy_divider_orientation" format="enum">
-            <enum name="horizontal" value="0"/>
-            <enum name="vertical" value="1"/>
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <!-- 自定义按钮控件 ButtonView -->
+    <declare-styleable name="ButtonView">
+        <!-- 按下时 背景颜色和字体颜色 透明度 默认0.7f-->
+        <attr name="clickAlpha" format="float" />
+        <attr name="clickStrokeColor" format="color" />
+
+        <!--渐变开始颜色-->
+        <attr name="zqy_startColor" format="color" />
+        <!--渐变结束颜色-->
+        <attr name="zqy_endColor" format="color" />
+
+        <!--linear_gradient 设置线性渐变，sweep_gradient（扫描式渐变），radial_gradient（圆形渐变）-->
+        <attr name="zqy_gradient" format="enum">
+            <enum name="linear_gradient" value="0" />
+            <enum name="sweep_gradient" value="2" />
+            <enum name="radial_gradient" value="1" />
+        </attr>
+        <!--设置渐变方向-->
+        <!--
+        top_bottom,从上到下
+
+        tr_bl,从右上到左下
+
+        right_left,从右到左
+
+        br_tl,从右下到左上
+
+        bottom_top,从下到上
+
+        bl_tr,从左下到右上
+
+        left_right,从左到右
+
+        tl_br,从左上到右下
+        -->
+        <attr name="zqy_orientation" format="enum">
+            <enum name="top_bottom" value="0" />
+            <enum name="tr_bl" value="1" />
+            <enum name="right_left" value="2" />
+            <enum name="br_tl" value="3" />
+            <enum name="bottom_top" value="4" />
+            <enum name="bl_tr" value="5" />
+            <enum name="left_right" value="6" />
+            <enum name="tl_br" value="7" />
         </attr>
     </declare-styleable>
 

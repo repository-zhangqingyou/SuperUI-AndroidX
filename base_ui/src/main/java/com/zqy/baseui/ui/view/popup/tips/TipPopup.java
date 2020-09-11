@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.hjy.baseui.R;
+import com.zqy.baseui.R;
 
 /**
  * 作者: zhangqingyou

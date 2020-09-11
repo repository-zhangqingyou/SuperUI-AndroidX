@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
-import com.hjy.baseui.R;
+import com.zqy.baseui.R;
 
 
 /**

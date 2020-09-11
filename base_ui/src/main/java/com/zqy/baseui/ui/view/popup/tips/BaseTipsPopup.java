@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import androidx.core.content.ContextCompat;
 
 import com.blankj.utilcode.util.ConvertUtils;
-import com.hjy.baseui.R;
+import com.zqy.baseui.R;
 import com.zqy.baseui.ui.SuperDrawable;
 import com.zqy.baseui.ui.view.popup.BasePopup;
 

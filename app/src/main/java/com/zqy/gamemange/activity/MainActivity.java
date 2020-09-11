@@ -8,16 +8,16 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.google.gson.Gson;
 import com.lzy.okgo.model.Response;
-import com.xuexiang.xui.widget.button.roundbutton.RoundButton;
 import com.zqy.baserequest.bean.DescAndCode;
 import com.zqy.baserequest.request.JsonEntityCallback;
 import com.zqy.baserequest.request.Request;
+import com.zqy.baseui.ui.view.textview.ButtonView;
 import com.zqy.baseutil.code.impl.RSAEncrypt;
 import com.zqy.gamemange.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private RoundButton mTvTest;
+    private ButtonView mTvTest;
     private AppCompatTextView mAtvContent;
 
     @Override

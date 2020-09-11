@@ -16,8 +16,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:3.4.2"
         //集成全量更新和热更新一体的平台
         classpath "com.tencent.bugly:tinker-support:1.1.5"
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+
     }
 }
 

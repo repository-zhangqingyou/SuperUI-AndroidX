@@ -81,6 +81,11 @@ android {
         doNotStrip '*/mips/*.so'
         doNotStrip '*/mips64/*.so'
     }
+    //解决 Invoke-customs are only supported starting with Android O (--min-api 26)
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
     /*Gradle3.3 以上的方法*/
     applicationVariants.all { variant ->

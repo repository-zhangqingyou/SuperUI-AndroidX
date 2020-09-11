@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 
-import com.hjy.baseui.R;
+import com.zqy.baseui.R;
 import com.zqy.baseui.ui.SuperDrawable;
 
 

@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.ColorInt;
 import androidx.core.content.ContextCompat;
 
-import com.hjy.baseui.R;
+import com.zqy.baseui.R;
 import com.zqy.baseui.ui.view.textview.SuperTextView;
 
 /**

@@ -8,7 +8,7 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 
-import com.hjy.baseui.R;
+import com.zqy.baseui.R;
 
 
 /**

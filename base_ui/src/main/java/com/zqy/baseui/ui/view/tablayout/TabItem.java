@@ -22,7 +22,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.hjy.baseui.R;
+import com.zqy.baseui.R;
 
 /**
  * TabItem is a special 'view' which allows you to declare tab items for a {@link TabLayoutX}

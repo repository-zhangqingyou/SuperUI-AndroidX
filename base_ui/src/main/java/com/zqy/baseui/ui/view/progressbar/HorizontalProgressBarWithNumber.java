@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.ProgressBar;
 
-import com.hjy.baseui.R;
+import com.zqy.baseui.R;
 
 
 /**

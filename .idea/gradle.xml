@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/base_request" />
             <option value="$PROJECT_DIR$/base_ui" />
             <option value="$PROJECT_DIR$/base_utils" />
+            <option value="$PROJECT_DIR$/xui_lib_1.1.5" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

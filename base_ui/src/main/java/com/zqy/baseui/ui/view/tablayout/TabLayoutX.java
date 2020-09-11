@@ -64,7 +64,7 @@ import androidx.core.widget.TextViewCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.hjy.baseui.R;
+import com.zqy.baseui.R;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

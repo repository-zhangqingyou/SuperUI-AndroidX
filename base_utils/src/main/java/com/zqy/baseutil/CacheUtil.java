@@ -25,7 +25,7 @@ public class CacheUtil {
 
     //系统包目录
     private static String systemPath;
-    //存储空间隐藏目录.hjy
+    //存储空间隐藏目录.zqy
     private static String storagePath;
 
     //*******************************系统包目录********************************
@@ -56,7 +56,7 @@ public class CacheUtil {
 
     private static String getStoragePath() {
         if (TextUtils.isEmpty(storagePath))
-            storagePath = Environment.getExternalStorageDirectory() + "/.hjy/" + UtilsManage.getApplication().getPackageName();
+            storagePath = Environment.getExternalStorageDirectory() + "/.zqy/" + UtilsManage.getApplication().getPackageName();
         return storagePath;
     }
 

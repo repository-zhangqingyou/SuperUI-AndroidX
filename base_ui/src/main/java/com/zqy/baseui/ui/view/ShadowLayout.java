@@ -17,7 +17,7 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.hjy.baseui.R;
+import com.zqy.baseui.R;
 
 /**自定义阴影
  * Author: zhangqingyou

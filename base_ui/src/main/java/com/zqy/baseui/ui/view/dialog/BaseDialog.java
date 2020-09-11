@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatDialog;
 import androidx.core.content.ContextCompat;
 
-import com.hjy.baseui.R;
+import com.zqy.baseui.R;
 import com.zqy.baseui.ui.SuperDrawable;
 import com.zqy.baseutil.ViewSeting;
 

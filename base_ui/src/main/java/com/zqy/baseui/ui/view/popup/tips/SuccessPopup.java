@@ -3,7 +3,7 @@ package com.zqy.baseui.ui.view.popup.tips;
 import android.app.Activity;
 import android.view.View;
 
-import com.hjy.baseui.R;
+import com.zqy.baseui.R;
 
 /**
  * 作者: zhangqingyou

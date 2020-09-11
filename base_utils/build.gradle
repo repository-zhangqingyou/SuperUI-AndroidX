@@ -31,10 +31,10 @@ dependencies {
 
 
     //极光推送
-    api 'cn.jiguang.sdk:jpush:3.6.8'
-    api 'cn.jiguang.sdk:jcore:2.4.0'
+    api 'cn.jiguang.sdk:jpush:3.8.0'
+    api 'cn.jiguang.sdk:jcore:2.4.2'
     //极光页面统计
-    api 'cn.jiguang.sdk:janalytics:2.1.0'
+    api 'cn.jiguang.sdk:janalytics:2.1.2'
     //极光分享
     api 'cn.jiguang.sdk:jshare:1.6.0'
     // 此处以JShare 1.6.0 版本为例，具体版本请参考压缩包libs的jar包版本。

@@ -20,7 +20,7 @@ import android.util.Log;
 import androidx.annotation.IntDef;
 import androidx.appcompat.widget.AppCompatEditText;
 
-import com.hjy.baseui.R;
+import com.zqy.baseui.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

@@ -8,7 +8,7 @@ package com.zqy.baseutil.code.impl;
  */
 public class CiphertextKey {
     //加密 解密 的key
-    private static final String CIPHERTEXT_KEY = "com.hjy.gamecommunity";
+    private static final String CIPHERTEXT_KEY = "com.zqy.gamecommunity";
 
     public static String getCiphertextKey() {
         return CIPHERTEXT_KEY;

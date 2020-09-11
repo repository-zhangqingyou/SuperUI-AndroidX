@@ -10,7 +10,7 @@ import androidx.annotation.FloatRange;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import com.blankj.utilcode.util.ColorUtils;
-import com.hjy.baseui.R;
+import com.zqy.baseui.R;
 
 /**
  * 作者: zhangqingyou

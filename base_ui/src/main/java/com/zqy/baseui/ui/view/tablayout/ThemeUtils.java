@@ -19,7 +19,7 @@ package com.zqy.baseui.ui.view.tablayout;
 import android.content.Context;
 import android.content.res.TypedArray;
 
-import com.hjy.baseui.R;
+import com.zqy.baseui.R;
 
 class ThemeUtils {
 

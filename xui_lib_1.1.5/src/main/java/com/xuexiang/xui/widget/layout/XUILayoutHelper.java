@@ -85,7 +85,7 @@ public class XUILayoutHelper implements IXUILayout {
     private Paint mClipPaint;
     private PorterDuffXfermode mMode;
     private int mRadius;
-    private @IXUILayout.HideRadiusSide
+    private @HideRadiusSide
     int mHideRadiusSide = HIDE_RADIUS_SIDE_NONE;
     private float[] mRadiusArray;
     private RectF mBorderRect;
@@ -352,7 +352,7 @@ public class XUILayoutHelper implements IXUILayout {
     }
 
     @Override
-    public void setRadius(int radius, @IXUILayout.HideRadiusSide int hideRadiusSide) {
+    public void setRadius(int radius, @HideRadiusSide int hideRadiusSide) {
         if (mRadius == radius && hideRadiusSide == mHideRadiusSide) {
             return;
         }
@@ -370,7 +370,7 @@ public class XUILayoutHelper implements IXUILayout {
     }
 
     @Override
-    public void setRadiusAndShadow(int radius, @IXUILayout.HideRadiusSide int hideRadiusSide, int shadowElevation, float shadowAlpha) {
+    public void setRadiusAndShadow(int radius, @HideRadiusSide int hideRadiusSide, int shadowElevation, float shadowAlpha) {
         setRadiusAndShadow(radius, hideRadiusSide, shadowElevation, mShadowColor, shadowAlpha);
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <declare-styleable name="HorizontalProgressBarWithNumber">
         <attr name="progress_unreached_color" format="color" />
         <attr name="progress_reached_color" format="color" />
@@ -151,7 +151,7 @@
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="SuperTextView">
+    <declare-styleable name="SuperTextView_Copy" tools:ignore="DuplicateDefinition">
         <!-- 按下时 背景颜色和字体颜色 透明度 默认0.7f-->
         <attr name="zqy_stv_clickAlpha" format="float" />
         <!-- 背景颜色-->
@@ -377,16 +377,37 @@
     </declare-styleable>
 
     <!-- 自定义按钮控件 ButtonView -->
-    <declare-styleable name="ButtonView">
+    <declare-styleable name="SuperTextView">
         <!-- 按下时 背景颜色和字体颜色 透明度 默认0.7f-->
-        <attr name="clickAlpha" format="float" />
-        <attr name="clickStrokeColor" format="color" />
+        <attr name="zqy_click_alpha" format="float" />
+        <!-- 背景颜色-->
+        <attr name="zqy_solid_color" format="color" />
+        <!-- 边框颜色 -->
+        <attr name="zqy_stroke_color" format="color" />
+        <!-- 边框宽度-->
+        <attr name="zqy_stroke_width" format="dimension" />
+
+        <!-- 按下背景颜色-->
+        <attr name="zqy_click_solid_color" format="color" />
+        <!-- 按下边框颜色-->
+        <attr name="zqy_click_stroke_color" format="color" />
+        <!--正常字体颜色-->
+        <attr name="zqy_text_color" format="color" />
+        <!--按现时 字体颜色-->
+        <attr name="zqy_click_text_color" format="color" />
+
+
+        <!-- 圆角弧度，默认5dp -->
+        <attr name="zqy_radius" format="dimension" />
+        <attr name="zqy_top_left_radius" format="dimension" />
+        <attr name="zqy_top_right_radius" format="dimension" />
+        <attr name="zqy_bottom_left_radius" format="dimension" />
+        <attr name="zqy_bottom_right_radius" format="dimension" />
 
         <!--渐变开始颜色-->
-        <attr name="zqy_startColor" format="color" />
+        <attr name="zqy_start_color" format="color" />
         <!--渐变结束颜色-->
-        <attr name="zqy_endColor" format="color" />
-
+        <attr name="zqy_end_color" format="color" />
         <!--linear_gradient 设置线性渐变，sweep_gradient（扫描式渐变），radial_gradient（圆形渐变）-->
         <attr name="zqy_gradient" format="enum">
             <enum name="linear_gradient" value="0" />

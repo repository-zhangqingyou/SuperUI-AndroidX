@@ -9,7 +9,7 @@ import androidx.annotation.ColorInt;
 import androidx.core.content.ContextCompat;
 
 import com.zqy.baseui.R;
-import com.zqy.baseui.ui.view.textview.SuperTextView;
+import com.zqy.baseui.ui.view.textview.SuperTextView_Copy;
 
 /**
  * 作者: zhangqingyou
@@ -38,9 +38,9 @@ public class TextTipsDialog extends BaseDialog {
 
     private TextView mTvTitle;
     private TextView mTvText;
-    private SuperTextView mTvButton1;
+    private SuperTextView_Copy mTvButton1;
     private View mVDividingLine;
-    private SuperTextView mTvButton2;
+    private SuperTextView_Copy mTvButton2;
 
     public TextTipsDialog(Activity activity) {
         super(activity);

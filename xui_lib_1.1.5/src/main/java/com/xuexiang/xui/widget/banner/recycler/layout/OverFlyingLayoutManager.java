@@ -378,8 +378,8 @@ public class OverFlyingLayoutManager extends RecyclerView.LayoutManager implemen
      * laid out at the end of the UI, second item is laid out before it etc.
      * <p>
      * For horizontal layouts, it depends on the layout direction.
-     * When set to true, If {@link androidx.recyclerview.widget.RecyclerView} is LTR, than it will
-     * layout from RTL, if {@link androidx.recyclerview.widget.RecyclerView}} is RTL, it will layout
+     * When set to true, If {@link RecyclerView} is LTR, than it will
+     * layout from RTL, if {@link RecyclerView}} is RTL, it will layout
      * from LTR.
      */
     public void setReverseLayout(boolean reverseLayout) {

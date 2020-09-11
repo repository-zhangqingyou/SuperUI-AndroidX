@@ -432,6 +432,6 @@ public class XUICommonListItemView extends RelativeLayout {
 
 
     public interface LayoutParamConfig {
-        RelativeLayout.LayoutParams onConfig(RelativeLayout.LayoutParams lp);
+        LayoutParams onConfig(LayoutParams lp);
     }
 }

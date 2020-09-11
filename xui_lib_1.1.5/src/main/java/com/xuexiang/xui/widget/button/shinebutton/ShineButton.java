@@ -233,7 +233,7 @@ public class ShineButton extends PorterShapeImageView implements Checkable {
     }
 
     @Override
-    public void setOnClickListener(View.OnClickListener listener) {
+    public void setOnClickListener(OnClickListener listener) {
         if (listener instanceof OnClickListenWrapper) {
             super.setOnClickListener(listener);
         } else {
@@ -322,18 +322,18 @@ public class ShineButton extends PorterShapeImageView implements Checkable {
         mShakeAnimator.start();
     }
 
-    public class OnClickListenWrapper implements View.OnClickListener {
+    public class OnClickListenWrapper implements OnClickListener {
 
-        public void wrapListener(View.OnClickListener listener) {
+        public void wrapListener(OnClickListener listener) {
             mListener = listener;
         }
 
-        private View.OnClickListener mListener;
+        private OnClickListener mListener;
 
         OnClickListenWrapper() {
         }
 
-        public OnClickListenWrapper(View.OnClickListener listener) {
+        public OnClickListenWrapper(OnClickListener listener) {
             mListener = listener;
         }
 

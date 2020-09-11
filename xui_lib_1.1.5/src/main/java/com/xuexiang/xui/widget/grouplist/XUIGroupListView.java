@@ -42,7 +42,7 @@ import java.lang.annotation.RetentionPolicy;
  * 注意其父类不是 {@link android.widget.ListView}, 而是 {@link LinearLayout}, 一般需要在外层包多一个 {@link android.widget.ScrollView} 来支持滚动。
  * </p>
  * <p>
- * 提供了 {@link Section} 的概念, 用来将列表分块。 具体见 {@link XUIGroupListView.Section}
+ * 提供了 {@link Section} 的概念, 用来将列表分块。 具体见 {@link Section}
  * </p>
  * <p>
  * usage:

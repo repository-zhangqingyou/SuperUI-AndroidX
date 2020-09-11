@@ -95,7 +95,7 @@ public class SwitchButton extends CompoundButton {
     private boolean mReady = false;
     private boolean mCatch = false;
 
-    private CompoundButton.OnCheckedChangeListener mChildOnCheckedChangeListener;
+    private OnCheckedChangeListener mChildOnCheckedChangeListener;
 
     public SwitchButton(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -1126,8 +1126,8 @@ public class SwitchButton extends CompoundButton {
             TextUtils.writeToParcel(offText, out, flags);
         }
 
-        public static final Parcelable.Creator<SavedState> CREATOR
-                = new Parcelable.Creator<SavedState>() {
+        public static final Creator<SavedState> CREATOR
+                = new Creator<SavedState>() {
             @Override
             public SavedState createFromParcel(Parcel in) {
                 return new SavedState(in);

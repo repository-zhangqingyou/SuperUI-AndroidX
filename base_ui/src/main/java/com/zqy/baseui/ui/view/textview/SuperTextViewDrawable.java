@@ -28,24 +28,24 @@ public class SuperTextViewDrawable {
     private float clickAlpha;//按下时 背景颜色和字体颜色 透明度
 
     public Drawable initStateListDrawable(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SuperTextView);
-        clickAlpha = typedArray.getFloat(R.styleable.SuperTextView_zqy_stv_clickAlpha, 0.7f);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SuperTextView_Copy);
+        clickAlpha = typedArray.getFloat(R.styleable.SuperTextView_Copy_zqy_stv_clickAlpha, 0.7f);
 
-        int colorBg = typedArray.getColor(R.styleable.SuperTextView_zqy_stv_backgroundColor, Color.TRANSPARENT);
-        int colorBorder = typedArray.getColor(R.styleable.SuperTextView_zqy_stv_borderColor, Color.TRANSPARENT);
-        int startColor = typedArray.getColor(R.styleable.SuperTextView_zqy_stv_startColor, Color.TRANSPARENT);
-        int endColor = typedArray.getColor(R.styleable.SuperTextView_zqy_stv_endColor, Color.TRANSPARENT);
-        int clickColorBg = typedArray.getColor(R.styleable.SuperTextView_zqy_stv_clickColorBg,Color.TRANSPARENT);
-        int clickColorBorder = typedArray.getColor(R.styleable.SuperTextView_zqy_stv_clickColorBorder, Color.TRANSPARENT);
-        int gradient = typedArray.getInt(R.styleable.SuperTextView_zqy_stv_gradient, -1);
-        int orientation = typedArray.getInt(R.styleable.SuperTextView_zqy_stv_orientation, -1);
-        int borderWidth = typedArray.getInt(R.styleable.SuperTextView_zqy_stv_borderWidth, 0);
-        boolean isRadiusAdjustBounds = typedArray.getBoolean(R.styleable.SuperTextView_zqy_stv_isRadiusAdjustBounds, false);
-        int mRadius = typedArray.getInt(R.styleable.SuperTextView_zqy_stv_radius, 5);
-        int mRadiusTopLeft = typedArray.getInt(R.styleable.SuperTextView_zqy_stv_radiusTopLeft, 0);
-        int mRadiusTopRight = typedArray.getInt(R.styleable.SuperTextView_zqy_stv_radiusTopRight, 0);
-        int mRadiusBottomLeft = typedArray.getInt(R.styleable.SuperTextView_zqy_stv_radiusBottomLeft, 0);
-        int mRadiusBottomRight = typedArray.getInt(R.styleable.SuperTextView_zqy_stv_radiusBottomRight, 0);
+        int colorBg = typedArray.getColor(R.styleable.SuperTextView_Copy_zqy_stv_backgroundColor, Color.TRANSPARENT);
+        int colorBorder = typedArray.getColor(R.styleable.SuperTextView_Copy_zqy_stv_borderColor, Color.TRANSPARENT);
+        int startColor = typedArray.getColor(R.styleable.SuperTextView_Copy_zqy_stv_startColor, Color.TRANSPARENT);
+        int endColor = typedArray.getColor(R.styleable.SuperTextView_Copy_zqy_stv_endColor, Color.TRANSPARENT);
+        int clickColorBg = typedArray.getColor(R.styleable.SuperTextView_Copy_zqy_stv_clickColorBg,Color.TRANSPARENT);
+        int clickColorBorder = typedArray.getColor(R.styleable.SuperTextView_Copy_zqy_stv_clickColorBorder, Color.TRANSPARENT);
+        int gradient = typedArray.getInt(R.styleable.SuperTextView_Copy_zqy_stv_gradient, -1);
+        int orientation = typedArray.getInt(R.styleable.SuperTextView_Copy_zqy_stv_orientation, -1);
+        int borderWidth = typedArray.getInt(R.styleable.SuperTextView_Copy_zqy_stv_borderWidth, 0);
+        boolean isRadiusAdjustBounds = typedArray.getBoolean(R.styleable.SuperTextView_Copy_zqy_stv_isRadiusAdjustBounds, false);
+        int mRadius = typedArray.getInt(R.styleable.SuperTextView_Copy_zqy_stv_radius, 5);
+        int mRadiusTopLeft = typedArray.getInt(R.styleable.SuperTextView_Copy_zqy_stv_radiusTopLeft, 0);
+        int mRadiusTopRight = typedArray.getInt(R.styleable.SuperTextView_Copy_zqy_stv_radiusTopRight, 0);
+        int mRadiusBottomLeft = typedArray.getInt(R.styleable.SuperTextView_Copy_zqy_stv_radiusBottomLeft, 0);
+        int mRadiusBottomRight = typedArray.getInt(R.styleable.SuperTextView_Copy_zqy_stv_radiusBottomRight, 0);
 
         typedArray.recycle();
 

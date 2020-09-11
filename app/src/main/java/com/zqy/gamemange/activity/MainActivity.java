@@ -11,13 +11,13 @@ import com.lzy.okgo.model.Response;
 import com.zqy.baserequest.bean.DescAndCode;
 import com.zqy.baserequest.request.JsonEntityCallback;
 import com.zqy.baserequest.request.Request;
-import com.zqy.baseui.ui.view.textview.ButtonView;
+import com.zqy.baseui.ui.view.textview.SuperTextView;
 import com.zqy.baseutil.code.impl.RSAEncrypt;
 import com.zqy.gamemange.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ButtonView mTvTest;
+    private SuperTextView mTvTest;
     private AppCompatTextView mAtvContent;
 
     @Override

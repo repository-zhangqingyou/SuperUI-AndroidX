@@ -32,7 +32,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.ImageView;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.Utils;
@@ -93,7 +92,7 @@ public class SmoothImageView extends PhotoView {
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setColor(0xFF000000);
         matrix = new Matrix();
-        setScaleType(ImageView.ScaleType.FIT_CENTER);
+        setScaleType(ScaleType.FIT_CENTER);
     }
 
     public boolean checkMinScale() {

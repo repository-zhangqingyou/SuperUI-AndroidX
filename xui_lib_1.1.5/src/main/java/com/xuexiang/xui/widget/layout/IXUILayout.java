@@ -128,7 +128,7 @@ public interface IXUILayout {
      * @param radius
      * @param hideRadiusSide
      */
-    void setRadius(int radius, @XUILayoutHelper.HideRadiusSide int hideRadiusSide);
+    void setRadius(int radius, @HideRadiusSide int hideRadiusSide);
 
     /**
      * get the layout radius

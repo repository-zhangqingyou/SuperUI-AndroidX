@@ -466,7 +466,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
             public void onViewInflated(View view) {
                 ImageView imageView = view.findViewById(R.id.gcv_img);
                 imageView.setImageResource(mPictureResId);
-                FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) imageView.getLayoutParams();
+                LayoutParams params = (LayoutParams) imageView.getLayoutParams();
                 params.gravity = mPictureGravity;
                 if (mPictureWidth != 0) {
                     params.width = mPictureWidth;

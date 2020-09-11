@@ -36,7 +36,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
-import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -267,7 +266,7 @@ public class TabSegment extends HorizontalScrollView {
         array.recycle();
 
         mContentLayout = new Container(context);
-        addView(mContentLayout, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        addView(mContentLayout, new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
         createTypefaceProvider(context, typefaceProviderName);
     }
@@ -1396,7 +1395,7 @@ public class TabSegment extends HorizontalScrollView {
             mTextView.setTypeface(XUI.getDefaultTypeface());
             // 用于提供给customView布局用
             mTextView.setId(R.id.xui_tab_segment_item_id);
-            RelativeLayout.LayoutParams tvLp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            LayoutParams tvLp = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             tvLp.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
             addView(mTextView, tvLp);
             // 添加双击事件

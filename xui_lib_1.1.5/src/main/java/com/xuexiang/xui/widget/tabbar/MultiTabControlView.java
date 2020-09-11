@@ -224,7 +224,7 @@ public class MultiTabControlView extends LinearLayout implements HasTypeface {
 
             CheckBox cb = new CheckBox(mContext);
             cb.setTextColor(mTextColorStateList);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
             if (mStretch) {
                 params.weight = 1.0F;
             }

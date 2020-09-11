@@ -147,7 +147,7 @@ final class Cookie extends LinearLayout {
                 }
 
                 if (TextUtils.isEmpty(params.title)) {
-                    LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mTvMessage
+                    LayoutParams layoutParams = (LayoutParams) mTvMessage
                             .getLayoutParams();
                     layoutParams.topMargin = 0;
                 }

@@ -3,7 +3,6 @@ package com.xuexiang.xui.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 
@@ -68,9 +67,9 @@ public class XUIWrapContentScrollView extends XUIObservableScrollView {
         ViewGroup.LayoutParams lp = getLayoutParams();
         int expandSpec;
         if (lp.height > 0 && lp.height <= mMaxHeight) {
-            expandSpec = View.MeasureSpec.makeMeasureSpec(lp.height, View.MeasureSpec.EXACTLY);
+            expandSpec = MeasureSpec.makeMeasureSpec(lp.height, MeasureSpec.EXACTLY);
         } else {
-            expandSpec = View.MeasureSpec.makeMeasureSpec(mMaxHeight, View.MeasureSpec.AT_MOST);
+            expandSpec = MeasureSpec.makeMeasureSpec(mMaxHeight, MeasureSpec.AT_MOST);
         }
         super.onMeasure(widthMeasureSpec, expandSpec);
     }

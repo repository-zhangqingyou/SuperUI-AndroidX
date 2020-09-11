@@ -11,7 +11,7 @@
     tools:context=".activity.MainActivity">
 
 
-    <com.zqy.baseui.ui.view.textview.ButtonView
+    <com.zqy.baseui.ui.view.textview.SuperTextView
         android:id="@+id/rbt_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,12 +21,11 @@
         android:paddingBottom="@dimen/mine_margin"
         android:text="测试"
         android:textColor="@color/bui_white"
-        app:clickAlpha="0.5"
-        app:textNormalTextColor="@color/bui_white"
-        app:textRadius="5dp"
-        app:textSolidColor="@color/colorPrimary"
-        app:zqy_endColor="@color/colorPrimaryDark"
-        app:zqy_startColor="@color/colorAccent" />
+        app:zqy_end_color="@color/colorPrimaryDark"
+        app:zqy_radius="5dp"
+        app:zqy_solid_color="@color/colorPrimary"
+        app:zqy_start_color="@color/colorAccent"
+        app:zqy_text_color="@color/bui_white" />
 
 
     <androidx.core.widget.NestedScrollView

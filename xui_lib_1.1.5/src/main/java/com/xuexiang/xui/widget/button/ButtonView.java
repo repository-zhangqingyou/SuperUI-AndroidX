@@ -24,8 +24,8 @@ import com.xuexiang.xui.utils.SpanUtils;
  */
 public class ButtonView extends AppCompatTextView {
 
-    public GradientDrawable gradientDrawable;
-    public int mNormalSolidColor, mSelectedSolidColor;
+    private GradientDrawable gradientDrawable;
+    private int mNormalSolidColor, mSelectedSolidColor;
 
     public ButtonView(Context context) {
         super(context);

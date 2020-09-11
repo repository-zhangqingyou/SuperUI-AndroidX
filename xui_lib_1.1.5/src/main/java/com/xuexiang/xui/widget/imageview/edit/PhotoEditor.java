@@ -84,7 +84,7 @@ public class PhotoEditor implements BrushViewChangeListener {
 
     /**
      * This will add image on {@link PhotoEditorView} which you drag,rotate and scale using pinch
-     * if {@link PhotoEditor.Builder#setPinchTextScalable(boolean)} enabled
+     * if {@link Builder#setPinchTextScalable(boolean)} enabled
      *
      * @param desiredImage bitmap image you want to add
      */
@@ -248,7 +248,7 @@ public class PhotoEditor implements BrushViewChangeListener {
 
     /**
      * Adds emoji to the {@link PhotoEditorView} which you drag,rotate and scale using pinch
-     * if {@link PhotoEditor.Builder#setPinchTextScalable(boolean)} enabled
+     * if {@link Builder#setPinchTextScalable(boolean)} enabled
      *
      * @param emojiName unicode in form of string to display emoji
      */
@@ -258,7 +258,7 @@ public class PhotoEditor implements BrushViewChangeListener {
 
     /**
      * Adds emoji to the {@link PhotoEditorView} which you drag,rotate and scale using pinch
-     * if {@link PhotoEditor.Builder#setPinchTextScalable(boolean)} enabled
+     * if {@link Builder#setPinchTextScalable(boolean)} enabled
      *
      * @param emojiTypeface typeface for custom font to show emoji unicode in specific font
      * @param emojiName     unicode in form of string to display emoji

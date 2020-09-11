@@ -98,7 +98,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
             }
             int arrowMargin = typedArray.getDimensionPixelSize(R.styleable.EditSpinner_es_arrowMargin, -1);
             if (arrowMargin != -1) {
-                FrameLayout.LayoutParams params = (LayoutParams) mIvArrow.getLayoutParams();
+                LayoutParams params = (LayoutParams) mIvArrow.getLayoutParams();
                 params.setMargins(arrowMargin, 0, arrowMargin, 0);
                 mIvArrow.setLayoutParams(params);
             }

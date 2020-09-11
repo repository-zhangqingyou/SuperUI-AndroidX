@@ -51,7 +51,7 @@ public class SimpleGuideBanner extends BaseIndicatorBanner<Object, SimpleGuideBa
         tvStart.setVisibility(position == mDatas.size() - 1 ? VISIBLE : GONE);
         ImageLoader.get().loadImage(iv, resId);
 
-        tvJump.setOnClickListener(new View.OnClickListener() {
+        tvJump.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onJumpClickListener != null) {
@@ -59,7 +59,7 @@ public class SimpleGuideBanner extends BaseIndicatorBanner<Object, SimpleGuideBa
                 }
             }
         });
-        tvStart.setOnClickListener(new View.OnClickListener() {
+        tvStart.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onJumpClickListener != null) {

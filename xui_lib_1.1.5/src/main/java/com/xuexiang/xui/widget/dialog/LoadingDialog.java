@@ -188,7 +188,7 @@ public class LoadingDialog extends BaseDialog implements IMessageLoader {
     public void setCancelable(boolean flag) {
         super.setCancelable(flag);
         if (flag) {
-            setOnCancelListener(new DialogInterface.OnCancelListener() {
+            setOnCancelListener(new OnCancelListener() {
                 @Override
                 public void onCancel(DialogInterface dialogInterface) {
                     if (mLoadingCancelListener != null) {

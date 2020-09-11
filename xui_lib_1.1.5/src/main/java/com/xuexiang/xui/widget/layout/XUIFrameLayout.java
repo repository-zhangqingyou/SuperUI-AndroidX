@@ -148,7 +148,7 @@ public class XUIFrameLayout extends XUIAlphaFrameLayout implements IXUILayout {
     }
 
     @Override
-    public void setRadiusAndShadow(int radius, @XUILayoutHelper.HideRadiusSide int hideRadiusSide, int shadowElevation, final float shadowAlpha) {
+    public void setRadiusAndShadow(int radius, @HideRadiusSide int hideRadiusSide, int shadowElevation, final float shadowAlpha) {
         mLayoutHelper.setRadiusAndShadow(radius, hideRadiusSide, shadowElevation, shadowAlpha);
     }
 
@@ -163,7 +163,7 @@ public class XUIFrameLayout extends XUIAlphaFrameLayout implements IXUILayout {
     }
 
     @Override
-    public void setRadius(int radius, @XUILayoutHelper.HideRadiusSide int hideRadiusSide) {
+    public void setRadius(int radius, @HideRadiusSide int hideRadiusSide) {
         mLayoutHelper.setRadius(radius, hideRadiusSide);
     }
 

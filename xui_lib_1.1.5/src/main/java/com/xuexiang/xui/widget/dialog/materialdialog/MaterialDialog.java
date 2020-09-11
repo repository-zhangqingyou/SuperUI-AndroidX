@@ -2235,7 +2235,7 @@ public class MaterialDialog extends DialogBase
         }
 
         /**
-         * Sets a custom {@link androidx.recyclerview.widget.RecyclerView.Adapter} for the dialog's list
+         * Sets a custom {@link RecyclerView.Adapter} for the dialog's list
          *
          * @param adapter       The adapter to set to the list.
          * @param layoutManager The layout manager to use in the RecyclerView. Pass null to use the
@@ -2505,7 +2505,7 @@ public class MaterialDialog extends DialogBase
     }
 
 
-    private void showKeyboard(@NonNull final DialogInterface di, @NonNull final MaterialDialog.Builder builder) {
+    private void showKeyboard(@NonNull final DialogInterface di, @NonNull final Builder builder) {
         final MaterialDialog dialog = (MaterialDialog) di;
         if (dialog.getInputEditText() == null) {
             return;
@@ -2526,7 +2526,7 @@ public class MaterialDialog extends DialogBase
                         });
     }
 
-    private void hideKeyboard(@NonNull final DialogInterface di, @NonNull final MaterialDialog.Builder builder) {
+    private void hideKeyboard(@NonNull final DialogInterface di, @NonNull final Builder builder) {
         final MaterialDialog dialog = (MaterialDialog) di;
         if (dialog.getInputEditText() == null) {
             return;

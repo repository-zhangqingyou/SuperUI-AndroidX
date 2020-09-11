@@ -305,7 +305,7 @@ public class StatefulLayout extends LinearLayout {
      * Shows custom state for given options. If you do not set buttonClickListener, the button will not be shown
      *
      * @param options customization options
-     * @see com.xuexiang.xui.widget.statelayout.CustomStateOptions
+     * @see CustomStateOptions
      */
     public void showCustom(final CustomStateOptions options) {
         if (isAnimationEnabled()) {

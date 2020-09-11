@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 一个带 cache 功能的“列表型数据-View”的适配器，适用于自定义 {@link View} 需要显示重复单元 {@link android.widget.ListView} 的情景，
+ * 一个带 cache 功能的“列表型数据-View”的适配器，适用于自定义 {@link View} 需要显示重复单元 {@link ListView} 的情景，
  * cache 功能主要是保证在需要多次刷新数据或布局的情况下（{@link ListView} 或 {@link RecyclerView} 的 itemView）
  * 复用已存在的 {@link View}。
  * XUI 用于 {@link TabSegment} 中 {@link TabSegment.Tab} 与数据的适配。

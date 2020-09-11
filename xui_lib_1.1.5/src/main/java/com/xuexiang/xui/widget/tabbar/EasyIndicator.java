@@ -318,7 +318,7 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
      *
      * @param onTabClickListener
      */
-    public void setOnTabClickListener(EasyIndicator.onTabClickListener onTabClickListener) {
+    public void setOnTabClickListener(onTabClickListener onTabClickListener) {
         mOnTabClickListener = onTabClickListener;
     }
 

@@ -48,8 +48,8 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
  * <p>
  * 提供了以下两种面板样式:
  * <ul>
- * <li>列表样式, 使用 {@link BottomSheet.BottomListSheetBuilder} 生成。</li>
- * <li>宫格类型, 使用 {@link BottomSheet.BottomGridSheetBuilder} 生成。</li>
+ * <li>列表样式, 使用 {@link BottomListSheetBuilder} 生成。</li>
+ * <li>宫格类型, 使用 {@link BottomGridSheetBuilder} 生成。</li>
  * </ul>
  * </p>
  */

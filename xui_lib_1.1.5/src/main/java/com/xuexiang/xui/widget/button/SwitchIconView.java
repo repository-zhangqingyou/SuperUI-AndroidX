@@ -331,8 +331,8 @@ public class SwitchIconView extends AppCompatImageView {
             out.writeInt(iconEnabled ? 1 : 0);
         }
 
-        public static final Parcelable.Creator<SwitchIconSavedState> CREATOR =
-                new Parcelable.Creator<SwitchIconSavedState>() {
+        public static final Creator<SwitchIconSavedState> CREATOR =
+                new Creator<SwitchIconSavedState>() {
                     @Override
                     public SwitchIconSavedState createFromParcel(Parcel in) {
                         return new SwitchIconSavedState(in);

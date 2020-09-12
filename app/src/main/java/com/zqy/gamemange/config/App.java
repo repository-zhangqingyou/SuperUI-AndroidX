@@ -14,9 +14,9 @@ import com.tencent.bugly.beta.download.DownloadListener;
 import com.tencent.bugly.beta.download.DownloadTask;
 import com.tencent.bugly.beta.interfaces.BetaPatchListener;
 import com.zqy.baserequest.RequestManage;
-import com.zqy.baseui.BaseUIManage;
 import com.zqy.baseutil.GlideCacheUtil;
 import com.zqy.baseutil.UtilsManage;
+import com.zqy.sui.BaseUIManage;
 
 import java.util.Locale;
 

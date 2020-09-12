@@ -1,5 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+    apply from: './versions.gradle'
     repositories {
         google()
         jcenter()
@@ -12,8 +13,7 @@ buildscript {
         }
     }
     dependencies {
-       // classpath "com.android.tools.build:gradle:4.0.1"
-        classpath "com.android.tools.build:gradle:3.4.2"
+        classpath "com.android.tools.build:gradle:$versions.android_gradle_plugin"
         //集成全量更新和热更新一体的平台
         classpath "com.tencent.bugly:tinker-support:1.1.5"
 

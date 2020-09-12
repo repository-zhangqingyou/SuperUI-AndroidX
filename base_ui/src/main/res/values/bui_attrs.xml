@@ -219,82 +219,14 @@
         </attr>
     </declare-styleable>
 
-
-
     <!-- declare-styleable name和view名字一样才能自动提示 -->
-    <declare-styleable name="ButtonView">
-        <!-- 按下时 背景颜色和字体颜色 透明度 默认0.7f-->
-        <attr name="zqy_sb_clickAlpha" format="float" />
-        <!-- 背景颜色-->
-        <attr name="zqy_sb_backgroundColor" format="color" />
-        <!-- 边框颜色 -->
-        <attr name="zqy_sb_borderColor" format="color" />
-        <!-- 边框宽度-->
-        <attr name="zqy_sb_borderWidth" format="integer" />
-
-        <!-- 按下背景颜色-->
-        <attr name="zqy_sb_clickColorBg" format="color" />
-        <!-- 按下边框颜色-->
-        <attr name="zqy_sb_clickColorBorder" format="color" />
-
-        <attr name="zqy_sb_isRadiusAdjustBounds" format="boolean" />
-        <!-- 圆角弧度，默认5dp -->
-        <attr name="zqy_sb_radius" format="integer" />
-        <attr name="zqy_sb_radiusTopLeft" format="integer" />
-        <attr name="zqy_sb_radiusTopRight" format="integer" />
-        <attr name="zqy_sb_radiusBottomLeft" format="integer" />
-        <attr name="zqy_sb_radiusBottomRight" format="integer" />
-
-        <!--渐变开始颜色-->
-        <attr name="zqy_sb_startColor" format="color" />
-        <!--渐变结束颜色-->
-        <attr name="zqy_sb_endColor" format="color" />
-
-        <!--linear_gradient 设置线性渐变，sweep_gradient（扫描式渐变），radial_gradient（圆形渐变）-->
-        <attr name="zqy_sb_gradient" format="enum">
-            <enum name="linear_gradient" value="0" />
-            <enum name="sweep_gradient" value="2" />
-            <enum name="radial_gradient" value="1" />
-        </attr>
-        <!--设置渐变方向-->
-        <!--
-        top_bottom,从上到下
-
-        tr_bl,从右上到左下
-
-        right_left,从右到左
-
-        br_tl,从右下到左上
-
-        bottom_top,从下到上
-
-        bl_tr,从左下到右上
-
-        left_right,从左到右
-
-        tl_br,从左上到右下
-        -->
-        <attr name="zqy_sb_orientation" format="enum">
-            <enum name="top_bottom" value="0" />
-            <enum name="tr_bl" value="1" />
-            <enum name="right_left" value="2" />
-            <enum name="br_tl" value="3" />
-            <enum name="bottom_top" value="4" />
-            <enum name="bl_tr" value="5" />
-            <enum name="left_right" value="6" />
-            <enum name="tl_br" value="7" />
-        </attr>
-    </declare-styleable>
-
-
-    <!-- declare-styleable name和view名字一样才能自动提示 -->
-    <declare-styleable name="ColorStateImageView">
+    <declare-styleable name="SuperImageView">
         <!-- 设置图标颜色-->
-        <attr name="zqy_csiv_imgColor" format="color" />
+        <attr name="zqy_img_color" format="color" />
         <!-- 设置图标按下颜色-->
-        <attr name="zqy_csiv_clickImgColor" format="color" />
+        <attr name="zqy_click_img_color" format="color" />
         <!-- 按下时 图标颜色 透明度 默认0.7f -->
-        <attr name="zqy_csiv_clickImgAlpha" format="float" />
+        <attr name="zqy_click_img_alpha" format="float" />
 
     </declare-styleable>
 

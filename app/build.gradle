@@ -4,11 +4,11 @@ apply from: '../bugly-tinker.gradle'
 def time = "${new Date().format("yyyyMMdd")}"//
 def codename = "1"//当日迭代号
 android {
-    compileSdkVersion 29
+    compileSdkVersion build_versions.target_sdk
     defaultConfig {
         applicationId "com.zqy.gamemange"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
         multiDexEnabled true
 
         ndk {

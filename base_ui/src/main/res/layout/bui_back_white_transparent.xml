@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zqy.baseui.ui.view.imageview.ColorStateImageView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zqy.sui.widget.superlayout.SuperImageView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/iv_back_image_bar"
     android:layout_width="40dp"
@@ -9,8 +9,8 @@
     android:paddingBottom="12dp"
     android:scaleType="fitCenter"
     android:src="@mipmap/bui_back_wite"
-    app:zqy_csiv_clickImgAlpha="0.5"
-    app:zqy_csiv_imgColor="@color/bui_white"></com.zqy.baseui.ui.view.imageview.ColorStateImageView>
+    app:zqy_click_img_alpha="0.5"
+    app:zqy_img_color="@color/bui_white"></com.zqy.sui.widget.superlayout.SuperImageView>
 
 
 

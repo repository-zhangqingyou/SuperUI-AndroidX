@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.zqy.baseui.ui.view.textview.SuperTextView
+            <com.zqy.sui.widget.textview.SuperTextView
                 android:id="@+id/tv_Button1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/bui_gray_dividing_line_light"></View>
 
-            <com.zqy.baseui.ui.view.textview.SuperTextView
+            <com.zqy.sui.widget.textview.SuperTextView
                 android:id="@+id/tv_Button2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

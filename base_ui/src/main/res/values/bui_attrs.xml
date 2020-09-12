@@ -285,7 +285,7 @@
 
 
     <!-- declare-styleable name和view名字一样才能自动提示 -->
-    <declare-styleable name="SuperButton">
+    <declare-styleable name="ButtonView">
         <!-- 按下时 背景颜色和字体颜色 透明度 默认0.7f-->
         <attr name="zqy_sb_clickAlpha" format="float" />
         <!-- 背景颜色-->

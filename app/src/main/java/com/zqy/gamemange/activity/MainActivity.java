@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAtvContent = (AppCompatTextView) findViewById(R.id.atv_content);
         mAtvContent.setOnClickListener(this);
 
-
         //  RSAEncrypt.genKeyPair();
         String s = RSAEncrypt.encryptPublicKey("123");
         String s1 = RSAEncrypt.decryptPrivateKey(s, RSAEncrypt.PRIVATE_KEY);

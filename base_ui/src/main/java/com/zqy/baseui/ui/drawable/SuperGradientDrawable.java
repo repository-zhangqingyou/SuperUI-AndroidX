@@ -62,32 +62,55 @@ public class SuperGradientDrawable extends GradientDrawable {
         this.view = view;
 
         String styleableName = view.getClass().getSimpleName();//"SuperTextView"
-        int[] ary = StyleaUtils.getStyleableArryId(styleableName);
+        String packageName = context.getPackageName();
+
+        int[] ary = StyleaUtils.getStyleableArryId(packageName, styleableName);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, ary);
-        //  TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SuperTextView);
 
-        clickEffect = typedArray.getBoolean(StyleaUtils.getStyleableId(styleableName + "_zqy_click_effect"), true);//设置是否有按下效果 默认有
-        clickAlpha = typedArray.getFloat(StyleaUtils.getStyleableId(styleableName + "_zqy_click_alpha"), 0.7f);
+//        clickEffect = typedArray.getBoolean(StyleaUtils.getStyleableId(styleableName + "_zqy_click_effect"), true);//设置是否有按下效果 默认有
+//        clickAlpha = typedArray.getFloat(StyleaUtils.getStyleableId(styleableName + "_zqy_click_alpha"), 0.7f);
+//
+//        solidColor = typedArray.getColor(StyleaUtils.getStyleableId(styleableName + "_zqy_solid_color"), Color.TRANSPARENT);
+//        strokeColor = typedArray.getColor(StyleaUtils.getStyleableId(styleableName + "_zqy_stroke_color"), Color.TRANSPARENT);
+//        startColor = typedArray.getColor(StyleaUtils.getStyleableId(styleableName + "_zqy_start_color"), Color.TRANSPARENT);
+//        endColor = typedArray.getColor(StyleaUtils.getStyleableId(styleableName + "_zqy_end_color"), Color.TRANSPARENT);
+//        clickSolidColor = typedArray.getColor(StyleaUtils.getStyleableId(styleableName + "_zqy_click_solid_color"), Color.TRANSPARENT);
+//        clickStrokeColor = typedArray.getColor(StyleaUtils.getStyleableId(styleableName + "_zqy_click_stroke_color"), Color.TRANSPARENT);
 
-        solidColor = typedArray.getColor(StyleaUtils.getStyleableId(styleableName + "_zqy_solid_color"), Color.TRANSPARENT);
-        strokeColor = typedArray.getColor(StyleaUtils.getStyleableId(styleableName + "_zqy_stroke_color"), Color.TRANSPARENT);
-        startColor = typedArray.getColor(StyleaUtils.getStyleableId(styleableName + "_zqy_start_color"), Color.TRANSPARENT);
-        endColor = typedArray.getColor(StyleaUtils.getStyleableId(styleableName + "_zqy_end_color"), Color.TRANSPARENT);
-        clickSolidColor = typedArray.getColor(StyleaUtils.getStyleableId(styleableName + "_zqy_click_solid_color"), Color.TRANSPARENT);
-        clickStrokeColor = typedArray.getColor(StyleaUtils.getStyleableId(styleableName + "_zqy_click_stroke_color"), Color.TRANSPARENT);
+//        textColor = typedArray.getColor(StyleaUtils.getStyleableId(styleableName + "_zqy_text_color"), Color.GRAY);//默认灰色
+//        clickTextColor = typedArray.getColor(StyleaUtils.getStyleableId(styleableName + "_zqy_click_text_color"), Color.TRANSPARENT);
+//
+//        gradient = typedArray.getInt(StyleaUtils.getStyleableId(styleableName + "_zqy_gradient"), 0);//默认线性
+//        orientation = typedArray.getInt(StyleaUtils.getStyleableId(styleableName + "_zqy_orientation"), 6);//默认从左到右
+//        strokeWidth = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableId(styleableName + "_zqy_stroke_width"), 0);
+//        radius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableId(styleableName + "_zqy_radius"), 5);
+//        topLeftRadius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableId(styleableName + "_zqy_top_left_radius"), 0);
+//        topRightRadius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableId(styleableName + "_zqy_top_right_radius"), 0);
+//        bottomLeftRadius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableId(styleableName + "_zqy_bottom_left_radius"), 0);
+//        bottomRightRadius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableId(styleableName + "_zqy_bottom_right_radius"), 0);
 
-        textColor = typedArray.getColor(StyleaUtils.getStyleableId(styleableName + "_zqy_text_color"), Color.GRAY);//默认灰色
-        clickTextColor = typedArray.getColor(StyleaUtils.getStyleableId(styleableName + "_zqy_click_text_color"), Color.TRANSPARENT);
+        clickEffect = typedArray.getBoolean(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_click_effect"), true);//设置是否有按下效果 默认有
+        clickAlpha = typedArray.getFloat(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_click_alpha"), 0.7f);
 
-        gradient = typedArray.getInt(StyleaUtils.getStyleableId(styleableName + "_zqy_gradient"), 0);//默认线性
-        orientation = typedArray.getInt(StyleaUtils.getStyleableId(styleableName + "_zqy_orientation"), 6);//默认从左到右
-        strokeWidth = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableId(styleableName + "_zqy_stroke_width"), 0);
-        radius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableId(styleableName + "_zqy_radius"), 5);
-        topLeftRadius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableId(styleableName + "_zqy_top_left_radius"), 0);
-        topRightRadius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableId(styleableName + "_zqy_top_right_radius"), 0);
-        bottomLeftRadius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableId(styleableName + "_zqy_bottom_left_radius"), 0);
-        bottomRightRadius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableId(styleableName + "_zqy_bottom_right_radius"), 0);
+        solidColor = typedArray.getColor(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_solid_color"), Color.TRANSPARENT);
+        strokeColor = typedArray.getColor(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_stroke_color"), Color.TRANSPARENT);
+        startColor = typedArray.getColor(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_start_color"), Color.TRANSPARENT);
+        endColor = typedArray.getColor(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_end_color"), Color.TRANSPARENT);
+        clickSolidColor = typedArray.getColor(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_click_solid_color"), Color.TRANSPARENT);
+        clickStrokeColor = typedArray.getColor(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_click_stroke_color"), Color.TRANSPARENT);
+
+        textColor = typedArray.getColor(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_text_color"), Color.GRAY);//默认灰色
+        clickTextColor = typedArray.getColor(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_click_text_color"), Color.TRANSPARENT);
+
+        gradient = typedArray.getInt(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_gradient"), 0);//默认线性
+        orientation = typedArray.getInt(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_orientation"), 6);//默认从左到右
+        strokeWidth = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_stroke_width"), 0);
+        radius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_radius"), 5);
+        topLeftRadius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_top_left_radius"), 0);
+        topRightRadius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_top_right_radius"), 0);
+        bottomLeftRadius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_bottom_left_radius"), 0);
+        bottomRightRadius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_bottom_right_radius"), 0);
 
         typedArray.recycle();
 

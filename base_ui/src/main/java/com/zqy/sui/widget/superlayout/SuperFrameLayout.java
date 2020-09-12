@@ -6,6 +6,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -61,7 +62,7 @@ public class SuperFrameLayout extends FrameLayout implements DrawableImpl {
 //
 //
 //        typedArray.recycle();
-        
+
         superGradientDrawable = new SuperGradientDrawable();
         superGradientDrawable.initTypedArray(this, context, attrs);//attrs标签值初始化（反射获取，此方法无法预览，运行才有效果）
         //superGradientDrawable.initTypedArray(this, attrMap);
@@ -74,7 +75,7 @@ public class SuperFrameLayout extends FrameLayout implements DrawableImpl {
     }
 
     @Override
-    public void setBackgroundColor(int color) {
+    public void setBackgroundColor(@ColorInt int color) {
         superGradientDrawable.setClickEffect(false);//必须关闭才有效
         super.setBackgroundColor(color);
     }
@@ -107,37 +108,38 @@ public class SuperFrameLayout extends FrameLayout implements DrawableImpl {
     }
 
     @Override
-    public void setSolidColor(int color) {
+    public void setSolidColor(@ColorInt int color) {
         superGradientDrawable.setSolidColor(color);
     }
 
     @Override
-    public void setClickSolidColor(int clickSolidColor) {
+    public void setClickSolidColor(@ColorInt int clickSolidColor) {
         superGradientDrawable.setClickSolidColor(clickSolidColor);
     }
 
     @Override
-    public void setStrokeColorAndWidth(int strokeWidth, int color) {
+    public void setStrokeColorAndWidth(int strokeWidth, @ColorInt int color) {
         superGradientDrawable.setStrokeColorAndWidth(strokeWidth, color);
     }
 
     @Override
-    public void setClickStrokeColor(int clickStrokeColor) {
+    public void setClickStrokeColor(@ColorInt int clickStrokeColor) {
         superGradientDrawable.setClickStrokeColor(clickStrokeColor);
     }
 
     @Override
-    public void setGradient(int starColor, int endColor, int gradient, GradientDrawable.Orientation orientation) {
+    public void setGradient(@ColorInt int starColor, @ColorInt int endColor, int gradient, GradientDrawable.Orientation orientation) {
         superGradientDrawable.setGradient(starColor, endColor, gradient, orientation);
     }
 
     @Override
-    public void setNormalTextColor(int normalTextColor) {
+    public void setNormalTextColor(@ColorInt int normalTextColor) {
     }
 
     @Override
-    public void setClickTextColor(int clickTextColor) {
+    public void setClickTextColor(@ColorInt int clickTextColor) {
     }
+
     /**
      * 设置完成之后必须调用 buid() ，否则不生效
      */

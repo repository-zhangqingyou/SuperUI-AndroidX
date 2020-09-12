@@ -251,7 +251,7 @@
 
     </declare-styleable>
 
-    <declare-styleable name="ButtonView">
+    <declare-styleable name="SuperButton">
         <attr name="sGravity" format="enum">
             <enum name="center" value="0" />
             <enum name="left" value="1" />

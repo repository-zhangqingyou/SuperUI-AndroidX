@@ -125,48 +125,48 @@ public class SuperButton extends AppCompatButton {
     }
 
     private void getAttr(AttributeSet attrs) {
-        TypedArray typedArray = mContext.obtainStyledAttributes(attrs, R.styleable.ButtonView);
+        TypedArray typedArray = mContext.obtainStyledAttributes(attrs, R.styleable.SuperButton);
 
-        gravity = typedArray.getInt(R.styleable.ButtonView_sGravity, 0);
+        gravity = typedArray.getInt(R.styleable.SuperButton_sGravity, 0);
 
-        shapeType = typedArray.getInt(R.styleable.ButtonView_sShapeType, GradientDrawable.RECTANGLE);
+        shapeType = typedArray.getInt(R.styleable.SuperButton_sShapeType, GradientDrawable.RECTANGLE);
 
-        solidColor = typedArray.getColor(R.styleable.ButtonView_sSolidColor, defaultColor);
+        solidColor = typedArray.getColor(R.styleable.SuperButton_sSolidColor, defaultColor);
 
-        selectorPressedColor = typedArray.getColor(R.styleable.ButtonView_sSelectorPressedColor, defaultSelectorColor);
-        selectorDisableColor = typedArray.getColor(R.styleable.ButtonView_sSelectorDisableColor, defaultSelectorColor);
-        selectorNormalColor = typedArray.getColor(R.styleable.ButtonView_sSelectorNormalColor, defaultSelectorColor);
+        selectorPressedColor = typedArray.getColor(R.styleable.SuperButton_sSelectorPressedColor, defaultSelectorColor);
+        selectorDisableColor = typedArray.getColor(R.styleable.SuperButton_sSelectorDisableColor, defaultSelectorColor);
+        selectorNormalColor = typedArray.getColor(R.styleable.SuperButton_sSelectorNormalColor, defaultSelectorColor);
 
-        cornersRadius = typedArray.getDimensionPixelSize(R.styleable.ButtonView_sCornersRadius, 0);
-        cornersTopLeftRadius = typedArray.getDimensionPixelSize(R.styleable.ButtonView_sCornersTopLeftRadius, 0);
-        cornersTopRightRadius = typedArray.getDimensionPixelSize(R.styleable.ButtonView_sCornersTopRightRadius, 0);
-        cornersBottomLeftRadius = typedArray.getDimensionPixelSize(R.styleable.ButtonView_sCornersBottomLeftRadius, 0);
-        cornersBottomRightRadius = typedArray.getDimensionPixelSize(R.styleable.ButtonView_sCornersBottomRightRadius, 0);
+        cornersRadius = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sCornersRadius, 0);
+        cornersTopLeftRadius = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sCornersTopLeftRadius, 0);
+        cornersTopRightRadius = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sCornersTopRightRadius, 0);
+        cornersBottomLeftRadius = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sCornersBottomLeftRadius, 0);
+        cornersBottomRightRadius = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sCornersBottomRightRadius, 0);
 
-        strokeWidth = typedArray.getDimensionPixelSize(R.styleable.ButtonView_sStrokeWidth, 0);
-        strokeDashWidth = typedArray.getDimensionPixelSize(R.styleable.ButtonView_sStrokeDashWidth, 0);
-        strokeDashGap = typedArray.getDimensionPixelSize(R.styleable.ButtonView_sStrokeDashGap, 0);
+        strokeWidth = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sStrokeWidth, 0);
+        strokeDashWidth = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sStrokeDashWidth, 0);
+        strokeDashGap = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sStrokeDashGap, 0);
 
-        strokeColor = typedArray.getColor(R.styleable.ButtonView_sStrokeColor, defaultColor);
+        strokeColor = typedArray.getColor(R.styleable.SuperButton_sStrokeColor, defaultColor);
 
-        sizeWidth = typedArray.getDimensionPixelSize(R.styleable.ButtonView_sSizeWidth, 0);
-        sizeHeight = typedArray.getDimensionPixelSize(R.styleable.ButtonView_sSizeHeight, dip2px(mContext, 48));
+        sizeWidth = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sSizeWidth, 0);
+        sizeHeight = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sSizeHeight, dip2px(mContext, 48));
 
-        gradientOrientation = typedArray.getInt(R.styleable.ButtonView_sGradientOrientation, -1);
+        gradientOrientation = typedArray.getInt(R.styleable.SuperButton_sGradientOrientation, -1);
 
-        gradientAngle = typedArray.getDimensionPixelSize(R.styleable.ButtonView_sGradientAngle, 0);
-        gradientCenterX = typedArray.getDimensionPixelSize(R.styleable.ButtonView_sGradientCenterX, 0);
-        gradientCenterY = typedArray.getDimensionPixelSize(R.styleable.ButtonView_sGradientCenterY, 0);
-        gradientGradientRadius = typedArray.getDimensionPixelSize(R.styleable.ButtonView_sGradientGradientRadius, 0);
+        gradientAngle = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sGradientAngle, 0);
+        gradientCenterX = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sGradientCenterX, 0);
+        gradientCenterY = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sGradientCenterY, 0);
+        gradientGradientRadius = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sGradientGradientRadius, 0);
 
-        gradientStartColor = typedArray.getColor(R.styleable.ButtonView_sGradientStartColor, -1);
-        gradientCenterColor = typedArray.getColor(R.styleable.ButtonView_sGradientCenterColor, -1);
-        gradientEndColor = typedArray.getColor(R.styleable.ButtonView_sGradientEndColor, -1);
+        gradientStartColor = typedArray.getColor(R.styleable.SuperButton_sGradientStartColor, -1);
+        gradientCenterColor = typedArray.getColor(R.styleable.SuperButton_sGradientCenterColor, -1);
+        gradientEndColor = typedArray.getColor(R.styleable.SuperButton_sGradientEndColor, -1);
 
-        gradientType = typedArray.getInt(R.styleable.ButtonView_sGradientType, linear);
-        gradientUseLevel = typedArray.getBoolean(R.styleable.ButtonView_sGradientUseLevel, false);
+        gradientType = typedArray.getInt(R.styleable.SuperButton_sGradientType, linear);
+        gradientUseLevel = typedArray.getBoolean(R.styleable.SuperButton_sGradientUseLevel, false);
 
-        useSelector = typedArray.getBoolean(R.styleable.ButtonView_sUseSelector, false);
+        useSelector = typedArray.getBoolean(R.styleable.SuperButton_sUseSelector, false);
 
         typedArray.recycle();
     }

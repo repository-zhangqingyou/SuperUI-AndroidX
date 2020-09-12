@@ -125,7 +125,7 @@ public class SuperButton extends AppCompatButton {
     }
 
     private void getAttr(AttributeSet attrs) {
-        TypedArray typedArray = mContext.obtainStyledAttributes(attrs, R.styleable.SuperButton);
+        TypedArray typedArray = mContext.obtainStyledAttributes(attrs, R.styleable.ButtonView);
 
         gravity = typedArray.getInt(R.styleable.ButtonView_sGravity, 0);
 

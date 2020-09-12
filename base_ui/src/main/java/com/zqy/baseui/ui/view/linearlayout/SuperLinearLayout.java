@@ -30,15 +30,15 @@ public class SuperLinearLayout extends LinearLayout implements DrawableImpl {
 
     public SuperLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        ininView(context, attrs);
+        init(context, attrs);
     }
 
     public SuperLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        ininView(context, attrs);
+        init(context, attrs);
     }
 
-    private void ininView(Context context, AttributeSet attrs) {
+    private void init(Context context, AttributeSet attrs) {
         Map<Object, Object> attrMap = new HashMap<>();
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SuperLinearLayout);
         attrMap.put(SuperAttr.是否有按下效果, typedArray.getBoolean(R.styleable.SuperLinearLayout_zqy_click_effect, true));

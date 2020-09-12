@@ -278,8 +278,6 @@ public class SuperGradientDrawable extends GradientDrawable {
     public SuperGradientDrawable setClickTextColor(@ColorInt int clickTextColor) {
         this.clickTextColor = clickTextColor;
         return this;
-
-
     }
 
     /**
@@ -299,7 +297,7 @@ public class SuperGradientDrawable extends GradientDrawable {
         if (clickEffect) {
             if (pressed) {
                 if (startColor != Color.TRANSPARENT || endColor != Color.TRANSPARENT) {
-                    //先设置背景才有效--设置了渐变色 点击有透明效果
+
                     if (startColor != Color.TRANSPARENT && endColor != Color.TRANSPARENT) {
                         int startAlpha = ColorUtils.setAlphaComponent(startColor, clickAlpha);
                         int endAlpha = ColorUtils.setAlphaComponent(endColor, clickAlpha);

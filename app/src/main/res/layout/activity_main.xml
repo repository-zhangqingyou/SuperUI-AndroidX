@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -20,13 +20,6 @@
     </com.zqy.baseui.ui.view.framelayout.SuperFrameLayout>
 
 
-
-
-
-
-
-
-
     <com.zqy.baseui.ui.view.textview.SuperTextView
         android:id="@+id/rbt_test"
         android:layout_width="match_parent"
@@ -36,7 +29,6 @@
         android:paddingTop="@dimen/mine_margin"
         android:paddingBottom="@dimen/mine_margin"
         android:text="测试"
-        android:textColor="@color/bui_white"
         app:zqy_click_alpha="0.5"
         app:zqy_end_color="@color/colorPrimaryDark"
         app:zqy_radius="8dp"
@@ -58,4 +50,4 @@
     </androidx.core.widget.NestedScrollView>
 
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</LinearLayout>

@@ -27,23 +27,23 @@ public class SuperButtonDrawable {
     private float clickAlpha;//按下时 背景颜色和字体颜色 透明度
 
     public Drawable initStateListDrawable(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SuperButton);
-        clickAlpha = typedArray.getFloat(R.styleable.SuperButton_zqy_sb_clickAlpha, 0.7f);
-        int colorBg = typedArray.getColor(R.styleable.SuperButton_zqy_sb_backgroundColor, Color.TRANSPARENT);
-        int colorBorder = typedArray.getColor(R.styleable.SuperButton_zqy_sb_borderColor, Color.TRANSPARENT);
-        int startColor = typedArray.getColor(R.styleable.SuperButton_zqy_sb_startColor, Color.TRANSPARENT);
-        int endColor = typedArray.getColor(R.styleable.SuperButton_zqy_sb_endColor, Color.TRANSPARENT);
-        int clickColorBg = typedArray.getColor(R.styleable.SuperButton_zqy_sb_clickColorBg, Color.TRANSPARENT);
-        int clickColorBorder = typedArray.getColor(R.styleable.SuperButton_zqy_sb_clickColorBorder, Color.TRANSPARENT);
-        int gradient = typedArray.getInt(R.styleable.SuperButton_zqy_sb_gradient, -1);
-        int orientation = typedArray.getInt(R.styleable.SuperButton_zqy_sb_orientation, -1);
-        int borderWidth = typedArray.getInt(R.styleable.SuperButton_zqy_sb_borderWidth, 0);
-        boolean isRadiusAdjustBounds = typedArray.getBoolean(R.styleable.SuperButton_zqy_sb_isRadiusAdjustBounds, false);
-        int mRadius = typedArray.getInt(R.styleable.SuperButton_zqy_sb_radius, 5);
-        int mRadiusTopLeft = typedArray.getInt(R.styleable.SuperButton_zqy_sb_radiusTopLeft, 0);
-        int mRadiusTopRight = typedArray.getInt(R.styleable.SuperButton_zqy_sb_radiusTopRight, 0);
-        int mRadiusBottomLeft = typedArray.getInt(R.styleable.SuperButton_zqy_sb_radiusBottomLeft, 0);
-        int mRadiusBottomRight = typedArray.getInt(R.styleable.SuperButton_zqy_sb_radiusBottomRight, 0);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ButtonView);
+        clickAlpha = typedArray.getFloat(R.styleable.ButtonView_zqy_sb_clickAlpha, 0.7f);
+        int colorBg = typedArray.getColor(R.styleable.ButtonView_zqy_sb_backgroundColor, Color.TRANSPARENT);
+        int colorBorder = typedArray.getColor(R.styleable.ButtonView_zqy_sb_borderColor, Color.TRANSPARENT);
+        int startColor = typedArray.getColor(R.styleable.ButtonView_zqy_sb_startColor, Color.TRANSPARENT);
+        int endColor = typedArray.getColor(R.styleable.ButtonView_zqy_sb_endColor, Color.TRANSPARENT);
+        int clickColorBg = typedArray.getColor(R.styleable.ButtonView_zqy_sb_clickColorBg, Color.TRANSPARENT);
+        int clickColorBorder = typedArray.getColor(R.styleable.ButtonView_zqy_sb_clickColorBorder, Color.TRANSPARENT);
+        int gradient = typedArray.getInt(R.styleable.ButtonView_zqy_sb_gradient, -1);
+        int orientation = typedArray.getInt(R.styleable.ButtonView_zqy_sb_orientation, -1);
+        int borderWidth = typedArray.getInt(R.styleable.ButtonView_zqy_sb_borderWidth, 0);
+        boolean isRadiusAdjustBounds = typedArray.getBoolean(R.styleable.ButtonView_zqy_sb_isRadiusAdjustBounds, false);
+        int mRadius = typedArray.getInt(R.styleable.ButtonView_zqy_sb_radius, 5);
+        int mRadiusTopLeft = typedArray.getInt(R.styleable.ButtonView_zqy_sb_radiusTopLeft, 0);
+        int mRadiusTopRight = typedArray.getInt(R.styleable.ButtonView_zqy_sb_radiusTopRight, 0);
+        int mRadiusBottomLeft = typedArray.getInt(R.styleable.ButtonView_zqy_sb_radiusBottomLeft, 0);
+        int mRadiusBottomRight = typedArray.getInt(R.styleable.ButtonView_zqy_sb_radiusBottomRight, 0);
         typedArray.recycle();
 
         GradientDrawable.Orientation orientation1 = GradientDrawable.Orientation.TOP_BOTTOM;

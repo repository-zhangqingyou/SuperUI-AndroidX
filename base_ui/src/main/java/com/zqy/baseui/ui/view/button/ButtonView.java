@@ -16,18 +16,18 @@ import com.blankj.utilcode.util.ColorUtils;
  * Date: 2020/4/28 11:32
  * Des:
  */
-public class SuperButton extends AppCompatButton {
-    public SuperButton(Context context) {
+public class ButtonView extends AppCompatButton {
+    public ButtonView(Context context) {
         super(context);
         init(context, null);
     }
 
-    public SuperButton(Context context, AttributeSet attrs) {
+    public ButtonView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
-    public SuperButton(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ButtonView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
     }

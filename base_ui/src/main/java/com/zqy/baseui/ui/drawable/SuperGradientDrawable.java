@@ -16,6 +16,8 @@ import androidx.annotation.FloatRange;
 import com.blankj.utilcode.util.ColorUtils;
 import com.zqy.baseutil.StyleaUtils;
 
+import java.util.Map;
+
 /**
  * 作者: zhangqingyou
  * 时间: 2020/9/11 12:14
@@ -49,6 +51,12 @@ public class SuperGradientDrawable extends GradientDrawable {
             bottomLeftRadius,
             bottomRightRadius;//圆角
 
+    /**
+     * 获取attrs标签值初始化（反射获取，此方法无法预览，运行才有效果）
+     *
+     * @param view
+     * @param attrs
+     */
 
     public void initTypedArray(View view, Context context, AttributeSet attrs) {
         this.view = view;
@@ -57,7 +65,7 @@ public class SuperGradientDrawable extends GradientDrawable {
         int[] ary = StyleaUtils.getStyleableArryId(styleableName);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, ary);
-
+        //  TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SuperTextView);
 
         clickEffect = typedArray.getBoolean(StyleaUtils.getStyleableId(styleableName + "_zqy_click_effect"), true);//设置是否有按下效果 默认有
         clickAlpha = typedArray.getFloat(StyleaUtils.getStyleableId(styleableName + "_zqy_click_alpha"), 0.7f);
@@ -83,6 +91,47 @@ public class SuperGradientDrawable extends GradientDrawable {
 
         typedArray.recycle();
 
+        init();
+    }
+
+
+    /**
+     * 获取attrs标签值初始化
+     *
+     * @param view
+     * @param attrs
+     */
+    public void initTypedArray(View view, Map<Object, Object> attrs) {
+        this.view = view;
+
+        clickEffect = (boolean) attrs.get(SuperAttr.是否有按下效果);//设置是否有按下效果 默认有
+        clickAlpha = (float) attrs.get(SuperAttr.按下时透明度);
+        solidColor = (int) attrs.get(SuperAttr.填充颜色);
+        strokeColor = (int) attrs.get(SuperAttr.边框颜色);
+        strokeWidth = (int) attrs.get(SuperAttr.边框宽度);
+
+        startColor = (int) attrs.get(SuperAttr.渐变开始颜色);
+        endColor = (int) attrs.get(SuperAttr.渐变结束颜色);
+        clickSolidColor = (int) attrs.get(SuperAttr.按下时填充颜色);
+        clickStrokeColor = (int) attrs.get(SuperAttr.按下时边框颜色);
+
+        textColor = (int) attrs.get(SuperAttr.字体颜色);
+        clickTextColor = (int) attrs.get(SuperAttr.按下时字体颜色);
+
+        gradient = (int) attrs.get(SuperAttr.渐变模式);
+        orientation = (int) attrs.get(SuperAttr.渐变方向);
+        radius = (int) attrs.get(SuperAttr.四圆角);
+        topLeftRadius = (int) attrs.get(SuperAttr.左上圆角);
+        topRightRadius = (int) attrs.get(SuperAttr.右上圆角);
+        bottomLeftRadius = (int) attrs.get(SuperAttr.左下圆角);
+        bottomRightRadius = (int) attrs.get(SuperAttr.右下圆角);
+
+        init();
+
+    }
+
+
+    private void init() {
         Orientation[] values = Orientation.values();
         for (GradientDrawable.Orientation value : values) {
             if (value.ordinal() == orientation) {
@@ -110,9 +159,7 @@ public class SuperGradientDrawable extends GradientDrawable {
         setStrokeColorAndWidth(strokeWidth, strokeColor)
                 .setNormalTextColor(textColor)
                 .buid();
-
     }
-
 
     /**
      * 四角圆形度数
@@ -231,8 +278,6 @@ public class SuperGradientDrawable extends GradientDrawable {
     public SuperGradientDrawable setClickTextColor(@ColorInt int clickTextColor) {
         this.clickTextColor = clickTextColor;
         return this;
-
-
     }
 
     /**
@@ -252,7 +297,7 @@ public class SuperGradientDrawable extends GradientDrawable {
         if (clickEffect) {
             if (pressed) {
                 if (startColor != Color.TRANSPARENT || endColor != Color.TRANSPARENT) {
-                    //先设置背景才有效--设置了渐变色 点击有透明效果
+
                     if (startColor != Color.TRANSPARENT && endColor != Color.TRANSPARENT) {
                         int startAlpha = ColorUtils.setAlphaComponent(startColor, clickAlpha);
                         int endAlpha = ColorUtils.setAlphaComponent(endColor, clickAlpha);
@@ -332,80 +377,11 @@ public class SuperGradientDrawable extends GradientDrawable {
      */
     public void onTouchEvent(MotionEvent event) {
         if (clickEffect) {
-
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                if (startColor != Color.TRANSPARENT || endColor != Color.TRANSPARENT) {
-                    //先设置背景才有效--设置了渐变色 点击有透明效果
-                    if (startColor != Color.TRANSPARENT && endColor != Color.TRANSPARENT) {
-                        int startAlpha = ColorUtils.setAlphaComponent(startColor, clickAlpha);
-                        int endAlpha = ColorUtils.setAlphaComponent(endColor, clickAlpha);
-                        setGradient(startAlpha, endAlpha, gradient, gradientOrientation);
-                    } else if (startColor != Color.TRANSPARENT && endColor == Color.TRANSPARENT) {
-                        int alphaComponent = ColorUtils.setAlphaComponent(startColor, clickAlpha);
-                        setGradient(alphaComponent, endColor, gradient, gradientOrientation);
-                    } else if (startColor == Color.TRANSPARENT && endColor != Color.TRANSPARENT) {
-                        int alphaComponent = ColorUtils.setAlphaComponent(endColor, clickAlpha);
-                        setGradient(startColor, alphaComponent, gradient, gradientOrientation);
-                    }
-
-                } else if (solidColor != Color.TRANSPARENT) {
-                    //按下背景色（设置了渐变色）
-                    if (clickSolidColor == Color.TRANSPARENT) {
-                        int alphaComponent = ColorUtils.setAlphaComponent(solidColor, clickAlpha);
-                        setSolidColor(alphaComponent);
-                    } else {
-                        int alphaComponent = ColorUtils.setAlphaComponent(clickSolidColor, clickAlpha);
-                        setSolidColor(alphaComponent);
-                    }
-                }
-
-
-                //设置边框颜色及宽度
-                if (strokeColor != Color.TRANSPARENT) {
-                    if (clickStrokeColor == Color.TRANSPARENT) {
-                        int alphaComponent = ColorUtils.setAlphaComponent(strokeColor, clickAlpha);
-                        setStrokeColorAndWidth(strokeWidth, alphaComponent);
-                    } else {
-                        int alphaComponent = ColorUtils.setAlphaComponent(clickStrokeColor, clickAlpha);
-                        setStrokeColorAndWidth(strokeWidth, alphaComponent);
-                    }
-                }
-
-                //设置字体颜色
-                if (textColor != Color.TRANSPARENT) {
-                    if (clickTextColor == Color.TRANSPARENT) {
-                        int alphaComponent = ColorUtils.setAlphaComponent(textColor, clickAlpha);
-                        setNormalTextColor(alphaComponent);
-                    } else {
-                        int alphaComponent = ColorUtils.setAlphaComponent(clickTextColor, clickAlpha);
-                        setNormalTextColor(alphaComponent);
-                    }
-                }
-
-                buid();
-
-//            if (startColor != Color.TRANSPARENT || endColor != Color.TRANSPARENT) {
-//                //先设置背景才有效--设置了渐变色 点击有透明效果
-//                ClickUtils.applyPressedBgAlpha(this, clickAlpha);//点击才会生效，放开自动还原
-//                ToastUtil.toast("点击有透明效果" + clickAlpha);
-//            }
-                // postInvalidate();//刷新
+                setPressed(true);
             } else if (event.getAction() == MotionEvent.ACTION_UP
                     || event.getAction() == MotionEvent.ACTION_CANCEL) {
-
-                if (startColor == Color.TRANSPARENT && endColor == Color.TRANSPARENT) {
-                    //还原填充背景色
-                    setSolidColor(solidColor);
-                } else {
-                    //还原渐变色
-                    setGradient(startColor, endColor, gradient, gradientOrientation);
-                }
-                //还原边框颜色及宽度
-                setStrokeColorAndWidth(strokeWidth, strokeColor);
-                //字体颜色
-                setNormalTextColor(textColor);
-
-                buid();
+                setPressed(false);
             }
         }
     }

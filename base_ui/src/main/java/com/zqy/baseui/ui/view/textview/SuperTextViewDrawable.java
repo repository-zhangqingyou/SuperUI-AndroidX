@@ -8,7 +8,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 
 import com.zqy.baseui.R;
-import com.zqy.baseui.ui.SuperDrawable;
+import com.zqy.baseui.ui.drawable.SuperStateListDrawable;
 
 
 /**
@@ -75,7 +75,7 @@ public class SuperTextViewDrawable {
          * @param radiusBottomRight    右下圆形度数
          * @return
          */
-        SuperDrawable superDrawable = new SuperDrawable().setClickAlpha(clickAlpha)
+        SuperStateListDrawable superStateListDrawable = new SuperStateListDrawable().setClickAlpha(clickAlpha)
                 .setRadius(mRadius)
                 .setBorderWidth(borderWidth)
                 .setRadiusAdjustBounds(isRadiusAdjustBounds)
@@ -89,12 +89,12 @@ public class SuperTextViewDrawable {
                 .setClickColorBorder(clickColorBorder);
 
         if (startColor != 0 && endColor != 0) {
-            superDrawable
+            superStateListDrawable
                     .setSGradientType(gradient)
                     .setSColors(new int[]{startColor, endColor})
                     .setSOrientation(orientation1);
         }
-        return superDrawable.buid();
+        return superStateListDrawable.buid();
     }
 
     public float getClickAlpha() {

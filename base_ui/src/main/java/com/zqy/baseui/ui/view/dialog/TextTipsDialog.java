@@ -9,7 +9,7 @@ import androidx.annotation.ColorInt;
 import androidx.core.content.ContextCompat;
 
 import com.zqy.baseui.R;
-import com.zqy.baseui.ui.view.textview.SuperTextView_Copy;
+import com.zqy.baseui.ui.view.textview.SuperTextView;
 
 /**
  * 作者: zhangqingyou
@@ -38,9 +38,9 @@ public class TextTipsDialog extends BaseDialog {
 
     private TextView mTvTitle;
     private TextView mTvText;
-    private SuperTextView_Copy mTvButton1;
+    private SuperTextView mTvButton1;
     private View mVDividingLine;
-    private SuperTextView_Copy mTvButton2;
+    private SuperTextView mTvButton2;
 
     public TextTipsDialog(Activity activity) {
         super(activity);
@@ -72,9 +72,9 @@ public class TextTipsDialog extends BaseDialog {
         mTvButton1.setTextSize(18);
         mTvButton2.setTextSize(18);
         mTvButton1.setTextColor(ContextCompat.getColor(getContext(), R.color.bui_black_light1));
-        mTvButton1.setOnClickTextAlpha(0.5f);
+        mTvButton1.setClickAlpha(0.5f);
         mTvButton2.setTextColor(ContextCompat.getColor(getContext(), R.color.bui_red_light));
-        mTvButton2.setOnClickTextAlpha(0.5f);
+        mTvButton2.setClickAlpha(0.5f);
         mTvButton1.setText("");
         mTvButton2.setText("");
     }
@@ -137,7 +137,7 @@ public class TextTipsDialog extends BaseDialog {
 
     public TextTipsDialog setLeftButtonColor(@ColorInt int color) {
         this.mTvButton1.setTextColor(color);
-        this.mTvButton1.setOnClickTextAlpha(0.5f);
+        this.mTvButton1.setClickAlpha(0.5f);
         return this;
     }
 
@@ -148,7 +148,7 @@ public class TextTipsDialog extends BaseDialog {
 
     public TextTipsDialog setRightButtonColor(@ColorInt int color) {
         this.mTvButton2.setTextColor(color);
-        this.mTvButton2.setOnClickTextAlpha(0.5f);
+        this.mTvButton2.setClickAlpha(0.5f);
         return this;
     }
 

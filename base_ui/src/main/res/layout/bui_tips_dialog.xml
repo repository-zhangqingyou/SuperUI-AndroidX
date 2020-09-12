@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.zqy.baseui.ui.view.textview.SuperTextView_Copy
+            <com.zqy.baseui.ui.view.textview.SuperTextView
                 android:id="@+id/tv_Button1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                 android:text="xxx"
                 android:textColor="@color/bui_black_light1"
                 android:textSize="18sp"
-                app:zqy_stv_clickAlpha="0.5" />
+                app:zqy_click_alpha="0.5" />
 
             <View
                 android:id="@+id/v_DividingLine"
@@ -64,7 +64,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/bui_gray_dividing_line_light"></View>
 
-            <com.zqy.baseui.ui.view.textview.SuperTextView_Copy
+            <com.zqy.baseui.ui.view.textview.SuperTextView
                 android:id="@+id/tv_Button2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                 android:text="xxx"
                 android:textColor="@color/bui_red_light"
                 android:textSize="18sp"
-                app:zqy_stv_clickAlpha="0.5" />
+                app:zqy_click_alpha="0.5" />
 
         </LinearLayout>
 

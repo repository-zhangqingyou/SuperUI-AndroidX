@@ -1,4 +1,4 @@
-package com.zqy.baseui.ui;
+package com.zqy.baseui.ui.drawable;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -26,7 +26,7 @@ import com.blankj.utilcode.util.ConvertUtils;
  * Date: 2020/4/28 9:21
  * Des:
  */
-public class SuperDrawable extends GradientDrawable {
+public class SuperStateListDrawable extends GradientDrawable {
     private @FloatRange(from = 0, to = 1)
     float clickAlpha = 0;// //设置按下背景色的透明值
     private boolean clickEffect = true;//设置是否有按下效果 默认有
@@ -117,7 +117,7 @@ public class SuperDrawable extends GradientDrawable {
      *
      * @param clickEffect
      */
-    public SuperDrawable setClickEffect(boolean clickEffect) {
+    public SuperStateListDrawable setClickEffect(boolean clickEffect) {
         this.clickEffect = clickEffect;
         return this;
     }
@@ -139,7 +139,7 @@ public class SuperDrawable extends GradientDrawable {
      *
      * @param clickAlpha
      */
-    public SuperDrawable setClickAlpha(@FloatRange(from = 0, to = 1) float clickAlpha) {
+    public SuperStateListDrawable setClickAlpha(@FloatRange(from = 0, to = 1) float clickAlpha) {
         this.clickAlpha = clickAlpha;
         return this;
     }
@@ -150,7 +150,7 @@ public class SuperDrawable extends GradientDrawable {
      *
      * @param colorBg
      */
-    public SuperDrawable setColorBg(int colorBg) {
+    public SuperStateListDrawable setColorBg(int colorBg) {
         ColorStateList colorStateList = ColorStateList.valueOf(colorBg);
         this.colorBg = colorStateList;
         return this;
@@ -163,7 +163,7 @@ public class SuperDrawable extends GradientDrawable {
      * @param colorBorder
      */
 
-    public SuperDrawable setColorBorder(int colorBorder) {
+    public SuperStateListDrawable setColorBorder(int colorBorder) {
         ColorStateList colorStateList = ColorStateList.valueOf(colorBorder);
         this.colorBorder = colorStateList;
         return this;
@@ -175,7 +175,7 @@ public class SuperDrawable extends GradientDrawable {
      *
      * @param clickColorBg
      */
-    public SuperDrawable setClickColorBg(int clickColorBg) {
+    public SuperStateListDrawable setClickColorBg(int clickColorBg) {
 
         ColorStateList colorStateList = ColorStateList.valueOf(clickColorBg);
         this.clickColorBg = colorStateList;
@@ -189,7 +189,7 @@ public class SuperDrawable extends GradientDrawable {
      *
      * @param clickColorBorder
      */
-    public SuperDrawable setClickColorBorder(int clickColorBorder) {
+    public SuperStateListDrawable setClickColorBorder(int clickColorBorder) {
         ColorStateList colorStateList = ColorStateList.valueOf(clickColorBorder);
         this.clickColorBorder = colorStateList;
 
@@ -202,7 +202,7 @@ public class SuperDrawable extends GradientDrawable {
      * @param gradient
      * @return
      */
-    public SuperDrawable setSGradientType(int gradient) {
+    public SuperStateListDrawable setSGradientType(int gradient) {
         this.gradient = gradient;
         return this;
     }
@@ -213,7 +213,7 @@ public class SuperDrawable extends GradientDrawable {
      * @param colors
      * @return
      */
-    public SuperDrawable setSColors(int[] colors) {
+    public SuperStateListDrawable setSColors(int[] colors) {
         this.colors = colors;
         return this;
     }
@@ -224,7 +224,7 @@ public class SuperDrawable extends GradientDrawable {
      * @param orientation
      * @return
      */
-    public SuperDrawable setSOrientation(Orientation orientation) {
+    public SuperStateListDrawable setSOrientation(Orientation orientation) {
         this.orientation = orientation;
 
         return this;
@@ -236,7 +236,7 @@ public class SuperDrawable extends GradientDrawable {
      *
      * @param borderWidth
      */
-    public SuperDrawable setBorderWidth(int borderWidth) {
+    public SuperStateListDrawable setBorderWidth(int borderWidth) {
         this.borderWidth = ConvertUtils.dp2px(borderWidth);
         return this;
     }
@@ -246,7 +246,7 @@ public class SuperDrawable extends GradientDrawable {
      *
      * @param radius
      */
-    public SuperDrawable setRadius(int radius) {
+    public SuperStateListDrawable setRadius(int radius) {
         this.radius = ConvertUtils.dp2px(radius);
         return this;
     }
@@ -256,7 +256,7 @@ public class SuperDrawable extends GradientDrawable {
      *
      * @param radiusTopLeft
      */
-    public SuperDrawable setRadiusTopLeft(int radiusTopLeft) {
+    public SuperStateListDrawable setRadiusTopLeft(int radiusTopLeft) {
         this.radiusTopLeft = ConvertUtils.dp2px(radiusTopLeft);
         return this;
     }
@@ -266,7 +266,7 @@ public class SuperDrawable extends GradientDrawable {
      *
      * @param radiusTopRight
      */
-    public SuperDrawable setRadiusTopRight(int radiusTopRight) {
+    public SuperStateListDrawable setRadiusTopRight(int radiusTopRight) {
         this.radiusTopRight = ConvertUtils.dp2px(radiusTopRight);
         return this;
     }
@@ -276,7 +276,7 @@ public class SuperDrawable extends GradientDrawable {
      *
      * @param radiusBottomLeft
      */
-    public SuperDrawable setRadiusBottomLeft(int radiusBottomLeft) {
+    public SuperStateListDrawable setRadiusBottomLeft(int radiusBottomLeft) {
         this.radiusBottomLeft = ConvertUtils.dp2px(radiusBottomLeft);
         return this;
     }
@@ -286,7 +286,7 @@ public class SuperDrawable extends GradientDrawable {
      *
      * @param radiusBottomRight
      */
-    public SuperDrawable setRadiusBottomRight(int radiusBottomRight) {
+    public SuperStateListDrawable setRadiusBottomRight(int radiusBottomRight) {
         this.radiusBottomRight = ConvertUtils.dp2px(radiusBottomRight);
         return this;
     }
@@ -296,7 +296,7 @@ public class SuperDrawable extends GradientDrawable {
      *
      * @param radiusAdjustBounds
      */
-    public SuperDrawable setRadiusAdjustBounds(boolean radiusAdjustBounds) {
+    public SuperStateListDrawable setRadiusAdjustBounds(boolean radiusAdjustBounds) {
         isRadiusAdjustBounds = radiusAdjustBounds;
         return this;
     }
@@ -354,7 +354,7 @@ public class SuperDrawable extends GradientDrawable {
     private Drawable initShapeDrawable() {
 
         //创建drawable
-        SuperDrawable normalGb = new SuperDrawable();//未点击
+        SuperStateListDrawable normalGb = new SuperStateListDrawable();//未点击
         //设置类型
         // normalGb.setShape(GradientDrawable.OVAL);
         //渐变颜色 和 单背景色 不能同时设置
@@ -403,7 +403,7 @@ public class SuperDrawable extends GradientDrawable {
     private StateListDrawable initStateListDrawable() {
 
         //创建drawable
-        SuperDrawable normalGb = new SuperDrawable();//未点击
+        SuperStateListDrawable normalGb = new SuperStateListDrawable();//未点击
         //设置类型
         // normalGb.setShape(GradientDrawable.OVAL);
         //渐变颜色 和 单背景色 不能同时设置
@@ -431,7 +431,7 @@ public class SuperDrawable extends GradientDrawable {
             normalGb.setCornerRadius(radius);
         }
 
-        SuperDrawable pressedGb = new SuperDrawable();//点击
+        SuperStateListDrawable pressedGb = new SuperStateListDrawable();//点击
 
         //pressedGb.setShape(GradientDrawable.OVAL);
         //渐变颜色 和 单背景色 不能同时设置

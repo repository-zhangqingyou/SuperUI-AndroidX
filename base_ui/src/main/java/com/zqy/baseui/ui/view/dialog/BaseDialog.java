@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatDialog;
 import androidx.core.content.ContextCompat;
 
 import com.zqy.baseui.R;
-import com.zqy.baseui.ui.SuperDrawable;
+import com.zqy.baseui.ui.drawable.SuperStateListDrawable;
 import com.zqy.baseutil.ViewSeting;
 
 
@@ -101,7 +101,7 @@ public abstract class BaseDialog extends AppCompatDialog {
      * @return
      */
     private Drawable getStateListDrawable(int radius, int colorId) {
-        Drawable stateListDrawable = new SuperDrawable().setClickAlpha(1f)//设置点击后透明度
+        Drawable stateListDrawable = new SuperStateListDrawable().setClickAlpha(1f)//设置点击后透明度
                 .setRadius(radius)//圆角
                 .setColorBg(ContextCompat.getColor(activity, colorId))//背景颜色
                 .buid();

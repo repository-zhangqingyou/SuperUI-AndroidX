@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat;
 
 import com.blankj.utilcode.util.ConvertUtils;
 import com.zqy.baseui.R;
-import com.zqy.baseui.ui.SuperDrawable;
+import com.zqy.baseui.ui.drawable.SuperStateListDrawable;
 import com.zqy.baseui.ui.view.popup.BasePopup;
 
 
@@ -40,7 +40,7 @@ public abstract class BaseTipsPopup extends BasePopup {
      * @return
      */
     private Drawable getStateListDrawable(int radius, int colorId) {
-        Drawable stateListDrawable = new SuperDrawable().setClickAlpha(0.9f)//设置点击后透明度
+        Drawable stateListDrawable = new SuperStateListDrawable().setClickAlpha(0.9f)//设置点击后透明度
                 .setRadius(radius)//圆角
                 .setColorBg(ContextCompat.getColor(getRootView().getContext(), colorId))//背景颜色
                 .buid();

@@ -1,9 +1,9 @@
-package com.zqy.baseui.ui.view.linearlayout;
+package com.zqy.baseui.ui.view.framelayout;
 
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 
 import com.zqy.baseui.ui.drawable.DrawableImpl;
 import com.zqy.baseui.ui.drawable.SuperGradientDrawable;
@@ -14,19 +14,19 @@ import com.zqy.baseui.ui.drawable.SuperGradientDrawable;
  * 描述:
  * 代码调用示例：
  */
-public class SuperLinearLayout extends LinearLayout implements DrawableImpl {
+public class SuperFrameLayout extends FrameLayout implements DrawableImpl {
     private SuperGradientDrawable superGradientDrawable;
 
-    public SuperLinearLayout(Context context) {
+    public SuperFrameLayout(Context context) {
         super(context);
     }
 
-    public SuperLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SuperFrameLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         ininView(context, attrs);
     }
 
-    public SuperLinearLayout(Context context, AttributeSet attrs) {
+    public SuperFrameLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         ininView(context, attrs);
     }
@@ -98,6 +98,7 @@ public class SuperLinearLayout extends LinearLayout implements DrawableImpl {
 
 //    @Override
 //    public boolean onTouchEvent(MotionEvent event) {
+//        int action = event.getAction();
 //        superGradientDrawable.onTouchEvent(event);
 //        return super.onTouchEvent(event);
 //    }

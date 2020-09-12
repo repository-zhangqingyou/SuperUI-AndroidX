@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="BaseUIAppTheme" parent="XUITheme.Phone">
         <!-- 自定义自己的主题样式 -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -52,6 +53,7 @@
 
         <!-- 设置自定义布局的背景透明 -->
     </style>
+
 
 
 </resources>

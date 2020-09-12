@@ -10,6 +10,20 @@
     android:padding="12dp"
     tools:context=".activity.MainActivity">
 
+    <com.zqy.baseui.ui.view.framelayout.SuperFrameLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:zqy_radius="5dp"
+        app:zqy_solid_color="@color/colorPrimary">
+
+    </com.zqy.baseui.ui.view.framelayout.SuperFrameLayout>
+
+
+
+
+
+
 
     <com.zqy.baseui.ui.view.textview.SuperTextView
         android:id="@+id/rbt_test"
@@ -21,8 +35,9 @@
         android:paddingBottom="@dimen/mine_margin"
         android:text="测试"
         android:textColor="@color/bui_white"
+        app:zqy_click_alpha="0.5"
         app:zqy_end_color="@color/colorPrimaryDark"
-        app:zqy_radius="5dp"
+        app:zqy_radius="8dp"
         app:zqy_solid_color="@color/colorPrimary"
         app:zqy_start_color="@color/colorAccent"
         app:zqy_text_color="@color/bui_white" />

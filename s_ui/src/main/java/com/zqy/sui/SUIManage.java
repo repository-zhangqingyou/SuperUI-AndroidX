@@ -3,17 +3,23 @@ package com.zqy.sui;
 import android.app.Application;
 
 import com.xuexiang.xui.XUI;
+import com.zqy.srequest.RequestManage;
+import com.zqy.sutils.UtilsManage;
 
 /**
  * Author: zhangqingyou
  * Date: 2020/4/7
  * Des:
  */
-public class BaseUIManage {
+public class SUIManage {
     private static Application application;
 
+    public static Application getApplication() {
+        return application;
+    }
+
     public static void init(Application application) {
-        BaseUIManage.application = application;
+        SUIManage.application = application;
 
 
 //        LoadingLayout.getConfig()
@@ -34,5 +40,10 @@ public class BaseUIManage {
         XUI.debug(true);  //开启UI框架调试日志
         //设置默认字体为华文行楷，这里写你的字体库
       //  XUI.getInstance().initFontStyle("fonts/hwxk.ttf");
+        //工具模组初始化
+        UtilsManage.init(application);
+        //网络请求模组初始化
+        RequestManage.init(application);
+        RequestManage.setDEBUG(true);
     }
 }

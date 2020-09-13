@@ -5,9 +5,7 @@ import android.content.Context;
 
 import androidx.multidex.MultiDex;
 
-import com.zqy.srequest.RequestManage;
-import com.zqy.sui.BaseUIManage;
-import com.zqy.sutils.UtilsManage;
+import com.zqy.sui.SUIManage;
 
 /**
  * 作者: zhangqingyou
@@ -40,12 +38,7 @@ public class SUIApp extends Application {
      *
      */
     private void initModule() {
-        //工具模组初始化
-        UtilsManage.init(this);
-        //网络请求模组初始化
-        RequestManage.init(this);
-        RequestManage.setDEBUG(true);
-        BaseUIManage.init(this);
+        SUIManage.init(this);
     }
 
 

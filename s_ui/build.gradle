@@ -30,6 +30,7 @@ dependencies {
     }
 
     implementation project(path: ':s_utils')
+    implementation project(path: ':s_request')
 
 
     //AgentWeb 是一个基于的 Android WebView ，极度容易使用以及功能强大的库

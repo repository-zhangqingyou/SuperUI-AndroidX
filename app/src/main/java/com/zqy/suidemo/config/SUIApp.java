@@ -33,7 +33,7 @@ public class SUIApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        initModule();//
+        initModule();
     }
 
     /**

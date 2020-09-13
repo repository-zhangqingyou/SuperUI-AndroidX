@@ -21,9 +21,6 @@ import com.bumptech.glide.Glide;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import cn.jiguang.analytics.android.api.JAnalyticsInterface;
-import cn.jpush.android.api.JPushInterface;
-
 /**
  * Author: zhangqingyou
  * Date: 2020/4/7
@@ -42,7 +39,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         init(getLayout());
 
         canonicalName = this.getClass().getCanonicalName();
-        JAnalyticsInterface.onPageStart(this, canonicalName);
         Log.d("BaseActivity", canonicalName);
 
         // 侧滑回调
@@ -253,17 +249,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         Glide.get(this).clearMemory();//清理Glide
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        JPushInterface.onResume(this);
-    }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        JPushInterface.onPause(this);
-    }
 
 
     /**
@@ -276,7 +262,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        JAnalyticsInterface.onPageEnd(this, canonicalName);
 
 //        if (isSupportSlideBack()) {
 //            SlideBack.unregister(this);

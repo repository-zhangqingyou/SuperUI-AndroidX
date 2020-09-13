@@ -1,11 +1,9 @@
 package com.zqy.srequest.request;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import com.zqy.srequest.util.JEventUtils;
-import com.zqy.sutils.ToastUtil;
+import com.zqy.srequest.RequestManage;
+import com.zqy.sutils.ParameterizedTypeImpl;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -33,6 +31,10 @@ public abstract class JsonArryEntityCallback<T> extends BaseCallback {
         this.classOfBean = classOfBean;
     }
 
+    @Override
+    public void onFinish(String msg) {
+
+    }
 
     @Override
     public void onSuccess(com.lzy.okgo.model.Response<String> response) {
@@ -43,10 +45,12 @@ public abstract class JsonArryEntityCallback<T> extends BaseCallback {
             List<T> list = new Gson().fromJson(response.body(), type);
             onSuccess(list);
         } catch (JsonSyntaxException e) {
-            ToastUtil.toast(TAG + "_json数据格式错误");
-            Log.d(TAG + "_json数据格式错误:",e.getMessage());
-            //极光计数事件（接口返回json数据解析错误使用）
-            JEventUtils.onCountEventJsonError(response, TAG);
+
+            if (RequestManage.getApiCallback() != null) {
+                response.setException(new JsonSyntaxException("json数据格式错误:" + e.getMessage()));
+                RequestManage.getApiCallback().onError(getBaseUrl(), getEndUrl(), response);
+            }
+
         }
 
     }

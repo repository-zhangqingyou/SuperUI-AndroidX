@@ -99,8 +99,8 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.multidex:multidex:2.0.1'
-    implementation project(path: ':s_request')
-    implementation project(path: ':s_utils')
+//    implementation project(path: ':s_request')
+//    implementation project(path: ':s_utils')
     implementation project(path: ':s_ui')
 
 

@@ -8,6 +8,7 @@ import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.cookie.CookieJarImpl;
 import com.lzy.okgo.cookie.store.SPCookieStore;
 import com.lzy.okgo.model.HttpHeaders;
+import com.zqy.srequest.request.ApiCallback;
 
 import java.lang.reflect.Field;
 import java.util.concurrent.TimeUnit;
@@ -17,15 +18,17 @@ import okhttp3.OkHttpClient;
 public class RequestManage {
     private static Application application;
     private static boolean DEBUG;
+    private static ApiCallback apiCallback;
+
+    public static Application getApplication() {
+        return application;
+    }
 
     public static void init(Application application) {
         RequestManage.application = application;
         OkGoInit();
     }
 
-    public static Application getApplication() {
-        return application;
-    }
 
     public static boolean isDEBUG() {
         return DEBUG;
@@ -34,7 +37,6 @@ public class RequestManage {
     public static void setDEBUG(boolean dEBUG) {
         DEBUG = dEBUG;
     }
-
 
 
     private static void OkGoInit() {
@@ -68,5 +70,16 @@ public class RequestManage {
 
     }
 
+    /**
+     * 设置所有接口响应回调
+     *
+     * @param apiCallback
+     */
+    public static void setApiCallback(ApiCallback apiCallback) {
+        RequestManage.apiCallback = apiCallback;
+    }
 
+    public static ApiCallback getApiCallback() {
+        return apiCallback;
+    }
 }

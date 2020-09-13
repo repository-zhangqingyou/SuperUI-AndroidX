@@ -11,6 +11,7 @@ import com.tencent.bugly.beta.download.DownloadTask;
 import com.tencent.bugly.beta.interfaces.BetaPatchListener;
 import com.xuexiang.xui.XUI;
 import com.zqy.srequest.RequestManage;
+import com.zqy.srequest.request.ApiCallback;
 import com.zqy.sutils.GlideCacheUtil;
 import com.zqy.sutils.UtilsManage;
 
@@ -55,6 +56,15 @@ public class SUIManage {
         //网络请求模组初始化
         RequestManage.init(application);
         RequestManage.setDEBUG(true);
+    }
+
+    /**
+     * 设置所有接口响应回调
+     *
+     * @param apiCallback
+     */
+    public static void setApiCallback(ApiCallback apiCallback) {
+        RequestManage.setApiCallback(apiCallback);
     }
 
 

@@ -6,6 +6,7 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.Callback;
 import com.lzy.okgo.callback.FileCallback;
 import com.lzy.okgo.request.PostRequest;
+import com.zqy.srequest.RequestManage;
 import com.zqy.srequest.bean.CodeAndMsg;
 import com.zqy.srequest.data.UserDataContainer;
 import com.zqy.srequest.util.RequestResponseUtil;
@@ -65,40 +66,65 @@ public class Request {
      * @param json
      * @param callback
      */
-    public void okgo_postJson(String url, String json, Callback callback) {
-        OkGo.<String>post(url)
-                //.tag(requestTag(url))
-                .upJson(json)
-                .execute(callback);
-    }
-
-    public void okgo_get(String url, Map<String, Object> params, Callback callback) {
-        Map<String, String> param = new LinkedHashMap<>();
-        for (Map.Entry<String, Object> entry : params.entrySet()) {
-            String key = entry.getKey();
-            Object value = entry.getValue();
-            if (key != null && value != null)
-                param.put(entry.getKey(), entry.getValue().toString());
-        }
-        OkGo.<String>get(url)
-                // .tag(requestTag(url))
-                .params(param)
-                .execute(callback);
-    }
-
-    public void okgo_post(String url, Map<String, Object> params, Callback callback) {
-        Map<String, String> param = new LinkedHashMap<>();
-        for (Map.Entry<String, Object> entry : params.entrySet()) {
-            String key = entry.getKey();
-            Object value = entry.getValue();
-            if (key != null && value != null)
-                param.put(entry.getKey(), entry.getValue().toString());
+    public void okgo_postJson(String url, String json, BaseCallback callback) {
+        if (RequestResponseUtil.getIsRequest(url)) {//防止同一个接口频繁请求，当前请求响应后才能继续下个请求
+            OkGo.<String>post(url)
+                    //.tag(requestTag(url))
+                    .upJson(json)
+                    .execute(callback);
+        } else {
+            callback.onFinish(url + "还未响应，相同接口无法再次请求！");
+            if (RequestManage.getApiCallback() != null) {
+                RequestManage.getApiCallback().onFinish(url + "还未响应，相同接口无法再次请求！");
+            }
         }
 
-        OkGo.<String>post(url)
-                //.tag(requestTag(url))
-                .params(param)
-                .execute(callback);
+    }
+
+    public void okgo_get(String url, Map<String, Object> params, BaseCallback callback) {
+        if (RequestResponseUtil.getIsRequest(url)) {//防止同一个接口频繁请求，当前请求响应后才能继续下个请求
+            Map<String, String> param = new LinkedHashMap<>();
+            for (Map.Entry<String, Object> entry : params.entrySet()) {
+                String key = entry.getKey();
+                Object value = entry.getValue();
+                if (key != null && value != null)
+                    param.put(entry.getKey(), entry.getValue().toString());
+            }
+            OkGo.<String>get(url)
+                    // .tag(requestTag(url))
+                    .params(param)
+                    .execute(callback);
+        } else {
+            callback.onFinish(url + "还未响应，相同接口无法再次请求！");
+            if (RequestManage.getApiCallback() != null) {
+                RequestManage.getApiCallback().onFinish(url + "还未响应，相同接口无法再次请求！");
+            }
+        }
+
+
+    }
+
+    public void okgo_post(String url, Map<String, Object> params, BaseCallback callback) {
+        if (RequestResponseUtil.getIsRequest(url)) {//防止同一个接口频繁请求，当前请求响应后才能继续下个请求
+            Map<String, String> param = new LinkedHashMap<>();
+            for (Map.Entry<String, Object> entry : params.entrySet()) {
+                String key = entry.getKey();
+                Object value = entry.getValue();
+                if (key != null && value != null)
+                    param.put(entry.getKey(), entry.getValue().toString());
+            }
+
+            OkGo.<String>post(url)
+                    //.tag(requestTag(url))
+                    .params(param)
+                    .execute(callback);
+        } else {
+            callback.onFinish(url + "还未响应，相同接口无法再次请求！");
+            if (RequestManage.getApiCallback() != null) {
+                RequestManage.getApiCallback().onFinish(url + "还未响应，相同接口无法再次请求！");
+            }
+        }
+
 
     }
     //--------------------------------------------------基本请求 end-------------------------------------------------
@@ -184,6 +210,7 @@ public class Request {
 
 
     //--------------------------------------------------加密方式和公共请求 end-------------------------------------------------
+
     /**
      * 上传成功后，会将图片URL返回回来
      * <p>

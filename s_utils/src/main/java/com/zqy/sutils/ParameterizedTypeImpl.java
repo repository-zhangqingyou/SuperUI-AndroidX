@@ -1,4 +1,4 @@
-package com.zqy.srequest.request;
+package com.zqy.sutils;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.rbt_test:
                 Request.getInstance().test(new JsonEntityCallback<CodeAndMsg>(CodeAndMsg.class) {
                     @Override
-                    protected void onSuccess(CodeAndMsg codeAndMsg) {
+                    public void onSuccess(CodeAndMsg codeAndMsg) {
                         String toJson = new Gson().toJson(codeAndMsg);
                         mAtvContent.setText(toJson);
                     }

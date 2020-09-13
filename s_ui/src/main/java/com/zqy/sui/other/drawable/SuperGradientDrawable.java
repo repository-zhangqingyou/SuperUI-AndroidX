@@ -62,7 +62,7 @@ public class SuperGradientDrawable extends GradientDrawable {
         this.view = view;
 
         String styleableName = view.getClass().getSimpleName();//"SuperTextView"
-        String packageName = context.getPackageName();
+        String packageName = "com.zqy.sui";
 
         int[] ary = StyleaUtils.getStyleableArryId(packageName, styleableName);
 

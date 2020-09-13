@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply from: '../bugly-tinker.gradle'
 
 def time = "${new Date().format("yyyyMMdd")}"//
 def codename = "1"//当日迭代号

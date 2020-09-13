@@ -22,7 +22,7 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
     <application
-        android:name="com.zqy.suidemo.config.App"
+        android:name="com.zqy.suidemo.config.SUIApp"
         android:allowBackup="true"
         android:icon="${APP_ICON}"
         android:label="${APP_NAME}"

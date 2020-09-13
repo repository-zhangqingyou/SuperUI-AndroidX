@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="mine_margin">12dp</dimen>
-    <dimen name="mine_icon_size">55dp</dimen>
-    <dimen name="mine_icon_radius">55dp</dimen>
-    <dimen name="mine_radius_base">4dp</dimen>
-</resources>

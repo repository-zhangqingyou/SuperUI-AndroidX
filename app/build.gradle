@@ -6,7 +6,7 @@ def codename = "1"//当日迭代号
 android {
     compileSdkVersion build_versions.target_sdk
     defaultConfig {
-        applicationId "com.zqy.gamemange"
+        applicationId "com.zqy.sui.demo"
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         multiDexEnabled true
@@ -25,13 +25,13 @@ android {
     //***********************************多渠道构建***************************************
     flavorDimensions "channel"
     productFlavors {
-        androidx_测试 {
+        SUI_Demo {
             dimension "channel"
-            applicationId "com.zqy.gamemange"
+            applicationId "com.zqy.sui.demo"
             versionCode 1
             versionName "1." + time + "." + codename
             manifestPlaceholders = [
-                    APP_NAME      : "androidx_测试",
+                    APP_NAME      : "SUI-Demo",
                     APP_ICON      : "@mipmap/ic_launcher",
                     PACKAGE_NAME  : applicationId,
                     JSHARE_PKGNAME: applicationId,
@@ -100,9 +100,9 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.multidex:multidex:2.0.1'
-    implementation project(path: ':base_request')
-    implementation project(path: ':base_utils')
-    implementation project(path: ':base_ui')
+    implementation project(path: ':s_request')
+    implementation project(path: ':s_utils')
+    implementation project(path: ':s_ui')
 
     //集成全量更新和热更新一体的平台  注意： 升级SDK已经集成crash上报功能，已经集成Bugly的用户需要注释掉原来Bugly的jcenter库
     implementation 'com.tencent.bugly:crashreport_upgrade:1.4.5'

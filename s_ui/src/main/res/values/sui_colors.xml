@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingDefaultResource">
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="sui_white">#FFFFFF</color>
+    <color name="sui_black">#000000</color>
+
+    <color name="sui_transparent_black">#66000000</color>
+    <color name="sui_graySegmentation">#E8E8E8</color>
+    <color name="sui_grayBar">#F4F5F7</color>
+    <color name="sui_gray_high_light">#dddddd</color>
+    <color name="sui_gray">#CCCCCC</color>
+    <color name="sui_gray2">#F1F1F1</color>
+    <color name="sui_gray_dividing_line_light">#DBDBDB</color>
+    <color name="sui_background_red">#FF4081</color>
+    <color name="sui_sign_text_color">#ffffff</color>
+    <color name="sui_span_blue">#1997E8</color>
+
+
+    <color name="sui_black_light1">#333333</color>
+    <color name="sui_black_light">#666666</color>
+    <color name="sui_black_light2">#999999</color>
+    <color name="sui_black_dark">#0E050A</color>
+    <color name="sui_red_light">#EA534E</color>
+    <color name="sui_background_light">#F4F4F4</color>
+
+</resources>

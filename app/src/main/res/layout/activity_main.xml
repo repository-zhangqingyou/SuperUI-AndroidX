@@ -33,7 +33,7 @@
         app:zqy_radius="8dp"
         app:zqy_solid_color="@color/colorPrimary"
         app:zqy_start_color="@color/colorAccent"
-        app:zqy_text_color="@color/bui_white" />
+        app:zqy_text_color="@color/sui_white" />
 
 
     <androidx.core.widget.NestedScrollView

@@ -39,6 +39,7 @@ public class SUIApp extends Application {
      */
     private void initModule() {
         SUIManage.init(this);
+       // SUIManage.initBugly("","SUI");
     }
 
 

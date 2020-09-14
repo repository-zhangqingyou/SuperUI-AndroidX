@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.repository-zhangqingyou'
-
+//apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion build_versions.target_sdk
     defaultConfig {
@@ -16,7 +16,9 @@ android {
 //            }
 //        }
     }
-
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -49,3 +51,18 @@ dependencies {
 
 
 }
+//publish{
+//    repoName = 'SUI'//远程仓库名字,不指明，默认是上传到maven
+//    userOrg = 'zhangqingyou'//bintray.com的用户名
+//    groupId = 'com.bintray.zhangqingyou'//jcenter上的路径  可以随便写，注意规范
+//    artifactId = 's_utils'//项目名称
+//    publishVersion = '1.0.0'//版本号
+//    desc = '描述'//描述，不重要
+//    website = 'https://gitee.com/zqycl/SUI'//项目主页
+//}
+//tasks.withType(Javadoc) {//防止编码问题
+//    options.addStringOption('Xdoclint:none', '-quiet')
+//    options.addStringOption('encoding', 'UTF-8')
+//    options.addStringOption('charSet', 'UTF-8')
+
+//}

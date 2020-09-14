@@ -98,7 +98,10 @@ android {
             outputFileName = "${getName()}(${new Date().format("yyyyMMddHHmm")}_${variant.versionName}_${variant.versionCode}).apk"
         }
     }
+
+
 }
+
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])

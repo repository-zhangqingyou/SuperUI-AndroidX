@@ -4,12 +4,12 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.zqy.srequest.RequestManage;
 
+
+
 /**
- * Author: zhangqingyou
- * Date: 2020/4/7
- * Des:
- *
- * @param <T> json对象实体类
+ * 作者: zhangqingyou
+ * 时间: 2020/9/14
+ * 描述: json对象实体类
  */
 
 public abstract class JsonEntityCallback<T> extends BaseCallback {

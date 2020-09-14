@@ -16,6 +16,12 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 
+
+/**
+ * 作者: zhangqingyou
+ * 时间: 2020/9/14
+ * 描述:
+ */
 public class RequestManage {
     private static Application application;
     private static boolean DEBUG;

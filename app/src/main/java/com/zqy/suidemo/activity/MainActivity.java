@@ -11,9 +11,9 @@ import androidx.core.content.ContextCompat;
 
 import com.google.gson.Gson;
 import com.lzy.okgo.model.Response;
-import com.zqy.srequest.bean.CodeAndMsg;
+import com.zqy.srequest.module.CodeAndMsg;
 import com.zqy.srequest.request.JsonEntityCallback;
-import com.zqy.srequest.request.Request;
+import com.zqy.srequest.request.SRequest;
 import com.zqy.sui.other.drawable.SuperStateListDrawable;
 import com.zqy.sui.widget.superlayout.SuperTextView;
 import com.zqy.suidemo.R;
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 break;
             case R.id.rbt_test:
-                Request.getInstance().test(new JsonEntityCallback<CodeAndMsg>(CodeAndMsg.class) {
+                SRequest.getInstance().test(new JsonEntityCallback<CodeAndMsg>(CodeAndMsg.class) {
                     @Override
                     public void onSuccess(CodeAndMsg codeAndMsg) {
                         String toJson = new Gson().toJson(codeAndMsg);

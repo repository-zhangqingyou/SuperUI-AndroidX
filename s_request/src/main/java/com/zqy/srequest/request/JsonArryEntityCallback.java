@@ -8,14 +8,11 @@ import com.zqy.sutils.ParameterizedTypeImpl;
 import java.lang.reflect.Type;
 import java.util.List;
 
+
 /**
- * Author: zhangqingyou
- * Date: 2020/4/7
- * Des:
- * <p>
- * json为数组时使用
- *
- * @param <T> json对象实体类
+ * 作者: zhangqingyou
+ * 时间: 2020/9/14
+ * 描述: json为数组时使用
  */
 
 public abstract class JsonArryEntityCallback<T> extends BaseCallback {

@@ -1,11 +1,12 @@
-package com.zqy.srequest.bean;
+package com.zqy.srequest.module;
 
 import java.io.Serializable;
 
+
 /**
- * Author: zhangqingyou
- * Date: 2020/4/7
- * Des:
+ * 作者: zhangqingyou
+ * 时间: 2020/9/14
+ * 描述: 通用请求
  */
 
 public class CodeAndMsg implements Serializable {

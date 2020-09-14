@@ -11,9 +11,9 @@ import com.zqy.srequest.util.RequestResponseUtil;
 import okhttp3.Response;
 
 /**
- * Author: zhangqingyou
- * Date: 2020/4/7
- * Des:
+ * 作者: zhangqingyou
+ * 时间: 2020/9/14
+ * 描述: 通用请求
  */
 
 public abstract class BaseCallback extends AbsCallback<String> {

@@ -1,11 +1,11 @@
 package com.zqy.srequest.request;
 
-/**
- * Author: zhangqingyou
- * Date: 2020/9/14
- * Des:
- */
 
+/**
+ * 作者: zhangqingyou
+ * 时间: 2020/9/14
+ * 描述:
+ */
 public abstract class StringCallback extends BaseCallback {
 
     public StringCallback() {

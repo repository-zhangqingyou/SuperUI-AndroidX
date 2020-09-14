@@ -4,9 +4,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Author: zhangqingyou
- * Date: 2020/4/20 13:11
- * Des:
+ * 作者: zhangqingyou
+ * 时间: 2020/9/14
+ * 描述: 通用请求
  */
 public class RequestResponseUtil {
     //防止同一个接口频繁请求，当前请求响应后才能继续下个请求

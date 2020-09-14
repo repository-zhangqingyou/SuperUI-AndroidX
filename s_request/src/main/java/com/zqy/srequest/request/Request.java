@@ -74,9 +74,13 @@ public class Request {
                     .execute(callback);
         } else {
             callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-            if (RequestManage.getApiCallback() != null) {
-                RequestManage.getApiCallback().onFinish(url + "还未响应，相同接口无法再次请求！");
+            if (RequestManage.getApiCallbackServiceLoader() != null) {
+                for (ApiCallbackService service : RequestManage.getApiCallbackServiceLoader()) {
+                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
+                }
             }
+
+
         }
 
     }
@@ -96,8 +100,10 @@ public class Request {
                     .execute(callback);
         } else {
             callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-            if (RequestManage.getApiCallback() != null) {
-                RequestManage.getApiCallback().onFinish(url + "还未响应，相同接口无法再次请求！");
+            if (RequestManage.getApiCallbackServiceLoader() != null) {
+                for (ApiCallbackService service : RequestManage.getApiCallbackServiceLoader()) {
+                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
+                }
             }
         }
 
@@ -120,8 +126,10 @@ public class Request {
                     .execute(callback);
         } else {
             callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-            if (RequestManage.getApiCallback() != null) {
-                RequestManage.getApiCallback().onFinish(url + "还未响应，相同接口无法再次请求！");
+            if (RequestManage.getApiCallbackServiceLoader() != null) {
+                for (ApiCallbackService service : RequestManage.getApiCallbackServiceLoader()) {
+                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
+                }
             }
         }
 

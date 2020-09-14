@@ -36,10 +36,11 @@ public abstract class JsonEntityCallback<T> extends BaseCallback {
             T t = new Gson().fromJson(response.body(), classOfBean);
             onSuccess(t);
         } catch (JsonSyntaxException e) {
-            if (RequestManage.getApiCallback() != null) {
+            for (ApiCallbackService service : RequestManage.getApiCallbackServiceLoader()) {
                 response.setException(new JsonSyntaxException("json数据格式错误:" + e.getMessage()));
-                RequestManage.getApiCallback().onError(getBaseUrl(), getEndUrl(), response);
+                service.onError(getBaseUrl(), getEndUrl(), response);
             }
+
         }
 
     }

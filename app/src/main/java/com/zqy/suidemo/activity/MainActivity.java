@@ -64,6 +64,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         mAtvContent.setText(response.getException().toString());
                     }
                 });
+//                ServiceLoader<ApiCallbackService> apiCallbackServiceLoader = RequestManage.getApiCallbackServiceLoader();
+//                for (ApiCallbackService apiCallbackService : apiCallbackServiceLoader) {
+//                    apiCallbackService.onFinish("123456");
+//                }
                 break;
             case R.id.atv_content:
                 break;

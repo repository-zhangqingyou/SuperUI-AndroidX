@@ -45,11 +45,14 @@ public abstract class JsonArryEntityCallback<T> extends BaseCallback {
             List<T> list = new Gson().fromJson(response.body(), type);
             onSuccess(list);
         } catch (JsonSyntaxException e) {
-
-            if (RequestManage.getApiCallback() != null) {
-                response.setException(new JsonSyntaxException("json数据格式错误:" + e.getMessage()));
-                RequestManage.getApiCallback().onError(getBaseUrl(), getEndUrl(), response);
+            if (RequestManage.getApiCallbackServiceLoader() != null) {
+                for (ApiCallbackService service : RequestManage.getApiCallbackServiceLoader()) {
+                    response.setException(new JsonSyntaxException("json数据格式错误:" + e.getMessage()));
+                    service.onError(getBaseUrl(), getEndUrl(), response);
+                }
             }
+
+
 
         }
 

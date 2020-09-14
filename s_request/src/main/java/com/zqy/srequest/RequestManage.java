@@ -8,9 +8,10 @@ import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.cookie.CookieJarImpl;
 import com.lzy.okgo.cookie.store.SPCookieStore;
 import com.lzy.okgo.model.HttpHeaders;
-import com.zqy.srequest.request.ApiCallback;
+import com.zqy.srequest.request.ApiCallbackService;
 
 import java.lang.reflect.Field;
+import java.util.ServiceLoader;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -18,7 +19,7 @@ import okhttp3.OkHttpClient;
 public class RequestManage {
     private static Application application;
     private static boolean DEBUG;
-    private static ApiCallback apiCallback;
+    private static ApiCallbackService apiCallbackService;
 
     public static Application getApplication() {
         return application;
@@ -73,13 +74,24 @@ public class RequestManage {
     /**
      * 设置所有接口响应回调
      *
-     * @param apiCallback
+     * @param apiCallbackService
      */
-    public static void setApiCallback(ApiCallback apiCallback) {
-        RequestManage.apiCallback = apiCallback;
+    public static void setApiCallbackService(ApiCallbackService apiCallbackService) {
+        RequestManage.apiCallbackService = apiCallbackService;
     }
 
-    public static ApiCallback getApiCallback() {
-        return apiCallback;
+    private static ServiceLoader<ApiCallbackService> serviceLoader;
+
+    public static ServiceLoader<ApiCallbackService> getApiCallbackServiceLoader() {
+        if (serviceLoader == null) {
+            serviceLoader = ServiceLoader.load(ApiCallbackService.class);
+        }
+        return serviceLoader;
     }
+
+//
+//    public static ApiCallbackService getApiCallbackService() {
+//
+//        return apiCallbackService;
+//    }
 }

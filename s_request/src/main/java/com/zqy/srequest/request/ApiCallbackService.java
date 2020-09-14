@@ -9,7 +9,7 @@ import com.lzy.okgo.request.base.Request;
  * 时间: 2020/7/8 9:17
  * 描述:
  */
-public interface ApiCallback<T> {
+public interface ApiCallbackService<T> {
     /**
      * 请求网络开始前，UI线程
      */

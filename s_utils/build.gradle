@@ -8,6 +8,11 @@ android {
         versionCode 1
         versionName "1.0"
 
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                includeCompileClasspath = true
+//            }
+//        }
     }
 
 }
@@ -28,7 +33,6 @@ dependencies {
         exclude group: 'com.android.support'
     }
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
-
 
 
     //集成全量更新和热更新一体的平台  注意： 升级SDK已经集成crash上报功能，已经集成Bugly的用户需要注释掉原来Bugly的jcenter库

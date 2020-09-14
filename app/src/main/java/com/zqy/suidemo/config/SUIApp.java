@@ -9,7 +9,7 @@ import androidx.multidex.MultiDex;
 import com.google.gson.JsonSyntaxException;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
-import com.zqy.srequest.request.ApiCallback;
+import com.zqy.srequest.request.ApiCallbackService;
 import com.zqy.sui.SUIManage;
 import com.zqy.sutils.ToastUtil;
 
@@ -47,11 +47,11 @@ public class SUIApp extends Application {
     private void initModule() {
         SUIManage.init(this);
       //  SUIManage.initBugly("", "SUI");//不使用就不初始化，否则报错
-        SUIManage.setApiCallback(new ApiCallback() {
+        SUIManage.setApiCallback(new ApiCallbackService() {
 
             @Override
             public void onStart(String baseUrl, String endUrl, Request request) {
-                //这里可以添加公共请求参数、
+                //这里可以添加公共请求参数
             }
 
             @Override

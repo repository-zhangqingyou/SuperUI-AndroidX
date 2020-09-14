@@ -59,8 +59,10 @@ public abstract class BaseCallback extends AbsCallback<String> {
         }
 
 
-        if (RequestManage.getApiCallback() != null) {
-            RequestManage.getApiCallback().onStart(baseUrl, endUrl, request);
+        if (RequestManage.getApiCallbackServiceLoader() != null) {
+            for (ApiCallbackService service : RequestManage.getApiCallbackServiceLoader()) {
+                service.onStart(baseUrl, endUrl, request);
+            }
         }
 
 
@@ -70,16 +72,22 @@ public abstract class BaseCallback extends AbsCallback<String> {
     @Override
     public void onError(com.lzy.okgo.model.Response<String> response) {
         super.onError(response);
-        if (RequestManage.getApiCallback() != null) {
-            RequestManage.getApiCallback().onError(baseUrl, endUrl,  response);
+        if (RequestManage.getApiCallbackServiceLoader() != null) {
+            for (ApiCallbackService service : RequestManage.getApiCallbackServiceLoader()) {
+                service.onError(baseUrl, endUrl, response);
+            }
         }
+
 
     }
 
     @Override
     public void onSuccess(com.lzy.okgo.model.Response<String> response) {
-        if (RequestManage.getApiCallback() != null) {
-            RequestManage.getApiCallback().onSuccess(baseUrl, endUrl, response);
+
+        if (RequestManage.getApiCallbackServiceLoader() != null) {
+            for (ApiCallbackService service : RequestManage.getApiCallbackServiceLoader()) {
+                service.onSuccess(baseUrl, endUrl, response);
+            }
         }
 
 
@@ -91,8 +99,11 @@ public abstract class BaseCallback extends AbsCallback<String> {
         onFinish("请求完成");
         RequestResponseUtil.setIsRequest(baseUrl, true);//设置可请求
 
-        if (RequestManage.getApiCallback() != null) {
-            RequestManage.getApiCallback().onFinish("请求完成");
+
+        if (RequestManage.getApiCallbackServiceLoader() != null) {
+            for (ApiCallbackService service : RequestManage.getApiCallbackServiceLoader()) {
+                service.onFinish("请求完成");
+            }
         }
     }
 

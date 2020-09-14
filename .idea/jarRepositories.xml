@@ -46,5 +46,40 @@
       <option name="name" value="C:\Android\AndroidSDK\extras\m2repository" />
       <option name="url" value="file:/$PROJECT_DIR$/../../AndroidSDK/extras/m2repository" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="D:\Android\AndroidStudioSDK\extras\m2repository" />
+      <option name="name" value="D:\Android\AndroidStudioSDK\extras\m2repository" />
+      <option name="url" value="file:/$PROJECT_DIR$/../../AndroidStudioSDK/extras/m2repository/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="D:\Android\AndroidStudioSDK\extras\android\m2repository" />
+      <option name="name" value="D:\Android\AndroidStudioSDK\extras\android\m2repository" />
+      <option name="url" value="file:/$PROJECT_DIR$/../../AndroidStudioSDK/extras/android/m2repository/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="D:\Android\AndroidStudioSDK\extras\google\m2repository" />
+      <option name="name" value="D:\Android\AndroidStudioSDK\extras\google\m2repository" />
+      <option name="url" value="file:/$PROJECT_DIR$/../../AndroidStudioSDK/extras/google/m2repository/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven3" />
+      <option name="name" value="maven3" />
+      <option name="url" value="https://dl.bintray.com/zhangqingyou/Android" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="MavenLocal" />
+      <option name="name" value="MavenLocal" />
+      <option name="url" value="file:/$USER_HOME$/.m2/repository/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="file:/$PROJECT_DIR$/../../AndroidStudioSDK/platforms/android-29/android.jar" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="file:/$PROJECT_DIR$/../../AndroidStudioSDK/platforms/android-28/android.jar" />
+    </remote-repository>
   </component>
 </project>

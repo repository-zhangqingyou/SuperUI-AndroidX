@@ -9,11 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
-import com.google.gson.Gson;
-import com.lzy.okgo.model.Response;
-import com.zqy.srequest.module.CodeAndMsg;
-import com.zqy.srequest.request.JsonEntityCallback;
-import com.zqy.srequest.request.SRequest;
 import com.zqy.sui.other.drawable.SuperStateListDrawable;
 import com.zqy.sui.widget.superlayout.SuperTextView;
 import com.zqy.suidemo.R;
@@ -51,19 +46,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 break;
             case R.id.rbt_test:
-                SRequest.getInstance().test(new JsonEntityCallback<CodeAndMsg>(CodeAndMsg.class) {
-                    @Override
-                    public void onSuccess(CodeAndMsg codeAndMsg) {
-                        String toJson = new Gson().toJson(codeAndMsg);
-                        mAtvContent.setText(toJson);
-                    }
-
-                    @Override
-                    public void onError(Response<String> response) {
-                        super.onError(response);
-                        mAtvContent.setText(response.getException().toString());
-                    }
-                });
+//                SRequest.test(new JsonEntityCallback<CodeAndMsg>(CodeAndMsg.class) {
+//                    @Override
+//                    public void onSuccess(CodeAndMsg codeAndMsg) {
+//                        String toJson = new Gson().toJson(codeAndMsg);
+//                        mAtvContent.setText(toJson);
+//                    }
+//
+//                    @Override
+//                    public void onError(Response<String> response) {
+//                        super.onError(response);
+//                        mAtvContent.setText(response.getException().toString());
+//                    }
+//                });
 //                ServiceLoader<ApiCallbackService> apiCallbackServiceLoader = RequestManage.getApiCallbackServiceLoader();
 //                for (ApiCallbackService apiCallbackService : apiCallbackServiceLoader) {
 //                    apiCallbackService.onFinish("123456");

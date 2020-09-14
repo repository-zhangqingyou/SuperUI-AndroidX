@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.repository-zhangqingyou'
-//apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion build_versions.target_sdk
     defaultConfig {
@@ -51,18 +51,17 @@ dependencies {
 
 
 }
-//publish{
-//    repoName = 'SUI'//远程仓库名字,不指明，默认是上传到maven
-//    userOrg = 'zhangqingyou'//bintray.com的用户名
-//    groupId = 'com.bintray.zhangqingyou'//jcenter上的路径  可以随便写，注意规范
-//    artifactId = 's_utils'//项目名称
-//    publishVersion = '1.0.0'//版本号
-//    desc = '描述'//描述，不重要
-//    website = 'https://gitee.com/zqycl/SUI'//项目主页
-//}
-//tasks.withType(Javadoc) {//防止编码问题
-//    options.addStringOption('Xdoclint:none', '-quiet')
-//    options.addStringOption('encoding', 'UTF-8')
-//    options.addStringOption('charSet', 'UTF-8')
+publish {
+    bintrayUser = 'zhangqingyou'//用户账号
+    bintrayKey = '96d51763bea57597abf85991eff2432c18d5faad'//apikey
+    userOrg = 'zhangqingyou' // bintray 用户名
+    repoName = 'Android' // bintray 仓库名
+    groupId = 'com.bintray.zhangqingyou' // 依赖的路径
+    artifactId = 's_utils' // 依赖的名称
+    publishVersion = '0.0.1' // 依赖的版本号
+    desc = '描述' // 描述
+    website = 'https://gitee.com/zqycl/' // 项目网站，可填写 github 地址
+    dryRun = false // true-仅运行  false-运行+上传
+    licences = ['Apache-2.0']
+}
 
-//}

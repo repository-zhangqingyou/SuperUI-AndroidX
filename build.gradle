@@ -1,4 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply plugin: 'com.jfrog.bintray'
 buildscript {
     apply from: './versions.gradle'
     repositories {
@@ -16,29 +17,44 @@ buildscript {
         classpath "com.android.tools.build:gradle:$versions.android_gradle_plugin"
         //集成全量更新和热更新一体的平台
         classpath "com.tencent.bugly:tinker-support:1.1.5"
+
+
+        // 添加上传到jcenter所需的插件
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        //classpath 'com.novoda:bintray-release:0.9.2'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
+        classpath 'com.novoda:bintray-release:0.9.2' // 请使用最新版本
 
     }
+
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream()) // local.properties 有 sdk 的绝对位置
 allprojects {
     repositories {
+        maven {
+            url properties.getProperty("sdk.dir", null)+ "/platforms/android-28/android.jar"
+        }
+        mavenLocal()
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
         maven {
             url 'http://oss.jfrog.org/artifactory/oss-snapshot-local'
         }
+//        maven {
+//            url  "https://dl.bintray.com/zhangqingyou/Android"
+//        }
     }
-    //加上这些
-    tasks.withType(Javadoc) {
-        options{ encoding "UTF-8"
-            charSet 'UTF-8'
-            links "http://docs.oracle.com/javase/7/docs/api"
-        }
+    tasks.withType(Javadoc) {//防止编码问题
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+        options.addStringOption('charSet', 'UTF-8')
+
     }
+
 }
+
 
 task clean(type: Delete) {
     delete rootProject.buildDir

@@ -16,6 +16,8 @@ buildscript {
         classpath "com.android.tools.build:gradle:$versions.android_gradle_plugin"
         //集成全量更新和热更新一体的平台
         classpath "com.tencent.bugly:tinker-support:1.1.5"
+        //添加到远程依赖
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
 
     }
 }

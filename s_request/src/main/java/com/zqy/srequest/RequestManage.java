@@ -19,7 +19,6 @@ import okhttp3.OkHttpClient;
 public class RequestManage {
     private static Application application;
     private static boolean DEBUG;
-    private static ApiCallbackService apiCallbackService;
 
     public static Application getApplication() {
         return application;
@@ -71,15 +70,14 @@ public class RequestManage {
 
     }
 
+
+
+
     /**
      * 设置所有接口响应回调
      *
-     * @param apiCallbackService
+     * @param serviceLoader
      */
-    public static void setApiCallbackService(ApiCallbackService apiCallbackService) {
-        RequestManage.apiCallbackService = apiCallbackService;
-    }
-
     private static ServiceLoader<ApiCallbackService> serviceLoader;
 
     public static ServiceLoader<ApiCallbackService> getApiCallbackServiceLoader() {
@@ -89,9 +87,4 @@ public class RequestManage {
         return serviceLoader;
     }
 
-//
-//    public static ApiCallbackService getApiCallbackService() {
-//
-//        return apiCallbackService;
-//    }
 }

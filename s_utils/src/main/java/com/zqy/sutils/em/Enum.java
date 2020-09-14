@@ -1,4 +1,4 @@
-package com.zqy.sutils.enumclass;
+package com.zqy.sutils.em;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

@@ -21,7 +21,7 @@ android {
         }
 
         //添加如下配置就OK了
-        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+//        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
     }
 
     //***********************************多渠道构建***************************************

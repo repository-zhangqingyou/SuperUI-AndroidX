@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.repository-zhangqingyou'
+//group='com.github.repository-zhangqingyou'
 apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion build_versions.target_sdk
@@ -113,3 +113,5 @@ publish {
     dryRun = false // true-仅运行  false-运行+上传
     licences = ['Apache-2.0']
 }
+
+

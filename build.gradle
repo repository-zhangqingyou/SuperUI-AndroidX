@@ -14,13 +14,15 @@ buildscript {
         }
     }
     dependencies {
+        //此处配置版本请勿改动，升高版本，存在不兼容问题  3.1.x 3.2.X  3.3.x 3.4.x  升级均存在兼容问题
+        //对应的Gradle Version为: https\://services.gradle.org/distributions/gradle-4.10.1-all.zip
+        //此处俩项配置很重要，升级版本改动，项目都会可能出现兼容报错，无法上传到Jcenter问题
         classpath "com.android.tools.build:gradle:$versions.android_gradle_plugin"
         //集成全量更新和热更新一体的平台
         classpath "com.tencent.bugly:tinker-support:1.1.5"
 
-
         // 添加上传到jcenter所需的插件
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'//适配gradle 4.6
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
         classpath 'com.novoda:bintray-release:0.9.2' // 请使用最新版本
 
@@ -42,11 +44,10 @@ allprojects {
         maven {
             url 'http://oss.jfrog.org/artifactory/oss-snapshot-local'
         }
-//        maven {
-//            url  "https://dl.bintray.com/zhangqingyou/Android"
-//        }
+
     }
     tasks.withType(Javadoc) {//防止编码问题
+        enabled = false
         options.addStringOption('Xdoclint:none', '-quiet')
         options.addStringOption('encoding', 'UTF-8')
         options.addStringOption('charSet', 'UTF-8')

@@ -81,5 +81,10 @@
       <option name="name" value="maven" />
       <option name="url" value="file:/$PROJECT_DIR$/../../AndroidStudioSDK/platforms/android-28/android.jar" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="file:/$PROJECT_DIR$/../../AndroidSDK/platforms/android-28/android.jar" />
+    </remote-repository>
   </component>
 </project>

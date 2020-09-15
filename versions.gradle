@@ -1,9 +1,11 @@
-
 ext.deps = [:]
 def versions = [:]
-versions.android_gradle_plugin = "3.0.1"
-versions.android_maven_gradle_plugin = "2.0"
-versions.gradle_bintray_plugin = "1.8.0"
+versions.android_gradle_plugin = "3.0.1"//gradle插件
+versions.android_maven_gradle_plugin = "2.1"//maven插件
+versions.gradle_bintray_plugin = "1.8.5"//bintray官方构建上传插件
+versions.bintray_release = "0.9.2"//bintray三方构建上传插件
+versions.tinker_support = "1.1.5"//集成全量更新和热更新一体的平台
+versions.publish_version="0.0.3"//上传bintray远程依赖版本
 versions.arch_core = "2.0.0"
 versions.constraintlayout = "2.0.0-beta7"
 versions.lifecycle = "2.0.0"

@@ -4,7 +4,6 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion build_versions.target_sdk
-    buildToolsVersion "29.0.2"
     defaultConfig {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
@@ -107,8 +106,8 @@ publish {
     repoName = 'Android' // bintray 仓库名
     groupId = 'com.bintray.zhangqingyou' // 依赖的路径
     artifactId = 's_ui' // 依赖的名称
-    publishVersion = '0.0.1' // 依赖的版本号
-    desc = '描述' // 描述
+    publishVersion = "$versions.publish_version" // 依赖的版本号
+    desc = '常用UI' // 描述
     website = 'https://gitee.com/zqycl/' // 项目网站，可填写 github 地址
     dryRun = false // true-仅运行  false-运行+上传
     licences = ['Apache-2.0']

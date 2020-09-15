@@ -19,12 +19,11 @@ buildscript {
         //此处俩项配置很重要，升级版本改动，项目都会可能出现兼容报错，无法上传到Jcenter问题
         classpath "com.android.tools.build:gradle:$versions.android_gradle_plugin"
         //集成全量更新和热更新一体的平台
-        classpath "com.tencent.bugly:tinker-support:1.1.5"
-
+        classpath "com.tencent.bugly:tinker-support:$versions.tinker_support"
         // 添加上传到jcenter所需的插件
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'//适配gradle 4.6
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
-        classpath 'com.novoda:bintray-release:0.9.2' // 请使用最新版本
+        classpath "com.github.dcendents:android-maven-gradle-plugin:$versions.android_maven_gradle_plugin"//适配gradle 4.6
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:$versions.gradle_bintray_plugin"//bintray官方构建上传插件
+        classpath "com.novoda:bintray-release:$versions.bintray_release"// bintray三方构建上传插件
 
     }
 

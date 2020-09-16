@@ -25,7 +25,6 @@ buildscript {
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:$versions.gradle_bintray_plugin"//bintray官方构建上传插件
         classpath "com.novoda:bintray-release:$versions.bintray_release"// bintray三方构建上传插件
 
-        classpath 'com.kezong:fat-aar:1.2.16'
     }
 
 }

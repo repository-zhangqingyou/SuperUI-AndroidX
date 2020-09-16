@@ -97,6 +97,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-   // implementation project(path: ':sui_native')
-    implementation project(path: ':googlelib')
+    implementation project(path: ':sui_native')
+//    implementation project(path: ':googlelib')
 }

@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.novoda.bintray-release'
-apply plugin: 'com.kezong.fat-aar'
 
 def timeStr = new Date().format('yyyyMMdd(HHmmss)')
 
@@ -86,30 +85,9 @@ task assemble_SuiNativeJar(type: Jar/*, dependsOn: compileClass*/) {
 
 
 dependencies {
-//    api   fileTree(dir: "libs", include: ["*.jar"])
-//    api   fileTree(dir: "libs", include: ["*.aar"])
-    // embed project(path: ':lib-aar2', configuration:'default')
-    // debugEmbed (name:'appcompat-1.0.0',ext:'aar')
-    // embed files('libs/appcompat-1.0.0.aar')
-    //embedded(name: 'appcompat-1.0.0', ext: 'aar')
-    embed(name: 'activity-1.0.0', ext: 'aar')
-    embed(name: 'annotation-1.0.0', ext: 'jar')
-    embed(name: 'appcompat-1.0.0', ext: 'aar')
-    embed(name: 'cardview-1.0.0', ext: 'aar')
-    embed(name: 'constraintlayout-2.0.0-beta7', ext: 'aar')
-    embed(name: 'coordinatorlayout-1.0.0', ext: 'aar')
-    embed(name: 'core-1.0.0', ext: 'aar')
-    embed(name: 'drawerlayout-1.0.0', ext: 'aar')
-    embed(name: 'fragment-1.0.0', ext: 'aar')
-    embed(name: 'lifecycle-common-2.0.0', ext: 'jar')
-    embed(name: 'lifecycle-livedata-core-2.0.0', ext: 'aar')
-    embed(name: 'lifecycle-runtime-2.0.0', ext: 'aar')
-    embed(name: 'lifecycle-livedata-2.0.0', ext: 'aar')
-    embed(name: 'lifecycle-viewmodel-2.0.0', ext: 'aar')
-    embed(name: 'multidex-2.0.1', ext: 'aar')
-    embed(name: 'recyclerview-1.0.0', ext: 'aar')
-    embed(name: 'swiperefreshlayout-1.0.0', ext: 'aar')
-    embed(name: 'viewpager2-1.0.0', ext: 'aar')
+    api   fileTree(dir: "libs", include: ["*.jar"])
+    api   fileTree(dir: "libs", include: ["*.aar"])
+
 
 }
 

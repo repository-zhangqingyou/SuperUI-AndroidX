@@ -1,16 +1,11 @@
 apply plugin: 'com.android.library'
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
-
+    compileSdkVersion build_versions.target_sdk
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -23,5 +18,4 @@ android {
 }
 dependencies {
     api fileTree(dir: "libs", include: ["*.jar"])
-   // embed project(path: ':sui_native', configuration:'default')
 }

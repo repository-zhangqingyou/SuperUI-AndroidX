@@ -25,17 +25,15 @@ buildscript {
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:$versions.gradle_bintray_plugin"//bintray官方构建上传插件
         classpath "com.novoda:bintray-release:$versions.bintray_release"// bintray三方构建上传插件
 
+        classpath 'com.kezong:fat-aar:1.2.16'
     }
 
 }
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream()) // local.properties 有 sdk 的绝对位置
+
 allprojects {
     repositories {
-        maven {
-            url properties.getProperty("sdk.dir", null)+ "/platforms/android-28/android.jar"
-        }
+
         mavenLocal()
         google()
         jcenter()
@@ -43,6 +41,7 @@ allprojects {
         maven {
             url 'http://oss.jfrog.org/artifactory/oss-snapshot-local'
         }
+
 
     }
     tasks.withType(Javadoc) {//防止编码问题

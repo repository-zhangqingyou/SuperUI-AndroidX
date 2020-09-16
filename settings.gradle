@@ -1,3 +1,6 @@
+include ':googlelib'
+include ':app_native'
+include ':sui_native'
 include ':xui_lib_1.1.5'
 include ':s_ui'
 include ':s_request'

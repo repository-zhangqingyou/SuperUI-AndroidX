@@ -110,7 +110,7 @@ dependencies {
 //    implementation project(path: ':s_utils')
     implementation project(path: ':s_ui')
 
-    //compileOnly只在编译时有效，不会参与打包
+    //compileOnly只在编译时有效，不会参与打包 service自动注入包
     compileOnly  'com.google.auto.service:auto-service:1.0-rc7'
     annotationProcessor 'com.google.auto.service:auto-service:1.0-rc7'
 }

@@ -19,7 +19,7 @@ android {
 dependencies {
     api "androidx.appcompat:appcompat:$versions.androidx"//对应appcompat-v7
     api "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
-    api "com.google.android.material:material:$versions.androidx"//对应support:design
+//    api "com.google.android.material:material:$versions.androidx"//对应support:design
     api "androidx.recyclerview:recyclerview:$versions.androidx"
     //glide图片加载库
     api("com.github.bumptech.glide:glide:$versions.glide") {

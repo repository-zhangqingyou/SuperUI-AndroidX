@@ -1,4 +1,11 @@
 apply plugin: 'com.android.library'
+def timeStr = new Date().format('yyyyMMdd(HHmmss)')
+def noProGuardJarName
+def properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def sdkPath = properties.getProperty('sdk.dir', null)
+def androidSdkPath29 = sdkPath + "/platforms/android-29/android.jar"
+def rootDirPath = getRootDir().getPath()//获取项目根路劲
 android {
     compileSdkVersion build_versions.target_sdk
     defaultConfig {
@@ -14,8 +21,138 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        abortOnError false
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+}
+
+/**
+ * 清除临时目录
+ */
+task clearSource(type: Delete) {
+    doFirst {
+        println '清除源码临时目录'
+    }
+    delete 'build/tempsrc'
+    delete 'build/gen_classs'
+    delete 'build/dependency-cache'
+    delete 'build/libs'
+}
+
+
+/**
+ * 复制sboran_common源码到临时目录
+ */
+task copyCoreSource(type: Copy) {
+    doFirst {
+        println '复制core源码'
+    }
+    from '../googlelib/src/main/java/com/zqy/googlelib/'
+    into 'build/tempsrc/com/zqy/googlelib/'
+}
+
+
+
+/**
+ * 预处理（替换R.xx.*之类）
+ */
+task pretreatment(dependsOn: [clearSource, copyCoreSource]) {
+    doLast {
+        println '预备处理'
+
+        // 递归遍历目录下的所有java文件，然后针对资源id做打java包前的预处理
+        def currentDir = file('build/tempsrc')
+        assert currentDir.exists()
+        currentDir.eachFileRecurse { file ->
+            if (!file.isFile() || !file.name.toLowerCase().endsWith('.java')) return true // 相当于continue
+            def fileText = file.getText('utf-8')
+            // 替换R.id.*
+            fileText = fileText.replaceAll(/(R.id.)\w+/, /com.zqy.googlelib.UtilResources.getId("$0")/)
+            // 替换R.layout.*
+            fileText = fileText.replaceAll(/(R.layout.)\w+/, /com.zqy.googlelib.UtilResources.getLayoutId("$0")/)
+
+           // fileText = fileText.replaceAll(/(R.styleable.)\w+/, /com.zqy.googlelib.UtilResources.getStyleableId("$0")/)
+
+
+            // 替换R.style.*
+           // fileText = fileText.replaceAll(/(R.style.)\w+/, /com.zqy.googlelib.UtilResources.getStyleId("$0")/)
+
+            // 替换R.drawable.*
+            fileText = fileText.replaceAll(/(R.drawable.)\w+/, /com.zqy.googlelib.UtilResources.getDrawableId("$0")/)
+            // 替换R.string.*
+            fileText = fileText.replaceAll(/(R.string.)\w+/, /com.zqy.googlelib.UtilResources.getStringId("$0")/)
+
+            fileText = fileText.replaceAll(/(R.adim.)\w+/, /com.zqy.googlelib.UtilResources.getAnimId("$0")/)
+            // 去除多余的R.?.
+            fileText = fileText.replaceAll(/\"R(\.\w+){1}\./, '"')
+            // 删除R文件的导入
+          //  fileText = fileText.replaceAll('import com.sboran.game.sdk.R;', '')
+            file.write(fileText, 'utf-8')
+        }
+    }
+}
+
+/**
+ * 编译class
+ */
+task compileClass(type: JavaCompile, dependsOn: pretreatment) {
+    doFirst {
+        println '编译class'
+    }
+    options.encoding = 'UTF-8'
+    source = fileTree(dir: 'build/tempsrc/com', include: '**/*.java')
+    destinationDir = file('build/gen_classs')
+    sourceCompatibility = '1.7'
+    targetCompatibility = '1.7'
+    def dependenciesJars = []
+
+//    dependenciesJars.add('../compile_libs/android-support-v4-25.3.1.jar')
+//
+//    file('../sboran_common/libs').eachFileRecurse { f ->
+//        dependenciesJars.add(f.getAbsolutePath())
+//    }
+//
+//
+//    file('libs').eachFileRecurse { f ->
+//        dependenciesJars.add(f.getAbsolutePath())
+//    }
+    dependenciesJars.add(androidSdkPath29)
+//    dependenciesJars.add(androidSdkPath21)
+    classpath = files(dependenciesJars)
+}
+
+/**
+ * 编译游戏SDK核心jar包（可选中任务名称后右键，Run 'gradle:build6lGameSDKJar'）
+ */
+task assemble_GameSDKJar(type: Jar, dependsOn: compileClass) {
+
+    from 'build/gen_classs/com'
+    into 'com'
+    // 去掉不需要打包的目录和文件
+    exclude 'BuildConfig.class', 'R.class'
+    // 去掉R$开头的文件
+    exclude { it.name.startsWith('R$') }
+
+    noProGuardJarName = "lib_google_androidx_${timeStr}"
+    // noProGuardJarName = "hjy_sdk_${version}"
+    baseName noProGuardJarName
 
 }
 dependencies {
     api fileTree(dir: "libs", include: ["*.jar"])
+    implementation "androidx.appcompat:appcompat:1.1.0"
+    implementation "androidx.activity:activity:1.1.0"
+    implementation "androidx.loader:loader:1.1.0"
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 }

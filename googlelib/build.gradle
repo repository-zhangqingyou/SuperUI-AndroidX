@@ -58,8 +58,8 @@ task copyCoreSource(type: Copy) {
     doFirst {
         println '复制core源码'
     }
-    from '../googlelib/src/main/java/com/zqy/googlelib/'
-    into 'build/tempsrc/com/zqy/googlelib/'
+    from '../googlelib/src/main/java/androidx/'
+    into 'build/tempsrc/androidx/'
 }
 
 
@@ -84,7 +84,6 @@ task pretreatment(dependsOn: [clearSource, copyCoreSource]) {
 
            // fileText = fileText.replaceAll(/(R.styleable.)\w+/, /com.zqy.googlelib.UtilResources.getStyleableId("$0")/)
 
-
             // 替换R.style.*
            // fileText = fileText.replaceAll(/(R.style.)\w+/, /com.zqy.googlelib.UtilResources.getStyleId("$0")/)
 
@@ -106,12 +105,12 @@ task pretreatment(dependsOn: [clearSource, copyCoreSource]) {
 /**
  * 编译class
  */
-task compileClass(type: JavaCompile, dependsOn: pretreatment) {
+task compileClass(type: JavaCompile/*, dependsOn: pretreatment*/) {
     doFirst {
         println '编译class'
     }
     options.encoding = 'UTF-8'
-    source = fileTree(dir: 'build/tempsrc/com', include: '**/*.java')
+    source = fileTree(dir: '../googlelib/build/generated/not_namespaced_r_class_sources/release/generateReleaseRFile/out/', include: '**/*.java')
     destinationDir = file('build/gen_classs')
     sourceCompatibility = '1.7'
     targetCompatibility = '1.7'
@@ -135,24 +134,24 @@ task compileClass(type: JavaCompile, dependsOn: pretreatment) {
 /**
  * 编译游戏SDK核心jar包（可选中任务名称后右键，Run 'gradle:build6lGameSDKJar'）
  */
-task assemble_GameSDKJar(type: Jar, dependsOn: compileClass) {
+task assemble_RJar(type: Jar, dependsOn: compileClass) {
 
-    from 'build/gen_classs/com'
-    into 'com'
+    from 'build/gen_classs/'
+    into ''
     // 去掉不需要打包的目录和文件
-    exclude 'BuildConfig.class', 'R.class'
+   // exclude 'BuildConfig.class', 'R.class'
     // 去掉R$开头的文件
-    exclude { it.name.startsWith('R$') }
+   // exclude { it.name.startsWith('R$') }
 
-    noProGuardJarName = "lib_google_androidx_${timeStr}"
+    noProGuardJarName = "r_${timeStr}"
     // noProGuardJarName = "hjy_sdk_${version}"
     baseName noProGuardJarName
 
 }
 dependencies {
     api fileTree(dir: "libs", include: ["*.jar"])
-    implementation "androidx.appcompat:appcompat:1.1.0"
-    implementation "androidx.activity:activity:1.1.0"
-    implementation "androidx.loader:loader:1.1.0"
-    implementation "androidx.viewpager2:viewpager2:1.0.0"
+//    implementation "androidx.appcompat:appcompat:1.1.0"
+//    implementation "androidx.activity:activity:1.1.0"
+//    implementation "androidx.loader:loader:1.1.0"
+//    implementation "androidx.viewpager2:viewpager2:1.0.0"
 }

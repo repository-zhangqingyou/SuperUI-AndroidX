@@ -13,7 +13,7 @@ public class AndroidX {
     public static void init(Application application,String packageName) {
         AndroidX.packageName = packageName;
         AndroidX.application = application;
-        UtilResources.init(application);
+        ResourcesUtil.init(application);
     }
 
     public static String getPackageName() {

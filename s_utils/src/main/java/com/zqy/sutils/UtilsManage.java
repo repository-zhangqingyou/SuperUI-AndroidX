@@ -3,6 +3,9 @@ package com.zqy.sutils;
 import android.app.Application;
 
 import com.blankj.utilcode.util.Utils;
+import com.orhanobut.logger.Logger;
+
+
 /**
  * 缓存工具类
  * Author: zhangqingyou
@@ -15,6 +18,7 @@ public class UtilsManage {
     public static void init(Application application) {
         Utils.init(application);//初始化android工具类
         UtilsManage.application = application;
+        Logger.init("日志");
     }
 
     public static Application getApplication() {

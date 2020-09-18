@@ -49,20 +49,22 @@ task clearSource(type: Delete) {
 
 }
 
+/**
+ * 复制源码到临时目录
+ */
+task copyClass(type: Copy) {
 
-task copyR(type: Copy) {
-
-    from "../googlelib/src/main/java/androidx"
-    into 'build/tempsrc/androidx'
+    from "../googlelib/src/main/java/"
+    into 'build/tempsrc/'
 }
 /**
  * 预处理（替换R.xx.*之类）
  */
-task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
+task assemble_ReplaceR(dependsOn: [clearSource, copyClass]) {
     doLast {
         println '预备处理'
         // 递归遍历目录下的所有java文件，然后针对资源id做打java包前的预处理
-        def currentDir = file('build/tempsrc/androidx')
+        def currentDir = file('build/tempsrc')
         currentDir.eachFileRecurse { file ->
             if (!file.isFile() || !file.name.endsWith('.java')) return true // 相当于continue
             def fileText = file.getText('utf-8')
@@ -71,7 +73,8 @@ task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
                 String content = line
                 list.add(content)
             }
-
+            String classPrefix = "com.zqy.googlelib.ResourcesUtil."//class类路徑
+            String classPrefixT = "com.zqy.googlelib.StyleaUtils."//class类路徑
             String styleable = "R.styleable."
             String style = "R.style."
             String id = "R.id."
@@ -86,6 +89,10 @@ task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
             String bool = "R.bool."
             String integer = "R.integer."
             String interpolator = "R.interpolator."
+            String raw = "R.raw."
+            String xml = "R.xml."
+            String plurals = "R.plurals."
+            String animator = "R.animator."
             for (int i = 0; i < list.size(); i++) {
                 String str = list.get(i)
                 if (str.contains(styleable)) {
@@ -94,9 +101,9 @@ task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
                     char charAt = str.charAt(startIndexOf - 1)
                     String newString
                     if (charAt == '(') {
-                        newString = resourcesID(str, styleable, ")", "com.zqy.googlelib.StyleaUtils.getStyleableId")
+                        newString = replaceResourcesStyleableID(str, styleable, ")", classPrefixT)
                     } else {
-                        newString = resourcesID(str, styleable, ";", "com.zqy.googlelib.StyleaUtils.getStyleableId")
+                        newString = replaceResourcesStyleableID(str, styleable, ";", classPrefixT)
                     }
                     if (newString != null && newString != "")
                         list.set(i, newString)
@@ -108,9 +115,9 @@ task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
                     char charAt = str.charAt(startIndexOf - 1)
                     String newString
                     if (charAt == '(') {
-                        newString = resourcesID(str, style, ")", "com.zqy.googlelib.UtilResources.getStyleId")
+                        newString = replaceResourcesID(str, style, ")", classPrefix + "getStyleId")
                     } else {
-                        newString = resourcesID(str, style, ";", "com.zqy.googlelib.UtilResources.getStyleId")
+                        newString = replaceResourcesID(str, style, ";", classPrefix + "getStyleId")
                     }
                     if (newString != null && newString != "")
                         list.set(i, newString)
@@ -120,9 +127,9 @@ task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
                     char charAt = str.charAt(startIndexOf - 1)
                     String newString
                     if (charAt == '(') {
-                        newString = resourcesID(str, id, ")", "com.zqy.googlelib.UtilResources.getId")
+                        newString = replaceResourcesID(str, id, ")", classPrefix + "getId")
                     } else {
-                        newString = resourcesID(str, id, ";", "com.zqy.googlelib.UtilResources.getId")
+                        newString = replaceResourcesID(str, id, ";", classPrefix + "getId")
                     }
                     if (newString != null && newString != "")
                         list.set(i, newString)
@@ -132,9 +139,9 @@ task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
                     char charAt = str.charAt(startIndexOf - 1)
                     String newString
                     if (charAt == '(') {
-                        newString = resourcesID(str, layout, ")", "com.zqy.googlelib.UtilResources.getLayoutId")
+                        newString = replaceResourcesID(str, layout, ")", classPrefix + "getLayoutId")
                     } else {
-                        newString = resourcesID(str, layout, ";", "com.zqy.googlelib.UtilResources.getLayoutId")
+                        newString = replaceResourcesID(str, layout, ";", classPrefix + "getLayoutId")
                     }
                     if (newString != null && newString != "")
                         list.set(i, newString)
@@ -144,9 +151,9 @@ task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
                     char charAt = str.charAt(startIndexOf - 1)
                     String newString
                     if (charAt == '(') {
-                        newString = resourcesID(str, mipmap, ")", "com.zqy.googlelib.UtilResources.getMipmap")
+                        newString = replaceResourcesID(str, mipmap, ")", classPrefix + "getMipmap")
                     } else {
-                        newString = resourcesID(str, mipmap, ";", "com.zqy.googlelib.UtilResources.getMipmap")
+                        newString = replaceResourcesID(str, mipmap, ";", classPrefix + "getMipmap")
                     }
                     if (newString != null && newString != "")
                         list.set(i, newString)
@@ -156,9 +163,9 @@ task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
                     char charAt = str.charAt(startIndexOf - 1)
                     String newString
                     if (charAt == '(') {
-                        newString = resourcesID(str, drawable, ")", "com.zqy.googlelib.UtilResources.getDrawableId")
+                        newString = replaceResourcesID(str, drawable, ")", classPrefix + "getDrawableId")
                     } else {
-                        newString = resourcesID(str, drawable, ";", "com.zqy.googlelib.UtilResources.getDrawableId")
+                        newString = replaceResourcesID(str, drawable, ";", classPrefix + "getDrawableId")
                     }
                     if (newString != null && newString != "")
                         list.set(i, newString)
@@ -168,9 +175,9 @@ task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
                     char charAt = str.charAt(startIndexOf - 1)
                     String newString
                     if (charAt == '(') {
-                        newString = resourcesID(str, string, ")", "com.zqy.googlelib.UtilResources.getStringId")
+                        newString = replaceResourcesID(str, string, ")", classPrefix + "getStringId")
                     } else {
-                        newString = resourcesID(str, string, ";", "com.zqy.googlelib.UtilResources.getStringId")
+                        newString = replaceResourcesID(str, string, ";", classPrefix + "getStringId")
                     }
                     if (newString != null && newString != "")
                         list.set(i, newString)
@@ -180,9 +187,9 @@ task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
                     char charAt = str.charAt(startIndexOf - 1)
                     String newString
                     if (charAt == '(') {
-                        newString = resourcesID(str, color, ")", "com.zqy.googlelib.UtilResources.getColorId")
+                        newString = replaceResourcesID(str, color, ")", classPrefix + "getColorId")
                     } else {
-                        newString = resourcesID(str, color, ";", "com.zqy.googlelib.UtilResources.getColorId")
+                        newString = replaceResourcesID(str, color, ";", classPrefix + "getColorId")
                     }
                     if (newString != null && newString != "")
                         list.set(i, newString)
@@ -193,9 +200,9 @@ task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
                     println i + '行文本修改前内容：' + str
                     String newString
                     if (charAt == '(') {
-                        newString = resourcesID(str, anim, ")", "com.zqy.googlelib.UtilResources.getAnimId")
+                        newString = replaceResourcesID(str, anim, ")", classPrefix + "getAnimId")
                     } else {
-                        newString = resourcesID(str, anim, ";", "com.zqy.googlelib.UtilResources.getAnimId")
+                        newString = replaceResourcesID(str, anim, ";", classPrefix + "getAnimId")
                     }
                     println i + '行文本修改后内容：' + newString
                     if (newString != null && newString != "")
@@ -206,9 +213,9 @@ task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
                     char charAt = str.charAt(startIndexOf - 1)
                     String newString
                     if (charAt == '(') {
-                        newString = resourcesID(str, dimen, ")", "com.zqy.googlelib.UtilResources.getDimen")
+                        newString = replaceResourcesID(str, dimen, ")", classPrefix + "getDimen")
                     } else {
-                        newString = resourcesID(str, dimen, ";", "com.zqy.googlelib.UtilResources.getDimen")
+                        newString = replaceResourcesID(str, dimen, ";", classPrefix + "getDimen")
                     }
                     if (newString != null && newString != "")
                         list.set(i, newString)
@@ -218,9 +225,9 @@ task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
                     char charAt = str.charAt(startIndexOf - 1)
                     String newString
                     if (charAt == '(') {
-                        newString = resourcesID(str, attr, ")", "com.zqy.googlelib.UtilResources.getAttr")
+                        newString = replaceResourcesID(str, attr, ")", classPrefix + "getAttr")
                     } else {
-                        newString = resourcesID(str, attr, ";", "com.zqy.googlelib.UtilResources.getAttr")
+                        newString = replaceResourcesID(str, attr, ";", classPrefix + "getAttr")
                     }
                     if (newString != null && newString != "")
                         list.set(i, newString)
@@ -230,9 +237,9 @@ task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
                     char charAt = str.charAt(startIndexOf - 1)
                     String newString
                     if (charAt == '(') {
-                        newString = resourcesID(str, bool, ")", "com.zqy.googlelib.UtilResources.getBool")
+                        newString = replaceResourcesID(str, bool, ")", classPrefix + "getBool")
                     } else {
-                        newString = resourcesID(str, bool, ";", "com.zqy.googlelib.UtilResources.getBool")
+                        newString = replaceResourcesID(str, bool, ";", classPrefix + "getBool")
                     }
                     if (newString != null && newString != "")
                         list.set(i, newString)
@@ -242,9 +249,9 @@ task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
                     char charAt = str.charAt(startIndexOf - 1)
                     String newString
                     if (charAt == '(') {
-                        newString = resourcesID(str, integer, ")", "com.zqy.googlelib.UtilResources.getInteger")
+                        newString = replaceResourcesID(str, integer, ")", classPrefix + "getInteger")
                     } else {
-                        newString = resourcesID(str, integer, ";", "com.zqy.googlelib.UtilResources.getInteger")
+                        newString = replaceResourcesID(str, integer, ";", classPrefix + "getInteger")
                     }
                     if (newString != null && newString != "")
                         list.set(i, newString)
@@ -254,16 +261,63 @@ task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
                     char charAt = str.charAt(startIndexOf - 1)
                     String newString
                     if (charAt == '(') {
-                        newString = resourcesID(str, interpolator, ")", "com.zqy.googlelib.UtilResources.getInterpolator")
+                        newString = replaceResourcesID(str, interpolator, ")", classPrefix + "getInterpolator")
                     } else {
-                        newString = resourcesID(str, interpolator, ";", "com.zqy.googlelib.UtilResources.getInterpolator")
+                        newString = replaceResourcesID(str, interpolator, ";", classPrefix + "getInterpolator")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(raw)) {
+                    int startIndexOf = str.indexOf(raw)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, raw, ")", classPrefix + "getRaw")
+                    } else {
+                        newString = replaceResourcesID(str, raw, ";", classPrefix + "getRaw")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(xml)) {
+                    int startIndexOf = str.indexOf(xml)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, xml, ")", classPrefix + "getXml")
+                    } else {
+                        newString = replaceResourcesID(str, xml, ";", classPrefix + "getXml")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(plurals)) {
+                    int startIndexOf = str.indexOf(plurals)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, plurals, ")", classPrefix + "getPlurals")
+                    } else {
+                        newString = replaceResourcesID(str, plurals, ";", classPrefix + "getPlurals")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(animator)) {
+                    int startIndexOf = str.indexOf(animator)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, animator, ")", classPrefix + "getAnimator")
+                    } else {
+                        newString = replaceResourcesID(str, animator, ";", classPrefix + "getAnimator")
                     }
                     if (newString != null && newString != "")
                         list.set(i, newString)
                     i--
                 }
             }
-
             String join = String.join("\n", list)
             file.write(join, 'utf-8')
         }
@@ -272,19 +326,9 @@ task assemble_ReplaceR(dependsOn: [clearSource, copyR]) {
 
 
 /**
- * 复制源码到临时目录
- */
-task copyCoreSource(type: Copy) {
-    doFirst {
-        println '复制core源码'
-    }
-    from '../googlelib/src/main/java/com/'
-    into 'build/tempsrc/com/'
-}
-/**
  * 编译class
  */
-task compileClass(type: JavaCompile, dependsOn: [assemble_ReplaceR, copyCoreSource]) {
+task compileClass(type: JavaCompile, dependsOn: [assemble_ReplaceR]) {
     doFirst {
         println '编译class'
     }
@@ -305,38 +349,64 @@ task compileClass(type: JavaCompile, dependsOn: [assemble_ReplaceR, copyCoreSour
     classpath = files(dependenciesJars)
 }
 /**
- * 编译游戏SDK核心jar包（可选中任务名称后右键，Run 'gradle:build6lGameSDKJar'）
+ * 将class文件打包成jar
  */
 task assemble_RJar(type: Jar, dependsOn: compileClass) {
 
     from 'build/gen_classs/'
     into ''
     // 去掉不需要打包的目录和文件
-    // exclude 'BuildConfig.class', 'R.class'
+    exclude 'BuildConfig.class'/*, 'R.class'*/
     // 去掉R$开头的文件
     // exclude { it.name.startsWith('R$') }
 
-    noProGuardJarName = "r_${timeStr}"
+    noProGuardJarName = "r_class_${timeStr}"
     // noProGuardJarName = "hjy_sdk_${version}"
     baseName noProGuardJarName
 
 }
-
-/**
+/**styleable资源id特殊处理
  *
  * @param startString 被替换的字符开始符号 比如：R.layout.
  * @param endString 被替换的字符结尾符号
  * @param newStringPrefix 新内容 前缀
  * @return
  */
-String resourcesID(src, startString, endString, newStringPrefix) {//无需指定参数类型
+String replaceResourcesStyleableID(src, startString, endString, newStringPrefix) {//无需指定参数类型
+    if (startString.contains("styleable")) {
+        int startIndexOf = src.indexOf(startString)
+        int endIndexOf = src.indexOf(endString)
+        //资源路劲全称，比如：R.styleable.aa
+        String resourcesID = src.substring(startIndexOf, endIndexOf)
+        //资源名，比如：aa
+        String resourcesName = resourcesID.substring(startString.length(), resourcesID.length())
+        String newString = ""
+        if (!resourcesName.contains("_")) {
+            //资源名不含有“_”是资源集 -- int[]
+            newString = newStringPrefix + "getStyleableArryId(\"" + resourcesName + "\")"
+        } else {
+            newString = newStringPrefix + "getStyleableId(\"" + resourcesName + "\")"
+        }
+        return src.replace(resourcesID, newString)
+    }
+    return ""
+}
+
+/**一般资源id处理
+ *
+ * @param startString 被替换的字符开始符号 比如：R.layout.
+ * @param endString 被替换的字符结尾符号
+ * @param newStringPrefix 新内容 前缀
+ * @return
+ */
+String replaceResourcesID(src, startString, endString, newStringPrefix) {//无需指定参数类型
     int startIndexOf = src.indexOf(startString)
     int endIndexOf = src.indexOf(endString)
     //资源路劲全称，比如：R.styleable.aa
     String resourcesID = src.substring(startIndexOf, endIndexOf)
     //资源名，比如：aa
     String resourcesName = resourcesID.substring(startString.length(), resourcesID.length())
-    if (startString.contains("style")) {
+    if (startString.contains("style") && !startString.contains("styleable")) {
         //style资源特殊处理：比如Base_DialogWindowTitle_AppCompat换成Base.DialogWindowTitle.AppCompat
         //通过name查找资源id，需要原名字
         resourcesName = resourcesName.replaceAll("_", ".")

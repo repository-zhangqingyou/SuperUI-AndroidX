@@ -1,240 +1,473 @@
-package androidx.legacy.v4;/*   1:    */
-/*   2:    */ 
-/*   3:    */ R
-/*   4:    */ 
-/*   5:    */   attr
-/*   6:    */   
-/*   7:  5 */     alpha = alpha
-/*   8:  6 */     coordinatorLayoutStyle = coordinatorLayoutStyle
-/*   9:  7 */     font = font
-/*  10:  8 */     fontProviderAuthority = fontProviderAuthority
-/*  11:  9 */     fontProviderCerts = fontProviderCerts
-/*  12: 10 */     fontProviderFetchStrategy = fontProviderFetchStrategy
-/*  13: 11 */     fontProviderFetchTimeout = fontProviderFetchTimeout
-/*  14: 12 */     fontProviderPackage = fontProviderPackage
-/*  15: 13 */     fontProviderQuery = fontProviderQuery
-/*  16: 14 */     fontStyle = fontStyle
-/*  17: 15 */     fontVariationSettings = fontVariationSettings
-/*  18: 16 */     fontWeight = fontWeight
-/*  19: 17 */     keylines = keylines
-/*  20: 18 */     layout_anchor = layout_anchor
-/*  21: 19 */     layout_anchorGravity = layout_anchorGravity
-/*  22: 20 */     layout_behavior = layout_behavior
-/*  23: 21 */     layout_dodgeInsetEdges = layout_dodgeInsetEdges
-/*  24: 22 */     layout_insetEdge = layout_insetEdge
-/*  25: 23 */     layout_keyline = layout_keyline
-/*  26: 24 */     statusBarBackground = statusBarBackground
-/*  27: 25 */     ttcIndex = ttcIndex
-/*  28:    */   
-/*  29:    */   
-/*  30:    */   color
-/*  31:    */   
-/*  32: 28 */     notification_action_color_filter = notification_action_color_filter
-/*  33: 29 */     notification_icon_bg_color = notification_icon_bg_color
-/*  34: 30 */     notification_material_background_media_default_color = notification_material_background_media_default_color
-/*  35: 31 */     primary_text_default_material_dark = primary_text_default_material_dark
-/*  36: 32 */     ripple_material_light = ripple_material_light
-/*  37: 33 */     secondary_text_default_material_dark = secondary_text_default_material_dark
-/*  38: 34 */     secondary_text_default_material_light = secondary_text_default_material_light
-/*  39:    */   
-/*  40:    */   
-/*  41:    */   dimen
-/*  42:    */   
-/*  43: 37 */     compat_button_inset_horizontal_material = compat_button_inset_horizontal_material
-/*  44: 38 */     compat_button_inset_vertical_material = compat_button_inset_vertical_material
-/*  45: 39 */     compat_button_padding_horizontal_material = compat_button_padding_horizontal_material
-/*  46: 40 */     compat_button_padding_vertical_material = compat_button_padding_vertical_material
-/*  47: 41 */     compat_control_corner_material = compat_control_corner_material
-/*  48: 42 */     compat_notification_large_icon_max_height = compat_notification_large_icon_max_height
-/*  49: 43 */     compat_notification_large_icon_max_width = compat_notification_large_icon_max_width
-/*  50: 44 */     notification_action_icon_size = notification_action_icon_size
-/*  51: 45 */     notification_action_text_size = notification_action_text_size
-/*  52: 46 */     notification_big_circle_margin = notification_big_circle_margin
-/*  53: 47 */     notification_content_margin_start = notification_content_margin_start
-/*  54: 48 */     notification_large_icon_height = notification_large_icon_height
-/*  55: 49 */     notification_large_icon_width = notification_large_icon_width
-/*  56: 50 */     notification_main_column_padding_top = notification_main_column_padding_top
-/*  57: 51 */     notification_media_narrow_margin = notification_media_narrow_margin
-/*  58: 52 */     notification_right_icon_size = notification_right_icon_size
-/*  59: 53 */     notification_right_side_padding_top = notification_right_side_padding_top
-/*  60: 54 */     notification_small_icon_background_padding = notification_small_icon_background_padding
-/*  61: 55 */     notification_small_icon_size_as_large = notification_small_icon_size_as_large
-/*  62: 56 */     notification_subtext_size = notification_subtext_size
-/*  63: 57 */     notification_top_pad = notification_top_pad
-/*  64: 58 */     notification_top_pad_large_text = notification_top_pad_large_text
-/*  65: 59 */     subtitle_corner_radius = subtitle_corner_radius
-/*  66: 60 */     subtitle_outline_width = subtitle_outline_width
-/*  67: 61 */     subtitle_shadow_offset = subtitle_shadow_offset
-/*  68: 62 */     subtitle_shadow_radius = subtitle_shadow_radius
-/*  69:    */   
-/*  70:    */   
-/*  71:    */   drawable
-/*  72:    */   
-/*  73: 65 */     notification_action_background = notification_action_background
-/*  74: 66 */     notification_bg = notification_bg
-/*  75: 67 */     notification_bg_low = notification_bg_low
-/*  76: 68 */     notification_bg_low_normal = notification_bg_low_normal
-/*  77: 69 */     notification_bg_low_pressed = notification_bg_low_pressed
-/*  78: 70 */     notification_bg_normal = notification_bg_normal
-/*  79: 71 */     notification_bg_normal_pressed = notification_bg_normal_pressed
-/*  80: 72 */     notification_icon_background = notification_icon_background
-/*  81: 73 */     notification_template_icon_bg = notification_template_icon_bg
-/*  82: 74 */     notification_template_icon_low_bg = notification_template_icon_low_bg
-/*  83: 75 */     notification_tile_bg = notification_tile_bg
-/*  84: 76 */     notify_panel_notification_icon_bg = notify_panel_notification_icon_bg
-/*  85:    */   
-/*  86:    */   
-/*  87:    */   id
-/*  88:    */   
-/*  89: 79 */     action0 = action0
-/*  90: 80 */     action_container = action_container
-/*  91: 81 */     action_divider = action_divider
-/*  92: 82 */     action_image = action_image
-/*  93: 83 */     action_text = action_text
-/*  94: 84 */     actions = actions
-/*  95: 85 */     async = async
-/*  96: 86 */     blocking = blocking
-/*  97: 87 */     bottom = bottom
-/*  98: 88 */     cancel_action = cancel_action
-/*  99: 89 */     chronometer = chronometer
-/* 100: 90 */     end = end
-/* 101: 91 */     end_padder = end_padder
-/* 102: 92 */     forever = forever
-/* 103: 93 */     icon = icon
-/* 104: 94 */     icon_group = icon_group
-/* 105: 95 */     info = info
-/* 106: 96 */     italic = italic
-/* 107: 97 */     left = left
-/* 108: 98 */     line1 = line1
-/* 109: 99 */     line3 = line3
-/* 110:100 */     media_actions = media_actions
-/* 111:101 */     none = none
-/* 112:102 */     normal = normal
-/* 113:103 */     notification_background = notification_background
-/* 114:104 */     notification_main_column = notification_main_column
-/* 115:105 */     notification_main_column_container = notification_main_column_container
-/* 116:106 */     right = right
-/* 117:107 */     right_icon = right_icon
-/* 118:108 */     right_side = right_side
-/* 119:109 */     start = start
-/* 120:110 */     status_bar_latest_event_content = status_bar_latest_event_content
-/* 121:111 */     tag_transition_group = tag_transition_group
-/* 122:112 */     tag_unhandled_key_event_manager = tag_unhandled_key_event_manager
-/* 123:113 */     tag_unhandled_key_listeners = tag_unhandled_key_listeners
-/* 124:114 */     text = text
-/* 125:115 */     text2 = text2
-/* 126:116 */     time = time
-/* 127:117 */     title = title
-/* 128:118 */     top = top
-/* 129:    */   
-/* 130:    */   
-/* 131:    */   integer
-/* 132:    */   
-/* 133:121 */     cancel_button_image_alpha = cancel_button_image_alpha
-/* 134:122 */     status_bar_notification_info_maxnum = status_bar_notification_info_maxnum
-/* 135:    */   
-/* 136:    */   
-/* 137:    */   layout
-/* 138:    */   
-/* 139:125 */     notification_action = notification_action
-/* 140:126 */     notification_action_tombstone = notification_action_tombstone
-/* 141:127 */     notification_media_action = notification_media_action
-/* 142:128 */     notification_media_cancel_action = notification_media_cancel_action
-/* 143:129 */     notification_template_big_media = notification_template_big_media
-/* 144:130 */     notification_template_big_media_custom = notification_template_big_media_custom
-/* 145:131 */     notification_template_big_media_narrow = notification_template_big_media_narrow
-/* 146:132 */     notification_template_big_media_narrow_custom = notification_template_big_media_narrow_custom
-/* 147:133 */     notification_template_custom_big = notification_template_custom_big
-/* 148:134 */     notification_template_icon_group = notification_template_icon_group
-/* 149:135 */     notification_template_lines_media = notification_template_lines_media
-/* 150:136 */     notification_template_media = notification_template_media
-/* 151:137 */     notification_template_media_custom = notification_template_media_custom
-/* 152:138 */     notification_template_part_chronometer = notification_template_part_chronometer
-/* 153:139 */     notification_template_part_time = notification_template_part_time
-/* 154:    */   
-/* 155:    */   
-/* 156:    */   string
-/* 157:    */   
-/* 158:142 */     status_bar_notification_info_overflow = status_bar_notification_info_overflow
-/* 159:    */   
-/* 160:    */   
-/* 161:    */   style
-/* 162:    */   
-/* 163:145 */     TextAppearance_Compat_Notification = TextAppearance_Compat_Notification
-/* 164:146 */     TextAppearance_Compat_Notification_Info = TextAppearance_Compat_Notification_Info
-/* 165:147 */     TextAppearance_Compat_Notification_Info_Media = TextAppearance_Compat_Notification_Info_Media
-/* 166:148 */     TextAppearance_Compat_Notification_Line2 = TextAppearance_Compat_Notification_Line2
-/* 167:149 */     TextAppearance_Compat_Notification_Line2_Media = TextAppearance_Compat_Notification_Line2_Media
-/* 168:150 */     TextAppearance_Compat_Notification_Media = TextAppearance_Compat_Notification_Media
-/* 169:151 */     TextAppearance_Compat_Notification_Time = TextAppearance_Compat_Notification_Time
-/* 170:152 */     TextAppearance_Compat_Notification_Time_Media = TextAppearance_Compat_Notification_Time_Media
-/* 171:153 */     TextAppearance_Compat_Notification_Title = TextAppearance_Compat_Notification_Title
-/* 172:154 */     TextAppearance_Compat_Notification_Title_Media = TextAppearance_Compat_Notification_Title_Media
-/* 173:155 */     Widget_Compat_NotificationActionContainer = Widget_Compat_NotificationActionContainer
-/* 174:156 */     Widget_Compat_NotificationActionText = Widget_Compat_NotificationActionText
-/* 175:157 */     Widget_Support_CoordinatorLayout = Widget_Support_CoordinatorLayout
-/* 176:    */   
-/* 177:    */   
-/* 178:    */   styleable
-/* 179:    */   
-/* 180:160 */     []ColorStateListItem = ColorStateListItem
-/* 181:161 */     ColorStateListItem_alpha = ColorStateListItem_alpha
-/* 182:162 */     ColorStateListItem_android_alpha = ColorStateListItem_android_alpha
-/* 183:163 */     ColorStateListItem_android_color = ColorStateListItem_android_color
-/* 184:164 */     []CoordinatorLayout = CoordinatorLayout
-/* 185:165 */     CoordinatorLayout_keylines = CoordinatorLayout_keylines
-/* 186:166 */     CoordinatorLayout_statusBarBackground = CoordinatorLayout_statusBarBackground
-/* 187:167 */     []CoordinatorLayout_Layout = CoordinatorLayout_Layout
-/* 188:168 */     CoordinatorLayout_Layout_android_layout_gravity = CoordinatorLayout_Layout_android_layout_gravity
-/* 189:169 */     CoordinatorLayout_Layout_layout_anchor = CoordinatorLayout_Layout_layout_anchor
-/* 190:170 */     CoordinatorLayout_Layout_layout_anchorGravity = CoordinatorLayout_Layout_layout_anchorGravity
-/* 191:171 */     CoordinatorLayout_Layout_layout_behavior = CoordinatorLayout_Layout_layout_behavior
-/* 192:172 */     CoordinatorLayout_Layout_layout_dodgeInsetEdges = CoordinatorLayout_Layout_layout_dodgeInsetEdges
-/* 193:173 */     CoordinatorLayout_Layout_layout_insetEdge = CoordinatorLayout_Layout_layout_insetEdge
-/* 194:174 */     CoordinatorLayout_Layout_layout_keyline = CoordinatorLayout_Layout_layout_keyline
-/* 195:175 */     []FontFamily = FontFamily
-/* 196:176 */     FontFamily_fontProviderAuthority = FontFamily_fontProviderAuthority
-/* 197:177 */     FontFamily_fontProviderCerts = FontFamily_fontProviderCerts
-/* 198:178 */     FontFamily_fontProviderFetchStrategy = FontFamily_fontProviderFetchStrategy
-/* 199:179 */     FontFamily_fontProviderFetchTimeout = FontFamily_fontProviderFetchTimeout
-/* 200:180 */     FontFamily_fontProviderPackage = FontFamily_fontProviderPackage
-/* 201:181 */     FontFamily_fontProviderQuery = FontFamily_fontProviderQuery
-/* 202:182 */     []FontFamilyFont = FontFamilyFont
-/* 203:183 */     FontFamilyFont_android_font = FontFamilyFont_android_font
-/* 204:184 */     FontFamilyFont_android_fontStyle = FontFamilyFont_android_fontStyle
-/* 205:185 */     FontFamilyFont_android_fontVariationSettings = FontFamilyFont_android_fontVariationSettings
-/* 206:186 */     FontFamilyFont_android_fontWeight = FontFamilyFont_android_fontWeight
-/* 207:187 */     FontFamilyFont_android_ttcIndex = FontFamilyFont_android_ttcIndex
-/* 208:188 */     FontFamilyFont_font = FontFamilyFont_font
-/* 209:189 */     FontFamilyFont_fontStyle = FontFamilyFont_fontStyle
-/* 210:190 */     FontFamilyFont_fontVariationSettings = FontFamilyFont_fontVariationSettings
-/* 211:191 */     FontFamilyFont_fontWeight = FontFamilyFont_fontWeight
-/* 212:192 */     FontFamilyFont_ttcIndex = FontFamilyFont_ttcIndex
-/* 213:193 */     []GradientColor = GradientColor
-/* 214:194 */     GradientColor_android_centerColor = GradientColor_android_centerColor
-/* 215:195 */     GradientColor_android_centerX = GradientColor_android_centerX
-/* 216:196 */     GradientColor_android_centerY = GradientColor_android_centerY
-/* 217:197 */     GradientColor_android_endColor = GradientColor_android_endColor
-/* 218:198 */     GradientColor_android_endX = GradientColor_android_endX
-/* 219:199 */     GradientColor_android_endY = GradientColor_android_endY
-/* 220:200 */     GradientColor_android_gradientRadius = GradientColor_android_gradientRadius
-/* 221:201 */     GradientColor_android_startColor = GradientColor_android_startColor
-/* 222:202 */     GradientColor_android_startX = GradientColor_android_startX
-/* 223:203 */     GradientColor_android_startY = GradientColor_android_startY
-/* 224:204 */     GradientColor_android_tileMode = GradientColor_android_tileMode
-/* 225:205 */     GradientColor_android_type = GradientColor_android_type
-/* 226:206 */     []GradientColorItem = GradientColorItem
-/* 227:207 */     GradientColorItem_android_color = GradientColorItem_android_color
-/* 228:208 */     GradientColorItem_android_offset = GradientColorItem_android_offset
-/* 229:    */   
-/* 230:    */ 
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)
+//
 
+package androidx.legacy.v4;
 
+public final class R {
+    public R() {
+    }
 
-/* Location:           C:\Android\AndoidProjects\SUI\sui_native\libs\lib_google_androidx-release\libs\r-classes.jar
+    public static final class styleable {
+        public static final int[] ColorStateListItem;
+        public static final int ColorStateListItem_alpha;
+        public static final int ColorStateListItem_android_alpha;
+        public static final int ColorStateListItem_android_color;
+        public static final int[] CoordinatorLayout;
+        public static final int CoordinatorLayout_keylines;
+        public static final int CoordinatorLayout_statusBarBackground;
+        public static final int[] CoordinatorLayout_Layout;
+        public static final int CoordinatorLayout_Layout_android_layout_gravity;
+        public static final int CoordinatorLayout_Layout_layout_anchor;
+        public static final int CoordinatorLayout_Layout_layout_anchorGravity;
+        public static final int CoordinatorLayout_Layout_layout_behavior;
+        public static final int CoordinatorLayout_Layout_layout_dodgeInsetEdges;
+        public static final int CoordinatorLayout_Layout_layout_insetEdge;
+        public static final int CoordinatorLayout_Layout_layout_keyline;
+        public static final int[] FontFamily;
+        public static final int FontFamily_fontProviderAuthority;
+        public static final int FontFamily_fontProviderCerts;
+        public static final int FontFamily_fontProviderFetchStrategy;
+        public static final int FontFamily_fontProviderFetchTimeout;
+        public static final int FontFamily_fontProviderPackage;
+        public static final int FontFamily_fontProviderQuery;
+        public static final int[] FontFamilyFont;
+        public static final int FontFamilyFont_android_font;
+        public static final int FontFamilyFont_android_fontStyle;
+        public static final int FontFamilyFont_android_fontVariationSettings;
+        public static final int FontFamilyFont_android_fontWeight;
+        public static final int FontFamilyFont_android_ttcIndex;
+        public static final int FontFamilyFont_font;
+        public static final int FontFamilyFont_fontStyle;
+        public static final int FontFamilyFont_fontVariationSettings;
+        public static final int FontFamilyFont_fontWeight;
+        public static final int FontFamilyFont_ttcIndex;
+        public static final int[] GradientColor;
+        public static final int GradientColor_android_centerColor;
+        public static final int GradientColor_android_centerX;
+        public static final int GradientColor_android_centerY;
+        public static final int GradientColor_android_endColor;
+        public static final int GradientColor_android_endX;
+        public static final int GradientColor_android_endY;
+        public static final int GradientColor_android_gradientRadius;
+        public static final int GradientColor_android_startColor;
+        public static final int GradientColor_android_startX;
+        public static final int GradientColor_android_startY;
+        public static final int GradientColor_android_tileMode;
+        public static final int GradientColor_android_type;
+        public static final int[] GradientColorItem;
+        public static final int GradientColorItem_android_color;
+        public static final int GradientColorItem_android_offset;
 
- * Qualified Name:     androidx.legacy.v4.R
+        public styleable() {
+        }
 
- * JD-Core Version:    0.7.0.1
+        static {
+            ColorStateListItem = com.zqy.googlelib.StyleaUtils.getStyleableArryId("ColorStateListItem");
+            ColorStateListItem_alpha = com.zqy.googlelib.StyleaUtils.getStyleableId("ColorStateListItem_alpha");
+            ColorStateListItem_android_alpha = com.zqy.googlelib.StyleaUtils.getStyleableId("ColorStateListItem_android_alpha");
+            ColorStateListItem_android_color = com.zqy.googlelib.StyleaUtils.getStyleableId("ColorStateListItem_android_color");
+            CoordinatorLayout = com.zqy.googlelib.StyleaUtils.getStyleableArryId("CoordinatorLayout");
+            CoordinatorLayout_keylines = com.zqy.googlelib.StyleaUtils.getStyleableId("CoordinatorLayout_keylines");
+            CoordinatorLayout_statusBarBackground = com.zqy.googlelib.StyleaUtils.getStyleableId("CoordinatorLayout_statusBarBackground");
+            CoordinatorLayout_Layout = com.zqy.googlelib.StyleaUtils.getStyleableArryId("CoordinatorLayout_Layout");
+            CoordinatorLayout_Layout_android_layout_gravity = com.zqy.googlelib.StyleaUtils.getStyleableId("CoordinatorLayout_Layout_android_layout_gravity");
+            CoordinatorLayout_Layout_layout_anchor = com.zqy.googlelib.StyleaUtils.getStyleableId("CoordinatorLayout_Layout_layout_anchor");
+            CoordinatorLayout_Layout_layout_anchorGravity = com.zqy.googlelib.StyleaUtils.getStyleableId("CoordinatorLayout_Layout_layout_anchorGravity");
+            CoordinatorLayout_Layout_layout_behavior = com.zqy.googlelib.StyleaUtils.getStyleableId("CoordinatorLayout_Layout_layout_behavior");
+            CoordinatorLayout_Layout_layout_dodgeInsetEdges = com.zqy.googlelib.StyleaUtils.getStyleableId("CoordinatorLayout_Layout_layout_dodgeInsetEdges");
+            CoordinatorLayout_Layout_layout_insetEdge = com.zqy.googlelib.StyleaUtils.getStyleableId("CoordinatorLayout_Layout_layout_insetEdge");
+            CoordinatorLayout_Layout_layout_keyline = com.zqy.googlelib.StyleaUtils.getStyleableId("CoordinatorLayout_Layout_layout_keyline");
+            FontFamily = com.zqy.googlelib.StyleaUtils.getStyleableArryId("FontFamily");
+            FontFamily_fontProviderAuthority = com.zqy.googlelib.StyleaUtils.getStyleableId("FontFamily_fontProviderAuthority");
+            FontFamily_fontProviderCerts = com.zqy.googlelib.StyleaUtils.getStyleableId("FontFamily_fontProviderCerts");
+            FontFamily_fontProviderFetchStrategy = com.zqy.googlelib.StyleaUtils.getStyleableId("FontFamily_fontProviderFetchStrategy");
+            FontFamily_fontProviderFetchTimeout = com.zqy.googlelib.StyleaUtils.getStyleableId("FontFamily_fontProviderFetchTimeout");
+            FontFamily_fontProviderPackage = com.zqy.googlelib.StyleaUtils.getStyleableId("FontFamily_fontProviderPackage");
+            FontFamily_fontProviderQuery = com.zqy.googlelib.StyleaUtils.getStyleableId("FontFamily_fontProviderQuery");
+            FontFamilyFont = com.zqy.googlelib.StyleaUtils.getStyleableArryId("FontFamilyFont");
+            FontFamilyFont_android_font = com.zqy.googlelib.StyleaUtils.getStyleableId("FontFamilyFont_android_font");
+            FontFamilyFont_android_fontStyle = com.zqy.googlelib.StyleaUtils.getStyleableId("FontFamilyFont_android_fontStyle");
+            FontFamilyFont_android_fontVariationSettings = com.zqy.googlelib.StyleaUtils.getStyleableId("FontFamilyFont_android_fontVariationSettings");
+            FontFamilyFont_android_fontWeight = com.zqy.googlelib.StyleaUtils.getStyleableId("FontFamilyFont_android_fontWeight");
+            FontFamilyFont_android_ttcIndex = com.zqy.googlelib.StyleaUtils.getStyleableId("FontFamilyFont_android_ttcIndex");
+            FontFamilyFont_font = com.zqy.googlelib.StyleaUtils.getStyleableId("FontFamilyFont_font");
+            FontFamilyFont_fontStyle = com.zqy.googlelib.StyleaUtils.getStyleableId("FontFamilyFont_fontStyle");
+            FontFamilyFont_fontVariationSettings = com.zqy.googlelib.StyleaUtils.getStyleableId("FontFamilyFont_fontVariationSettings");
+            FontFamilyFont_fontWeight = com.zqy.googlelib.StyleaUtils.getStyleableId("FontFamilyFont_fontWeight");
+            FontFamilyFont_ttcIndex = com.zqy.googlelib.StyleaUtils.getStyleableId("FontFamilyFont_ttcIndex");
+            GradientColor = com.zqy.googlelib.StyleaUtils.getStyleableArryId("GradientColor");
+            GradientColor_android_centerColor = com.zqy.googlelib.StyleaUtils.getStyleableId("GradientColor_android_centerColor");
+            GradientColor_android_centerX = com.zqy.googlelib.StyleaUtils.getStyleableId("GradientColor_android_centerX");
+            GradientColor_android_centerY = com.zqy.googlelib.StyleaUtils.getStyleableId("GradientColor_android_centerY");
+            GradientColor_android_endColor = com.zqy.googlelib.StyleaUtils.getStyleableId("GradientColor_android_endColor");
+            GradientColor_android_endX = com.zqy.googlelib.StyleaUtils.getStyleableId("GradientColor_android_endX");
+            GradientColor_android_endY = com.zqy.googlelib.StyleaUtils.getStyleableId("GradientColor_android_endY");
+            GradientColor_android_gradientRadius = com.zqy.googlelib.StyleaUtils.getStyleableId("GradientColor_android_gradientRadius");
+            GradientColor_android_startColor = com.zqy.googlelib.StyleaUtils.getStyleableId("GradientColor_android_startColor");
+            GradientColor_android_startX = com.zqy.googlelib.StyleaUtils.getStyleableId("GradientColor_android_startX");
+            GradientColor_android_startY = com.zqy.googlelib.StyleaUtils.getStyleableId("GradientColor_android_startY");
+            GradientColor_android_tileMode = com.zqy.googlelib.StyleaUtils.getStyleableId("GradientColor_android_tileMode");
+            GradientColor_android_type = com.zqy.googlelib.StyleaUtils.getStyleableId("GradientColor_android_type");
+            GradientColorItem = com.zqy.googlelib.StyleaUtils.getStyleableArryId("GradientColorItem");
+            GradientColorItem_android_color = com.zqy.googlelib.StyleaUtils.getStyleableId("GradientColorItem_android_color");
+            GradientColorItem_android_offset = com.zqy.googlelib.StyleaUtils.getStyleableId("GradientColorItem_android_offset");
+        }
+    }
 
- */
+    public static final class style {
+        public static final int TextAppearance_Compat_Notification;
+        public static final int TextAppearance_Compat_Notification_Info;
+        public static final int TextAppearance_Compat_Notification_Info_Media;
+        public static final int TextAppearance_Compat_Notification_Line2;
+        public static final int TextAppearance_Compat_Notification_Line2_Media;
+        public static final int TextAppearance_Compat_Notification_Media;
+        public static final int TextAppearance_Compat_Notification_Time;
+        public static final int TextAppearance_Compat_Notification_Time_Media;
+        public static final int TextAppearance_Compat_Notification_Title;
+        public static final int TextAppearance_Compat_Notification_Title_Media;
+        public static final int Widget_Compat_NotificationActionContainer;
+        public static final int Widget_Compat_NotificationActionText;
+        public static final int Widget_Support_CoordinatorLayout;
+
+        public style() {
+        }
+
+        static {
+            TextAppearance_Compat_Notification = com.zqy.googlelib.ResourcesUtil.getStyleId("TextAppearance.Compat.Notification");
+            TextAppearance_Compat_Notification_Info = com.zqy.googlelib.ResourcesUtil.getStyleId("TextAppearance.Compat.Notification.Info");
+            TextAppearance_Compat_Notification_Info_Media = com.zqy.googlelib.ResourcesUtil.getStyleId("TextAppearance.Compat.Notification.Info.Media");
+            TextAppearance_Compat_Notification_Line2 = com.zqy.googlelib.ResourcesUtil.getStyleId("TextAppearance.Compat.Notification.Line2");
+            TextAppearance_Compat_Notification_Line2_Media = com.zqy.googlelib.ResourcesUtil.getStyleId("TextAppearance.Compat.Notification.Line2.Media");
+            TextAppearance_Compat_Notification_Media = com.zqy.googlelib.ResourcesUtil.getStyleId("TextAppearance.Compat.Notification.Media");
+            TextAppearance_Compat_Notification_Time = com.zqy.googlelib.ResourcesUtil.getStyleId("TextAppearance.Compat.Notification.Time");
+            TextAppearance_Compat_Notification_Time_Media = com.zqy.googlelib.ResourcesUtil.getStyleId("TextAppearance.Compat.Notification.Time.Media");
+            TextAppearance_Compat_Notification_Title = com.zqy.googlelib.ResourcesUtil.getStyleId("TextAppearance.Compat.Notification.Title");
+            TextAppearance_Compat_Notification_Title_Media = com.zqy.googlelib.ResourcesUtil.getStyleId("TextAppearance.Compat.Notification.Title.Media");
+            Widget_Compat_NotificationActionContainer = com.zqy.googlelib.ResourcesUtil.getStyleId("Widget.Compat.NotificationActionContainer");
+            Widget_Compat_NotificationActionText = com.zqy.googlelib.ResourcesUtil.getStyleId("Widget.Compat.NotificationActionText");
+            Widget_Support_CoordinatorLayout = com.zqy.googlelib.ResourcesUtil.getStyleId("Widget.Support.CoordinatorLayout");
+        }
+    }
+
+    public static final class string {
+        public static final int status_bar_notification_info_overflow;
+
+        public string() {
+        }
+
+        static {
+            status_bar_notification_info_overflow = com.zqy.googlelib.ResourcesUtil.getStringId("status_bar_notification_info_overflow");
+        }
+    }
+
+    public static final class layout {
+        public static final int notification_action;
+        public static final int notification_action_tombstone;
+        public static final int notification_media_action;
+        public static final int notification_media_cancel_action;
+        public static final int notification_template_big_media;
+        public static final int notification_template_big_media_custom;
+        public static final int notification_template_big_media_narrow;
+        public static final int notification_template_big_media_narrow_custom;
+        public static final int notification_template_custom_big;
+        public static final int notification_template_icon_group;
+        public static final int notification_template_lines_media;
+        public static final int notification_template_media;
+        public static final int notification_template_media_custom;
+        public static final int notification_template_part_chronometer;
+        public static final int notification_template_part_time;
+
+        public layout() {
+        }
+
+        static {
+            notification_action = com.zqy.googlelib.ResourcesUtil.getLayoutId("notification_action");
+            notification_action_tombstone = com.zqy.googlelib.ResourcesUtil.getLayoutId("notification_action_tombstone");
+            notification_media_action = com.zqy.googlelib.ResourcesUtil.getLayoutId("notification_media_action");
+            notification_media_cancel_action = com.zqy.googlelib.ResourcesUtil.getLayoutId("notification_media_cancel_action");
+            notification_template_big_media = com.zqy.googlelib.ResourcesUtil.getLayoutId("notification_template_big_media");
+            notification_template_big_media_custom = com.zqy.googlelib.ResourcesUtil.getLayoutId("notification_template_big_media_custom");
+            notification_template_big_media_narrow = com.zqy.googlelib.ResourcesUtil.getLayoutId("notification_template_big_media_narrow");
+            notification_template_big_media_narrow_custom = com.zqy.googlelib.ResourcesUtil.getLayoutId("notification_template_big_media_narrow_custom");
+            notification_template_custom_big = com.zqy.googlelib.ResourcesUtil.getLayoutId("notification_template_custom_big");
+            notification_template_icon_group = com.zqy.googlelib.ResourcesUtil.getLayoutId("notification_template_icon_group");
+            notification_template_lines_media = com.zqy.googlelib.ResourcesUtil.getLayoutId("notification_template_lines_media");
+            notification_template_media = com.zqy.googlelib.ResourcesUtil.getLayoutId("notification_template_media");
+            notification_template_media_custom = com.zqy.googlelib.ResourcesUtil.getLayoutId("notification_template_media_custom");
+            notification_template_part_chronometer = com.zqy.googlelib.ResourcesUtil.getLayoutId("notification_template_part_chronometer");
+            notification_template_part_time = com.zqy.googlelib.ResourcesUtil.getLayoutId("notification_template_part_time");
+        }
+    }
+
+    public static final class integer {
+        public static final int cancel_button_image_alpha;
+        public static final int status_bar_notification_info_maxnum;
+
+        public integer() {
+        }
+
+        static {
+            cancel_button_image_alpha = com.zqy.googlelib.ResourcesUtil.getInteger("cancel_button_image_alpha");
+            status_bar_notification_info_maxnum = com.zqy.googlelib.ResourcesUtil.getInteger("status_bar_notification_info_maxnum");
+        }
+    }
+
+    public static final class id {
+        public static final int action0;
+        public static final int action_container;
+        public static final int action_divider;
+        public static final int action_image;
+        public static final int action_text;
+        public static final int actions;
+        public static final int async;
+        public static final int blocking;
+        public static final int bottom;
+        public static final int cancel_action;
+        public static final int chronometer;
+        public static final int end;
+        public static final int end_padder;
+        public static final int forever;
+        public static final int icon;
+        public static final int icon_group;
+        public static final int info;
+        public static final int italic;
+        public static final int left;
+        public static final int line1;
+        public static final int line3;
+        public static final int media_actions;
+        public static final int none;
+        public static final int normal;
+        public static final int notification_background;
+        public static final int notification_main_column;
+        public static final int notification_main_column_container;
+        public static final int right;
+        public static final int right_icon;
+        public static final int right_side;
+        public static final int start;
+        public static final int status_bar_latest_event_content;
+        public static final int tag_transition_group;
+        public static final int tag_unhandled_key_event_manager;
+        public static final int tag_unhandled_key_listeners;
+        public static final int text;
+        public static final int text2;
+        public static final int time;
+        public static final int title;
+        public static final int top;
+
+        public id() {
+        }
+
+        static {
+            action0 = com.zqy.googlelib.ResourcesUtil.getId("action0");
+            action_container = com.zqy.googlelib.ResourcesUtil.getId("action_container");
+            action_divider = com.zqy.googlelib.ResourcesUtil.getId("action_divider");
+            action_image = com.zqy.googlelib.ResourcesUtil.getId("action_image");
+            action_text = com.zqy.googlelib.ResourcesUtil.getId("action_text");
+            actions = com.zqy.googlelib.ResourcesUtil.getId("actions");
+            async = com.zqy.googlelib.ResourcesUtil.getId("async");
+            blocking = com.zqy.googlelib.ResourcesUtil.getId("blocking");
+            bottom = com.zqy.googlelib.ResourcesUtil.getId("bottom");
+            cancel_action = com.zqy.googlelib.ResourcesUtil.getId("cancel_action");
+            chronometer = com.zqy.googlelib.ResourcesUtil.getId("chronometer");
+            end = com.zqy.googlelib.ResourcesUtil.getId("end");
+            end_padder = com.zqy.googlelib.ResourcesUtil.getId("end_padder");
+            forever = com.zqy.googlelib.ResourcesUtil.getId("forever");
+            icon = com.zqy.googlelib.ResourcesUtil.getId("icon");
+            icon_group = com.zqy.googlelib.ResourcesUtil.getId("icon_group");
+            info = com.zqy.googlelib.ResourcesUtil.getId("info");
+            italic = com.zqy.googlelib.ResourcesUtil.getId("italic");
+            left = com.zqy.googlelib.ResourcesUtil.getId("left");
+            line1 = com.zqy.googlelib.ResourcesUtil.getId("line1");
+            line3 = com.zqy.googlelib.ResourcesUtil.getId("line3");
+            media_actions = com.zqy.googlelib.ResourcesUtil.getId("media_actions");
+            none = com.zqy.googlelib.ResourcesUtil.getId("none");
+            normal = com.zqy.googlelib.ResourcesUtil.getId("normal");
+            notification_background = com.zqy.googlelib.ResourcesUtil.getId("notification_background");
+            notification_main_column = com.zqy.googlelib.ResourcesUtil.getId("notification_main_column");
+            notification_main_column_container = com.zqy.googlelib.ResourcesUtil.getId("notification_main_column_container");
+            right = com.zqy.googlelib.ResourcesUtil.getId("right");
+            right_icon = com.zqy.googlelib.ResourcesUtil.getId("right_icon");
+            right_side = com.zqy.googlelib.ResourcesUtil.getId("right_side");
+            start = com.zqy.googlelib.ResourcesUtil.getId("start");
+            status_bar_latest_event_content = com.zqy.googlelib.ResourcesUtil.getId("status_bar_latest_event_content");
+            tag_transition_group = com.zqy.googlelib.ResourcesUtil.getId("tag_transition_group");
+            tag_unhandled_key_event_manager = com.zqy.googlelib.ResourcesUtil.getId("tag_unhandled_key_event_manager");
+            tag_unhandled_key_listeners = com.zqy.googlelib.ResourcesUtil.getId("tag_unhandled_key_listeners");
+            text = com.zqy.googlelib.ResourcesUtil.getId("text");
+            text2 = com.zqy.googlelib.ResourcesUtil.getId("text2");
+            time = com.zqy.googlelib.ResourcesUtil.getId("time");
+            title = com.zqy.googlelib.ResourcesUtil.getId("title");
+            top = com.zqy.googlelib.ResourcesUtil.getId("top");
+        }
+    }
+
+    public static final class drawable {
+        public static final int notification_action_background;
+        public static final int notification_bg;
+        public static final int notification_bg_low;
+        public static final int notification_bg_low_normal;
+        public static final int notification_bg_low_pressed;
+        public static final int notification_bg_normal;
+        public static final int notification_bg_normal_pressed;
+        public static final int notification_icon_background;
+        public static final int notification_template_icon_bg;
+        public static final int notification_template_icon_low_bg;
+        public static final int notification_tile_bg;
+        public static final int notify_panel_notification_icon_bg;
+
+        public drawable() {
+        }
+
+        static {
+            notification_action_background = com.zqy.googlelib.ResourcesUtil.getDrawableId("notification_action_background");
+            notification_bg = com.zqy.googlelib.ResourcesUtil.getDrawableId("notification_bg");
+            notification_bg_low = com.zqy.googlelib.ResourcesUtil.getDrawableId("notification_bg_low");
+            notification_bg_low_normal = com.zqy.googlelib.ResourcesUtil.getDrawableId("notification_bg_low_normal");
+            notification_bg_low_pressed = com.zqy.googlelib.ResourcesUtil.getDrawableId("notification_bg_low_pressed");
+            notification_bg_normal = com.zqy.googlelib.ResourcesUtil.getDrawableId("notification_bg_normal");
+            notification_bg_normal_pressed = com.zqy.googlelib.ResourcesUtil.getDrawableId("notification_bg_normal_pressed");
+            notification_icon_background = com.zqy.googlelib.ResourcesUtil.getDrawableId("notification_icon_background");
+            notification_template_icon_bg = com.zqy.googlelib.ResourcesUtil.getDrawableId("notification_template_icon_bg");
+            notification_template_icon_low_bg = com.zqy.googlelib.ResourcesUtil.getDrawableId("notification_template_icon_low_bg");
+            notification_tile_bg = com.zqy.googlelib.ResourcesUtil.getDrawableId("notification_tile_bg");
+            notify_panel_notification_icon_bg = com.zqy.googlelib.ResourcesUtil.getDrawableId("notify_panel_notification_icon_bg");
+        }
+    }
+
+    public static final class dimen {
+        public static final int compat_button_inset_horizontal_material;
+        public static final int compat_button_inset_vertical_material;
+        public static final int compat_button_padding_horizontal_material;
+        public static final int compat_button_padding_vertical_material;
+        public static final int compat_control_corner_material;
+        public static final int compat_notification_large_icon_max_height;
+        public static final int compat_notification_large_icon_max_width;
+        public static final int notification_action_icon_size;
+        public static final int notification_action_text_size;
+        public static final int notification_big_circle_margin;
+        public static final int notification_content_margin_start;
+        public static final int notification_large_icon_height;
+        public static final int notification_large_icon_width;
+        public static final int notification_main_column_padding_top;
+        public static final int notification_media_narrow_margin;
+        public static final int notification_right_icon_size;
+        public static final int notification_right_side_padding_top;
+        public static final int notification_small_icon_background_padding;
+        public static final int notification_small_icon_size_as_large;
+        public static final int notification_subtext_size;
+        public static final int notification_top_pad;
+        public static final int notification_top_pad_large_text;
+        public static final int subtitle_corner_radius;
+        public static final int subtitle_outline_width;
+        public static final int subtitle_shadow_offset;
+        public static final int subtitle_shadow_radius;
+
+        public dimen() {
+        }
+
+        static {
+            compat_button_inset_horizontal_material = com.zqy.googlelib.ResourcesUtil.getDimen("compat_button_inset_horizontal_material");
+            compat_button_inset_vertical_material = com.zqy.googlelib.ResourcesUtil.getDimen("compat_button_inset_vertical_material");
+            compat_button_padding_horizontal_material = com.zqy.googlelib.ResourcesUtil.getDimen("compat_button_padding_horizontal_material");
+            compat_button_padding_vertical_material = com.zqy.googlelib.ResourcesUtil.getDimen("compat_button_padding_vertical_material");
+            compat_control_corner_material = com.zqy.googlelib.ResourcesUtil.getDimen("compat_control_corner_material");
+            compat_notification_large_icon_max_height = com.zqy.googlelib.ResourcesUtil.getDimen("compat_notification_large_icon_max_height");
+            compat_notification_large_icon_max_width = com.zqy.googlelib.ResourcesUtil.getDimen("compat_notification_large_icon_max_width");
+            notification_action_icon_size = com.zqy.googlelib.ResourcesUtil.getDimen("notification_action_icon_size");
+            notification_action_text_size = com.zqy.googlelib.ResourcesUtil.getDimen("notification_action_text_size");
+            notification_big_circle_margin = com.zqy.googlelib.ResourcesUtil.getDimen("notification_big_circle_margin");
+            notification_content_margin_start = com.zqy.googlelib.ResourcesUtil.getDimen("notification_content_margin_start");
+            notification_large_icon_height = com.zqy.googlelib.ResourcesUtil.getDimen("notification_large_icon_height");
+            notification_large_icon_width = com.zqy.googlelib.ResourcesUtil.getDimen("notification_large_icon_width");
+            notification_main_column_padding_top = com.zqy.googlelib.ResourcesUtil.getDimen("notification_main_column_padding_top");
+            notification_media_narrow_margin = com.zqy.googlelib.ResourcesUtil.getDimen("notification_media_narrow_margin");
+            notification_right_icon_size = com.zqy.googlelib.ResourcesUtil.getDimen("notification_right_icon_size");
+            notification_right_side_padding_top = com.zqy.googlelib.ResourcesUtil.getDimen("notification_right_side_padding_top");
+            notification_small_icon_background_padding = com.zqy.googlelib.ResourcesUtil.getDimen("notification_small_icon_background_padding");
+            notification_small_icon_size_as_large = com.zqy.googlelib.ResourcesUtil.getDimen("notification_small_icon_size_as_large");
+            notification_subtext_size = com.zqy.googlelib.ResourcesUtil.getDimen("notification_subtext_size");
+            notification_top_pad = com.zqy.googlelib.ResourcesUtil.getDimen("notification_top_pad");
+            notification_top_pad_large_text = com.zqy.googlelib.ResourcesUtil.getDimen("notification_top_pad_large_text");
+            subtitle_corner_radius = com.zqy.googlelib.ResourcesUtil.getDimen("subtitle_corner_radius");
+            subtitle_outline_width = com.zqy.googlelib.ResourcesUtil.getDimen("subtitle_outline_width");
+            subtitle_shadow_offset = com.zqy.googlelib.ResourcesUtil.getDimen("subtitle_shadow_offset");
+            subtitle_shadow_radius = com.zqy.googlelib.ResourcesUtil.getDimen("subtitle_shadow_radius");
+        }
+    }
+
+    public static final class color {
+        public static final int notification_action_color_filter;
+        public static final int notification_icon_bg_color;
+        public static final int notification_material_background_media_default_color;
+        public static final int primary_text_default_material_dark;
+        public static final int ripple_material_light;
+        public static final int secondary_text_default_material_dark;
+        public static final int secondary_text_default_material_light;
+
+        public color() {
+        }
+
+        static {
+            notification_action_color_filter = com.zqy.googlelib.ResourcesUtil.getColorId("notification_action_color_filter");
+            notification_icon_bg_color = com.zqy.googlelib.ResourcesUtil.getColorId("notification_icon_bg_color");
+            notification_material_background_media_default_color = com.zqy.googlelib.ResourcesUtil.getColorId("notification_material_background_media_default_color");
+            primary_text_default_material_dark = com.zqy.googlelib.ResourcesUtil.getColorId("primary_text_default_material_dark");
+            ripple_material_light = com.zqy.googlelib.ResourcesUtil.getColorId("ripple_material_light");
+            secondary_text_default_material_dark = com.zqy.googlelib.ResourcesUtil.getColorId("secondary_text_default_material_dark");
+            secondary_text_default_material_light = com.zqy.googlelib.ResourcesUtil.getColorId("secondary_text_default_material_light");
+        }
+    }
+
+    public static final class attr {
+        public static final int alpha;
+        public static final int coordinatorLayoutStyle;
+        public static final int font;
+        public static final int fontProviderAuthority;
+        public static final int fontProviderCerts;
+        public static final int fontProviderFetchStrategy;
+        public static final int fontProviderFetchTimeout;
+        public static final int fontProviderPackage;
+        public static final int fontProviderQuery;
+        public static final int fontStyle;
+        public static final int fontVariationSettings;
+        public static final int fontWeight;
+        public static final int keylines;
+        public static final int layout_anchor;
+        public static final int layout_anchorGravity;
+        public static final int layout_behavior;
+        public static final int layout_dodgeInsetEdges;
+        public static final int layout_insetEdge;
+        public static final int layout_keyline;
+        public static final int statusBarBackground;
+        public static final int ttcIndex;
+
+        public attr() {
+        }
+
+        static {
+            alpha = com.zqy.googlelib.ResourcesUtil.getAttr("alpha");
+            coordinatorLayoutStyle = com.zqy.googlelib.ResourcesUtil.getAttr("coordinatorLayoutStyle");
+            font = com.zqy.googlelib.ResourcesUtil.getAttr("font");
+            fontProviderAuthority = com.zqy.googlelib.ResourcesUtil.getAttr("fontProviderAuthority");
+            fontProviderCerts = com.zqy.googlelib.ResourcesUtil.getAttr("fontProviderCerts");
+            fontProviderFetchStrategy = com.zqy.googlelib.ResourcesUtil.getAttr("fontProviderFetchStrategy");
+            fontProviderFetchTimeout = com.zqy.googlelib.ResourcesUtil.getAttr("fontProviderFetchTimeout");
+            fontProviderPackage = com.zqy.googlelib.ResourcesUtil.getAttr("fontProviderPackage");
+            fontProviderQuery = com.zqy.googlelib.ResourcesUtil.getAttr("fontProviderQuery");
+            fontStyle = com.zqy.googlelib.ResourcesUtil.getAttr("fontStyle");
+            fontVariationSettings = com.zqy.googlelib.ResourcesUtil.getAttr("fontVariationSettings");
+            fontWeight = com.zqy.googlelib.ResourcesUtil.getAttr("fontWeight");
+            keylines = com.zqy.googlelib.ResourcesUtil.getAttr("keylines");
+            layout_anchor = com.zqy.googlelib.ResourcesUtil.getAttr("layout_anchor");
+            layout_anchorGravity = com.zqy.googlelib.ResourcesUtil.getAttr("layout_anchorGravity");
+            layout_behavior = com.zqy.googlelib.ResourcesUtil.getAttr("layout_behavior");
+            layout_dodgeInsetEdges = com.zqy.googlelib.ResourcesUtil.getAttr("layout_dodgeInsetEdges");
+            layout_insetEdge = com.zqy.googlelib.ResourcesUtil.getAttr("layout_insetEdge");
+            layout_keyline = com.zqy.googlelib.ResourcesUtil.getAttr("layout_keyline");
+            statusBarBackground = com.zqy.googlelib.ResourcesUtil.getAttr("statusBarBackground");
+            ttcIndex = com.zqy.googlelib.ResourcesUtil.getAttr("ttcIndex");
+        }
+    }
+}

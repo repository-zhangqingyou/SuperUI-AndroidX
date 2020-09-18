@@ -2,11 +2,11 @@ package com.zqy.googlelib;
 
 import android.app.Application;
 
-public class UtilResources {
+public class ResourcesUtil {
     private static Application application;
 
     public static void init(Application application) {
-        UtilResources.application = application;
+        ResourcesUtil.application = application;
     }
 
 
@@ -56,18 +56,30 @@ public class UtilResources {
 
 
     public static int getAttr(String paramString) {
-        return application.getResources().getIdentifier(paramString, "attr",      application.getPackageName());
+        return application.getResources().getIdentifier(paramString, "attr", application.getPackageName());
     }
 
     public static int getBool(String paramString) {
-        return application.getResources().getIdentifier(paramString, "bool",       application.getPackageName());
+        return application.getResources().getIdentifier(paramString, "bool", application.getPackageName());
     }
 
     public static int getInteger(String paramString) {
-        return application.getResources().getIdentifier(paramString, "integer",     application.getPackageName());
+        return application.getResources().getIdentifier(paramString, "integer", application.getPackageName());
     }
 
     public static int getInterpolator(String paramString) {
-        return application.getResources().getIdentifier(paramString, "interpolator",   application.getPackageName());
+        return application.getResources().getIdentifier(paramString, "interpolator", application.getPackageName());
+    }
+
+    public static int getXml(String paramString) {
+        return application.getResources().getIdentifier(paramString, "xml", application.getPackageName());
+    }
+
+    public static int getPlurals(String paramString) {
+        return application.getResources().getIdentifier(paramString, "plurals", application.getPackageName());
+    }
+
+    public static int getAnimator(String paramString) {
+        return application.getResources().getIdentifier(paramString, "animator", application.getPackageName());
     }
 }

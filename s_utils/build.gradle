@@ -23,7 +23,8 @@ android {
 
 dependencies {
     compileOnly fileTree(dir: 'libs', include: ['*.jar'])
-
+    //最牛Log＊神器＊
+    api 'com.orhanobut:logger:1.8'
     //最全最强工具库  1.25.9
     api 'com.blankj:utilcode:1.29.0'
 

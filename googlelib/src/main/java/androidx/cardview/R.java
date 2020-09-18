@@ -1,71 +1,130 @@
-package androidx.cardview;/*  1:   */
-/*  2:   */ 
-/*  3:   */ R
-/*  4:   */ 
-/*  5:   */   attr
-/*  6:   */   
-/*  7: 5 */     cardBackgroundColor = cardBackgroundColor
-/*  8: 6 */     cardCornerRadius = cardCornerRadius
-/*  9: 7 */     cardElevation = cardElevation
-/* 10: 8 */     cardMaxElevation = cardMaxElevation
-/* 11: 9 */     cardPreventCornerOverlap = cardPreventCornerOverlap
-/* 12:10 */     cardUseCompatPadding = cardUseCompatPadding
-/* 13:11 */     cardViewStyle = cardViewStyle
-/* 14:12 */     contentPadding = contentPadding
-/* 15:13 */     contentPaddingBottom = contentPaddingBottom
-/* 16:14 */     contentPaddingLeft = contentPaddingLeft
-/* 17:15 */     contentPaddingRight = contentPaddingRight
-/* 18:16 */     contentPaddingTop = contentPaddingTop
-/* 19:   */   
-/* 20:   */   
-/* 21:   */   color
-/* 22:   */   
-/* 23:19 */     cardview_dark_background = cardview_dark_background
-/* 24:20 */     cardview_light_background = cardview_light_background
-/* 25:21 */     cardview_shadow_end_color = cardview_shadow_end_color
-/* 26:22 */     cardview_shadow_start_color = cardview_shadow_start_color
-/* 27:   */   
-/* 28:   */   
-/* 29:   */   dimen
-/* 30:   */   
-/* 31:25 */     cardview_compat_inset_shadow = cardview_compat_inset_shadow
-/* 32:26 */     cardview_default_elevation = cardview_default_elevation
-/* 33:27 */     cardview_default_radius = cardview_default_radius
-/* 34:   */   
-/* 35:   */   
-/* 36:   */   style
-/* 37:   */   
-/* 38:30 */     Base_CardView = Base_CardView
-/* 39:31 */     CardView = CardView
-/* 40:32 */     CardView_Dark = CardView_Dark
-/* 41:33 */     CardView_Light = CardView_Light
-/* 42:   */   
-/* 43:   */   
-/* 44:   */   styleable
-/* 45:   */   
-/* 46:36 */     []CardView = CardView
-/* 47:37 */     CardView_android_minHeight = CardView_android_minHeight
-/* 48:38 */     CardView_android_minWidth = CardView_android_minWidth
-/* 49:39 */     CardView_cardBackgroundColor = CardView_cardBackgroundColor
-/* 50:40 */     CardView_cardCornerRadius = CardView_cardCornerRadius
-/* 51:41 */     CardView_cardElevation = CardView_cardElevation
-/* 52:42 */     CardView_cardMaxElevation = CardView_cardMaxElevation
-/* 53:43 */     CardView_cardPreventCornerOverlap = CardView_cardPreventCornerOverlap
-/* 54:44 */     CardView_cardUseCompatPadding = CardView_cardUseCompatPadding
-/* 55:45 */     CardView_contentPadding = CardView_contentPadding
-/* 56:46 */     CardView_contentPaddingBottom = CardView_contentPaddingBottom
-/* 57:47 */     CardView_contentPaddingLeft = CardView_contentPaddingLeft
-/* 58:48 */     CardView_contentPaddingRight = CardView_contentPaddingRight
-/* 59:49 */     CardView_contentPaddingTop = CardView_contentPaddingTop
-/* 60:   */   
-/* 61:   */ 
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)
+//
 
+package androidx.cardview;
 
+public final class R {
+    public R() {
+    }
 
-/* Location:           C:\Android\AndoidProjects\SUI\sui_native\libs\lib_google_androidx-release\libs\r-classes.jar
+    public static final class styleable {
+        public static final int[] CardView;
+        public static final int CardView_android_minHeight;
+        public static final int CardView_android_minWidth;
+        public static final int CardView_cardBackgroundColor;
+        public static final int CardView_cardCornerRadius;
+        public static final int CardView_cardElevation;
+        public static final int CardView_cardMaxElevation;
+        public static final int CardView_cardPreventCornerOverlap;
+        public static final int CardView_cardUseCompatPadding;
+        public static final int CardView_contentPadding;
+        public static final int CardView_contentPaddingBottom;
+        public static final int CardView_contentPaddingLeft;
+        public static final int CardView_contentPaddingRight;
+        public static final int CardView_contentPaddingTop;
 
- * Qualified Name:     androidx.cardview.R
+        public styleable() {
+        }
 
- * JD-Core Version:    0.7.0.1
+        static {
+            CardView = com.zqy.googlelib.StyleaUtils.getStyleableArryId("CardView");
+            CardView_android_minHeight = com.zqy.googlelib.StyleaUtils.getStyleableId("CardView_android_minHeight");
+            CardView_android_minWidth = com.zqy.googlelib.StyleaUtils.getStyleableId("CardView_android_minWidth");
+            CardView_cardBackgroundColor = com.zqy.googlelib.StyleaUtils.getStyleableId("CardView_cardBackgroundColor");
+            CardView_cardCornerRadius = com.zqy.googlelib.StyleaUtils.getStyleableId("CardView_cardCornerRadius");
+            CardView_cardElevation = com.zqy.googlelib.StyleaUtils.getStyleableId("CardView_cardElevation");
+            CardView_cardMaxElevation = com.zqy.googlelib.StyleaUtils.getStyleableId("CardView_cardMaxElevation");
+            CardView_cardPreventCornerOverlap = com.zqy.googlelib.StyleaUtils.getStyleableId("CardView_cardPreventCornerOverlap");
+            CardView_cardUseCompatPadding = com.zqy.googlelib.StyleaUtils.getStyleableId("CardView_cardUseCompatPadding");
+            CardView_contentPadding = com.zqy.googlelib.StyleaUtils.getStyleableId("CardView_contentPadding");
+            CardView_contentPaddingBottom = com.zqy.googlelib.StyleaUtils.getStyleableId("CardView_contentPaddingBottom");
+            CardView_contentPaddingLeft = com.zqy.googlelib.StyleaUtils.getStyleableId("CardView_contentPaddingLeft");
+            CardView_contentPaddingRight = com.zqy.googlelib.StyleaUtils.getStyleableId("CardView_contentPaddingRight");
+            CardView_contentPaddingTop = com.zqy.googlelib.StyleaUtils.getStyleableId("CardView_contentPaddingTop");
+        }
+    }
 
- */
+    public static final class style {
+        public static final int Base_CardView;
+        public static final int CardView;
+        public static final int CardView_Dark;
+        public static final int CardView_Light;
+
+        public style() {
+        }
+
+        static {
+            Base_CardView = com.zqy.googlelib.ResourcesUtil.getStyleId("Base.CardView");
+            CardView = com.zqy.googlelib.ResourcesUtil.getStyleId("CardView");
+            CardView_Dark = com.zqy.googlelib.ResourcesUtil.getStyleId("CardView.Dark");
+            CardView_Light = com.zqy.googlelib.ResourcesUtil.getStyleId("CardView.Light");
+        }
+    }
+
+    public static final class dimen {
+        public static final int cardview_compat_inset_shadow;
+        public static final int cardview_default_elevation;
+        public static final int cardview_default_radius;
+
+        public dimen() {
+        }
+
+        static {
+            cardview_compat_inset_shadow = com.zqy.googlelib.ResourcesUtil.getDimen("cardview_compat_inset_shadow");
+            cardview_default_elevation = com.zqy.googlelib.ResourcesUtil.getDimen("cardview_default_elevation");
+            cardview_default_radius = com.zqy.googlelib.ResourcesUtil.getDimen("cardview_default_radius");
+        }
+    }
+
+    public static final class color {
+        public static final int cardview_dark_background;
+        public static final int cardview_light_background;
+        public static final int cardview_shadow_end_color;
+        public static final int cardview_shadow_start_color;
+
+        public color() {
+        }
+
+        static {
+            cardview_dark_background = com.zqy.googlelib.ResourcesUtil.getColorId("cardview_dark_background");
+            cardview_light_background = com.zqy.googlelib.ResourcesUtil.getColorId("cardview_light_background");
+            cardview_shadow_end_color = com.zqy.googlelib.ResourcesUtil.getColorId("cardview_shadow_end_color");
+            cardview_shadow_start_color = com.zqy.googlelib.ResourcesUtil.getColorId("cardview_shadow_start_color");
+        }
+    }
+
+    public static final class attr {
+        public static final int cardBackgroundColor;
+        public static final int cardCornerRadius;
+        public static final int cardElevation;
+        public static final int cardMaxElevation;
+        public static final int cardPreventCornerOverlap;
+        public static final int cardUseCompatPadding;
+        public static final int cardViewStyle;
+        public static final int contentPadding;
+        public static final int contentPaddingBottom;
+        public static final int contentPaddingLeft;
+        public static final int contentPaddingRight;
+        public static final int contentPaddingTop;
+
+        public attr() {
+        }
+
+        static {
+            cardBackgroundColor = com.zqy.googlelib.ResourcesUtil.getAttr("cardBackgroundColor");
+            cardCornerRadius = com.zqy.googlelib.ResourcesUtil.getAttr("cardCornerRadius");
+            cardElevation = com.zqy.googlelib.ResourcesUtil.getAttr("cardElevation");
+            cardMaxElevation = com.zqy.googlelib.ResourcesUtil.getAttr("cardMaxElevation");
+            cardPreventCornerOverlap = com.zqy.googlelib.ResourcesUtil.getAttr("cardPreventCornerOverlap");
+            cardUseCompatPadding = com.zqy.googlelib.ResourcesUtil.getAttr("cardUseCompatPadding");
+            cardViewStyle = com.zqy.googlelib.ResourcesUtil.getAttr("cardViewStyle");
+            contentPadding = com.zqy.googlelib.ResourcesUtil.getAttr("contentPadding");
+            contentPaddingBottom = com.zqy.googlelib.ResourcesUtil.getAttr("contentPaddingBottom");
+            contentPaddingLeft = com.zqy.googlelib.ResourcesUtil.getAttr("contentPaddingLeft");
+            contentPaddingRight = com.zqy.googlelib.ResourcesUtil.getAttr("contentPaddingRight");
+            contentPaddingTop = com.zqy.googlelib.ResourcesUtil.getAttr("contentPaddingTop");
+        }
+    }
+}

@@ -5,7 +5,9 @@ import android.content.Context;
 
 import androidx.multidex.MultiDex;
 
+import com.orhanobut.logger.Logger;
 import com.zqy.googlelib.AndroidX;
+
 
 /**
  * 作者: zhangqingyou
@@ -27,6 +29,7 @@ public class App extends Application {
         super.attachBaseContext(base);
         application = this;
         MultiDex.install(this);
+        Logger.init("androidx库重构");
     }
 
     @Override

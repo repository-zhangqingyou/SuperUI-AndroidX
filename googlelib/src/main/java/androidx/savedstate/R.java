@@ -1,11 +1,13 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package androidx.savedstate;
 
-public final class R {
-    public R() {
-    }
-}
+R {}
+
+
+
+/* Location:           C:\Android\AndoidProjects\SUI\sui_native\libs\lib_google_androidx-release\libs\r-classes.jar
+
+ * Qualified Name:     androidx.savedstate.R
+
+ * JD-Core Version:    0.7.0.1
+
+ */

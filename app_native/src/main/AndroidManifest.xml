@@ -28,6 +28,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="name,roundIcon,allowBackup,icon,label,theme,supportsRtl,usesCleartextTraffic">
+        <activity android:name=".ActivityReplaceResourcesId"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

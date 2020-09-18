@@ -35,7 +35,8 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        AndroidX.init(getApplication(),"123");
+      // AndroidX.init(getApplication(),"com.zqy.googlelib");//com.zqy.googlelib
+       AndroidX.init(getApplication(),"");//com.zqy.googlelib
         initModule();
     }
 

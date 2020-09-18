@@ -46,8 +46,8 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api group: "androidx.appcompat", name: "appcompat", version:"$versions.androidx"//对应appcompat-v7
     api group: "androidx.constraintlayout", name: "constraintlayout", version:"$versions.constraintlayout"
-//    api "com.google.android.material:material:$versions.androidx"//对应support:design
-//    api "androidx.legacy:legacy-support-v4:$versions.androidx"//对应support:support-v4
+    api "com.google.android.material:material:$versions.androidx"//对应support:design
+    api "androidx.legacy:legacy-support-v4:$versions.androidx"//对应support:support-v4
     api "androidx.recyclerview:recyclerview:$versions.androidx"
 
     api project(path: ':xui_lib_1.1.5')   //androidx项目

@@ -55,6 +55,8 @@ public class SUIManage {
         //网络请求模组初始化
         RequestManage.init(application);
         RequestManage.setDEBUG(true);
+
+
     }
 
 

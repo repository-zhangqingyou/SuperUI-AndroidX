@@ -5,6 +5,8 @@ import android.content.Context;
 
 import androidx.multidex.MultiDex;
 
+import com.zqy.googlelib.AndroidX;
+
 /**
  * 作者: zhangqingyou
  * 时间: 2020/8/19 15:07
@@ -30,6 +32,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        AndroidX.init(getApplication(),"123");
         initModule();
     }
 

@@ -36,8 +36,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        String s = RSAEncrypt.encryptPublicKey("123");
 //        String s1 = RSAEncrypt.decryptPrivateKey(s, RSAEncrypt.PRIVATE_KEY);
         //  mTvTest.setClickEffect(false);
+
+//       int baseUIAppTheme = ResourceUtils.getStyleIdByName("Base_DialogWindowTitle_AppCompat");
+//        int baseUIAppTheme2 = ResourceUtils.getStyleIdByName("Base.DialogWindowTitle.AppCompat");
         mTvTest.setBackground(getStateListDrawable());
 
+      //  R.style.Base_TextAppearance_AppCompat_Body2;
     }
 
     @Override

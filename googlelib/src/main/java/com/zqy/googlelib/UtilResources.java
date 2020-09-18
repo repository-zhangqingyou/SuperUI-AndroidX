@@ -22,12 +22,18 @@ public class UtilResources {
         return application.getResources().getIdentifier(paramString, "drawable", application.getPackageName());
     }
 
+    public static int getMipmap(String paramString) {
+        return application.getResources().getIdentifier(paramString, "mipmap", application.getPackageName());
+    }
+
     public static int getStyleId(String paramString) {
         return application.getResources().getIdentifier(paramString, "style", application.getPackageName());
     }
+
     public static int getStyleableId(String paramString) {
         return application.getResources().getIdentifier(paramString, "styleable", application.getPackageName());
     }
+
     public static int getId(String paramString) {
         return application.getResources().getIdentifier(paramString, "id", application.getPackageName());
     }
@@ -44,4 +50,24 @@ public class UtilResources {
         return application.getResources().getIdentifier(paramString, "anim", application.getPackageName());
     }
 
+    public static int getDimen(String paramString) {
+        return application.getResources().getIdentifier(paramString, "dimen", application.getPackageName());
+    }
+
+
+    public static int getAttr(String paramString) {
+        return application.getResources().getIdentifier(paramString, "attr",      application.getPackageName());
+    }
+
+    public static int getBool(String paramString) {
+        return application.getResources().getIdentifier(paramString, "bool",       application.getPackageName());
+    }
+
+    public static int getInteger(String paramString) {
+        return application.getResources().getIdentifier(paramString, "integer",     application.getPackageName());
+    }
+
+    public static int getInterpolator(String paramString) {
+        return application.getResources().getIdentifier(paramString, "interpolator",   application.getPackageName());
+    }
 }

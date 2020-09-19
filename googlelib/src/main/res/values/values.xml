@@ -7,6 +7,10 @@
     <attr name="appBarLayoutStyle" />
     <attr name="closeIcon" format="reference" />
     <attr name="menu" format="reference" />
+<!--    <attr name="android:alpha" format="float" />-->
+<!--    <attr name="android:translationX" format="dimension" />-->
+<!--    <attr name="android:translationY" format="dimension" />-->
+<!--    <attr name="android:translationZ" format="dimension" />-->
     <attr name="arcMode" format="enum">
         <enum name="startVertical" value="0" />
         <enum name="startHorizontal" value="1" />
@@ -8094,7 +8098,7 @@
     <declare-styleable name="PropertySet">
         <attr name="android:visibility" />
         <attr name="visibilityMode" />
-        <attr name="android:alpha" format="float" />
+        <attr name="android:alpha"  />
         <attr name="motionProgress" />
         <attr name="layout_constraintTag" />
     </declare-styleable>
@@ -8780,9 +8784,9 @@
         <attr name="android:scaleY" />
         <attr name="android:transformPivotX" />
         <attr name="android:transformPivotY" />
-        <attr name="android:translationX" format="dimension" />
-        <attr name="android:translationY" format="dimension" />
-        <attr name="android:translationZ" format="dimension" />
+        <attr name="android:translationX"  />
+        <attr name="android:translationY"  />
+        <attr name="android:translationZ"  />
     </declare-styleable>
     <declare-styleable name="Transition">
         <attr name="android:id" />

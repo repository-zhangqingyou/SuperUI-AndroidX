@@ -1,20 +1,21 @@
 package com.zqy.nt.app;
 
+import android.app.Activity;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.orhanobut.logger.Logger;
 
 /**
  * 通过name查找资源id测试
  */
-public class ActivityReplaceResourcesId extends AppCompatActivity {
+public class ActivityReplaceResourcesId extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_replace_resources_id);
+        //setContentView(ResourcesUtil.getLayoutId("activity_replace_resources_id"));
+
         getLayoutId();
 
         getStringId();
@@ -80,6 +81,8 @@ public class ActivityReplaceResourcesId extends AppCompatActivity {
     public int getStyleableId() {
         int styleable = androidx.appcompat.R.styleable.ActionBar_contentInsetStartWithNavigation;
         Logger.d("styleable：" + styleable);
+        // int[] intArray = getResources().getIntArray();
+        // getResources().getIdentifier()
         return styleable;
     }
 

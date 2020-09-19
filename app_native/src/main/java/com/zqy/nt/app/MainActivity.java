@@ -1,25 +1,32 @@
 package com.zqy.nt.app;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatImageView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private AppCompatImageView mIcon;
+public class MainActivity extends Activity implements View.OnClickListener {
+    private ImageView mIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+       // setContentView(   ResourcesUtil.getLayoutId("activity_main"));
         initView();
-        // ;
     }
 
     private void initView() {
-        mIcon = findViewById(R.id.icon);
-        mIcon.setOnClickListener(this);
+       mIcon = findViewById(R.id.icon);
+     //   mIcon = findViewById(ResourcesUtil.getId("icon"));
+//        mIcon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this,ActivityReplaceResourcesId.class));
+//
+//            }
+//        });
 
     }
 

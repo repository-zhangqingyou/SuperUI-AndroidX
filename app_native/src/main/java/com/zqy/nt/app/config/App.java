@@ -6,6 +6,7 @@ import android.content.Context;
 import androidx.multidex.MultiDex;
 
 import com.orhanobut.logger.Logger;
+import com.zqy.google.android.Android;
 
 
 /**
@@ -36,6 +37,7 @@ public class App extends Application {
         super.onCreate();
         // AndroidX.init(getApplication(),"com.zqy.googlelib");//com.zqy.googlelib
         initModule();
+        Android.init(this,getPackageName());
     }
 
     /**

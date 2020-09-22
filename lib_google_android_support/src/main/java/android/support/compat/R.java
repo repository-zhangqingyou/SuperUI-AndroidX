@@ -5,6 +5,9 @@
 
 package android.support.compat;
 
+import com.zqy.google.android.ResourcesUtil;
+import com.zqy.google.android.StyleaUtils;
+
 public final class R {
     public R() {
     }
@@ -26,17 +29,17 @@ public final class R {
         }
 
         static {
-            FontFamily = R.styleable.FontFamily;
-            FontFamily_fontProviderAuthority = R.styleable.FontFamily_fontProviderAuthority;
-            FontFamily_fontProviderCerts = R.styleable.FontFamily_fontProviderCerts;
-            FontFamily_fontProviderFetchStrategy = R.styleable.FontFamily_fontProviderFetchStrategy;
-            FontFamily_fontProviderFetchTimeout = R.styleable.FontFamily_fontProviderFetchTimeout;
-            FontFamily_fontProviderPackage = R.styleable.FontFamily_fontProviderPackage;
-            FontFamily_fontProviderQuery = R.styleable.FontFamily_fontProviderQuery;
-            FontFamilyFont = R.styleable.FontFamilyFont;
-            FontFamilyFont_font = R.styleable.FontFamilyFont_font;
-            FontFamilyFont_fontStyle = R.styleable.FontFamilyFont_fontStyle;
-            FontFamilyFont_fontWeight = R.styleable.FontFamilyFont_fontWeight;
+            FontFamily = StyleaUtils.getStyleableArryId("FontFamily");
+            FontFamily_fontProviderAuthority = StyleaUtils.getStyleableId("FontFamily_fontProviderAuthority");
+            FontFamily_fontProviderCerts = StyleaUtils.getStyleableId("FontFamily_fontProviderCerts");
+            FontFamily_fontProviderFetchStrategy = StyleaUtils.getStyleableId("FontFamily_fontProviderFetchStrategy");
+            FontFamily_fontProviderFetchTimeout = StyleaUtils.getStyleableId("FontFamily_fontProviderFetchTimeout");
+            FontFamily_fontProviderPackage = StyleaUtils.getStyleableId("FontFamily_fontProviderPackage");
+            FontFamily_fontProviderQuery = StyleaUtils.getStyleableId("FontFamily_fontProviderQuery");
+            FontFamilyFont = StyleaUtils.getStyleableArryId("FontFamilyFont");
+            FontFamilyFont_font = StyleaUtils.getStyleableId("FontFamilyFont_font");
+            FontFamilyFont_fontStyle = StyleaUtils.getStyleableId("FontFamilyFont_fontStyle");
+            FontFamilyFont_fontWeight = StyleaUtils.getStyleableId("FontFamilyFont_fontWeight");
         }
     }
 
@@ -53,13 +56,13 @@ public final class R {
         }
 
         static {
-            TextAppearance_Compat_Notification = R.style.TextAppearance_Compat_Notification;
-            TextAppearance_Compat_Notification_Info = R.style.TextAppearance_Compat_Notification_Info;
-            TextAppearance_Compat_Notification_Line2 = R.style.TextAppearance_Compat_Notification_Line2;
-            TextAppearance_Compat_Notification_Time = R.style.TextAppearance_Compat_Notification_Time;
-            TextAppearance_Compat_Notification_Title = R.style.TextAppearance_Compat_Notification_Title;
-            Widget_Compat_NotificationActionContainer = R.style.Widget_Compat_NotificationActionContainer;
-            Widget_Compat_NotificationActionText = R.style.Widget_Compat_NotificationActionText;
+            TextAppearance_Compat_Notification = ResourcesUtil.getStyleId("TextAppearance.Compat.Notification");
+            TextAppearance_Compat_Notification_Info = ResourcesUtil.getStyleId("TextAppearance.Compat.Notification.Info");
+            TextAppearance_Compat_Notification_Line2 = ResourcesUtil.getStyleId("TextAppearance.Compat.Notification.Line2");
+            TextAppearance_Compat_Notification_Time = ResourcesUtil.getStyleId("TextAppearance.Compat.Notification.Time");
+            TextAppearance_Compat_Notification_Title = ResourcesUtil.getStyleId("TextAppearance.Compat.Notification.Title");
+            Widget_Compat_NotificationActionContainer = ResourcesUtil.getStyleId("Widget.Compat.NotificationActionContainer");
+            Widget_Compat_NotificationActionText = ResourcesUtil.getStyleId("Widget.Compat.NotificationActionText");
         }
     }
 
@@ -70,7 +73,7 @@ public final class R {
         }
 
         static {
-            status_bar_notification_info_overflow = R.string.status_bar_notification_info_overflow;
+            status_bar_notification_info_overflow = ResourcesUtil.getStringId("status_bar_notification_info_overflow");
         }
     }
 
@@ -86,12 +89,12 @@ public final class R {
         }
 
         static {
-            notification_action = R.layout.notification_action;
-            notification_action_tombstone = R.layout.notification_action_tombstone;
-            notification_template_custom_big = R.layout.notification_template_custom_big;
-            notification_template_icon_group = R.layout.notification_template_icon_group;
-            notification_template_part_chronometer = R.layout.notification_template_part_chronometer;
-            notification_template_part_time = R.layout.notification_template_part_time;
+            notification_action = ResourcesUtil.getLayoutId("notification_action");
+            notification_action_tombstone = ResourcesUtil.getLayoutId("notification_action_tombstone");
+            notification_template_custom_big = ResourcesUtil.getLayoutId("notification_template_custom_big");
+            notification_template_icon_group = ResourcesUtil.getLayoutId("notification_template_icon_group");
+            notification_template_part_chronometer = ResourcesUtil.getLayoutId("notification_template_part_chronometer");
+            notification_template_part_time = ResourcesUtil.getLayoutId("notification_template_part_time");
         }
     }
 
@@ -102,7 +105,7 @@ public final class R {
         }
 
         static {
-            status_bar_notification_info_maxnum = R.integer.status_bar_notification_info_maxnum;
+            status_bar_notification_info_maxnum = ResourcesUtil.getInteger("status_bar_notification_info_maxnum");
         }
     }
 
@@ -137,31 +140,31 @@ public final class R {
         }
 
         static {
-            action_container = R.id.action_container;
-            action_divider = R.id.action_divider;
-            action_image = R.id.action_image;
-            action_text = R.id.action_text;
-            actions = R.id.actions;
-            async = R.id.async;
-            blocking = R.id.blocking;
-            chronometer = R.id.chronometer;
-            forever = R.id.forever;
-            icon = R.id.icon;
-            icon_group = R.id.icon_group;
-            info = R.id.info;
-            italic = R.id.italic;
-            line1 = R.id.line1;
-            line3 = R.id.line3;
-            normal = R.id.normal;
-            notification_background = R.id.notification_background;
-            notification_main_column = R.id.notification_main_column;
-            notification_main_column_container = R.id.notification_main_column_container;
-            right_icon = R.id.right_icon;
-            right_side = R.id.right_side;
-            text = R.id.text;
-            text2 = R.id.text2;
-            time = R.id.time;
-            title = R.id.title;
+            action_container = ResourcesUtil.getId("action_container");
+            action_divider = ResourcesUtil.getId("action_divider");
+            action_image = ResourcesUtil.getId("action_image");
+            action_text = ResourcesUtil.getId("action_text");
+            actions = ResourcesUtil.getId("actions");
+            async = ResourcesUtil.getId("async");
+            blocking = ResourcesUtil.getId("blocking");
+            chronometer = ResourcesUtil.getId("chronometer");
+            forever = ResourcesUtil.getId("forever");
+            icon = ResourcesUtil.getId("icon");
+            icon_group = ResourcesUtil.getId("icon_group");
+            info = ResourcesUtil.getId("info");
+            italic = ResourcesUtil.getId("italic");
+            line1 = ResourcesUtil.getId("line1");
+            line3 = ResourcesUtil.getId("line3");
+            normal = ResourcesUtil.getId("normal");
+            notification_background = ResourcesUtil.getId("notification_background");
+            notification_main_column = ResourcesUtil.getId("notification_main_column");
+            notification_main_column_container = ResourcesUtil.getId("notification_main_column_container");
+            right_icon = ResourcesUtil.getId("right_icon");
+            right_side = ResourcesUtil.getId("right_side");
+            text = ResourcesUtil.getId("text");
+            text2 = ResourcesUtil.getId("text2");
+            time = ResourcesUtil.getId("time");
+            title = ResourcesUtil.getId("title");
         }
     }
 
@@ -183,18 +186,18 @@ public final class R {
         }
 
         static {
-            notification_action_background = R.drawable.notification_action_background;
-            notification_bg = R.drawable.notification_bg;
-            notification_bg_low = R.drawable.notification_bg_low;
-            notification_bg_low_normal = R.drawable.notification_bg_low_normal;
-            notification_bg_low_pressed = R.drawable.notification_bg_low_pressed;
-            notification_bg_normal = R.drawable.notification_bg_normal;
-            notification_bg_normal_pressed = R.drawable.notification_bg_normal_pressed;
-            notification_icon_background = R.drawable.notification_icon_background;
-            notification_template_icon_bg = R.drawable.notification_template_icon_bg;
-            notification_template_icon_low_bg = R.drawable.notification_template_icon_low_bg;
-            notification_tile_bg = R.drawable.notification_tile_bg;
-            notify_panel_notification_icon_bg = R.drawable.notify_panel_notification_icon_bg;
+            notification_action_background = ResourcesUtil.getDrawableId("notification_action_background");
+            notification_bg = ResourcesUtil.getDrawableId("notification_bg");
+            notification_bg_low = ResourcesUtil.getDrawableId("notification_bg_low");
+            notification_bg_low_normal = ResourcesUtil.getDrawableId("notification_bg_low_normal");
+            notification_bg_low_pressed = ResourcesUtil.getDrawableId("notification_bg_low_pressed");
+            notification_bg_normal = ResourcesUtil.getDrawableId("notification_bg_normal");
+            notification_bg_normal_pressed = ResourcesUtil.getDrawableId("notification_bg_normal_pressed");
+            notification_icon_background = ResourcesUtil.getDrawableId("notification_icon_background");
+            notification_template_icon_bg = ResourcesUtil.getDrawableId("notification_template_icon_bg");
+            notification_template_icon_low_bg = ResourcesUtil.getDrawableId("notification_template_icon_low_bg");
+            notification_tile_bg = ResourcesUtil.getDrawableId("notification_tile_bg");
+            notify_panel_notification_icon_bg = ResourcesUtil.getDrawableId("notify_panel_notification_icon_bg");
         }
     }
 
@@ -224,26 +227,26 @@ public final class R {
         }
 
         static {
-            compat_button_inset_horizontal_material = R.dimen.compat_button_inset_horizontal_material;
-            compat_button_inset_vertical_material = R.dimen.compat_button_inset_vertical_material;
-            compat_button_padding_horizontal_material = R.dimen.compat_button_padding_horizontal_material;
-            compat_button_padding_vertical_material = R.dimen.compat_button_padding_vertical_material;
-            compat_control_corner_material = R.dimen.compat_control_corner_material;
-            notification_action_icon_size = R.dimen.notification_action_icon_size;
-            notification_action_text_size = R.dimen.notification_action_text_size;
-            notification_big_circle_margin = R.dimen.notification_big_circle_margin;
-            notification_content_margin_start = R.dimen.notification_content_margin_start;
-            notification_large_icon_height = R.dimen.notification_large_icon_height;
-            notification_large_icon_width = R.dimen.notification_large_icon_width;
-            notification_main_column_padding_top = R.dimen.notification_main_column_padding_top;
-            notification_media_narrow_margin = R.dimen.notification_media_narrow_margin;
-            notification_right_icon_size = R.dimen.notification_right_icon_size;
-            notification_right_side_padding_top = R.dimen.notification_right_side_padding_top;
-            notification_small_icon_background_padding = R.dimen.notification_small_icon_background_padding;
-            notification_small_icon_size_as_large = R.dimen.notification_small_icon_size_as_large;
-            notification_subtext_size = R.dimen.notification_subtext_size;
-            notification_top_pad = R.dimen.notification_top_pad;
-            notification_top_pad_large_text = R.dimen.notification_top_pad_large_text;
+            compat_button_inset_horizontal_material = ResourcesUtil.getDimen("compat_button_inset_horizontal_material");
+            compat_button_inset_vertical_material = ResourcesUtil.getDimen("compat_button_inset_vertical_material");
+            compat_button_padding_horizontal_material = ResourcesUtil.getDimen("compat_button_padding_horizontal_material");
+            compat_button_padding_vertical_material = ResourcesUtil.getDimen("compat_button_padding_vertical_material");
+            compat_control_corner_material = ResourcesUtil.getDimen("compat_control_corner_material");
+            notification_action_icon_size = ResourcesUtil.getDimen("notification_action_icon_size");
+            notification_action_text_size = ResourcesUtil.getDimen("notification_action_text_size");
+            notification_big_circle_margin = ResourcesUtil.getDimen("notification_big_circle_margin");
+            notification_content_margin_start = ResourcesUtil.getDimen("notification_content_margin_start");
+            notification_large_icon_height = ResourcesUtil.getDimen("notification_large_icon_height");
+            notification_large_icon_width = ResourcesUtil.getDimen("notification_large_icon_width");
+            notification_main_column_padding_top = ResourcesUtil.getDimen("notification_main_column_padding_top");
+            notification_media_narrow_margin = ResourcesUtil.getDimen("notification_media_narrow_margin");
+            notification_right_icon_size = ResourcesUtil.getDimen("notification_right_icon_size");
+            notification_right_side_padding_top = ResourcesUtil.getDimen("notification_right_side_padding_top");
+            notification_small_icon_background_padding = ResourcesUtil.getDimen("notification_small_icon_background_padding");
+            notification_small_icon_size_as_large = ResourcesUtil.getDimen("notification_small_icon_size_as_large");
+            notification_subtext_size = ResourcesUtil.getDimen("notification_subtext_size");
+            notification_top_pad = ResourcesUtil.getDimen("notification_top_pad");
+            notification_top_pad_large_text = ResourcesUtil.getDimen("notification_top_pad_large_text");
         }
     }
 
@@ -257,10 +260,10 @@ public final class R {
         }
 
         static {
-            notification_action_color_filter = R.color.notification_action_color_filter;
-            notification_icon_bg_color = R.color.notification_icon_bg_color;
-            ripple_material_light = R.color.ripple_material_light;
-            secondary_text_default_material_light = R.color.secondary_text_default_material_light;
+            notification_action_color_filter = ResourcesUtil.getColorId("notification_action_color_filter");
+            notification_icon_bg_color = ResourcesUtil.getColorId("notification_icon_bg_color");
+            ripple_material_light = ResourcesUtil.getColorId("ripple_material_light");
+            secondary_text_default_material_light = ResourcesUtil.getColorId("secondary_text_default_material_light");
         }
     }
 
@@ -271,7 +274,7 @@ public final class R {
         }
 
         static {
-            abc_action_bar_embed_tabs = R.bool.abc_action_bar_embed_tabs;
+            abc_action_bar_embed_tabs = ResourcesUtil.getBool("abc_action_bar_embed_tabs");
         }
     }
 
@@ -290,15 +293,15 @@ public final class R {
         }
 
         static {
-            font = R.attr.font;
-            fontProviderAuthority = R.attr.fontProviderAuthority;
-            fontProviderCerts = R.attr.fontProviderCerts;
-            fontProviderFetchStrategy = R.attr.fontProviderFetchStrategy;
-            fontProviderFetchTimeout = R.attr.fontProviderFetchTimeout;
-            fontProviderPackage = R.attr.fontProviderPackage;
-            fontProviderQuery = R.attr.fontProviderQuery;
-            fontStyle = R.attr.fontStyle;
-            fontWeight = R.attr.fontWeight;
+            font = ResourcesUtil.getAttr("font");
+            fontProviderAuthority = ResourcesUtil.getAttr("fontProviderAuthority");
+            fontProviderCerts = ResourcesUtil.getAttr("fontProviderCerts");
+            fontProviderFetchStrategy = ResourcesUtil.getAttr("fontProviderFetchStrategy");
+            fontProviderFetchTimeout = ResourcesUtil.getAttr("fontProviderFetchTimeout");
+            fontProviderPackage = ResourcesUtil.getAttr("fontProviderPackage");
+            fontProviderQuery = ResourcesUtil.getAttr("fontProviderQuery");
+            fontStyle = ResourcesUtil.getAttr("fontStyle");
+            fontWeight = ResourcesUtil.getAttr("fontWeight");
         }
     }
 }

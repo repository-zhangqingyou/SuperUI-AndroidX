@@ -13,6 +13,7 @@ def rootDirPath = getRootDir().getPath()//获取项目根路劲
 String oldRString = "R\\." //R文件中，被替换的文本
 //String newRString = "com.zqy.google.androidx.R." //R文件中，替换后的文本--androidx
 String newRString = "com.zqy.google.android.support.R." //R文件中，替换后的文本--android.support
+String classPath = "com.zqy.google.android."//通过name的方式查找资源
 android {
     compileSdkVersion build_versions.target_sdk
     defaultConfig {
@@ -71,9 +72,9 @@ task processR_CopyClasss(type: Copy) {
  * 1.执行assemble，生成R文件
  * 2.复制Modules生成的R文件
  */
-task processR_CopyR(type: Copy,dependsOn:assemble) {
+task processR_CopyR(type: Copy) {
     doFirst {
-        print('1.执行assemble，生成R文件2.复制Modules生成的R文件')
+        print('执行assemble，生成R文件 -》 复制Modules生成的R文件')
     }
     from "build/generated/not_namespaced_r_class_sources/debug/generateDebugRFile/out"
     into 'build/tempsrc/'
@@ -82,7 +83,7 @@ task processR_CopyR(type: Copy,dependsOn:assemble) {
 /**
  * 预处理（替换R.xx.*之类）
  */
-task processR_AssembleReplaceR(dependsOn: [processR_ClearClasss, processR_CopyClasss, processR_CopyR]) {
+task processR_AssembleReplaceR() {
     doLast {
         println '预处理（替换R.xx.*之类）'
         // 递归遍历目录下的所有java文件，然后针对资源id做打java包前的预处理
@@ -103,11 +104,10 @@ task processR_AssembleReplaceR(dependsOn: [processR_ClearClasss, processR_CopyCl
     }
 }
 
-
 /**
  * 编译class
  */
-task processR_CompileClasss(type: JavaCompile, dependsOn: [processR_AssembleReplaceR]) {
+task processR_CompileClasss(type: JavaCompile) {
     doFirst {
         println '编译class'
     }
@@ -129,8 +129,7 @@ task processR_CompileClasss(type: JavaCompile, dependsOn: [processR_AssembleRepl
 /**
  * 将class文件打包成jar
  */
-task processR_AssembleRJar(type: Jar, dependsOn: processR_CompileClasss) {
-
+task processR_AssembleRJar(type: Jar) {
     from 'build/gen_classs/'
     into ''
     // 去掉不需要打包的目录和文件
@@ -143,6 +142,340 @@ task processR_AssembleRJar(type: Jar, dependsOn: processR_CompileClasss) {
     baseName noProGuardJarName
 
 }
+
+/**
+ * 预处理（替换R.xx.*之类）
+ */
+task processR_ReplaceName() {
+    doLast {
+        println '预备处理'
+        // 递归遍历目录下的所有java文件，然后针对资源id做打java包前的预处理
+        def currentDir = file('build/tempsrc')
+        currentDir.eachFileRecurse { file ->
+            if (!file.isFile() || !file.name.endsWith('.java')) return true // 相当于continue
+            def fileText = file.getText('utf-8')
+            List<String> list = new ArrayList<String>()
+            fileText.eachLine { line ->
+                String content = line
+                list.add(content)
+            }
+            String classPrefix = classPath + "ResourcesUtil."//class类路徑
+            String classPrefixT = classPath + "StyleaUtils."//class类路徑
+            String styleable = "R.styleable."
+            String style = "R.style."
+            String id = "R.id."
+            String layout = "R.layout."
+            String mipmap = "R.mipmap."
+            String drawable = "R.drawable."
+            String string = "R.string."
+            String color = "R.color."
+            String anim = "R.anim."
+            String dimen = "R.dimen."
+            String attr = "R.attr."
+            String bool = "R.bool."
+            String integer = "R.integer."
+            String interpolator = "R.interpolator."
+            String raw = "R.raw."
+            String xml = "R.xml."
+            String plurals = "R.plurals."
+            String animator = "R.animator."
+            for (int i = 0; i < list.size(); i++) {
+                String str = list.get(i)
+                if (str.contains(styleable)) {
+                    //println i + '行文本修改前内容：' + str
+                    int startIndexOf = str.indexOf(styleable)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesStyleableID(str, styleable, ")", classPrefixT)
+                    } else {
+                        newString = replaceResourcesStyleableID(str, styleable, ";", classPrefixT)
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    //有可能一行有多个
+                    i--
+                    // println i + '行文本修改后内容：' + newString
+                } else if (str.contains(style)) {
+                    int startIndexOf = str.indexOf(style)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, style, ")", classPrefix + "getStyleId")
+                    } else {
+                        newString = replaceResourcesID(str, style, ";", classPrefix + "getStyleId")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(id)) {
+                    int startIndexOf = str.indexOf(id)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, id, ")", classPrefix + "getId")
+                    } else {
+                        newString = replaceResourcesID(str, id, ";", classPrefix + "getId")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(layout)) {
+                    int startIndexOf = str.indexOf(layout)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, layout, ")", classPrefix + "getLayoutId")
+                    } else {
+                        newString = replaceResourcesID(str, layout, ";", classPrefix + "getLayoutId")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(mipmap)) {
+                    int startIndexOf = str.indexOf(mipmap)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, mipmap, ")", classPrefix + "getMipmap")
+                    } else {
+                        newString = replaceResourcesID(str, mipmap, ";", classPrefix + "getMipmap")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(drawable)) {
+                    int startIndexOf = str.indexOf(drawable)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, drawable, ")", classPrefix + "getDrawableId")
+                    } else {
+                        newString = replaceResourcesID(str, drawable, ";", classPrefix + "getDrawableId")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(string)) {
+                    int startIndexOf = str.indexOf(string)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, string, ")", classPrefix + "getStringId")
+                    } else {
+                        newString = replaceResourcesID(str, string, ";", classPrefix + "getStringId")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(color)) {
+                    int startIndexOf = str.indexOf(color)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, color, ")", classPrefix + "getColorId")
+                    } else {
+                        newString = replaceResourcesID(str, color, ";", classPrefix + "getColorId")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(anim)) {
+                    int startIndexOf = str.indexOf(anim)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    println i + '行文本修改前内容：' + str
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, anim, ")", classPrefix + "getAnimId")
+                    } else {
+                        newString = replaceResourcesID(str, anim, ";", classPrefix + "getAnimId")
+                    }
+                    println i + '行文本修改后内容：' + newString
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(dimen)) {
+                    int startIndexOf = str.indexOf(dimen)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, dimen, ")", classPrefix + "getDimen")
+                    } else {
+                        newString = replaceResourcesID(str, dimen, ";", classPrefix + "getDimen")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(attr)) {
+                    int startIndexOf = str.indexOf(attr)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, attr, ")", classPrefix + "getAttr")
+                    } else {
+                        newString = replaceResourcesID(str, attr, ";", classPrefix + "getAttr")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(bool)) {
+                    int startIndexOf = str.indexOf(bool)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, bool, ")", classPrefix + "getBool")
+                    } else {
+                        newString = replaceResourcesID(str, bool, ";", classPrefix + "getBool")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(integer)) {
+                    int startIndexOf = str.indexOf(integer)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, integer, ")", classPrefix + "getInteger")
+                    } else {
+                        newString = replaceResourcesID(str, integer, ";", classPrefix + "getInteger")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(interpolator)) {
+                    int startIndexOf = str.indexOf(interpolator)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, interpolator, ")", classPrefix + "getInterpolator")
+                    } else {
+                        newString = replaceResourcesID(str, interpolator, ";", classPrefix + "getInterpolator")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(raw)) {
+                    int startIndexOf = str.indexOf(raw)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, raw, ")", classPrefix + "getRaw")
+                    } else {
+                        newString = replaceResourcesID(str, raw, ";", classPrefix + "getRaw")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(xml)) {
+                    int startIndexOf = str.indexOf(xml)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, xml, ")", classPrefix + "getXml")
+                    } else {
+                        newString = replaceResourcesID(str, xml, ";", classPrefix + "getXml")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(plurals)) {
+                    int startIndexOf = str.indexOf(plurals)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, plurals, ")", classPrefix + "getPlurals")
+                    } else {
+                        newString = replaceResourcesID(str, plurals, ";", classPrefix + "getPlurals")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                } else if (str.contains(animator)) {
+                    int startIndexOf = str.indexOf(animator)
+                    char charAt = str.charAt(startIndexOf - 1)
+                    String newString
+                    if (charAt == '(') {
+                        newString = replaceResourcesID(str, animator, ")", classPrefix + "getAnimator")
+                    } else {
+                        newString = replaceResourcesID(str, animator, ";", classPrefix + "getAnimator")
+                    }
+                    if (newString != null && newString != "")
+                        list.set(i, newString)
+                    i--
+                }
+            }
+            String join = String.join("\n", list)
+            file.write(join, 'utf-8')
+        }
+    }
+}
+/**styleable资源id特殊处理
+ *
+ * @param startString 被替换的字符开始符号 比如：R.layout.
+ * @param endString 被替换的字符结尾符号
+ * @param newStringPrefix 新内容 前缀
+ * @return
+ */
+String replaceResourcesStyleableID(src, startString, endString, newStringPrefix) {//无需指定参数类型
+    if (startString.contains("styleable")) {
+        int startIndexOf = src.indexOf(startString)
+        int endIndexOf = src.indexOf(endString)
+        //资源路劲全称，比如：R.styleable.aa
+        String resourcesID = src.substring(startIndexOf, endIndexOf)
+        //资源名，比如：aa
+        String resourcesName = resourcesID.substring(startString.length(), resourcesID.length())
+        String newString = ""
+        if (!resourcesName.contains("_")) {
+            //资源名不含有“_”是资源集 -- int[]
+            newString = newStringPrefix + "getStyleableArryId(\"" + resourcesName + "\")"
+        } else {
+            newString = newStringPrefix + "getStyleableId(\"" + resourcesName + "\")"
+        }
+        return src.replace(resourcesID, newString)
+    }
+    return ""
+}
+
+/**一般资源id处理
+ *
+ * @param startString 被替换的字符开始符号 比如：R.layout.
+ * @param endString 被替换的字符结尾符号
+ * @param newStringPrefix 新内容 前缀
+ * @return
+ */
+String replaceResourcesID(src, startString, endString, newStringPrefix) {//无需指定参数类型
+    int startIndexOf = src.indexOf(startString)
+    int endIndexOf = src.indexOf(endString)
+    //资源路劲全称，比如：R.styleable.aa
+    String resourcesID = src.substring(startIndexOf, endIndexOf)
+    //资源名，比如：aa
+    String resourcesName = resourcesID.substring(startString.length(), resourcesID.length())
+    if (startString.contains("style") && !startString.contains("styleable")) {
+        //style资源特殊处理：比如Base_DialogWindowTitle_AppCompat换成Base.DialogWindowTitle.AppCompat
+        //通过name查找资源id，需要原名字
+        resourcesName = resourcesName.replaceAll("_", ".")
+    }
+    String newString = newStringPrefix + "(\"" + resourcesName + "\")"
+    return src.replace(resourcesID, newString)
+}
+
+
+
+task assembleRJar() {
+    assembleRJar.dependsOn(processR_AssembleRJar)
+    processR_AssembleRJar.dependsOn(processR_CompileClasss)
+    //第一种方式：通过name的方式查找资源
+    processR_CompileClasss.dependsOn(processR_ReplaceName)
+    processR_ReplaceName.dependsOn(processR_CopyClasss)
+    processR_CopyClasss.dependsOn(processR_ClearClasss)
+    //第二种方式：执行assemble，生成R文件 -》 复制Modules生成的R文件 -》所有R文件打包成jar
+//    processR_CompileClasss.dependsOn(processR_AssembleReplaceR)
+//    processR_AssembleReplaceR.dependsOn(processR_CopyR)
+//    processR_CopyR.dependsOn(processR_CopyClasss)
+//    processR_CopyClasss.dependsOn(assemble)
+//    assemble.dependsOn(processR_ClearClasss)
+}
+
 dependencies {
     api fileTree(dir: "libs", include: ["*.jar"])
 //    implementation "androidx.appcompat:appcompat:1.1.0"
@@ -150,319 +483,5 @@ dependencies {
 //    implementation "androidx.loader:loader:1.1.0"
 //    implementation "androidx.viewpager2:viewpager2:1.0.0"
 }
-///**
-// * 预处理（替换R.xx.*之类）
-// */
-//task assemble_ReplaceR(dependsOn: [clearSource, copyClass]) {
-//    doLast {
-//        println '预备处理'
-//        // 递归遍历目录下的所有java文件，然后针对资源id做打java包前的预处理
-//        def currentDir = file('build/tempsrc')
-//        currentDir.eachFileRecurse { file ->
-//            if (!file.isFile() || !file.name.endsWith('.java')) return true // 相当于continue
-//            def fileText = file.getText('utf-8')
-//            List<String> list = new ArrayList<String>()
-//            fileText.eachLine { line ->
-//                String content = line
-//                list.add(content)
-//            }
-//            String classPrefix = "com.zqy.googlelib.ResourcesUtil."//class类路徑
-//            String classPrefixT = "com.zqy.googlelib.StyleaUtils."//class类路徑
-//            String styleable = "R.styleable."
-//            String style = "R.style."
-//            String id = "R.id."
-//            String layout = "R.layout."
-//            String mipmap = "R.mipmap."
-//            String drawable = "R.drawable."
-//            String string = "R.string."
-//            String color = "R.color."
-//            String anim = "R.anim."
-//            String dimen = "R.dimen."
-//            String attr = "R.attr."
-//            String bool = "R.bool."
-//            String integer = "R.integer."
-//            String interpolator = "R.interpolator."
-//            String raw = "R.raw."
-//            String xml = "R.xml."
-//            String plurals = "R.plurals."
-//            String animator = "R.animator."
-//            for (int i = 0; i < list.size(); i++) {
-//                String str = list.get(i)
-//                if (str.contains(styleable)) {
-//                    //println i + '行文本修改前内容：' + str
-//                    int startIndexOf = str.indexOf(styleable)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesStyleableID(str, styleable, ")", classPrefixT)
-//                    } else {
-//                        newString = replaceResourcesStyleableID(str, styleable, ";", classPrefixT)
-//                    }
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    //有可能一行有多个
-//                    i--
-//                    // println i + '行文本修改后内容：' + newString
-//                } else if (str.contains(style)) {
-//                    int startIndexOf = str.indexOf(style)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesID(str, style, ")", classPrefix + "getStyleId")
-//                    } else {
-//                        newString = replaceResourcesID(str, style, ";", classPrefix + "getStyleId")
-//                    }
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    i--
-//                } else if (str.contains(id)) {
-//                    int startIndexOf = str.indexOf(id)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesID(str, id, ")", classPrefix + "getId")
-//                    } else {
-//                        newString = replaceResourcesID(str, id, ";", classPrefix + "getId")
-//                    }
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    i--
-//                } else if (str.contains(layout)) {
-//                    int startIndexOf = str.indexOf(layout)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesID(str, layout, ")", classPrefix + "getLayoutId")
-//                    } else {
-//                        newString = replaceResourcesID(str, layout, ";", classPrefix + "getLayoutId")
-//                    }
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    i--
-//                } else if (str.contains(mipmap)) {
-//                    int startIndexOf = str.indexOf(mipmap)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesID(str, mipmap, ")", classPrefix + "getMipmap")
-//                    } else {
-//                        newString = replaceResourcesID(str, mipmap, ";", classPrefix + "getMipmap")
-//                    }
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    i--
-//                } else if (str.contains(drawable)) {
-//                    int startIndexOf = str.indexOf(drawable)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesID(str, drawable, ")", classPrefix + "getDrawableId")
-//                    } else {
-//                        newString = replaceResourcesID(str, drawable, ";", classPrefix + "getDrawableId")
-//                    }
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    i--
-//                } else if (str.contains(string)) {
-//                    int startIndexOf = str.indexOf(string)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesID(str, string, ")", classPrefix + "getStringId")
-//                    } else {
-//                        newString = replaceResourcesID(str, string, ";", classPrefix + "getStringId")
-//                    }
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    i--
-//                } else if (str.contains(color)) {
-//                    int startIndexOf = str.indexOf(color)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesID(str, color, ")", classPrefix + "getColorId")
-//                    } else {
-//                        newString = replaceResourcesID(str, color, ";", classPrefix + "getColorId")
-//                    }
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    i--
-//                } else if (str.contains(anim)) {
-//                    int startIndexOf = str.indexOf(anim)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    println i + '行文本修改前内容：' + str
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesID(str, anim, ")", classPrefix + "getAnimId")
-//                    } else {
-//                        newString = replaceResourcesID(str, anim, ";", classPrefix + "getAnimId")
-//                    }
-//                    println i + '行文本修改后内容：' + newString
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    i--
-//                } else if (str.contains(dimen)) {
-//                    int startIndexOf = str.indexOf(dimen)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesID(str, dimen, ")", classPrefix + "getDimen")
-//                    } else {
-//                        newString = replaceResourcesID(str, dimen, ";", classPrefix + "getDimen")
-//                    }
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    i--
-//                } else if (str.contains(attr)) {
-//                    int startIndexOf = str.indexOf(attr)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesID(str, attr, ")", classPrefix + "getAttr")
-//                    } else {
-//                        newString = replaceResourcesID(str, attr, ";", classPrefix + "getAttr")
-//                    }
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    i--
-//                } else if (str.contains(bool)) {
-//                    int startIndexOf = str.indexOf(bool)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesID(str, bool, ")", classPrefix + "getBool")
-//                    } else {
-//                        newString = replaceResourcesID(str, bool, ";", classPrefix + "getBool")
-//                    }
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    i--
-//                } else if (str.contains(integer)) {
-//                    int startIndexOf = str.indexOf(integer)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesID(str, integer, ")", classPrefix + "getInteger")
-//                    } else {
-//                        newString = replaceResourcesID(str, integer, ";", classPrefix + "getInteger")
-//                    }
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    i--
-//                } else if (str.contains(interpolator)) {
-//                    int startIndexOf = str.indexOf(interpolator)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesID(str, interpolator, ")", classPrefix + "getInterpolator")
-//                    } else {
-//                        newString = replaceResourcesID(str, interpolator, ";", classPrefix + "getInterpolator")
-//                    }
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    i--
-//                } else if (str.contains(raw)) {
-//                    int startIndexOf = str.indexOf(raw)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesID(str, raw, ")", classPrefix + "getRaw")
-//                    } else {
-//                        newString = replaceResourcesID(str, raw, ";", classPrefix + "getRaw")
-//                    }
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    i--
-//                } else if (str.contains(xml)) {
-//                    int startIndexOf = str.indexOf(xml)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesID(str, xml, ")", classPrefix + "getXml")
-//                    } else {
-//                        newString = replaceResourcesID(str, xml, ";", classPrefix + "getXml")
-//                    }
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    i--
-//                } else if (str.contains(plurals)) {
-//                    int startIndexOf = str.indexOf(plurals)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesID(str, plurals, ")", classPrefix + "getPlurals")
-//                    } else {
-//                        newString = replaceResourcesID(str, plurals, ";", classPrefix + "getPlurals")
-//                    }
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    i--
-//                } else if (str.contains(animator)) {
-//                    int startIndexOf = str.indexOf(animator)
-//                    char charAt = str.charAt(startIndexOf - 1)
-//                    String newString
-//                    if (charAt == '(') {
-//                        newString = replaceResourcesID(str, animator, ")", classPrefix + "getAnimator")
-//                    } else {
-//                        newString = replaceResourcesID(str, animator, ";", classPrefix + "getAnimator")
-//                    }
-//                    if (newString != null && newString != "")
-//                        list.set(i, newString)
-//                    i--
-//                }
-//            }
-//            String join = String.join("\n", list)
-//            file.write(join, 'utf-8')
-//        }
-//    }
-//}
-///**styleable资源id特殊处理
-// *
-// * @param startString 被替换的字符开始符号 比如：R.layout.
-// * @param endString 被替换的字符结尾符号
-// * @param newStringPrefix 新内容 前缀
-// * @return
-// */
-//String replaceResourcesStyleableID(src, startString, endString, newStringPrefix) {//无需指定参数类型
-//    if (startString.contains("styleable")) {
-//        int startIndexOf = src.indexOf(startString)
-//        int endIndexOf = src.indexOf(endString)
-//        //资源路劲全称，比如：R.styleable.aa
-//        String resourcesID = src.substring(startIndexOf, endIndexOf)
-//        //资源名，比如：aa
-//        String resourcesName = resourcesID.substring(startString.length(), resourcesID.length())
-//        String newString = ""
-//        if (!resourcesName.contains("_")) {
-//            //资源名不含有“_”是资源集 -- int[]
-//            newString = newStringPrefix + "getStyleableArryId(\"" + resourcesName + "\")"
-//        } else {
-//            newString = newStringPrefix + "getStyleableId(\"" + resourcesName + "\")"
-//        }
-//        return src.replace(resourcesID, newString)
-//    }
-//    return ""
-//}
-//
-///**一般资源id处理
-// *
-// * @param startString 被替换的字符开始符号 比如：R.layout.
-// * @param endString 被替换的字符结尾符号
-// * @param newStringPrefix 新内容 前缀
-// * @return
-// */
-//String replaceResourcesID(src, startString, endString, newStringPrefix) {//无需指定参数类型
-//    int startIndexOf = src.indexOf(startString)
-//    int endIndexOf = src.indexOf(endString)
-//    //资源路劲全称，比如：R.styleable.aa
-//    String resourcesID = src.substring(startIndexOf, endIndexOf)
-//    //资源名，比如：aa
-//    String resourcesName = resourcesID.substring(startString.length(), resourcesID.length())
-//    if (startString.contains("style") && !startString.contains("styleable")) {
-//        //style资源特殊处理：比如Base_DialogWindowTitle_AppCompat换成Base.DialogWindowTitle.AppCompat
-//        //通过name查找资源id，需要原名字
-//        resourcesName = resourcesName.replaceAll("_", ".")
-//    }
-//    String newString = newStringPrefix + "(\"" + resourcesName + "\")"
-//    return src.replace(resourcesID, newString)
-//}
+
 

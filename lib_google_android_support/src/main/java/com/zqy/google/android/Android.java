@@ -8,9 +8,10 @@ import android.app.Application;
  * 描述: 初始化包名
  */
 public class Android {
-    private static String packageName;
+    private static String packageName = "com.google.android.support";
     private static Application application;
-    public static void init(Application application,String packageName) {
+
+    public static void init(Application application, String packageName) {
         Android.packageName = packageName;
         Android.application = application;
         ResourcesUtil.init(application);

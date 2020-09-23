@@ -94,7 +94,7 @@ task deleteImportR() {
                         if (content.startsWith("import") && content.endsWith("R;")) {
                             println '包含import文件:' + file.name
                         } else {
-                            list.add(content)
+                            list.add(line)
                         }
 
                     }
@@ -340,32 +340,33 @@ int getEndIndexOf(src, startString) {
  */
 task getJson() {
     println('读取json配置信息')
-    File fileP = file("build/json_config/assembleJarConfig.json")
-    if (fileP.exists()) {
-        String jsonString = fileP.getText('utf-8')
-        def parsedJson = new groovy.json.JsonSlurper().parseText(jsonString)
-        jarName = parsedJson.jarName
-        styleableArryFunction = parsedJson.styleableArryFunction
-        styleableFunction = parsedJson.styleableFunction
-        styleFunction = parsedJson.styleFunction
-        idFunction = parsedJson.idFunction
-        layoutFunction = parsedJson.layoutFunction
-        mipmapFunction = parsedJson.mipmapFunction
-        drawableFunction = parsedJson.drawableFunction
-        stringFunction = parsedJson.stringFunction
-        colorFunction = parsedJson.colorFunction
-        animFunction = parsedJson.animFunction
-        dimenFunction = parsedJson.dimenFunction
-        attrFunction = parsedJson.attrFunction
-        boolFunction = parsedJson.boolFunction
-        integerFunction = parsedJson.integerFunction
-        interpolatorFunction = parsedJson.interpolatorFunction
-        rawFunction = parsedJson.rawFunction
-        xmlFunction = parsedJson.xmlFunction
-        pluralsFunction = parsedJson.pluralsFunction
-        animatorFunction = parsedJson.animatorFunction
+    doLast {
+        File fileP = file("build/json_config/assembleJarConfig.json")
+        if (fileP.exists()) {
+            String jsonString = fileP.getText('utf-8')
+            def parsedJson = new groovy.json.JsonSlurper().parseText(jsonString)
+            jarName = parsedJson.jarName
+            styleableArryFunction = parsedJson.styleableArryFunction
+            styleableFunction = parsedJson.styleableFunction
+            styleFunction = parsedJson.styleFunction
+            idFunction = parsedJson.idFunction
+            layoutFunction = parsedJson.layoutFunction
+            mipmapFunction = parsedJson.mipmapFunction
+            drawableFunction = parsedJson.drawableFunction
+            stringFunction = parsedJson.stringFunction
+            colorFunction = parsedJson.colorFunction
+            animFunction = parsedJson.animFunction
+            dimenFunction = parsedJson.dimenFunction
+            attrFunction = parsedJson.attrFunction
+            boolFunction = parsedJson.boolFunction
+            integerFunction = parsedJson.integerFunction
+            interpolatorFunction = parsedJson.interpolatorFunction
+            rawFunction = parsedJson.rawFunction
+            xmlFunction = parsedJson.xmlFunction
+            pluralsFunction = parsedJson.pluralsFunction
+            animatorFunction = parsedJson.animatorFunction
+        }
     }
-
 }
 
 /**

@@ -34,21 +34,29 @@ android {
 
 
 }
+
+
 /**
  * 初始化json配置
  */
-task assemble_InitConfig() {
-    doLast {
+task initConfig() {
+    doFirst {
         println('写入配置json到文件')
+        writeJson()
     }
-    writeJson()
+
 }
 
+/**
+ * 执行打包jar之前先初始化
+ */
+getJson.dependsOn(initConfig)
 /**
  * 写入json到文件
  * @return
  */
 String writeJson() {
+
     def timeStr = new Date().format('yyyyMMdd(HHmmss)')
     String path = "build/json_config"
     String fileName = "/assembleJarConfig.json"
@@ -89,7 +97,7 @@ String writeJson() {
     parsedJson.jarName = "r_class_${timeStr}"
     parsedJson.oldRString = "R\\."
     parsedJson.newRString = "com.zqy.google.android.support.R."
-    parsedJson.styleableArryFunction ="com.zqy.google.android.StyleaUtils.getStyleableArryId"
+    parsedJson.styleableArryFunction = "com.zqy.google.android.StyleaUtils.getStyleableArryId"
     parsedJson.styleableFunction = "com.zqy.google.android.StyleaUtils.getStyleableId"
     parsedJson.styleFunction = "com.zqy.google.android.ResourcesUtil.getStyleId"
     parsedJson.idFunction = "com.zqy.google.android.ResourcesUtil.getId"

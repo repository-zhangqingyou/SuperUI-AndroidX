@@ -21,41 +21,41 @@ task clearClasss(type: Delete) {
     doFirst {
         println '清除源码临时目录'
     }
-    delete 'build/tempsrc'
-    delete 'build/android_r_tempsrc'//androidR文件临时目录
-    delete 'build/project_r_tempsrc'//项目R文件临时目录
-    delete 'build/tempsrc_all'//项目R文件临时目录
-    delete 'build/gen_classs'
+    delete 'build/tmp_java'//项目源码
+    delete 'build/tmp_java_android_r'//androidR文件临时目录
+    delete 'build/tmp_java_project_r'//项目R文件临时目录
+    delete 'build/tmp_java_all'//项目源,androidR文件,项目R文件
+    delete 'build/tmp_class'
 }
 
 /**
- * 拷贝源码到'build/tempsrc'
+ * 拷贝源码到'build/tmp_java'
  */
 task copyClasss(type: Copy) {
     doFirst {
-        println('拷贝源码到\'build/tempsrc\'')
+        println('拷贝源码到\'build/tmp_java\'')
     }
     from "src/main/java/com"
-    into 'build/tempsrc/com'
+    into 'build/tmp_java/com'
 }
 /**
- * 拷贝androidR文件到'build/android_r_tempsrc'
+ * 拷贝androidR文件到'build/tmp_java_android_r'
  */
 task copyAndroidR(type: Copy) {
     doFirst {
-        println('拷贝androidR文件到\'build/android_r_tempsrc\'')
+        println('拷贝androidR文件到\'build/tmp_java_android_r\'')
     }
     from "src/main/java/android"
-    into 'build/android_r_tempsrc/android'
+    into 'build/tmp_java_android_r/android'
 }
 
-/** 拷贝项目R文件到'build/project_r_tempsrc'
+/** 拷贝项目R文件到'build/tmp_java_project_r'
  * 1.执行assemble，生成R文件
  * 2.复制Modules生成的R文件
  */
 task copyProjectR(type: Copy) {
     doFirst {
-        println('拷贝项目R文件到\'build/project_r_tempsrc\'')
+        println('拷贝项目R文件到\'build/tmp_java_project_r\'')
     }
     String baseDir = 'build/generated/not_namespaced_r_class_sources/'
     String debugDir = baseDir + 'debug/generateDebugRFile/out'
@@ -63,24 +63,24 @@ task copyProjectR(type: Copy) {
 
     if (file(releaseDir).exists()) {
         from(releaseDir)
-        into 'build/project_r_tempsrc'
+        into 'build/tmp_java_project_r'
     } else {
         from(debugDir)
-        into 'build/project_r_tempsrc'
+        into 'build/tmp_java_project_r'
     }
 }
 
 /**
- * 拷贝所有文件到'build/tempsrc_all'
+ * 拷贝所有文件到'build/tmp_java_all'
  */
 task copyAll(type: Copy) {
     doFirst {
-        println('拷贝所有文件到\'build/tempsrc_all\'')
+        println('拷贝所有文件到\'build/tmp_java_all\'')
     }
-    from 'build/tempsrc'
-    from 'build/android_r_tempsrc'//androidR文件临时目录
-    from 'build/project_r_tempsrc'//项目R文件临时目录
-    into 'build/tempsrc_all'
+    from 'build/tmp_java'
+    from 'build/tmp_java_android_r'//androidR文件临时目录
+    from 'build/tmp_java_project_r'//项目R文件临时目录
+    into 'build/tmp_java_all'
 }
 
 /**将android下的R文件中的R.xx.xx替换为 com.zqy.google.android.support.R.xx.xx
@@ -90,7 +90,7 @@ task replaceAndroidR() {
     doLast {
         println '预处理android下的R文件'
         // 递归遍历目录下的所有java文件，然后针对资源id做打java包前的预处理
-        def currentDir = file('build/android_r_tempsrc')
+        def currentDir = file('build/tmp_java_android_r')
         if (currentDir.exists())
             currentDir.eachFileRecurse { file ->
                 if (file.exists() && file.name == 'R.java') {
@@ -113,8 +113,8 @@ task javaToClass(type: JavaCompile) {
         println '编译class'
     }
     options.encoding = 'UTF-8'
-    source = fileTree(dir: 'build/tempsrc_all/')
-    destinationDir = file('build/gen_classs')
+    source = fileTree(dir: 'build/tmp_java_all/')
+    destinationDir = file('build/tmp_class')
     sourceCompatibility = '1.7'
     targetCompatibility = '1.7'
     def dependenciesJars = []
@@ -128,7 +128,7 @@ task javaToClass(type: JavaCompile) {
 task classToRJar(type: Jar) {
     doFirst {
         println '将class文件打包成jar'
-        from 'build/gen_classs/'
+        from 'build/tmp_class/'
         into ''
         // 去掉不需要打包的目录和文件
         exclude 'BuildConfig.class'

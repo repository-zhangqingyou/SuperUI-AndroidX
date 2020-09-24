@@ -33,8 +33,8 @@ task clearClasss(type: Delete) {
     doFirst {
         println '清除源码临时目录'
     }
-    delete 'build/tempsrc'
-    delete 'build/gen_classs'
+    delete 'build/tmp_java'
+    delete 'build/tmp_class'
 
 }
 
@@ -46,7 +46,7 @@ task copyClasss(type: Copy) {
         print('复制源码到临时目录')
     }
     from "src/main/java"
-    into 'build/tempsrc'
+    into 'build/tmp_java'
 }
 
 
@@ -56,8 +56,8 @@ task copyClasss(type: Copy) {
 task javaToClass(type: JavaCompile) {
     println 'java编译为class'
     options.encoding = 'UTF-8'
-    source = fileTree(dir: 'build/tempsrc/')
-    destinationDir = file('build/gen_classs/')
+    source = fileTree(dir: 'build/tmp_java/')
+    destinationDir = file('build/tmp_class/')
     sourceCompatibility = '1.7'
     targetCompatibility = '1.7'
     def dependenciesJars = []
@@ -68,7 +68,7 @@ task javaToClass(type: JavaCompile) {
  * 将class文件打包成jar
  */
 task classToJar(type: Jar) {
-    from 'build/gen_classs/'
+    from 'build/tmp_class/'
     into ''
     // 去掉不需要打包的目录和文件
     exclude 'BuildConfig.class'
@@ -82,7 +82,7 @@ task deleteImportR() {
     doLast {
         println '删除 import xx.xx.xx.R;'
         // 递归遍历目录下的所有java文件，然后针对资源id做打java包前的预处理
-        def currentDir = file('build/tempsrc')
+        def currentDir = file('build/tmp_java')
         if (currentDir.exists())
             currentDir.eachFileRecurse { file ->
                 if (file.exists() && file.name != "R.java" && file.name.endsWith(".java")) {
@@ -112,7 +112,7 @@ task replaceName() {
     doLast {
         println '预处理（将R.xx.*替换成通过name的方式获取）'
         // 递归遍历目录下的所有java文件，然后针对资源id做打java包前的预处理
-        def currentDir = file('build/tempsrc')
+        def currentDir = file('build/tmp_java')
         if (currentDir.exists())
             currentDir.eachFileRecurse { file ->
                 if (file.exists() && file.name.endsWith(".java")) {

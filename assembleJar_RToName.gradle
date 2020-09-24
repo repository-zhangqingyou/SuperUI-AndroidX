@@ -1,7 +1,7 @@
 /**
  * 方案2：打包jar（将R.xx.oo替换为com.zqy.google.android.ResourcesUtil.getLayoutId("oo")) 【备用】
+ * 注意task是按从上到下顺序执行的
  */
-def timeStr = new Date().format('yyyyMMdd(HHmmss)')
 def properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 def sdkPath = properties.getProperty('sdk.dir', null)
@@ -72,7 +72,6 @@ task classToJar(type: Jar) {
     into ''
     // 去掉不需要打包的目录和文件
     exclude 'BuildConfig.class'
-    jarName = "RToName_${timeStr}"
     baseName jarName
 }
 
@@ -92,7 +91,7 @@ task deleteImportR() {
                     fileText.eachLine { line ->
                         String content = line.trim()
                         if (content.startsWith("import") && content.endsWith("R;")) {
-                            println '包含import文件:' + file.name
+                            println '包含'+content+'文件:' + file.name
                         } else {
                             list.add(line)
                         }
@@ -321,7 +320,7 @@ int getEndIndexOf(src, startString) {
         }
     }
     //资源路劲全称，比如：R.styleable.aa
-    println 'src:' + src + '--startString:' + startString + '--位置:' + list.toString()
+    println '--位置:' + list.toString()
     int endIndexOf
     if (list.size() >= 3) {
         endIndexOf = Math.min(list.get(0), Math.min(list.get(1), list.get(2)))

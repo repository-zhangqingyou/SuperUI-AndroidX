@@ -3,6 +3,7 @@
  * 1.将Android下的所有R文件的映射地址更换
  *
  * 2.将本Modules生成的R文件 打包成jar
+ 注意task是按从上到下顺序执行的
  */
 def properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())

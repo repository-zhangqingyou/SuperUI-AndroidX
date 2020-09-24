@@ -56,7 +56,6 @@ getJson.dependsOn(initConfig)
  * @return
  */
 String writeJson() {
-
     def timeStr = new Date().format('yyyyMMdd(HHmmss)')
     String path = "build/json_config"
     String fileName = "/assembleJarConfig.json"

@@ -98,10 +98,15 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 //    implementation project(path: ':sui_native')
-   // implementation project(path: ':lib_google_androidx')
+    // implementation project(path: ':lib_google_androidx')
     implementation 'com.android.support:multidex:1.0.3'
     implementation project(path: ':lib_google_android_support')
     //最牛Log＊神器＊
     api 'com.orhanobut:logger:1.8'
 
+
+//    implementation 'com.android.support:support-v4:26.1.0'
+//    implementation 'com.android.support:appcompat-v7:26.1.0'
+//    implementation 'com.android.support:design:26.1.0'
+//    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }

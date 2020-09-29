@@ -1,0 +1,5 @@
+package com.zqy.sutils.glide.load.engine.bitmap_recycle;
+
+interface Poolable {
+  void offer();
+}

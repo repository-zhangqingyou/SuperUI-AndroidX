@@ -6,7 +6,6 @@ import com.lzy.okgo.callback.AbsCallback;
 import com.lzy.okgo.convert.StringConvert;
 import com.lzy.okgo.request.base.Request;
 import com.zqy.srequest.RequestManage;
-import com.zqy.srequest.util.RequestResponseUtil;
 
 import okhttp3.Response;
 
@@ -42,9 +41,6 @@ public abstract class BaseCallback extends AbsCallback<String> {
     @Override
     public void onStart(Request<String, ? extends Request> request) {
         super.onStart(request);
-        RequestResponseUtil.setIsRequest(baseUrl, false);//设置不可请求
-
-
         try {
             baseUrl = request.getBaseUrl();
             String url = baseUrl.replace("//", "");
@@ -57,7 +53,6 @@ public abstract class BaseCallback extends AbsCallback<String> {
         } catch (Exception e) {
             TAG = "网络请求";
         }
-
 
         if (RequestManage.getApiCallbackServiceLoader() != null) {
             for (ApiCallbackService service : RequestManage.getApiCallbackServiceLoader()) {
@@ -83,7 +78,6 @@ public abstract class BaseCallback extends AbsCallback<String> {
 
     @Override
     public void onSuccess(com.lzy.okgo.model.Response<String> response) {
-
         if (RequestManage.getApiCallbackServiceLoader() != null) {
             for (ApiCallbackService service : RequestManage.getApiCallbackServiceLoader()) {
                 service.onSuccess(baseUrl, endUrl, response);
@@ -96,9 +90,8 @@ public abstract class BaseCallback extends AbsCallback<String> {
     @Override
     public void onFinish() {
         super.onFinish();
+        SRequest.setIsRequest(baseUrl, true);//设置可请求
         onFinish("请求完成");
-        RequestResponseUtil.setIsRequest(baseUrl, true);//设置可请求
-
 
         if (RequestManage.getApiCallbackServiceLoader() != null) {
             for (ApiCallbackService service : RequestManage.getApiCallbackServiceLoader()) {

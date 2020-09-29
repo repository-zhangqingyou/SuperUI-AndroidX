@@ -1,0 +1,68 @@
+package com.zqy.sutils.glide.load.resource.bitmap;
+
+import android.graphics.Bitmap;
+
+import androidx.annotation.Nullable;
+
+import com.zqy.sutils.glide.load.engine.Initializable;
+import com.zqy.sutils.glide.load.engine.Resource;
+import com.zqy.sutils.glide.load.engine.bitmap_recycle.BitmapPool;
+import com.zqy.sutils.glide.util.Preconditions;
+import com.zqy.sutils.glide.util.Util;
+
+/**
+ * A resource wrapping a {@link Bitmap} object.
+ */
+public class BitmapResource implements Resource<Bitmap>,
+    Initializable {
+  private final Bitmap bitmap;
+  private final BitmapPool bitmapPool;
+
+  /**
+   * Returns a new {@link BitmapResource} wrapping the given {@link Bitmap} if the Bitmap is
+   * non-null or null if the given Bitmap is null.
+   *
+   * @param bitmap     A Bitmap.
+   * @param bitmapPool A non-null {@link BitmapPool}.
+   */
+
+  public static BitmapResource obtain(@Nullable Bitmap bitmap,  BitmapPool bitmapPool) {
+    if (bitmap == null) {
+      return null;
+    } else {
+      return new BitmapResource(bitmap, bitmapPool);
+    }
+  }
+
+  public BitmapResource( Bitmap bitmap,  BitmapPool bitmapPool) {
+    this.bitmap = Preconditions.checkNotNull(bitmap, "Bitmap must not be null");
+    this.bitmapPool = Preconditions.checkNotNull(bitmapPool, "BitmapPool must not be null");
+  }
+
+
+  @Override
+  public Class<Bitmap> getResourceClass() {
+    return Bitmap.class;
+  }
+
+
+  @Override
+  public Bitmap get() {
+    return bitmap;
+  }
+
+  @Override
+  public int getSize() {
+    return Util.getBitmapByteSize(bitmap);
+  }
+
+  @Override
+  public void recycle() {
+    bitmapPool.put(bitmap);
+  }
+
+  @Override
+  public void initialize() {
+    bitmap.prepareToDraw();
+  }
+}

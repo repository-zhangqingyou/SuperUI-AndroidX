@@ -1,11 +1,14 @@
 //include ':lib_google_androidx'
-//include ':lib_google_android_support'
-//include ':app_native'//完全继续原生的UI库测试
+include ':lib_google_android_support'
+include ':app_support'//完全继续原生的UI库测试
 //include ':sui_native'//完全继续原生的UI库
-include ':xui_lib_1.1.5'
-include ':s_ui'
-include ':s_request'
-include ':s_utils'
-include ':app'
+include ':sdk_utils_support'
+
+//include ':app'
+//include ':xui_lib_1.1.5'
+//include ':s_ui'
+//include ':s_request'
+//include ':s_utils'
+
 rootProject.name = "SUI"
 

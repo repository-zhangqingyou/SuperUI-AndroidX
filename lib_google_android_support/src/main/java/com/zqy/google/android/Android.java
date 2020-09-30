@@ -8,7 +8,7 @@ import android.app.Application;
  * 描述: 初始化包名
  */
 public class Android {
-    private static String packageName = "com.google.android.support";
+    private static String packageName = "com.zqy.google.android.support";
     private static Application application;
 
     public static void init(Application application, String packageName) {

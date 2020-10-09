@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Looper;
 import android.text.TextUtils;
 
-
 import com.zqy.sdk.glide.Glide;
 import com.zqy.sdk.glide.load.engine.cache.ExternalCacheDiskCacheFactory;
 import com.zqy.sdk.glide.load.engine.cache.InternalCacheDiskCacheFactory;

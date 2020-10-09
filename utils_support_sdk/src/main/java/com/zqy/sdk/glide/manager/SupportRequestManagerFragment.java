@@ -3,7 +3,7 @@ package com.zqy.sdk.glide.manager;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
-import com.zqy.sdk.glide.manager.ActivityFragmentLifecycle;
+
 import com.zqy.sdk.glide.RequestManager;
 
 import java.util.Collections;

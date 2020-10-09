@@ -5,7 +5,8 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.view.Gravity;
 
-import com.blankj.utilcode.util.ToastUtils;
+import com.zqy.sdk.utilcode.util.ToastUtils;
+
 
 /**
  * 作者: zhangqingyou

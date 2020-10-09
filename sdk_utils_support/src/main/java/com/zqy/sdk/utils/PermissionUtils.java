@@ -3,8 +3,9 @@ package com.zqy.sdk.utils;
 import android.annotation.SuppressLint;
 import android.util.Log;
 
-import com.blankj.utilcode.constant.PermissionConstants;
-import com.blankj.utilcode.util.UtilsTransActivity;
+import com.zqy.sdk.utilcode.constant.PermissionConstants;
+import com.zqy.sdk.utilcode.util.UtilsTransActivity;
+
 
 /**
  * 权限检查
@@ -36,18 +37,18 @@ public class PermissionUtils {
     }
 
     private static void permission(String[] permissions) {
-        if (!com.blankj.utilcode.util.PermissionUtils.isGranted(permissions)) {
+        if (!com.zqy.sdk.utilcode.util.PermissionUtils.isGranted(permissions)) {
             @SuppressLint("WrongConstant")
-            com.blankj.utilcode.util.PermissionUtils callback = com.blankj.utilcode.util.PermissionUtils
+            com.zqy.sdk.utilcode.util.PermissionUtils callback = com.zqy.sdk.utilcode.util.PermissionUtils
                     .permission(permissions)  // : 设置请求权限
-                    .rationale(new com.blankj.utilcode.util.PermissionUtils.OnRationaleListener() {
+                    .rationale(new com.zqy.sdk.utilcode.util.PermissionUtils.OnRationaleListener() {
                         @Override
                         public void rationale(UtilsTransActivity activity, ShouldRequest shouldRequest) {
                             Log.d("PermissionUtils", "设置拒绝权限后再次请求的回调接口");
                             shouldRequest.again(true);
                         }
                     })             // : 设置拒绝权限后再次请求的回调接口
-                    .callback(new com.blankj.utilcode.util.PermissionUtils.SimpleCallback() {
+                    .callback(new com.zqy.sdk.utilcode.util.PermissionUtils.SimpleCallback() {
                                   @Override
                                   public void onGranted() {
                                       Log.d("PermissionUtils", "onGranted");
@@ -59,7 +60,7 @@ public class PermissionUtils {
                                   public void onDenied() {
                                       Log.d("PermissionUtils", "onDenied");
                                       ToastUtil.toast(PermissionUtils.text);
-                                      com.blankj.utilcode.util.PermissionUtils.launchAppDetailsSettings();
+                                      com.zqy.sdk.utilcode.util.PermissionUtils.launchAppDetailsSettings();
 
                                   }
                               }

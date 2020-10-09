@@ -1,7 +1,7 @@
 package com.zqy.sdk.utils.code;
 
 
-import com.blankj.utilcode.util.EncodeUtils;
+import com.zqy.sdk.utilcode.util.EncodeUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.security.Key;
@@ -59,8 +59,8 @@ public class RSAEncrypt {
     /**
      * 获取公钥的key
      */
-    public static final String PUBLIC_KEY = "MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJQnFakBlzpyx6MDHd3pGki4uZXxTn6YSVbAWDtf7X8Q/vt3YJLIB+QGwM8/7FxF14pNb6kSNBPpg9pgkEnxSHcCAwEAAQ==";
-    public static final String PRIVATE_KEY = "MIIBVQIBADANBgkqhkiG9w0BAQEFAASCAT8wggE7AgEAAkEAlCcVqQGXOnLHowMd3ekaSLi5lfFOfphJVsBYO1/tfxD++3dgksgH5AbAzz/sXEXXik1vqRI0E+mD2mCQSfFIdwIDAQABAkBFv5jc9ljCNaNzRVZcURAEyKLmyrJPu1ZbtzZSzbi8JwbetLol8EruA/kp2JHjuc9rzsVyLADpd4yfs8VlSS3RAiEAxeT0wuaFO49wiT/nsm98ZBBnGk5Sy505WFqFGYYwZAMCIQC/pzc4kzMs/VOZCUgZTFKcIqU5QKZCPBtEx1vYQ47RfQIgLdo0ACjLfBZrO9HrzINabhEC4qx9MKJ4VAl9R4G5GqMCIQCDR6uP2WUIwE5vWehFS/6abTD4UsyQOlQDfPvw2/YMkQIhAJGlDx7dHzoQ9GZXeStg99nqD1yQQfvctEJ67C57w8St";
+//    public static final String PUBLIC_KEY = "MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJQnFakBlzpyx6MDHd3pGki4uZXxTn6YSVbAWDtf7X8Q/vt3YJLIB+QGwM8/7FxF14pNb6kSNBPpg9pgkEnxSHcCAwEAAQ==";
+//    public static final String PRIVATE_KEY = "MIIBVQIBADANBgkqhkiG9w0BAQEFAASCAT8wggE7AgEAAkEAlCcVqQGXOnLHowMd3ekaSLi5lfFOfphJVsBYO1/tfxD++3dgksgH5AbAzz/sXEXXik1vqRI0E+mD2mCQSfFIdwIDAQABAkBFv5jc9ljCNaNzRVZcURAEyKLmyrJPu1ZbtzZSzbi8JwbetLol8EruA/kp2JHjuc9rzsVyLADpd4yfs8VlSS3RAiEAxeT0wuaFO49wiT/nsm98ZBBnGk5Sy505WFqFGYYwZAMCIQC/pzc4kzMs/VOZCUgZTFKcIqU5QKZCPBtEx1vYQ47RfQIgLdo0ACjLfBZrO9HrzINabhEC4qx9MKJ4VAl9R4G5GqMCIQCDR6uP2WUIwE5vWehFS/6abTD4UsyQOlQDfPvw2/YMkQIhAJGlDx7dHzoQ9GZXeStg99nqD1yQQfvctEJ67C57w8St";
 
 
     /**
@@ -83,11 +83,11 @@ public class RSAEncrypt {
 
 
             byte[] publicK = EncodeUtils.base64Encode(publicKey.getEncoded());
-            String publicKeyString = new String(publicK, "ISO8859-1");
+            String publicKeyString = new String(publicK, charsetName);
 
             byte[] privateK = EncodeUtils.base64Encode(privateKey.getEncoded());
             // 得到私钥字符串
-            String privateKeyString = new String(privateK, "ISO8859-1");
+            String privateKeyString = new String(privateK, charsetName);
 
             // 将公钥和私钥保存到Map
             stringMap.put("公钥", publicKeyString);  //0表示公钥
@@ -104,9 +104,9 @@ public class RSAEncrypt {
      * @return 密文
      * @throws Exception 加密过程中的异常信息
      */
-    public static String encryptPublicKey(String str) {
-        return encryptPublicKey(str, PUBLIC_KEY);
-    }
+//    public static String encryptPublicKey(String str) {
+//        return encryptPublicKey(str, PUBLIC_KEY);
+//    }
 
     /**
      * RSA公钥加密

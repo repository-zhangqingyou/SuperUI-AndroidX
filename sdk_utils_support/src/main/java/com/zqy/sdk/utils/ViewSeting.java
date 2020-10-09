@@ -3,7 +3,8 @@ package com.zqy.sdk.utils;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.blankj.utilcode.util.ScreenUtils;
+import com.zqy.sdk.utilcode.util.ScreenUtils;
+
 
 /**
  * 缓存工具类

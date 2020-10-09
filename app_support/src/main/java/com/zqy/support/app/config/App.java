@@ -3,7 +3,7 @@ package com.zqy.support.app.config;
 import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
-import com.orhanobut.logger.Logger;
+
 import com.zqy.google.android.Android;
 import com.zqy.sdk.UtilsManage;
 
@@ -28,15 +28,16 @@ public class App extends Application {
         super.attachBaseContext(base);
         application = this;
         MultiDex.install(this);
-        Logger.init("androidx库重构");
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        // AndroidX.init(getApplication(),"com.zqy.googlelib");//com.zqy.googlelib
         initModule();
-        Android.init(this,getPackageName());
+        // Logger.d(getPackageName());
+        //注意：必须填入 AndroidManifest.xml中的manifest下的package值
+        Android.init(this);
+        // Android.init(getApplication(), "com.zqy.google.android.support");//com.zqy.googlelib
     }
 
     /**
@@ -44,7 +45,6 @@ public class App extends Application {
      */
     private void initModule() {
         UtilsManage.init(getApplication());
-
     }
 
 

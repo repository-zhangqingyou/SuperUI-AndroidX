@@ -25,15 +25,13 @@ dependencies {
    // api fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':lib_google_android_support')
     //最牛Log＊神器＊
-    api 'com.orhanobut:logger:1.8'
+    //api 'com.orhanobut:logger:1.8'
     //最全最强工具库  1.25.9
-    api 'com.blankj:utilcode:1.29.0'
+   // api 'com.blankj:utilcode:1.29.0'
 
     //判断虚拟机
-    api 'com.lahm.library:easy-protector-release:1.1.2'//latest.release
+//    api 'com.lahm.library:easy-protector-release:1.1.2'//latest.release
 
-    //json解析库
-    api 'com.google.code.gson:gson:2.8.5'
 
 
 }

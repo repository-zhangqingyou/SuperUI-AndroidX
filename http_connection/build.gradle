@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+//group='com.github.repository-zhangqingyou'
+apply plugin: 'com.novoda.bintray-release'
+android {
+    compileSdkVersion build_versions.target_sdk
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        //加上这一句
+
+    }
+
+
+    lintOptions {
+        abortOnError false
+    }
+
+
+}
+
+dependencies {
+    //必须使用
+   // api 'com.lzy.net:okgo:3.0.4'
+    implementation project(path: ':sdk_utils_support')
+
+}
+publish {
+    bintrayUser = 'zhangqingyou'//用户账号
+    bintrayKey = '96d51763bea57597abf85991eff2432c18d5faad'//apikey
+    userOrg = 'zhangqingyou' // bintray 用户名
+    repoName = 'Android' // bintray 仓库名
+    groupId = 'com.bintray.zhangqingyou' // 依赖的路径
+    artifactId = 'http_connection' // 依赖的名称
+    publishVersion = "$versions.publish_version" // 依赖的版本号
+    desc = '通用网络请求' // 描述
+    website = 'https://gitee.com/zqycl/' // 项目网站，可填写 github 地址
+    dryRun = false // true-仅运行  false-运行+上传
+    licences = ['Apache-2.0']
+}
+
+

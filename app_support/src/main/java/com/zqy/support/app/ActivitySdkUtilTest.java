@@ -2,7 +2,6 @@ package com.zqy.support.app;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -10,16 +9,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
+import com.zqy.sdk.logger.Logger;
+import com.zqy.sdk.utils.AppUtils;
 import com.zqy.sdk.utils.GlideUtil;
+import com.zqy.sdk.utils.JsonUtils;
+import com.zqy.sdk.utils.ToastUtil;
+import com.zqy.sdk.virtual.EasyProtectorLib;
+import com.zqy.sdk.virtual.EmulatorCheckCallback;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class ActivitySdkUtilTest extends AppCompatActivity implements View.OnClickListener {
+public class ActivitySdkUtilTest extends Activity implements View.OnClickListener {
 
     private ImageView mIvImg;
     private RecyclerView mRecyclerView;
+    private LinearLayout mLlC;
 
     private Activity getActivity() {
         return this;
@@ -34,12 +43,17 @@ public class ActivitySdkUtilTest extends AppCompatActivity implements View.OnCli
 
     private void initView() {
         mIvImg = findViewById(R.id.iv_Img);
-        mRecyclerView = findViewById(R.id.recyclerView);
+        mLlC = findViewById(R.id.ll_C);
+        mRecyclerView = new RecyclerView(getActivity());
+        mLlC.addView(mRecyclerView);
         mIvImg.setOnClickListener(this);
         mRecyclerView.setNestedScrollingEnabled(false);
 
         List<String> stringList = new ArrayList<>();
         stringList.add("加载图片");
+        stringList.add("json工具测试");
+        stringList.add("判断是否是虚拟机");
+        stringList.add("androidUtil测试");
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         mRecyclerView.setAdapter(new RecyclerView.Adapter() {
             @Override
@@ -63,7 +77,32 @@ public class ActivitySdkUtilTest extends AppCompatActivity implements View.OnCli
                     public void onClick(View v) {
                         switch (button.getText().toString()) {
                             case "加载图片":
-                                GlideUtil.loadImg(mIvImg,R.mipmap.ic_launcher);
+                                GlideUtil.loadImg(mIvImg, "https://image.baidu.com/search/down?tn=download&ipn=dwnl&word=download&ie=utf8&fr=result&url=http%3A%2F%2Fa2.att.hudong.com%2F36%2F48%2F19300001357258133412489354717.jpg&thumburl=https%3A%2F%2Fss0.bdstatic.com%2F70cFuHSh_Q1YnxGkpoWK1HF6hhy%2Fit%2Fu%3D1906469856%2C4113625838%26fm%3D26%26gp%3D0.jpg");
+                                // GlideUtil.loadImg(mIvImg, R.mipmap.ic_launcher);
+                                //
+                                break;
+                            case "json工具测试":
+                                Map<String, String> map = new HashMap<>();
+                                map.put("1", "2");
+                                String objectToJson = JsonUtils.objectToJson(map);
+                                Logger.d(objectToJson);
+                                ToastUtil.toast(objectToJson);
+                                break;
+                            case "判断是否是虚拟机":
+                                boolean inEmulator = EasyProtectorLib.checkIsRunningInEmulator(getActivity(), new EmulatorCheckCallback() {
+                                    @Override
+                                    public void findEmulator(String emulatorInfo) {
+                                        Logger.d("emulatorInfo：" + emulatorInfo);
+                                        ToastUtil.toast("emulatorInfo：" + emulatorInfo);
+                                    }
+                                });
+                                Logger.d("是否是虚拟机：" + inEmulator);
+                                ToastUtil.toast("是否是虚拟机：" + inEmulator);
+                                break;
+                            case "androidUtil测试":
+                                String appName = AppUtils.getAppName();
+                                Logger.d("appName：" + appName);
+                                ToastUtil.toast("appName：" + appName);
                                 break;
                         }
                     }
@@ -75,6 +114,7 @@ public class ActivitySdkUtilTest extends AppCompatActivity implements View.OnCli
                 return stringList.size();
             }
         });
+
     }
 
     @Override

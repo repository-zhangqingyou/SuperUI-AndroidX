@@ -12,15 +12,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/app_native" />
+            <option value="$PROJECT_DIR$/app_support" />
             <option value="$PROJECT_DIR$/lib_google_android_support" />
-            <option value="$PROJECT_DIR$/lib_google_androidx" />
-            <option value="$PROJECT_DIR$/s_request" />
-            <option value="$PROJECT_DIR$/s_ui" />
-            <option value="$PROJECT_DIR$/s_utils" />
-            <option value="$PROJECT_DIR$/sui_native" />
-            <option value="$PROJECT_DIR$/xui_lib_1.1.5" />
+            <option value="$PROJECT_DIR$/sdk_utils_support" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

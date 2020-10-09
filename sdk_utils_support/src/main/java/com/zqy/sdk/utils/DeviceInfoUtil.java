@@ -8,9 +8,9 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.blankj.utilcode.util.DeviceUtils;
-import com.blankj.utilcode.util.PhoneUtils;
 import com.zqy.sdk.UtilsManage;
+import com.zqy.sdk.utilcode.util.DeviceUtils;
+import com.zqy.sdk.utilcode.util.PhoneUtils;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;

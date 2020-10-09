@@ -26,13 +26,13 @@ android {
     //***********************************多渠道构建***************************************
     flavorDimensions "channel"
     productFlavors {
-        Sui_Native_Demo {
+        Sui_Support_Demo {
             dimension "channel"
             applicationId "com.zqy.nt.app"
             versionCode 1
             versionName "1." + time + "." + codename
             manifestPlaceholders = [
-                    APP_NAME      : "Sui_Native_Demo",
+                    APP_NAME      : "Sui_Support_Demo",
                     APP_ICON      : "@mipmap/ic_launcher",
                     PACKAGE_NAME  : applicationId,
                     JSHARE_PKGNAME: applicationId,
@@ -101,9 +101,9 @@ dependencies {
     // implementation project(path: ':lib_google_androidx')
     implementation 'com.android.support:multidex:1.0.3'
     implementation project(path: ':lib_google_android_support')
+    implementation project(path: ':http_connection')
     implementation project(path: ':sdk_utils_support')
-    //最牛Log＊神器＊
-    api 'com.orhanobut:logger:1.8'
+
 
 
 

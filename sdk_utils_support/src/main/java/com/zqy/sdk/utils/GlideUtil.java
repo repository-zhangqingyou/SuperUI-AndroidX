@@ -33,7 +33,7 @@ public class GlideUtil {
      * @param isplaceholder 是否加载占位图
      */
     public static void loadImg(ImageView imageView, Object imageUrl, boolean isplaceholder) {
-        loadImg(imageView, imageUrl, isplaceholder, new ColorDrawable(Color.parseColor("F4F5F7")), new ColorDrawable(Color.parseColor("E8E8E8")));
+        loadImg(imageView, imageUrl, isplaceholder, new ColorDrawable(Color.parseColor("#F4F5F7")), new ColorDrawable(Color.parseColor("#E8E8E8")));
     }
 
     /**
@@ -46,8 +46,10 @@ public class GlideUtil {
     public static void loadImg(ImageView imageView, Object imageUrl, boolean isplaceholder, Drawable loadImg, Drawable failureImg) {
         DrawableRequestBuilder<Object> builder = Glide.with(UtilsManage.getApplication())
                 .load(imageUrl)
+                .crossFade()//或者使用 dontAnimate() 关闭动画
                 .fitCenter()//比例填充
                 .priority(Priority.HIGH);//优先加载
+
         //设置占位图和加载错误图
         if (isplaceholder) {
             builder.placeholder(loadImg);

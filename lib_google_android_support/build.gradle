@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 //apply from: '../ProcessR.gradle'
-//apply from: '../assembleJar_RToName.gradle'
-apply from: '../assembleJar_IncludeR.gradle'
+apply from: '../assembleJar_RToName.gradle'
+//apply from: '../assembleJar_IncludeR.gradle'
 android {
     compileSdkVersion build_versions.target_sdk
     defaultConfig {

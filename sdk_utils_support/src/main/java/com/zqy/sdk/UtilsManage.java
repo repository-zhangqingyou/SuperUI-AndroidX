@@ -1,9 +1,10 @@
 package com.zqy.sdk;
 
 import android.app.Application;
+import android.text.TextUtils;
 
-import com.blankj.utilcode.util.Utils;
-import com.orhanobut.logger.Logger;
+import com.zqy.sdk.logger.Logger;
+import com.zqy.sdk.utilcode.util.Utils;
 
 
 /**
@@ -14,11 +15,20 @@ import com.orhanobut.logger.Logger;
  */
 public class UtilsManage {
     private static Application application;
+    private static String logTag;
 
     public static void init(Application application) {
         Utils.init(application);//初始化android工具类
         UtilsManage.application = application;
-        Logger.init("日志");
+        if (TextUtils.isEmpty(logTag)) {
+            Logger.init("日志");
+        }
+
+    }
+
+    public static void setLogTag(String logTag) {
+        UtilsManage.logTag = logTag;
+        Logger.init(logTag);
     }
 
     public static Application getApplication() {

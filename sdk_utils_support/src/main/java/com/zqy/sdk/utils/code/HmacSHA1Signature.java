@@ -1,7 +1,7 @@
 package com.zqy.sdk.utils.code;
 
 
-import com.blankj.utilcode.util.EncodeUtils;
+import com.zqy.sdk.utilcode.util.EncodeUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;

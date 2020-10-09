@@ -1,6 +1,10 @@
 package com.zqy.http.request;
 
 
+import com.zqy.http.HttpManage;
+import com.zqy.sdk.gson.Gson;
+import com.zqy.sdk.gson.JsonSyntaxException;
+import com.zqy.sdk.utils.ParameterizedTypeImpl;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -39,15 +43,10 @@ public abstract class JsonArryEntityCallback<T> extends BaseCallback {
             List<T> list = new Gson().fromJson(response.body(), type);
             onSuccess(list);
         } catch (JsonSyntaxException e) {
-            if (RequestManage.getApiCallbackServiceLoader() != null) {
-                for (ApiCallback service : RequestManage.getApiCallbackServiceLoader()) {
-                    response.setException(new JsonSyntaxException("json数据格式错误:" + e.getMessage()));
-                    service.onError(getBaseUrl(), getEndUrl(), response);
-                }
+            if (HttpManage.getApiCallback() != null) {
+                response.setException(new JsonSyntaxException("json数据格式错误:" + e.getMessage()));
+                HttpManage.getApiCallback().onError(getBaseUrl(), getEndUrl(), response);
             }
-
-
-
         }
 
     }

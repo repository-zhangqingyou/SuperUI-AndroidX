@@ -68,8 +68,6 @@ public abstract class BaseCallback extends AbsCallback<String> {
         if (HttpManage.getApiCallback() != null) {
             HttpManage.getApiCallback().onError(baseUrl, endUrl, response);
         }
-
-
     }
 
     @Override
@@ -77,8 +75,6 @@ public abstract class BaseCallback extends AbsCallback<String> {
         if (HttpManage.getApiCallback() != null) {
             HttpManage.getApiCallback().onSuccess(baseUrl, endUrl, response);
         }
-
-
     }
 
     @Override

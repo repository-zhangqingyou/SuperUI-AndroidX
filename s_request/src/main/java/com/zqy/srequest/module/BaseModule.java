@@ -9,7 +9,7 @@ import java.io.Serializable;
  * 描述: 通用请求
  */
 
-public class CodeAndMsg implements Serializable {
+public class BaseModule implements Serializable {
 
 
     /**

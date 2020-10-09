@@ -53,7 +53,7 @@ public class ActivitySdkUtilTest extends Activity implements View.OnClickListene
         stringList.add("加载图片");
         stringList.add("json工具测试");
         stringList.add("判断是否是虚拟机");
-        stringList.add("androidUtil测试");
+        stringList.add("安卓工具类测试");
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         mRecyclerView.setAdapter(new RecyclerView.Adapter() {
             @Override
@@ -99,7 +99,7 @@ public class ActivitySdkUtilTest extends Activity implements View.OnClickListene
                                 Logger.d("是否是虚拟机：" + inEmulator);
                                 ToastUtil.toast("是否是虚拟机：" + inEmulator);
                                 break;
-                            case "androidUtil测试":
+                            case "安卓工具类测试":
                                 String appName = AppUtils.getAppName();
                                 Logger.d("appName：" + appName);
                                 ToastUtil.toast("appName：" + appName);

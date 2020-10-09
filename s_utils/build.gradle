@@ -24,15 +24,12 @@ android {
 dependencies {
    // api fileTree(dir: 'libs', include: ['*.jar'])
     implementation group: "androidx.appcompat", name: "appcompat", version:"$versions.androidx"//对应appcompat-v7
-    annotationProcessor files('libs\\compiler-4.7.1.jar')
     //最牛Log＊神器＊
     api 'com.orhanobut:logger:1.8'
     //最全最强工具库  1.25.9
     api 'com.blankj:utilcode:1.29.0'
-
     //判断虚拟机
     api 'com.lahm.library:easy-protector-release:1.1.2'//latest.release
-
     //json解析库
     api 'com.google.code.gson:gson:2.8.5'
     //glide图片加载库
@@ -40,8 +37,7 @@ dependencies {
         exclude group: 'com.android.support'
     }
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
-
-
+    
     //集成全量更新和热更新一体的平台  注意： 升级SDK已经集成crash上报功能，已经集成Bugly的用户需要注释掉原来Bugly的jcenter库
     api 'com.tencent.bugly:crashreport_upgrade:1.4.5'
     //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
@@ -50,8 +46,6 @@ dependencies {
     api('com.tencent.tinker:tinker-android-lib:1.9.14.7') {
         exclude group: 'androidx.appcompat'
     }
-
-
 
 }
 publish {

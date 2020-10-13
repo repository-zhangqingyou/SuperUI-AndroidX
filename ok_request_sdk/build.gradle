@@ -24,7 +24,6 @@ android {
 dependencies {
     //必须使用
     implementation project(path: ':utils_support_sdk')
-
 }
 publish {
     bintrayUser = 'zhangqingyou'//用户账号

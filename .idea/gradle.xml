@@ -13,8 +13,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app_support" />
-            <option value="$PROJECT_DIR$/http_connection_sdk" />
             <option value="$PROJECT_DIR$/lib_google_android_support" />
+            <option value="$PROJECT_DIR$/ok_request_sdk" />
             <option value="$PROJECT_DIR$/utils_support_sdk" />
           </set>
         </option>

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.zqy.google.android.Android;
+import com.zqy.http.HttpManage;
 import com.zqy.sdk.UtilsManage;
 
 
@@ -45,6 +46,7 @@ public class App extends Application {
      */
     private void initModule() {
         UtilsManage.init(getApplication());
+        HttpManage.init(getApplication());
     }
 
 

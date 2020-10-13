@@ -106,11 +106,11 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.multidex:multidex:2.0.1'
-//    implementation project(path: ':s_request')
-//    implementation project(path: ':s_utils')
-    implementation project(path: ':s_ui')
+    implementation project(path: ':ok_request')
+    implementation project(path: ':super_utils')
+    implementation project(path: ':super_ui')
 
     //compileOnly只在编译时有效，不会参与打包 service自动注入包
-    compileOnly  'com.google.auto.service:auto-service:1.0-rc7'
+    compileOnly 'com.google.auto.service:auto-service:1.0-rc7'
     annotationProcessor 'com.google.auto.service:auto-service:1.0-rc7'
 }

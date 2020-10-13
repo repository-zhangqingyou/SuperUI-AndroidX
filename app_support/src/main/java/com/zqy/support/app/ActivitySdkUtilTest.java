@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.zqy.http.request.OKRequest;
+import com.zqy.http.request.StringCallback;
 import com.zqy.sdk.logger.Logger;
 import com.zqy.sdk.utils.AppUtils;
 import com.zqy.sdk.utils.GlideUtil;
@@ -54,6 +56,7 @@ public class ActivitySdkUtilTest extends Activity implements View.OnClickListene
         stringList.add("json工具测试");
         stringList.add("判断是否是虚拟机");
         stringList.add("安卓工具类测试");
+        stringList.add("请求测试");
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         mRecyclerView.setAdapter(new RecyclerView.Adapter() {
             @Override
@@ -103,6 +106,17 @@ public class ActivitySdkUtilTest extends Activity implements View.OnClickListene
                                 String appName = AppUtils.getAppName();
                                 Logger.d("appName：" + appName);
                                 ToastUtil.toast("appName：" + appName);
+                                break;
+                            case "请求测试":
+                                HashMap<String, Object> hashMap = new HashMap<>();
+                                hashMap.put("qudaoNumber", "yueshenghuo100");
+                                OKRequest.get("http://zhuan.admin.zhangqingyou.top:8090/news/getappsetting.do", hashMap, new StringCallback() {
+                                    @Override
+                                    public void onSuccess(String body) {
+                                        Logger.d("请求结果：" + body);
+                                        ToastUtil.toast("请求结果：" + body);
+                                    }
+                                });
                                 break;
                         }
                     }

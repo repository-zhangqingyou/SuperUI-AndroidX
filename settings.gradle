@@ -1,14 +1,14 @@
 // 基于android-support库
 include ':app_support'//基于support库
 include ':utils_support_sdk'//推荐SDK使用
-include ':http_connection_sdk'////推荐SDK使用
-include ':lib_google_android_support'
+include ':ok_request_sdk'////推荐SDK使用
+include ':lib_google_android_support'//support库
 // 基于androidX库
 //include ':app'
 //include ':xui_lib_1.1.5'
-//include ':s_ui'
-//include ':s_request'
-//include ':s_utils'
+//include ':super_ui'
+//include ':ok_request'
+//include ':super_utils'
 //include ':lib_google_androidx'
 
 

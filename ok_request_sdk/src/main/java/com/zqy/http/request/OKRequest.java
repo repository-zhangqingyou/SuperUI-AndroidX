@@ -15,7 +15,7 @@ import java.util.Map;
  * 描述: 通用请求
  */
 
-public class SRequest {
+public class OKRequest {
     /**
      * 当前请求响应后才能继续下个请求
      * String:当前请求标识
@@ -29,7 +29,7 @@ public class SRequest {
      * @param url       完整地址
      * @param isRequest 当前地址是否可请求
      */
-    public static void setIsRequest(String url, boolean isRequest) {
+    protected static void setIsRequest(String url, boolean isRequest) {
         requestResponseMap.put(url, isRequest);
     }
 
@@ -39,7 +39,7 @@ public class SRequest {
      * @param url 完整地址
      * @return
      */
-    public static boolean isRequest(String url) {
+    private static boolean isRequest(String url) {
         boolean isRequest = true;
         if (requestResponseMap.containsKey(url)) {
             isRequest = requestResponseMap.get(url);
@@ -70,7 +70,7 @@ public class SRequest {
      * @param json
      * @param callback
      */
-    public static void okgo_postJson(String url, String json, BaseCallback callback) {
+    public static void postJson(String url, String json, BaseCallback callback) {
         if (isRequest(url)) {//防止同一个接口频繁请求，当前请求响应后才能继续下个请求
             setIsRequest(url, false);
             OkGo.<String>post(url)
@@ -88,7 +88,7 @@ public class SRequest {
 
     }
 
-    public static void okgo_get(String url, Map<String, Object> params, BaseCallback callback) {
+    public static void get(String url, Map<String, Object> params, BaseCallback callback) {
         if (isRequest(url)) {//防止同一个接口频繁请求，当前请求响应后才能继续下个请求
             setIsRequest(url, false);
             Map<String, String> param = new LinkedHashMap<>();
@@ -104,7 +104,7 @@ public class SRequest {
                     .execute(callback);
         } else {
             callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-            if (HttpManage.getApiCallback()!= null) {
+            if (HttpManage.getApiCallback() != null) {
                 HttpManage.getApiCallback().onFinish(url + "还未响应，相同接口无法再次请求！");
             }
         }
@@ -112,7 +112,7 @@ public class SRequest {
 
     }
 
-    public static void okgo_post(String url, Map<String, Object> params, BaseCallback callback) {
+    public static void post(String url, Map<String, Object> params, BaseCallback callback) {
         if (isRequest(url)) {//防止同一个接口频繁请求，当前请求响应后才能继续下个请求
             setIsRequest(url, false);
             Map<String, String> param = new LinkedHashMap<>();

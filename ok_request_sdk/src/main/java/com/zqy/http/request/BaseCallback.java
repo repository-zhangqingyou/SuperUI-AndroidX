@@ -80,7 +80,7 @@ public abstract class BaseCallback extends AbsCallback<String> {
     @Override
     public void onFinish() {
         super.onFinish();
-        SRequest.setIsRequest(baseUrl, true);//设置可请求
+        OKRequest.setIsRequest(baseUrl, true);//设置可请求
         onFinish("请求完成");
 
         if (HttpManage.getApiCallback() != null) {

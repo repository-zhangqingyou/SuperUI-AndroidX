@@ -55,8 +55,8 @@ dependencies {
 //        exclude group: 'androidx.appcompat'
 //    }
 
-    api project(path: ':s_utils')
-    api project(path: ':s_request')
+    api project(path: ':super_utils')
+    api project(path: ':ok_request')
 
 
     //AgentWeb 是一个基于的 Android WebView ，极度容易使用以及功能强大的库

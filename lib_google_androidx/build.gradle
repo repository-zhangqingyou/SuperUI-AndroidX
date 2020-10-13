@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply from: '../ProcessR.gradle'
+//apply from: '../ProcessR.gradle'
 
 android {
     compileSdkVersion build_versions.target_sdk

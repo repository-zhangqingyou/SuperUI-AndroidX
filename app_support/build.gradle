@@ -101,7 +101,7 @@ dependencies {
     // implementation project(path: ':lib_google_androidx')
     implementation 'com.android.support:multidex:1.0.3'
     implementation project(path: ':lib_google_android_support')
-    implementation project(path: ':http_connection_sdk')
+    implementation project(path: ':ok_request_sdk')
     implementation project(path: ':utils_support_sdk')
 
 

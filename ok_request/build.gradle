@@ -22,7 +22,7 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':s_utils')
+    implementation project(path: ':super_utils')
 
     //必须使用
     api 'com.lzy.net:okgo:3.0.4'

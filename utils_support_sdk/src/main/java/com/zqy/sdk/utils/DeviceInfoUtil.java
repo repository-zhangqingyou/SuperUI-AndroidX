@@ -37,6 +37,19 @@ public class DeviceInfoUtil {
 //        MiitHelper.getInstance().getDeviceIds(UtilsManage.getApplication(), appIdsUpdater);
 //    }
 
+    /**
+     * 混合获取
+     * 获取imei串，没有则获取设备唯一标识(md5码)
+     *
+     * @return
+     */
+    public static String getMixDeviceId(boolean isReadCache) {
+        String imeiArray = getImeiArray(isReadCache);
+        if (!TextUtils.isEmpty(imeiArray)) return imeiArray;
+
+        String uniqueDeviceId = getUniqueDeviceId(isReadCache);
+        return uniqueDeviceId;
+    }
 
     /**
      * 获取一个Imei （安卓10及以上无法获取）
@@ -313,34 +326,34 @@ public class DeviceInfoUtil {
      */
     @SuppressLint("MissingPermission")
     private static String getImeiArray() {
-            ArrayList<String> stringArrayList = new ArrayList<>();
-            if (Build.VERSION.SDK_INT < 21) {
-                //如果获取系统的IMEI/MEID，14位代表meid 15位是imei
-                String imeiOrMeid = getImeiOrMeid();
-                if (!TextUtils.isEmpty(imeiOrMeid))
-                    stringArrayList.add(imeiOrMeid);
-                // 21版本是5.0，判断是否是5.0以上的系统  5.0系统直接获取IMEI1,IMEI2,MEID
-            } else if (Build.VERSION.SDK_INT >= 21) {
-                String imei1 = getImei1();
-                String imei2 = getImei2();
-                String meid = getMeid();
-                if (!TextUtils.isEmpty(imei1))
-                    stringArrayList.add(imei1);
-                if (!TextUtils.isEmpty(imei2))
-                    stringArrayList.add(imei2);
-                if (!TextUtils.isEmpty(meid))
-                    stringArrayList.add(meid);
-            }
-            StringBuffer stringBuffer = new StringBuffer();
-            for (int i = 0; i < stringArrayList.size(); i++) {
-                String imei = stringArrayList.get(i);
+        ArrayList<String> stringArrayList = new ArrayList<>();
+        if (Build.VERSION.SDK_INT < 21) {
+            //如果获取系统的IMEI/MEID，14位代表meid 15位是imei
+            String imeiOrMeid = getImeiOrMeid();
+            if (!TextUtils.isEmpty(imeiOrMeid))
+                stringArrayList.add(imeiOrMeid);
+            // 21版本是5.0，判断是否是5.0以上的系统  5.0系统直接获取IMEI1,IMEI2,MEID
+        } else if (Build.VERSION.SDK_INT >= 21) {
+            String imei1 = getImei1();
+            String imei2 = getImei2();
+            String meid = getMeid();
+            if (!TextUtils.isEmpty(imei1))
+                stringArrayList.add(imei1);
+            if (!TextUtils.isEmpty(imei2))
+                stringArrayList.add(imei2);
+            if (!TextUtils.isEmpty(meid))
+                stringArrayList.add(meid);
+        }
+        StringBuffer stringBuffer = new StringBuffer();
+        for (int i = 0; i < stringArrayList.size(); i++) {
+            String imei = stringArrayList.get(i);
 
-                if (i == stringArrayList.size() - 1)
-                    stringBuffer.append(imei);
-                else
-                    stringBuffer.append(imei + ",");
+            if (i == stringArrayList.size() - 1)
+                stringBuffer.append(imei);
+            else
+                stringBuffer.append(imei + ",");
 
-            }
+        }
 
         return stringBuffer.toString();
     }

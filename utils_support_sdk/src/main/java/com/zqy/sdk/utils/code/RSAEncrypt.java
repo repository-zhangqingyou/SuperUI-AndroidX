@@ -150,9 +150,10 @@ public class RSAEncrypt {
                 i++;
                 offSet = i * MAX_ENCRYPT_BLOCK;
             }
-            byte[] encryptedData = out.toByteArray();
+            byte[] bytes = out.toByteArray();
             out.close();
-            encrypted = new String(encryptedData, charsetName);
+            encrypted =  new String(EncodeUtils.base64Encode(bytes),charsetName);
+           // encrypted = new String(encryptedData, charsetName);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -202,8 +203,11 @@ public class RSAEncrypt {
                 i++;
                 offSet = i * MAX_DECRYPT_BLOCK;
             }
-            decryptedData = new String(out.toByteArray(), charsetName);
+            byte[] bytes = out.toByteArray();
             out.close();
+
+            decryptedData =  new String(bytes,charsetName);
+          //  decryptedData = new String(out.toByteArray(), charsetName);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -255,8 +259,10 @@ public class RSAEncrypt {
                 offSet = i * MAX_DECRYPT_BLOCK;
             }
             byte[] bytes = out.toByteArray();
-            decryptedData = new String(bytes, charsetName);
             out.close();
+            
+            decryptedData = new String(bytes, charsetName);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

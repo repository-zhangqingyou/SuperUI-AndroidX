@@ -100,13 +100,13 @@ dependencies {
 //    implementation project(path: ':sui_native')
     // implementation project(path: ':lib_google_androidx')
     implementation 'com.android.support:multidex:1.0.3'
-    implementation project(path: ':lib_google_android_support')
+//    implementation project(path: ':lib_google_android_support')
     implementation project(path: ':ok_request_sdk')
     implementation project(path: ':utils_support_sdk')
 
 
-//    implementation 'com.android.support:support-v4:26.1.0'
-//    implementation 'com.android.support:appcompat-v7:26.1.0'
-//    implementation 'com.android.support:design:26.1.0'
-//    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }

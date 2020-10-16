@@ -101,7 +101,10 @@ public class CacheUtil {
     public static String getDownloadPath() {
         return getStoragePath() + "/download";
     }
-
+    //程序错误日志
+    public static String getErroLogPath() {
+        return getStoragePath() + "/errolog";
+    }
 
     /**
      * 写入信息

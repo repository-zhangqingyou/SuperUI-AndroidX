@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.novoda.bintray-release'
+//apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.novoda.bintray-release'
 apply from: '../assembleJar_RToName.gradle'
 //apply from: '../assembleJar_IncludeR.gradle'
 android {
@@ -132,16 +132,16 @@ dependencies {
 //    implementation "androidx.viewpager2:viewpager2:1.0.0"
 }
 
-publish {
-    bintrayUser = 'zhangqingyou'//用户账号
-    bintrayKey = '96d51763bea57597abf85991eff2432c18d5faad'//apikey
-    userOrg = 'zhangqingyou' // bintray 用户名
-    repoName = 'Android' // bintray 仓库名
-    groupId = 'com.bintray.zhangqingyou' // 依赖的路径
-    artifactId = 'lib_google_android_support' // 依赖的名称
-    publishVersion = "$versions.publish_version" // 依赖的版本号
-    desc = 'android_support' // 描述
-    website = 'https://gitee.com/zqycl/' // 项目网站，可填写 github 地址
-    dryRun = false // true-仅运行  false-运行+上传
-    licences = ['Apache-2.0']
-}
+//publish {
+//    bintrayUser = 'zhangqingyou'//用户账号
+//    bintrayKey = '96d51763bea57597abf85991eff2432c18d5faad'//apikey
+//    userOrg = 'zhangqingyou' // bintray 用户名
+//    repoName = 'Android' // bintray 仓库名
+//    groupId = 'com.bintray.zhangqingyou' // 依赖的路径
+//    artifactId = 'lib_google_android_support' // 依赖的名称
+//    publishVersion = "$versions.publish_version" // 依赖的版本号
+//    desc = 'android_support' // 描述
+//    website = 'https://gitee.com/zqycl/' // 项目网站，可填写 github 地址
+//    dryRun = false // true-仅运行  false-运行+上传
+//    licences = ['Apache-2.0']
+//}

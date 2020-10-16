@@ -116,7 +116,7 @@ public class RSAEncrypt {
      * @return 密文
      * @throws Exception 加密过程中的异常信息
      */
-    public static String encryptPublicKey(String str, String publicKey) {
+    public static String encryptPublicKey(String str, String publicKey,String charsetName) {
         //base64编码的公钥
         String encrypted = null;
         try {
@@ -169,7 +169,7 @@ public class RSAEncrypt {
      * @return 铭文
      * @throws Exception 解密过程中的异常信息
      */
-    public static String decryptPublicKey(String str, String publicKey) {
+    public static String decryptPublicKey(String str, String publicKey,String charsetName) {
         //64位解码加密后的字符串
         String decryptedData = null;
         try {
@@ -219,7 +219,7 @@ public class RSAEncrypt {
      * @return 铭文
      * @throws Exception 解密过程中的异常信息
      */
-    public static String decryptPrivateKey(String str, String privateKey) {
+    public static String decryptPrivateKey(String str, String privateKey,String charsetName) {
         //64位解码加密后的字符串
         String decryptedData = null;
         try {

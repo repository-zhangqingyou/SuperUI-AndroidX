@@ -18,3 +18,5 @@
 /googlelib/build/
 /.idea/
 
+/http_connection/build/
+/sdk_utils_support/build/

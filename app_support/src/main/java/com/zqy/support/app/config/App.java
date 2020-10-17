@@ -6,7 +6,7 @@ import android.support.multidex.MultiDex;
 
 import com.zqy.google.android.Android;
 import com.zqy.http.HttpManage;
-import com.zqy.sdk.utils.UtilsManage;
+import com.zqy.sdk.utils.core.UtilsManage;
 
 
 /**

@@ -13,12 +13,12 @@ import android.widget.LinearLayout;
 
 import com.zqy.http.request.OKRequest;
 import com.zqy.http.request.StringCallback;
+import com.zqy.sdk.utils.core.AppUtils;
+import com.zqy.sdk.utils.core.DeviceInfoUtil;
+import com.zqy.sdk.utils.core.GlideUtil;
+import com.zqy.sdk.utils.core.JsonUtils;
+import com.zqy.sdk.utils.core.ToastUtil;
 import com.zqy.sdk.utils.logger.Logger;
-import com.zqy.sdk.utils.utils.AppUtils;
-import com.zqy.sdk.utils.utils.DeviceInfoUtil;
-import com.zqy.sdk.utils.utils.GlideUtil;
-import com.zqy.sdk.utils.utils.JsonUtils;
-import com.zqy.sdk.utils.utils.ToastUtil;
 import com.zqy.sdk.utils.virtual.EasyProtectorLib;
 import com.zqy.sdk.utils.virtual.EmulatorCheckCallback;
 

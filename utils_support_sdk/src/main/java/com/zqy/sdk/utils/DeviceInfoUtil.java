@@ -8,6 +8,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.bun.miitmdid.interfaces.IdSupplier;
 import com.zqy.sdk.UtilsManage;
 import com.zqy.sdk.utilcode.util.DeviceUtils;
 import com.zqy.sdk.utilcode.util.PhoneUtils;
@@ -27,15 +28,78 @@ import java.util.Map;
  */
 public class DeviceInfoUtil {
     private final static String TAG = "DeviceInfoUtil";
+
     /**
-     * 安卓10 获取设备标识
+     * 移动安全联盟SDK获取设备标识(OAID)
      *
-     * @param //appIdsUpdater
+     * @param
      */
-//    @SuppressLint("MissingPermission")
-//    public static void getDeviceId(MiitHelper.AppIdsUpdater appIdsUpdater) {
-//        MiitHelper.getInstance().getDeviceIds(UtilsManage.getApplication(), appIdsUpdater);
-//    }
+    public static String getOAID(boolean isReadCache) {
+        IdSupplier idSupplier = UtilsManage.getIdSupplier();
+        if (isReadCache) {
+            String oaid = CacheUtil.readString(CacheUtil.getDeviceMD5Path(), "OAID");
+            if (TextUtils.isEmpty(oaid)) {
+                if (idSupplier != null) {
+                    oaid = idSupplier.getOAID();
+                    CacheUtil.writeString(CacheUtil.getDeviceMD5Path(), "OAID", oaid);
+                }
+
+            }
+            return oaid;
+        }
+        if (idSupplier != null) {
+            return idSupplier.getOAID();
+        }
+        return null;
+    }
+
+    /**
+     * 移动安全联盟SDK获取设备标识(AAID)
+     *
+     * @param
+     */
+    public static String getAAID(boolean isReadCache) {
+        IdSupplier idSupplier = UtilsManage.getIdSupplier();
+        if (isReadCache) {
+            String aaid = CacheUtil.readString(CacheUtil.getDeviceMD5Path(), "AAID");
+            if (TextUtils.isEmpty(aaid)) {
+                if (idSupplier != null) {
+                    aaid = idSupplier.getAAID();
+                    CacheUtil.writeString(CacheUtil.getDeviceMD5Path(), "AAID", aaid);
+                }
+
+            }
+            return aaid;
+        }
+        if (idSupplier != null) {
+            return idSupplier.getAAID();
+        }
+        return null;
+    }
+
+    /**
+     * 移动安全联盟SDK获取设备标识(VAID)
+     *
+     * @param
+     */
+    public static String getVAID(boolean isReadCache) {
+        IdSupplier idSupplier = UtilsManage.getIdSupplier();
+        if (isReadCache) {
+            String vaid = CacheUtil.readString(CacheUtil.getDeviceMD5Path(), "VAID");
+            if (TextUtils.isEmpty(vaid)) {
+                if (idSupplier != null) {
+                    vaid = idSupplier.getVAID();
+                    CacheUtil.writeString(CacheUtil.getDeviceMD5Path(), "VAID", vaid);
+                }
+
+            }
+            return vaid;
+        }
+        if (idSupplier != null) {
+            return idSupplier.getVAID();
+        }
+        return null;
+    }
 
     /**
      * 混合获取
@@ -44,9 +108,13 @@ public class DeviceInfoUtil {
      * @return
      */
     public static String getMixDeviceId(boolean isReadCache) {
+        //获取IMEI串 (","隔开，安卓10及以上无法获取)
         String imeiArray = getImeiArray(isReadCache);
         if (!TextUtils.isEmpty(imeiArray)) return imeiArray;
-
+        //移动安全联盟SDK获取设备标识(OAID)
+        String oaid = getOAID(isReadCache);
+        if (!TextUtils.isEmpty(oaid)) return oaid;
+        //获取设备唯一标识(md5码)
         String uniqueDeviceId = getUniqueDeviceId(isReadCache);
         return uniqueDeviceId;
     }

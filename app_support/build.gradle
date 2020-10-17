@@ -9,11 +9,11 @@ android {
         targetSdkVersion build_versions.target_sdk
         multiDexEnabled true
 
-        ndk {
-            //选择要添加的对应cpu类型的.so库。
-            abiFilters 'armeabi', 'armeabi-v7a'
-            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
-        }
+//        ndk {
+//            //选择要添加的对应cpu类型的.so库。
+//            abiFilters 'armeabi', 'armeabi-v7a'
+//            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+//        }
         dexOptions {
             //避免打包时内存不足，导致一个dex不完整，合并的时候发现大小不一致而报错
             javaMaxHeapSize "4g"

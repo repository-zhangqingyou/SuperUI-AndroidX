@@ -1,5 +1,9 @@
-<manifest package="com.zqy.sdk.utils">
-
+<manifest package="com.zqy.sdk.utils"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    // asus
+    <uses-permission android:name="com.asus.msa.SupplementaryDID.ACCESS" />
+    //freeme
+    <uses-permission android:name="freemme.permission.msa" />
     <application>
 
     </application>

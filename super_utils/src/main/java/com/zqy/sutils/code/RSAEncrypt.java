@@ -83,11 +83,11 @@ public class RSAEncrypt {
 
 
             byte[] publicK = EncodeUtils.base64Encode(publicKey.getEncoded());
-            String publicKeyString = new String(publicK, "ISO8859-1");
+            String publicKeyString = new String(publicK, charsetName);
 
             byte[] privateK = EncodeUtils.base64Encode(privateKey.getEncoded());
             // 得到私钥字符串
-            String privateKeyString = new String(privateK, "ISO8859-1");
+            String privateKeyString = new String(privateK, charsetName);
 
             // 将公钥和私钥保存到Map
             stringMap.put("公钥", publicKeyString);  //0表示公钥
@@ -104,9 +104,9 @@ public class RSAEncrypt {
      * @return 密文
      * @throws Exception 加密过程中的异常信息
      */
-    public static String encryptPublicKey(String str) {
-        return encryptPublicKey(str, PUBLIC_KEY);
-    }
+//    public static String encryptPublicKey(String str) {
+//        return encryptPublicKey(str, PUBLIC_KEY);
+//    }
 
     /**
      * RSA公钥加密
@@ -116,7 +116,7 @@ public class RSAEncrypt {
      * @return 密文
      * @throws Exception 加密过程中的异常信息
      */
-    public static String encryptPublicKey(String str, String publicKey) {
+    public static String encryptPublicKey(String str, String publicKey,String charsetName) {
         //base64编码的公钥
         String encrypted = null;
         try {
@@ -150,9 +150,10 @@ public class RSAEncrypt {
                 i++;
                 offSet = i * MAX_ENCRYPT_BLOCK;
             }
-            byte[] encryptedData = out.toByteArray();
+            byte[] bytes = out.toByteArray();
             out.close();
-            encrypted = new String(encryptedData, charsetName);
+            encrypted =  new String(EncodeUtils.base64Encode(bytes),charsetName);
+            // encrypted = new String(encryptedData, charsetName);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -169,7 +170,7 @@ public class RSAEncrypt {
      * @return 铭文
      * @throws Exception 解密过程中的异常信息
      */
-    public static String decryptPublicKey(String str, String publicKey) {
+    public static String decryptPublicKey(String str, String publicKey,String charsetName) {
         //64位解码加密后的字符串
         String decryptedData = null;
         try {
@@ -202,8 +203,11 @@ public class RSAEncrypt {
                 i++;
                 offSet = i * MAX_DECRYPT_BLOCK;
             }
-            decryptedData = new String(out.toByteArray(), charsetName);
+            byte[] bytes = out.toByteArray();
             out.close();
+
+            decryptedData =  new String(bytes,charsetName);
+            //  decryptedData = new String(out.toByteArray(), charsetName);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -219,7 +223,7 @@ public class RSAEncrypt {
      * @return 铭文
      * @throws Exception 解密过程中的异常信息
      */
-    public static String decryptPrivateKey(String str, String privateKey) {
+    public static String decryptPrivateKey(String str, String privateKey,String charsetName) {
         //64位解码加密后的字符串
         String decryptedData = null;
         try {
@@ -255,14 +259,15 @@ public class RSAEncrypt {
                 offSet = i * MAX_DECRYPT_BLOCK;
             }
             byte[] bytes = out.toByteArray();
-            decryptedData = new String(bytes, charsetName);
             out.close();
+
+            decryptedData = new String(bytes, charsetName);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return decryptedData;
     }
-
 
 }

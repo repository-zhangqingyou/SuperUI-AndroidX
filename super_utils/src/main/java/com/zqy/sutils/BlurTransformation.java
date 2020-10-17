@@ -9,8 +9,8 @@ import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 
-import com.zqy.sdk.glide.load.engine.bitmap_recycle.BitmapPool;
-import com.zqy.sdk.glide.load.resource.bitmap.BitmapTransformation;
+import com.zqy.sdk.utils.glide.load.engine.bitmap_recycle.BitmapPool;
+import com.zqy.sdk.utils.glide.load.resource.bitmap.BitmapTransformation;
 
 import java.security.MessageDigest;
 

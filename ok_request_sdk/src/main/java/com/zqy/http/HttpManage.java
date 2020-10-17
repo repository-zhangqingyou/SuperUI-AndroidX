@@ -32,7 +32,7 @@ public class HttpManage {
 
     public static void init(Application application) {
         HttpManage.application = application;
-        OkGoInit();
+        okGoInit();
     }
 
 
@@ -45,7 +45,7 @@ public class HttpManage {
     }
 
 
-    private static void OkGoInit() {
+    private static void okGoInit() {
         try {
             Class c = Class.forName("java.lang.Daemons");
             Field maxField = c.getDeclaredField("MAX_FINALIZE_NANOS");

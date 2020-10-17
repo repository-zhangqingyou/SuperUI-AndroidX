@@ -23,10 +23,18 @@ import java.util.List;
  */
 public class CacheUtil {
 
+
     //系统包目录
     private static String systemPath;
     //存储空间隐藏目录.zqy
     private static String storagePath;
+    private static String rootDir = ".zqy";
+    private static String packageName;
+
+    public static void init(String rootDir, String packageName) {
+        CacheUtil.rootDir = rootDir;
+        CacheUtil.packageName = packageName;
+    }
 
     //*******************************系统包目录********************************
 
@@ -55,8 +63,14 @@ public class CacheUtil {
 
 
     private static String getStoragePath() {
-        if (TextUtils.isEmpty(storagePath))
-            storagePath = Environment.getExternalStorageDirectory() + "/.zqy/" + UtilsManage.getApplication().getPackageName();
+        if (TextUtils.isEmpty(storagePath)) {
+            if (TextUtils.isEmpty(packageName)) {
+                storagePath = Environment.getExternalStorageDirectory() + "/" + CacheUtil.rootDir;
+            } else {
+                storagePath = Environment.getExternalStorageDirectory() + "/" + CacheUtil.rootDir + "/" + UtilsManage.getApplication().getPackageName();
+
+            }
+        }
         return storagePath;
     }
 
@@ -95,6 +109,10 @@ public class CacheUtil {
         return getStoragePath() + "/download";
     }
 
+    //程序错误日志
+    public static String getErroLogPath() {
+        return getStoragePath() + "/errolog";
+    }
 
     /**
      * 写入信息
@@ -217,3 +235,4 @@ public class CacheUtil {
         }
     }
 }
+

@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.blankj.utilcode.util.DeviceUtils;
 import com.blankj.utilcode.util.PhoneUtils;
+import com.bun.miitmdid.interfaces.IdSupplier;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -26,16 +27,96 @@ import java.util.Map;
  */
 public class DeviceInfoUtil {
     private final static String TAG = "DeviceInfoUtil";
-    /**
-     * 安卓10 获取设备标识
-     *
-     * @param //appIdsUpdater
-     */
-//    @SuppressLint("MissingPermission")
-//    public static void getDeviceId(MiitHelper.AppIdsUpdater appIdsUpdater) {
-//        MiitHelper.getInstance().getDeviceIds(UtilsManage.getApplication(), appIdsUpdater);
-//    }
 
+    /**
+     * 移动安全联盟SDK获取设备标识(OAID)
+     *
+     * @param
+     */
+    public static String getOAID(boolean isReadCache) {
+        IdSupplier idSupplier = UtilsManage.getIdSupplier();
+        if (isReadCache) {
+            String oaid = CacheUtil.readString(CacheUtil.getDeviceMD5Path(), "OAID");
+            if (TextUtils.isEmpty(oaid)) {
+                if (idSupplier != null) {
+                    oaid = idSupplier.getOAID();
+                    CacheUtil.writeString(CacheUtil.getDeviceMD5Path(), "OAID", oaid);
+                }
+
+            }
+            return oaid;
+        }
+        if (idSupplier != null) {
+            return idSupplier.getOAID();
+        }
+        return null;
+    }
+
+    /**
+     * 移动安全联盟SDK获取设备标识(AAID)
+     *
+     * @param
+     */
+    public static String getAAID(boolean isReadCache) {
+        IdSupplier idSupplier = UtilsManage.getIdSupplier();
+        if (isReadCache) {
+            String aaid = CacheUtil.readString(CacheUtil.getDeviceMD5Path(), "AAID");
+            if (TextUtils.isEmpty(aaid)) {
+                if (idSupplier != null) {
+                    aaid = idSupplier.getAAID();
+                    CacheUtil.writeString(CacheUtil.getDeviceMD5Path(), "AAID", aaid);
+                }
+
+            }
+            return aaid;
+        }
+        if (idSupplier != null) {
+            return idSupplier.getAAID();
+        }
+        return null;
+    }
+
+    /**
+     * 移动安全联盟SDK获取设备标识(VAID)
+     *
+     * @param
+     */
+    public static String getVAID(boolean isReadCache) {
+        IdSupplier idSupplier = UtilsManage.getIdSupplier();
+        if (isReadCache) {
+            String vaid = CacheUtil.readString(CacheUtil.getDeviceMD5Path(), "VAID");
+            if (TextUtils.isEmpty(vaid)) {
+                if (idSupplier != null) {
+                    vaid = idSupplier.getVAID();
+                    CacheUtil.writeString(CacheUtil.getDeviceMD5Path(), "VAID", vaid);
+                }
+
+            }
+            return vaid;
+        }
+        if (idSupplier != null) {
+            return idSupplier.getVAID();
+        }
+        return null;
+    }
+
+    /**
+     * 混合获取
+     * 获取imei串，没有则获取设备唯一标识(md5码)
+     *
+     * @return
+     */
+    public static String getMixDeviceId(boolean isReadCache) {
+        //获取IMEI串 (","隔开，安卓10及以上无法获取)
+        String imeiArray = getImeiArray(isReadCache);
+        if (!TextUtils.isEmpty(imeiArray)) return imeiArray;
+        //移动安全联盟SDK获取设备标识(OAID)
+        String oaid = getOAID(isReadCache);
+        if (!TextUtils.isEmpty(oaid)) return oaid;
+        //获取设备唯一标识(md5码)
+        String uniqueDeviceId = getUniqueDeviceId(isReadCache);
+        return uniqueDeviceId;
+    }
 
     /**
      * 获取一个Imei （安卓10及以上无法获取）
@@ -312,34 +393,34 @@ public class DeviceInfoUtil {
      */
     @SuppressLint("MissingPermission")
     private static String getImeiArray() {
-            ArrayList<String> stringArrayList = new ArrayList<>();
-            if (Build.VERSION.SDK_INT < 21) {
-                //如果获取系统的IMEI/MEID，14位代表meid 15位是imei
-                String imeiOrMeid = getImeiOrMeid();
-                if (!TextUtils.isEmpty(imeiOrMeid))
-                    stringArrayList.add(imeiOrMeid);
-                // 21版本是5.0，判断是否是5.0以上的系统  5.0系统直接获取IMEI1,IMEI2,MEID
-            } else if (Build.VERSION.SDK_INT >= 21) {
-                String imei1 = getImei1();
-                String imei2 = getImei2();
-                String meid = getMeid();
-                if (!TextUtils.isEmpty(imei1))
-                    stringArrayList.add(imei1);
-                if (!TextUtils.isEmpty(imei2))
-                    stringArrayList.add(imei2);
-                if (!TextUtils.isEmpty(meid))
-                    stringArrayList.add(meid);
-            }
-            StringBuffer stringBuffer = new StringBuffer();
-            for (int i = 0; i < stringArrayList.size(); i++) {
-                String imei = stringArrayList.get(i);
+        ArrayList<String> stringArrayList = new ArrayList<>();
+        if (Build.VERSION.SDK_INT < 21) {
+            //如果获取系统的IMEI/MEID，14位代表meid 15位是imei
+            String imeiOrMeid = getImeiOrMeid();
+            if (!TextUtils.isEmpty(imeiOrMeid))
+                stringArrayList.add(imeiOrMeid);
+            // 21版本是5.0，判断是否是5.0以上的系统  5.0系统直接获取IMEI1,IMEI2,MEID
+        } else if (Build.VERSION.SDK_INT >= 21) {
+            String imei1 = getImei1();
+            String imei2 = getImei2();
+            String meid = getMeid();
+            if (!TextUtils.isEmpty(imei1))
+                stringArrayList.add(imei1);
+            if (!TextUtils.isEmpty(imei2))
+                stringArrayList.add(imei2);
+            if (!TextUtils.isEmpty(meid))
+                stringArrayList.add(meid);
+        }
+        StringBuffer stringBuffer = new StringBuffer();
+        for (int i = 0; i < stringArrayList.size(); i++) {
+            String imei = stringArrayList.get(i);
 
-                if (i == stringArrayList.size() - 1)
-                    stringBuffer.append(imei);
-                else
-                    stringBuffer.append(imei + ",");
+            if (i == stringArrayList.size() - 1)
+                stringBuffer.append(imei);
+            else
+                stringBuffer.append(imei + ",");
 
-            }
+        }
 
         return stringBuffer.toString();
     }

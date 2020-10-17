@@ -22,7 +22,8 @@ android {
 }
 
 dependencies {
-   // api fileTree(dir: 'libs', include: ['*.jar'])
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api fileTree(dir: 'libs', include: ['*.aar'])
     implementation group: "androidx.appcompat", name: "appcompat", version:"$versions.androidx"//对应appcompat-v7
     //最牛Log＊神器＊
     api 'com.orhanobut:logger:1.8'

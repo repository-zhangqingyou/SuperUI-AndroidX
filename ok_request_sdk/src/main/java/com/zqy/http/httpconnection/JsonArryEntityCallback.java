@@ -1,8 +1,8 @@
 package com.zqy.http.httpconnection;
 
-import com.zqy.sdk.gson.Gson;
-import com.zqy.sdk.gson.JsonSyntaxException;
-import com.zqy.sdk.utils.ParameterizedTypeImpl;
+import com.zqy.sdk.utils.gson.Gson;
+import com.zqy.sdk.utils.gson.JsonSyntaxException;
+import com.zqy.sdk.utils.utils.ParameterizedTypeImpl;
 
 import java.lang.reflect.Type;
 import java.util.List;

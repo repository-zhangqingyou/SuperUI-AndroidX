@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
-import com.zqy.sui.other.drawable.SuperStateListDrawable;
-import com.zqy.sui.widget.superlayout.SuperTextView;
+import com.zqy.sdk.sui.other.drawable.SuperStateListDrawable;
+import com.zqy.sdk.sui.widget.superlayout.SuperTextView;
 import com.zqy.suidemo.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

@@ -49,7 +49,6 @@ public class UtilsManage {
      * @param cacheRootPath     缓存路径
      */
     public static void setCache(String cacheRootPath) {
-        //Environment.getExternalStorageDirectory() + "/" + CacheUtil.cacheRootPath + "/" + UtilsManage.getApplication().getPackageName();
         CacheUtil.init(cacheRootPath);
     }
 

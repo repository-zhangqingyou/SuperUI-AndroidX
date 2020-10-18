@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.zqy.sui.widget.tablayout;
+package com.zqy.sdk.sui.widget.tablayout;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

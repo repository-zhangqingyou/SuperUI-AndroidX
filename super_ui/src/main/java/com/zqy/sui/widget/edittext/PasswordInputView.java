@@ -1,4 +1,4 @@
-package com.zqy.sui.widget.edittext;
+package com.zqy.sdk.sui.widget.edittext;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -20,7 +20,7 @@ import android.util.Log;
 import androidx.annotation.IntDef;
 import androidx.appcompat.widget.AppCompatEditText;
 
-import com.zqy.sui.R;
+import com.zqy.sdk.sui.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

@@ -1,4 +1,4 @@
-package com.zqy.sui.other.drawable;
+package com.zqy.sdk.sui.other.drawable;
 
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;

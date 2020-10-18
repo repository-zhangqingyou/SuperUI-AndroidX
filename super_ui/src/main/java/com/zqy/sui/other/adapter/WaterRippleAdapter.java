@@ -1,4 +1,4 @@
-package com.zqy.sui.other.adapter;
+package com.zqy.sdk.sui.other.adapter;
 
 import android.content.Context;
 import android.os.Handler;
@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import androidx.annotation.ColorRes;
 
 import com.xuexiang.xui.widget.button.RippleView;
-import com.zqy.sui.R;
-import com.zqy.sui.other.adapter.impl.RippleViewImpl;
-import com.zqy.sui.other.adapter.viewholder.BaseViewHolder;
+import com.zqy.sdk.sui.R;
+import com.zqy.sdk.sui.other.adapter.impl.RippleViewImpl;
+import com.zqy.sdk.sui.other.adapter.viewholder.BaseViewHolder;
 
 import java.util.List;
 

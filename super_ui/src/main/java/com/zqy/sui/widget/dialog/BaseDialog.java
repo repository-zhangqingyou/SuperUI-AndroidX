@@ -1,4 +1,4 @@
-package com.zqy.sui.widget.dialog;
+package com.zqy.sdk.sui.widget.dialog;
 
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
@@ -10,8 +10,8 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatDialog;
 import androidx.core.content.ContextCompat;
 
-import com.zqy.sui.R;
-import com.zqy.sui.other.drawable.SuperStateListDrawable;
+import com.zqy.sdk.sui.R;
+import com.zqy.sdk.sui.other.drawable.SuperStateListDrawable;
 import com.zqy.sutils.ViewSeting;
 
 

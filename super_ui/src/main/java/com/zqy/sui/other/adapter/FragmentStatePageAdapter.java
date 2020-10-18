@@ -1,4 +1,4 @@
-package com.zqy.sui.other.adapter;
+package com.zqy.sdk.sui.other.adapter;
 
 import android.view.ViewGroup;
 

@@ -1,4 +1,4 @@
-package com.zqy.sui.other.adapter.viewholder;
+package com.zqy.sdk.sui.other.adapter.viewholder;
 
 
 import android.view.View;

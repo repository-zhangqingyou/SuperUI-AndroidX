@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.zqy.sui.widget.superlayout.SuperImageView;
+import com.zqy.sdk.sui.widget.superlayout.SuperImageView;
 import com.zqy.suidemo.R;
 
 /**

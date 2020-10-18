@@ -5,7 +5,7 @@ import android.content.Context;
 
 import androidx.multidex.MultiDex;
 
-import com.zqy.sui.SUIManage;
+import com.zqy.sdk.sui.SUIManage;
 
 /**
  * 作者: zhangqingyou

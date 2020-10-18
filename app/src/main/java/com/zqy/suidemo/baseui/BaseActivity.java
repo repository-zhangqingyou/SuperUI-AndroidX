@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
  * Date: 2020/4/7
  * Des:
  */
-public abstract class BaseActivity extends com.zqy.sui.ui.BaseActivity {
+public abstract class BaseActivity extends com.zqy.sdk.sui.ui.BaseActivity {
     private String canonicalName;  //
 
     @Override

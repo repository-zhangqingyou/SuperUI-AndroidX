@@ -1,9 +1,9 @@
-package com.zqy.sui.other.adapter;
+package com.zqy.sdk.sui.other.adapter;
 
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.zqy.sui.other.adapter.viewholder.BaseViewHolder;
+import com.zqy.sdk.sui.other.adapter.viewholder.BaseViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;

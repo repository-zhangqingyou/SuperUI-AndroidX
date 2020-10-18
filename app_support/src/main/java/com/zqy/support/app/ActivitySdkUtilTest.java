@@ -14,7 +14,6 @@ import android.widget.LinearLayout;
 import com.zqy.http.request.OKRequest;
 import com.zqy.http.request.StringCallback;
 import com.zqy.sdk.utils.core.AppUtils;
-import com.zqy.sdk.utils.core.DeviceInfoUtil;
 import com.zqy.sdk.utils.core.GlideUtil;
 import com.zqy.sdk.utils.core.JsonUtils;
 import com.zqy.sdk.utils.core.ToastUtil;
@@ -108,8 +107,8 @@ public class ActivitySdkUtilTest extends Activity implements View.OnClickListene
                                 Logger.d("appName：" + appName);
                                 ToastUtil.toast("appName：" + appName);
 
-                                String oaid = DeviceInfoUtil.getOAID(true);
-                                Logger.d("oaid：" + oaid);
+//                                String oaid = DeviceInfoUtil.getOAID(true);
+//                                Logger.d("oaid：" + oaid);
                                 break;
                             case "请求测试":
                                 HashMap<String, Object> hashMap = new HashMap<>();

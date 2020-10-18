@@ -1,4 +1,4 @@
-package com.zqy.sui.widget.edittext;
+package com.zqy.sdk.sui.widget.edittext;
 
 import android.content.res.Resources;
 import android.util.TypedValue;

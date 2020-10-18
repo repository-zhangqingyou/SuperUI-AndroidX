@@ -1,4 +1,4 @@
-package com.zqy.sui.widget;
+package com.zqy.sdk.sui.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -17,7 +17,7 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.zqy.sui.R;
+import com.zqy.sdk.sui.R;
 
 /**自定义阴影
  * Author: zhangqingyou

@@ -1,11 +1,11 @@
-package com.zqy.sui.ui;
+package com.zqy.sdk.sui.ui;
 
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.zqy.sui.R;
-import com.zqy.sui.widget.superlayout.SuperImageView;
+import com.zqy.sdk.sui.R;
+import com.zqy.sdk.sui.widget.superlayout.SuperImageView;
 /**
  * 作者: zhangqingyou 申请
  * 时间: 2020/7/21 10:17

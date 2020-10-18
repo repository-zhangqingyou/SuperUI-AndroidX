@@ -1,4 +1,4 @@
-package com.zqy.sui.widget.progressbar;
+package com.zqy.sdk.sui.widget.progressbar;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,7 +8,7 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 
-import com.zqy.sui.R;
+import com.zqy.sdk.sui.R;
 
 
 /**

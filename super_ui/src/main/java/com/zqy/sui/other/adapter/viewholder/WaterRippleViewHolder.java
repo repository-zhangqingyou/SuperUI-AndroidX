@@ -1,4 +1,4 @@
-package com.zqy.sui.other.adapter.viewholder;
+package com.zqy.sdk.sui.other.adapter.viewholder;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.ColorRes;
 
 import com.xuexiang.xui.widget.button.RippleView;
-import com.zqy.sui.R;
+import com.zqy.sdk.sui.R;
 
 /**
  * 作者: zhangqingyou

@@ -1,4 +1,4 @@
-package com.zqy.sui.widget.superlayout;
+package com.zqy.sdk.sui.widget.superlayout;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -10,8 +10,8 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.zqy.sui.other.drawable.DrawableImpl;
-import com.zqy.sui.other.drawable.SuperGradientDrawable;
+import com.zqy.sdk.sui.other.drawable.DrawableImpl;
+import com.zqy.sdk.sui.other.drawable.SuperGradientDrawable;
 
 
 /**

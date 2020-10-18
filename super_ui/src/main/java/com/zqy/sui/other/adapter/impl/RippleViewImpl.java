@@ -1,4 +1,4 @@
-package com.zqy.sui.other.adapter.impl;
+package com.zqy.sdk.sui.other.adapter.impl;
 
 
 import androidx.annotation.ColorRes;

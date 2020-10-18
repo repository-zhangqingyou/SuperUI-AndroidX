@@ -16,6 +16,10 @@ android {
 //            }
 //        }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     lintOptions {
         abortOnError false // 即使有报错也不会停止打包
         checkReleaseBuilds false // 打包Release版本的时候也不进行Lint检测

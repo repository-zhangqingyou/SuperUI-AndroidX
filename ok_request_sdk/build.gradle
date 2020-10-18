@@ -12,7 +12,10 @@ android {
         //加上这一句
 
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
     lintOptions {
         abortOnError false // 即使有报错也不会停止打包

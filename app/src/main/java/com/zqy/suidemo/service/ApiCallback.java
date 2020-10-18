@@ -18,7 +18,6 @@ import com.zqy.sutils.ToastUtil;
 public class ApiCallback implements ApiCallbackService {
     @Override
     public void onStart(String baseUrl, String endUrl, Request request) {
-        //这里可以添加公共请求参数
     }
 
     @Override

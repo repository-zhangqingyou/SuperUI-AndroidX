@@ -2,7 +2,9 @@ package com.zqy.http.httpconnection;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
+import android.text.TextUtils;
+
+import com.zqy.http.HttpManage;
 
 import java.util.Map;
 
@@ -12,13 +14,17 @@ import java.util.Map;
  * Des:
  */
 public abstract class StringDataCallBack implements DataCallBack<String> {
-    private String urlEnd = "";
+    private String TAG;//网络请求TAG（用于日志过滤）-- 后缀地址
+    private String baseUrl;//请求全地址路劲
+    private String endUrl = "";//请求后缀地址
 
-    public String getUrlEnd() {
-        return urlEnd;
+
+    public StringDataCallBack() {
     }
 
-
+    public StringDataCallBack(String requestName) {
+        this.TAG = requestName;
+    }
     /**
      * @param url
      * @param headers
@@ -29,10 +35,23 @@ public abstract class StringDataCallBack implements DataCallBack<String> {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                urlEnd = getUrlEnd(url);
-                if (requestParameters != null) {
-                    logRequest(urlEnd, "请求参数：" + requestParameters.toString());
+                try {
+                    baseUrl = url;
+                    String url = baseUrl.replace("//", "");
+                    int indexOf = url.indexOf("/");
+                    endUrl = url.substring(indexOf, url.length());
+
+                    if (TextUtils.isEmpty(TAG)) {
+                        TAG = endUrl;
+                    }
+                } catch (Exception e) {
+                    TAG = "网络请求";
                 }
+
+                if (HttpManage.getHttpApiCallback() != null) {
+                    HttpManage.getHttpApiCallback().onStart(baseUrl, endUrl, headers, requestParameters);
+                }
+
                 onUIStart(url, headers, requestParameters);
             }
         });
@@ -43,29 +62,40 @@ public abstract class StringDataCallBack implements DataCallBack<String> {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                logRequest(urlEnd, "连接失败：" + erro);
+                if (HttpManage.getHttpApiCallback() != null) {
+                    HttpManage.getHttpApiCallback().onError(baseUrl, endUrl, erro);
+                }
+
                 onUIError(erro);
             }
         });
     }
 
     @Override
-    public void onSuccess(final String s) {
+    public void onSuccess(final String response) {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                logRequest(urlEnd, "返回数据：" + s);
-                onUISuccess(s);
+
+                if (HttpManage.getHttpApiCallback() != null) {
+                    HttpManage.getHttpApiCallback().onSuccess(baseUrl, endUrl, response);
+                }
+
+                onUISuccess(response);
             }
         });
     }
 
     @Override
-    public void onFinish() {
+    public void onFinish(final String msg) {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                onUIFinish();
+                if (HttpManage.getHttpApiCallback() != null) {
+                    HttpManage.getHttpApiCallback().onFinish(msg);
+                }
+
+                onUIFinish(msg);
             }
         });
     }
@@ -92,26 +122,53 @@ public abstract class StringDataCallBack implements DataCallBack<String> {
      * ui线程
      * 请求结束  不管成功还是失败
      */
-    public abstract void onUIFinish();
+    public abstract void onUIFinish(String msg);
+
+//    /**
+//     * 打印请求信息
+//     *
+//     * @param text
+//     */
+//    public void logRequest(String tag, String text) {
+//        Log.d(tag, text);
+//    }
+//
+//    public String getUrlEnd(String url) {
+//        String urlEnd = null;
+//        try {
+//            String urlreplace = url.replace("//", "");
+//            int indexOf = urlreplace.indexOf("/");
+//            urlEnd = urlreplace.substring(indexOf, urlreplace.length());
+//        } catch (Exception e) {
+//            urlEnd = "网络请求";
+//        }
+//        return urlEnd;
+//    }
 
     /**
-     * 打印请求信息
+     * 获取当前请求TAG
      *
-     * @param text
+     * @return
      */
-    public void logRequest(String tag, String text) {
-        Log.d(tag, text);
+    public String getTAG() {
+        return TAG;
     }
 
-    public String getUrlEnd(String url) {
-        String urlEnd = null;
-        try {
-            String urlreplace = url.replace("//", "");
-            int indexOf = urlreplace.indexOf("/");
-            urlEnd = urlreplace.substring(indexOf, urlreplace.length());
-        } catch (Exception e) {
-            urlEnd = "网络请求";
-        }
-        return urlEnd;
+    /**
+     * 获取当前完整请求地址
+     *
+     * @return
+     */
+    public String getBaseUrl() {
+        return baseUrl;
+    }
+
+    /**
+     * 请求后缀地址
+     *
+     * @return
+     */
+    public String getEndUrl() {
+        return endUrl;
     }
 }

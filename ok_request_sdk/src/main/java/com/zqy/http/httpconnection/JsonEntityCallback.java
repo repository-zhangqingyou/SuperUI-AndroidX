@@ -1,5 +1,6 @@
 package com.zqy.http.httpconnection;
 
+import com.zqy.http.HttpManage;
 import com.zqy.sdk.utils.gson.Gson;
 import com.zqy.sdk.utils.gson.JsonSyntaxException;
 
@@ -16,7 +17,13 @@ import java.util.Map;
 public abstract class JsonEntityCallback<T> extends StringDataCallBack {
     private Class<T> classOfBean;
 
+
     public JsonEntityCallback(Class<T> classOfBean) {
+        this.classOfBean = classOfBean;
+    }
+
+    public JsonEntityCallback(Class<T> classOfBean, String requestName) {
+        super(requestName);
         this.classOfBean = classOfBean;
     }
 
@@ -26,7 +33,7 @@ public abstract class JsonEntityCallback<T> extends StringDataCallBack {
     }
 
     @Override
-    public void onUIFinish() {
+    public void onUIFinish(String msg) {
 
     }
 
@@ -41,7 +48,9 @@ public abstract class JsonEntityCallback<T> extends StringDataCallBack {
             T t = new Gson().fromJson(response, classOfBean);
             onUISuccessEntity(t);
         } catch (JsonSyntaxException e) {
-            logRequest(getUrlEnd(), "_json数据格式错误");
+            if (HttpManage.getHttpApiCallback() != null) {
+                HttpManage.getHttpApiCallback().onError(getBaseUrl(), getEndUrl(), "json数据格式错误:" + e.getMessage());
+            }
         }
     }
 

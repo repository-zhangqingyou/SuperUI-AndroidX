@@ -2,6 +2,7 @@ package com.zqy.http;
 
 import android.app.Application;
 
+import com.zqy.http.httpconnection.HttpApiCallback;
 import com.zqy.http.okgo.OkGo;
 import com.zqy.http.okgo.cache.CacheEntity;
 import com.zqy.http.okgo.cache.CacheMode;
@@ -15,7 +16,6 @@ import java.lang.reflect.Field;
 import java.util.concurrent.TimeUnit;
 
 
-
 /**
  * 作者: zhangqingyou
  * 时间: 2020/9/14
@@ -24,7 +24,8 @@ import java.util.concurrent.TimeUnit;
 public class HttpManage {
     private static Application application;
     private static boolean DEBUG;
-    private static ApiCallback apiCallback;
+    private static ApiCallback apiCallback;//okhttp所有接口回调
+    private static HttpApiCallback httpApiCallback;//原生所有接口回调
 
     public static Application getApplication() {
         return application;
@@ -78,13 +79,27 @@ public class HttpManage {
 
 
     /**
-     * 设置所有接口响应回调
+     * okhttp设置所有接口响应回调
      */
     public static ApiCallback getApiCallback() {
         return apiCallback;
     }
-
+    /**
+     * okhttp设置所有接口响应回调
+     */
     public static void setApiCallback(ApiCallback apiCallback) {
         HttpManage.apiCallback = apiCallback;
+    }
+    /**
+     * 原生设置所有接口响应回调
+     */
+    public static HttpApiCallback getHttpApiCallback() {
+        return httpApiCallback;
+    }
+    /**
+     * 原生设置所有接口响应回调
+     */
+    public static void setHttpApiCallback(HttpApiCallback httpApiCallback) {
+        HttpManage.httpApiCallback = httpApiCallback;
     }
 }

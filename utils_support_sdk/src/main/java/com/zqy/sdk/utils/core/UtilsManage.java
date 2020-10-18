@@ -23,7 +23,7 @@ public class UtilsManage {
         Utils.init(application);//初始化android工具类
 
         if (TextUtils.isEmpty(logTag)) {
-            Logger.init("日志");
+            Logger.init("Logger日志");
         }
 
 
@@ -46,11 +46,11 @@ public class UtilsManage {
     /**
      * 设置缓存配置
      *
-     * @param rootDir     根文件夹名
-     * @param packageName 包名（二级文件夹名）
+     * @param cacheRootPath     缓存路径
      */
-    public static void setCache(String rootDir, String packageName) {
-        CacheUtil.init(rootDir, packageName);
+    public static void setCache(String cacheRootPath) {
+        //Environment.getExternalStorageDirectory() + "/" + CacheUtil.cacheRootPath + "/" + UtilsManage.getApplication().getPackageName();
+        CacheUtil.init(cacheRootPath);
     }
 
 }

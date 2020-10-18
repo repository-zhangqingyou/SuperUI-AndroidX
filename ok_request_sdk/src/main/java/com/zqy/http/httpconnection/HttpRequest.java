@@ -14,21 +14,21 @@ import java.util.Map;
  * 请求类  HttpURLConnectionClient
  * <p>
  * Author: zhangqingyou
- * Date: 2020/5/22
+ * Date: 2020/10/18
  * Des:
  */
-public class HttpURLConnectionClient {
-    private static HttpURLConnectionClient requestClient;
+public class HttpRequest {
+    private static HttpRequest requestClient;
     private Map<String, Boolean> isRequestMap = new LinkedHashMap<>();//key:请求地址，vaue：是否可请求
 
-    private HttpURLConnectionClient() {
+    private HttpRequest() {
     }
 
-    public static HttpURLConnectionClient getInstance() {
+    public static HttpRequest getInstance() {
         if (requestClient == null) {
-            synchronized (HttpURLConnectionClient.class) {
+            synchronized (HttpRequest.class) {
                 if (requestClient == null)
-                    requestClient = new HttpURLConnectionClient();
+                    requestClient = new HttpRequest();
             }
         }
         return requestClient;
@@ -49,18 +49,18 @@ public class HttpURLConnectionClient {
      */
 
     private void request(final String requestMethod, final String urlAddress, final Map<String, String> headers, final Map<String, String> params, final StringDataCallBack dataCallBack) {
-        final String urlEnd = dataCallBack.getUrlEnd(urlAddress);
-        if (!isRequestMap.containsKey(urlEnd)) {
+        dataCallBack.onStart(urlAddress, headers, params);
+
+        if (!isRequestMap.containsKey(dataCallBack.getEndUrl())) {
             //默认设置当前链接可请求
-            isRequestMap.put(urlEnd, true);
+            isRequestMap.put(dataCallBack.getEndUrl(), true);
         }
-        if (isRequestMap.get(urlEnd)) {
+        if (isRequestMap.get(dataCallBack.getEndUrl())) {
             Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        isRequestMap.put(urlEnd, false);//请求开始设置当前链接不可请求
-                        dataCallBack.onStart(urlAddress, headers, params);
+                        isRequestMap.put(dataCallBack.getEndUrl(), false);//请求开始设置当前链接不可请求
 
                         StringBuffer stringBufferParams = null;
                         if (params != null) {
@@ -97,8 +97,8 @@ public class HttpURLConnectionClient {
 //                            streamToString(inputStream);
                         }
 
-                        isRequestMap.put(urlEnd, true);//请求完成设置当前链接可请求
-                        dataCallBack.onFinish();
+                        isRequestMap.put(dataCallBack.getEndUrl(), true);//请求完成设置当前链接可请求
+                        dataCallBack.onFinish("请求完成");
 
 
                         //得到响应码
@@ -121,7 +121,6 @@ public class HttpURLConnectionClient {
                     }
 
 
-
                 }
             };
 
@@ -134,7 +133,7 @@ public class HttpURLConnectionClient {
 // 当调用start（）方法时，线程对象会自动回调线程辅助类对象的run（），从而实现线程操作
             td.start();
         } else {
-            dataCallBack.logRequest(urlEnd, "当前请求未响应，无法进行下一请求");
+            dataCallBack.onFinish(dataCallBack.getEndUrl() + "还未响应，相同接口无法再次请求！");
         }
 
     }

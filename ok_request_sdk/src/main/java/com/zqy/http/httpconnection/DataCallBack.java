@@ -18,6 +18,6 @@ public interface DataCallBack<T> {
 
     void onSuccess(T response);
 
-    void onFinish();
+    void onFinish(String msg);
 
 }

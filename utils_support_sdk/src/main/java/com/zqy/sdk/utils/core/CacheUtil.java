@@ -28,12 +28,10 @@ public class CacheUtil {
     private static String systemPath;
     //存储空间隐藏目录.zqy
     private static String storagePath;
-    private static String rootDir = ".zqy";
-    private static String packageName;
+    private static String cacheRootPath;
 
-    protected static void init(String rootDir, String packageName) {
-        CacheUtil.rootDir = rootDir;
-        CacheUtil.packageName = packageName;
+    protected static void init(String cacheRootPath) {
+        CacheUtil.cacheRootPath = cacheRootPath;
     }
 
     //*******************************系统包目录********************************
@@ -64,11 +62,12 @@ public class CacheUtil {
 
     private static String getStoragePath() {
         if (TextUtils.isEmpty(storagePath)) {
-            if (TextUtils.isEmpty(packageName)) {
-                storagePath = Environment.getExternalStorageDirectory() + "/" + CacheUtil.rootDir;
+            if (TextUtils.isEmpty(cacheRootPath)) {
+                storagePath = Environment.getExternalStorageDirectory() + "/.zqy/" + UtilsManage.getApplication().getPackageName();
+                //storagePath = Environment.getExternalStorageDirectory() + "/" + CacheUtil.cacheRootPath;
             } else {
-                storagePath = Environment.getExternalStorageDirectory() + "/" + CacheUtil.rootDir + "/" + UtilsManage.getApplication().getPackageName();
-
+                // storagePath = Environment.getExternalStorageDirectory() + "/" + CacheUtil.cacheRootPath + "/" + UtilsManage.getApplication().getPackageName();
+                storagePath = cacheRootPath;
             }
         }
         return storagePath;

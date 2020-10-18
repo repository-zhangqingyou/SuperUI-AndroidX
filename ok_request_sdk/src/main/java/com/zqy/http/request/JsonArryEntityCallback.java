@@ -21,7 +21,6 @@ public abstract class JsonArryEntityCallback<T> extends BaseCallback {
 
     public JsonArryEntityCallback(Class<T> classOfBean) {
         this.classOfBean = classOfBean;
-
     }
 
     public JsonArryEntityCallback(Class<T> classOfBean, String requestName) {

@@ -22,7 +22,7 @@
         android:viewportHeight="24.0">
 
     <path
-        android:fillColor="@android:color/white"
+        android:fillColor="#ffffff"
         android:pathData="@string/path_password_eye"/>
 
 </vector>

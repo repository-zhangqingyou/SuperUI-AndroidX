@@ -47,6 +47,8 @@ dependencies {
     api('com.tencent.tinker:tinker-android-lib:1.9.14.7') {
         exclude group: 'androidx.appcompat'
     }
+    //svg动画
+    api 'com.eftimoff:android-pathview:1.0.8@aar'
 
 }
 publish {

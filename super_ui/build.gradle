@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
-//group='com.github.repository-zhangqingyou'
 apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion build_versions.target_sdk
@@ -37,27 +36,27 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     lintOptions {
-        abortOnError false
+        abortOnError false // 即使有报错也不会停止打包
+        checkReleaseBuilds false // 打包Release版本的时候也不进行Lint检测
     }
 
 }
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api group: "androidx.appcompat", name: "appcompat", version:"$versions.androidx"//对应appcompat-v7
-    api group: "androidx.constraintlayout", name: "constraintlayout", version:"$versions.constraintlayout"
-    api "com.google.android.material:material:$versions.androidx"//对应support:design
-    api "androidx.legacy:legacy-support-v4:$versions.androidx"//对应support:support-v4
-    api "androidx.recyclerview:recyclerview:$versions.androidx"
-
+    api fileTree(dir: 'libs', include: ['*.aar'])
+    api group: "androidx.appcompat", name: "appcompat", version:"$versions.appcompat_version"//对应appcompat-v7
+    api group: "androidx.constraintlayout", name: "constraintlayout", version:"$versions.constraintlayout_version"
+    api "com.google.android.material:material:$versions.material_version"//对应support:design
+    api "androidx.legacy:legacy-support-v4:$versions.androidx_v4_version"//对应support:support-v4
+    api "androidx.recyclerview:recyclerview:$versions.recyclerview_version"
+    //
+    api project(path: ':super_utils')
+    api project(path: ':ok_request')
     api project(path: ':xui_lib_1.1.5')   //androidx项目
 //    api('com.github.xuexiangjys:XUI:1.1.5') {
 //        exclude group: 'androidx.appcompat'
 //    }
-
-    api project(path: ':super_utils')
-    api project(path: ':ok_request')
-
 
     //AgentWeb 是一个基于的 Android WebView ，极度容易使用以及功能强大的库
     api 'com.just.agentweb:agentweb-androidx:4.1.4' // (必选)
@@ -72,6 +71,13 @@ dependencies {
     api 'com.scwang.smart:refresh-header-two-level:2.0.1'   //二级刷新头
     api 'com.scwang.smart:refresh-footer-ball:2.0.1'        //球脉冲加载
     api 'com.scwang.smart:refresh-footer-classics:2.0.1'    //经典加载
+    //Android界最万能的TabLayout(不仅仅是TabLayout), 支持任意类型的item, 支持Drawable类型的指示器,智能开启滚动等
+    api 'com.github.angcyo.DslTablayout:TabLayout:1.6.1'
+    api 'com.github.angcyo.DslTablayout:ViewPager1Delegate:1.6.1'  //可选
+    api 'com.github.angcyo.DslTablayout:ViewPager2Delegate:1.6.1'//可选
+    //主流样式banner
+    api 'com.youth.banner:banner:2.1.0' //androidx  banner（样式多）
+    api 'com.github.zhpanvip:BannerViewPager:3.2.0'   //androidx  banner(支持ViewHolder，自定义指示器)
 
     /*
     XTabLayout是基于design包中的TabLayout进行了功能的扩展，在保留原有功能的基础上，
@@ -81,16 +87,8 @@ dependencies {
     //动画指示器：viewpager+指示器的UI实现，或者用于TabLayout的指示器
 //    api('com.github.hackware1993:MagicIndicator:1.5.0') //基于support
 //    api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'//基于support
-
-    api 'com.github.angcyo.DslTablayout:TabLayout:1.5.2'
-    api 'com.github.angcyo.DslTablayout:ViewPager2Delegate:1.5.2'    //可选
     //继承FrameLayout，在xml渲染完成后，加上加载中、无网络、无数据、出错四个页面，根据需要控制显示哪一层
     //  api('com.lai.weavey:loadinglayout:1.3.1') //基于support
-    //指示器
-    //主流样式banner
-    api 'com.youth.banner:banner:2.1.0'
-    api 'com.github.zhpanvip:BannerViewPager:3.1.6'
-
 
 }
 
@@ -103,8 +101,8 @@ publish {
     userOrg = 'zhangqingyou' // bintray 用户名
     repoName = 'Android' // bintray 仓库名
     groupId = 'com.bintray.zhangqingyou' // 依赖的路径
-    artifactId = 's_ui' // 依赖的名称
-    publishVersion = "$versions.publish_version" // 依赖的版本号
+    artifactId = 'super_ui' // 依赖的名称
+    publishVersion = "$versions.publish_app_androidx_version" // 依赖的版本号
     desc = '常用UI' // 描述
     website = 'https://gitee.com/zqycl/' // 项目网站，可填写 github 地址
     dryRun = false // true-仅运行  false-运行+上传

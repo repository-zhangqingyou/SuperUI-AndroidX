@@ -28,19 +28,19 @@ android {
     //***********************************多渠道构建***************************************
     flavorDimensions "channel"
     productFlavors {
-        SUI_Demo {
+        SuperUI_Demo {
             dimension "channel"
             applicationId "com.zqy.sui.demo"
             versionCode 1
             versionName "1." + time + "." + codename
             manifestPlaceholders = [
-                    APP_NAME      : "SUI-Demo",
+                    APP_NAME      : "SuperUI-Demo",
                     APP_ICON      : "@mipmap/ic_launcher",
                     PACKAGE_NAME  : applicationId,
                     JSHARE_PKGNAME: applicationId,
                     JPUSH_PKGNAME : applicationId,
                     JPUSH_APPKEY  : "f43583a474c09d91cd138e01", //JPush上注册的包名对应的appkey.
-                    JPUSH_CHANNEL : "gamemange000", //渠道号（不能使用中文）
+                    JPUSH_CHANNEL : "SuperUI000", //渠道号（不能使用中文）
                     TENCENT_APPID : "101551231",//腾讯开放平台注册应用得到的 appId,哪怕用不到也得放在这,不然manifest会有merge错误
             ]
         }

@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
-//group='com.github.repository-zhangqingyou'
 apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion build_versions.target_sdk
@@ -15,7 +14,8 @@ android {
 
 
     lintOptions {
-        abortOnError false
+        abortOnError false // 即使有报错也不会停止打包
+        checkReleaseBuilds false // 打包Release版本的时候也不进行Lint检测
     }
 
 
@@ -23,7 +23,6 @@ android {
 
 dependencies {
     implementation project(path: ':super_utils')
-
     //必须使用
     api 'com.lzy.net:okgo:3.0.4'
 
@@ -34,8 +33,8 @@ publish {
     userOrg = 'zhangqingyou' // bintray 用户名
     repoName = 'Android' // bintray 仓库名
     groupId = 'com.bintray.zhangqingyou' // 依赖的路径
-    artifactId = 's_request' // 依赖的名称
-    publishVersion = "$versions.publish_version" // 依赖的版本号
+    artifactId = 'ok_request' // 依赖的名称
+    publishVersion = "$versions.publish_app_androidx_version" // 依赖的版本号
     desc = '通用网络请求' // 描述
     website = 'https://gitee.com/zqycl/' // 项目网站，可填写 github 地址
     dryRun = false // true-仅运行  false-运行+上传

@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
-//group='com.github.repository-zhangqingyou'
 apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion build_versions.target_sdk
@@ -17,27 +16,30 @@ android {
 //        }
     }
     lintOptions {
-        abortOnError false
+        abortOnError false // 即使有报错也不会停止打包
+        checkReleaseBuilds false // 打包Release版本的时候也不进行Lint检测
     }
 }
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api fileTree(dir: 'libs', include: ['*.aar'])
-    implementation group: "androidx.appcompat", name: "appcompat", version:"$versions.androidx"//对应appcompat-v7
+    implementation group: "androidx.appcompat", name: "appcompat", version:"$versions.appcompat_version"//对应appcompat-v7
     //最牛Log＊神器＊
     api 'com.orhanobut:logger:1.8'
-    //最全最强工具库  1.25.9
+    //最全最强工具库
     api 'com.blankj:utilcode:1.29.0'
     //判断虚拟机
     api 'com.lahm.library:easy-protector-release:1.1.2'//latest.release
     //json解析库
-    api 'com.google.code.gson:gson:2.8.5'
+    api "com.google.code.gson:gson:$versions.gson"
     //glide图片加载库
-    api('com.github.bumptech.glide:glide:4.7.1') {
-        exclude group: 'com.android.support'
+    api("com.github.bumptech.glide:glide:$versions.glide") {
+        exclude group: "com.android.support"
     }
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    annotationProcessor "com.github.bumptech.glide:compiler:$versions.glide"
+    //svg动画
+    api 'com.eftimoff:android-pathview:1.0.8@aar'
     
     //集成全量更新和热更新一体的平台  注意： 升级SDK已经集成crash上报功能，已经集成Bugly的用户需要注释掉原来Bugly的jcenter库
     api 'com.tencent.bugly:crashreport_upgrade:1.4.5'
@@ -47,8 +49,7 @@ dependencies {
     api('com.tencent.tinker:tinker-android-lib:1.9.14.7') {
         exclude group: 'androidx.appcompat'
     }
-    //svg动画
-    api 'com.eftimoff:android-pathview:1.0.8@aar'
+
 
 }
 publish {
@@ -57,8 +58,8 @@ publish {
     userOrg = 'zhangqingyou' // bintray 用户名
     repoName = 'Android' // bintray 仓库名
     groupId = 'com.bintray.zhangqingyou' // 依赖的路径
-    artifactId = 's_utils' // 依赖的名称
-    publishVersion = "$versions.publish_version" // 依赖的版本号
+    artifactId = 'super_utils' // 依赖的名称
+    publishVersion = "$versions.publish_app_androidx_version" // 依赖的版本号
     desc = '常用工具' // 描述
     website = 'https://gitee.com/zqycl/' // 项目网站，可填写 github 地址
     dryRun = false // true-仅运行  false-运行+上传

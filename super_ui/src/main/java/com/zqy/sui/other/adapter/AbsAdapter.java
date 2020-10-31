@@ -1,9 +1,9 @@
-package com.zqy.sdk.sui.other.adapter;
+package com.zqy.sui.other.adapter;
 
 import android.view.View;
 
-import com.zqy.sdk.sui.other.adapter.impl.AdapterImpl;
-import com.zqy.sdk.sui.other.adapter.viewholder.BaseViewHolder;
+import com.zqy.sui.other.adapter.impl.AdapterImpl;
+import com.zqy.sui.other.adapter.viewholder.BaseViewHolder;
 
 import java.util.List;
 

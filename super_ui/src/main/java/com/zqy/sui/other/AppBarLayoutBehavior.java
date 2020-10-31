@@ -1,4 +1,4 @@
-package com.zqy.sdk.sui.other;
+package com.zqy.sui.other;
 
 import android.content.Context;
 import android.util.AttributeSet;

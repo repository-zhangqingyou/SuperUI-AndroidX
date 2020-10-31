@@ -1,4 +1,4 @@
-package com.zqy.sdk.sui.widget.superlayout;
+package com.zqy.sui.widget.superlayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,7 +11,7 @@ import androidx.annotation.FloatRange;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import com.blankj.utilcode.util.ColorUtils;
-import com.zqy.sdk.sui.R;
+import com.zqy.sui.R;
 
 /**
  * 作者: zhangqingyou

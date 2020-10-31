@@ -1,4 +1,4 @@
-package com.zqy.sdk.sui;
+package com.zqy.sui;
 
 import android.app.Application;
 import android.util.Log;

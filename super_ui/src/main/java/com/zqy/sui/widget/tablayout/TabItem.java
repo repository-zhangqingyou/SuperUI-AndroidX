@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.zqy.sdk.sui.widget.tablayout;
+package com.zqy.sui.widget.tablayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -22,7 +22,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.zqy.sdk.sui.R;
+import com.zqy.sui.R;
 
 /**
  * TabItem is a special 'view' which allows you to declare tab items for a {@link TabLayoutX}

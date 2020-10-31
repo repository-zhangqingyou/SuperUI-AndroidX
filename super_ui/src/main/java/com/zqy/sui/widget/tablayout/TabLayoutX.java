@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.zqy.sdk.sui.widget.tablayout;
+package com.zqy.sui.widget.tablayout;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
@@ -64,7 +64,7 @@ import androidx.core.widget.TextViewCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.zqy.sdk.sui.R;
+import com.zqy.sui.R;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

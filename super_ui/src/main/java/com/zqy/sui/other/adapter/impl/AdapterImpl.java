@@ -1,9 +1,9 @@
-package com.zqy.sdk.sui.other.adapter.impl;
+package com.zqy.sui.other.adapter.impl;
 
 
 import androidx.annotation.LayoutRes;
 
-import com.zqy.sdk.sui.other.adapter.viewholder.BaseViewHolder;
+import com.zqy.sui.other.adapter.viewholder.BaseViewHolder;
 
 /**
  * 作者: zhangqingyou

@@ -1,4 +1,4 @@
-package com.zqy.sdk.sui.widget.scrollview;
+package com.zqy.sui.widget.scrollview;
 
 import android.content.Context;
 import android.util.AttributeSet;

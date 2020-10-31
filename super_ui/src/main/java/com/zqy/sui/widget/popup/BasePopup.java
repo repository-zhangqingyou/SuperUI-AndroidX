@@ -1,4 +1,4 @@
-package com.zqy.sdk.sui.widget.popup;
+package com.zqy.sui.widget.popup;
 
 import android.app.Activity;
 import android.graphics.Color;

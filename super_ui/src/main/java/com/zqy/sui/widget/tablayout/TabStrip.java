@@ -1,4 +1,4 @@
-package com.zqy.sdk.sui.widget.tablayout;
+package com.zqy.sui.widget.tablayout;
 
 import android.content.Context;
 import android.graphics.Canvas;

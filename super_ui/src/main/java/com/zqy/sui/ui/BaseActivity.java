@@ -1,4 +1,4 @@
-package com.zqy.sdk.sui.ui;
+package com.zqy.sui.ui;
 
 import android.app.Activity;
 import android.content.Context;

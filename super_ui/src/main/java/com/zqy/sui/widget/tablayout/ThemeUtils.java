@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.zqy.sdk.sui.widget.tablayout;
+package com.zqy.sui.widget.tablayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 
-import com.zqy.sdk.sui.R;
+import com.zqy.sui.R;
 
 class ThemeUtils {
 

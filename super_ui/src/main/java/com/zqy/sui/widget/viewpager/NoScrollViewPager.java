@@ -1,4 +1,4 @@
-package com.zqy.sdk.sui.widget.viewpager;
+package com.zqy.sui.widget.viewpager;
 
 import android.content.Context;
 import android.graphics.PointF;

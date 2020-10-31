@@ -1,4 +1,4 @@
-package com.zqy.sdk.sui.widget.dialog;
+package com.zqy.sui.widget.dialog;
 
 import android.app.Activity;
 import android.text.TextUtils;
@@ -8,8 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.ColorInt;
 import androidx.core.content.ContextCompat;
 
-import com.zqy.sdk.sui.R;
-import com.zqy.sdk.sui.widget.superlayout.SuperTextView;
+import com.zqy.sui.R;
+import com.zqy.sui.widget.superlayout.SuperTextView;
 
 /**
  * 作者: zhangqingyou

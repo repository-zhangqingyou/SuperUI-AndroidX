@@ -1,4 +1,4 @@
-package com.zqy.sdk.sui.widget;
+package com.zqy.sui.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;

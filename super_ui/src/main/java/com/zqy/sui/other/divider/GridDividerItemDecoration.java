@@ -1,4 +1,4 @@
-package com.zqy.sdk.sui.other.divider;
+package com.zqy.sui.other.divider;
 
 import android.graphics.Canvas;
 import android.graphics.Color;

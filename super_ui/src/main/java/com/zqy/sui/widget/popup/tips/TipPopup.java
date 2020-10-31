@@ -1,11 +1,11 @@
-package com.zqy.sdk.sui.widget.popup.tips;
+package com.zqy.sui.widget.popup.tips;
 
 import android.app.Activity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.zqy.sdk.sui.R;
+import com.zqy.sui.R;
 
 /**
  * 作者: zhangqingyou

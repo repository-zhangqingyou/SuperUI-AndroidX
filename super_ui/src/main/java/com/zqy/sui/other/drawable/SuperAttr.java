@@ -1,4 +1,4 @@
-package com.zqy.sdk.sui.other.drawable;
+package com.zqy.sui.other.drawable;
 
 /**
  * 作者: zhangqingyou

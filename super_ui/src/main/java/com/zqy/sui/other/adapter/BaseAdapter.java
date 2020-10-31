@@ -1,11 +1,11 @@
-package com.zqy.sdk.sui.other.adapter;
+package com.zqy.sui.other.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.zqy.sdk.sui.other.adapter.viewholder.BaseViewHolder;
+import com.zqy.sui.other.adapter.viewholder.BaseViewHolder;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.zqy.sdk.sui.other.divider;
+package com.zqy.sui.other.divider;
 
 import android.content.Context;
 import android.graphics.Rect;

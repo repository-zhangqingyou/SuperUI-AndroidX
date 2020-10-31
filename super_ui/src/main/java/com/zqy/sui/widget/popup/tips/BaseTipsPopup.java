@@ -1,4 +1,4 @@
-package com.zqy.sdk.sui.widget.popup.tips;
+package com.zqy.sui.widget.popup.tips;
 
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
@@ -6,9 +6,9 @@ import android.graphics.drawable.Drawable;
 import androidx.core.content.ContextCompat;
 
 import com.blankj.utilcode.util.ConvertUtils;
-import com.zqy.sdk.sui.R;
-import com.zqy.sdk.sui.other.drawable.SuperStateListDrawable;
-import com.zqy.sdk.sui.widget.popup.BasePopup;
+import com.zqy.sui.R;
+import com.zqy.sui.other.drawable.SuperStateListDrawable;
+import com.zqy.sui.widget.popup.BasePopup;
 
 /**
  * 作者: zhangqingyou

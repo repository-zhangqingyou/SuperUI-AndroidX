@@ -54,11 +54,10 @@ public class UtilsManage {
     /**
      * 设置缓存配置
      *
-     * @param rootDir     根文件夹名
-     * @param packageName 包名（二级文件夹名）
+     * @param cacheRootPath     缓存路径
      */
-    public static void setCache(String rootDir, String packageName) {
-        CacheUtil.init(rootDir, packageName);
+    public static void setCache(String cacheRootPath) {
+        CacheUtil.init(cacheRootPath);
     }
 
     /**

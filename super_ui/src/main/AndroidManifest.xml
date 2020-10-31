@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.zqy.sui">
+    package="com.zqy.superui">
 
     <application>
         <provider
@@ -11,10 +11,9 @@
             tools:replace="name,authorities,exported,grantUriPermissions">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"
+                android:resource="@xml/super_ui_file_paths"
                 tools:replace="name,resource" />
         </provider>
-
 
     </application>
 </manifest>

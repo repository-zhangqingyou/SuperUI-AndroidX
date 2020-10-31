@@ -2,7 +2,7 @@ package com.zqy.srequest.request;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.FileCallback;
-import com.zqy.srequest.RequestManage;
+import com.zqy.srequest.HttpManage;
 
 import java.io.File;
 import java.util.HashMap;
@@ -79,8 +79,8 @@ public class OKRequest {
                     .execute(callback);
         } else {
             callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-            if (RequestManage.getApiCallbackServiceLoader() != null) {
-                for (ApiCallbackService service : RequestManage.getApiCallbackServiceLoader()) {
+            if (HttpManage.getApiCallbackServiceLoader() != null) {
+                for (ApiCallbackService service : HttpManage.getApiCallbackServiceLoader()) {
                     service.onFinish(url + "还未响应，相同接口无法再次请求！");
                 }
             }
@@ -106,8 +106,8 @@ public class OKRequest {
                     .execute(callback);
         } else {
             callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-            if (RequestManage.getApiCallbackServiceLoader() != null) {
-                for (ApiCallbackService service : RequestManage.getApiCallbackServiceLoader()) {
+            if (HttpManage.getApiCallbackServiceLoader() != null) {
+                for (ApiCallbackService service : HttpManage.getApiCallbackServiceLoader()) {
                     service.onFinish(url + "还未响应，相同接口无法再次请求！");
                 }
             }
@@ -133,8 +133,8 @@ public class OKRequest {
                     .execute(callback);
         } else {
             callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-            if (RequestManage.getApiCallbackServiceLoader() != null) {
-                for (ApiCallbackService service : RequestManage.getApiCallbackServiceLoader()) {
+            if (HttpManage.getApiCallbackServiceLoader() != null) {
+                for (ApiCallbackService service : HttpManage.getApiCallbackServiceLoader()) {
                     service.onFinish(url + "还未响应，相同接口无法再次请求！");
                 }
             }

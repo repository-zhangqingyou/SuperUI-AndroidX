@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
-import com.zqy.sui.other.drawable.SuperStateListDrawable;
-import com.zqy.sui.widget.superlayout.SuperTextView;
+import com.zqy.sui.core.other.drawable.SuperStateListDrawable;
+import com.zqy.sui.core.widget.superlayout.SuperTextView;
 import com.zqy.suidemo.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        String s1 = RSAEncrypt.decryptPrivateKey(s, RSAEncrypt.PRIVATE_KEY);
         //  mTvTest.setClickEffect(false);
 
-//       int baseUIAppTheme = ResourceUtils.getStyleIdByName("Base_DialogWindowTitle_AppCompat");
-//        int baseUIAppTheme2 = ResourceUtils.getStyleIdByName("Base.DialogWindowTitle.AppCompat");
+//       int SuperUI_AppTheme = ResourceUtils.getStyleIdByName("Base_DialogWindowTitle_AppCompat");
+//        int SuperUI_AppTheme2 = ResourceUtils.getStyleIdByName("Base.DialogWindowTitle.AppCompat");
         mTvTest.setBackground(getStateListDrawable());
 
       //  R.style.Base_TextAppearance_AppCompat_Body2;

@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.signature.ObjectKey;
 
 /**
  * 加载图片工具类
@@ -57,17 +58,9 @@ public class GlideUtil {
          我就是用这个方法，传递url不变也可以重新请求，不读取缓存。这个参数可以绑定版本号，每次更新重新获取，或者请求后台
          强大的Glide
          */
-//        if (dataBean != null && imageUrl instanceof String) {
-//            String imageUrl1 = (String) imageUrl;
-//            String imageName = imageUrl1.substring(imageUrl1.lastIndexOf("/") + 1, imageUrl1.length());//截取N中，第0个位置到最后一个f之前的全部字符
-//            if (asList.contains(imageName)) {//需要更新的图片
-//                requestOptions.signature(new ObjectKey(dataBean.getVersion()));//增加签名
-//            }
-//        }
-
-        if (isplaceholder)//是否加载占位图
-        {
-
+        requestOptions.signature(new ObjectKey("1.0"));//增加签名
+        //是否加载占位图
+        if (isplaceholder) {
             requestOptions.placeholder(loadImg);//设置占位图
             requestOptions.error(failureImg);//设置加载错误图片
         }

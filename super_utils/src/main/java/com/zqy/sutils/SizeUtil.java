@@ -1,5 +1,4 @@
-package com.hdys.sdk.common.util;
-
+package com.zqy.sutils;
 import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.ViewGroup.LayoutParams;

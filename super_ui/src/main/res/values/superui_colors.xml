@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingDefaultResource">
+    <!--    <color name="colorPrimary">#6200EE</color>-->
+    <!--    <color name="colorPrimaryDark">#3700B3</color>-->
+    <!--    <color name="colorAccent">#03DAC5</color>-->
+
+    <color name="superui_white">#FFFFFF</color>
+    <color name="superui_black">#000000</color>
+
+    <color name="superui_graySegmentation">#E8E8E8</color>
+    <color name="superui_grayBar">#F4F5F7</color>
+    <color name="superui_gray_high_light">#dddddd</color>
+    <color name="superui_gray">#CCCCCC</color>
+    <color name="superui_gray2">#F1F1F1</color>
+    <color name="superui_gray_dividing_line_light">#DBDBDB</color>
+    <color name="superui_background_red">#FF4081</color>
+    <color name="superui_sign_text_color">#ffffff</color>
+    <color name="superui_span_blue">#1997E8</color>
+
+
+    <color name="superui_black_light1">#333333</color>
+    <color name="superui_black_light">#666666</color>
+    <color name="superui_black_light2">#999999</color>
+    <color name="superui_black_dark">#0E050A</color>
+    <color name="superui_red_light">#EA534E</color>
+    <color name="superui_background_light">#F4F4F4</color>
+
+</resources>

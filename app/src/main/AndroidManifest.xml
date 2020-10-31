@@ -28,7 +28,7 @@
         android:label="${APP_NAME}"
         android:roundIcon="${APP_ICON}"
         android:supportsRtl="true"
-        android:theme="@style/BaseUIAppTheme"
+        android:theme="@style/SuperUI_AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="name,roundIcon,allowBackup,icon,label,theme,supportsRtl,usesCleartextTraffic">
 

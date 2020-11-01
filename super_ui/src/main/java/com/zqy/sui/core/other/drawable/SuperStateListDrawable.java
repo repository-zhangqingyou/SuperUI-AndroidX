@@ -126,12 +126,15 @@ public class SuperStateListDrawable extends GradientDrawable {
      * @return
      */
     public SuperStateListDrawable setGradient(@ColorInt int starColor, @ColorInt int endColor, int gradient, GradientDrawable.Orientation orientation) {
-        if (starColor != Color.TRANSPARENT && endColor != Color.TRANSPARENT) {
+//        if (starColor != Color.TRANSPARENT && endColor != Color.TRANSPARENT) {
+//            this.colors = new int[]{starColor, endColor};
+//        } else if (starColor != Color.TRANSPARENT && endColor == Color.TRANSPARENT) {
+//            this.colors = new int[]{starColor, starColor};
+//        } else if (starColor == Color.TRANSPARENT && endColor != Color.TRANSPARENT) {
+//            this.colors = new int[]{endColor, endColor};
+//        }
+        if (starColor != Color.TRANSPARENT || endColor != Color.TRANSPARENT) {
             this.colors = new int[]{starColor, endColor};
-        } else if (starColor != Color.TRANSPARENT && endColor == Color.TRANSPARENT) {
-            this.colors = new int[]{starColor, starColor};
-        } else if (starColor == Color.TRANSPARENT && endColor != Color.TRANSPARENT) {
-            this.colors = new int[]{endColor, endColor};
         }
         this.gradient = gradient;
         this.orientation = orientation;
@@ -233,8 +236,10 @@ public class SuperStateListDrawable extends GradientDrawable {
         if (colors != null) {
             int[] alphacolor = new int[colors.length];
             for (int i = 0; i < colors.length; i++) {
-                int alphaComponent = ColorUtils.setAlphaComponent(colors[i], clickAlpha);
-                alphacolor[i] = alphaComponent;
+                if (colors[i] != Color.TRANSPARENT) {
+                    int alphaComponent = ColorUtils.setAlphaComponent(colors[i], clickAlpha);
+                    alphacolor[i] = alphaComponent;
+                }
             }
             pressedGb.setColors(alphacolor);//设置渐变颜色
             pressedGb.setGradientType(gradient);

@@ -15,6 +15,8 @@ buildscript {
         maven {
             url 'https://dl.bintray.com/novoda-oss/snapshots/'
         }
+        //zqy的bintray仓库地址
+        maven { url 'https://dl.bintray.com/zhangqingyou/Android' }
     }
     dependencies {
         //此处配置版本请勿改动，升高版本，存在不兼容问题  3.1.x 3.2.X  3.3.x 3.4.x  升级均存在兼容问题
@@ -43,7 +45,8 @@ allprojects {
         maven {
             url 'http://oss.jfrog.org/artifactory/oss-snapshot-local'
         }
-
+        //zqy的bintray仓库地址
+        maven { url 'https://dl.bintray.com/zhangqingyou/Android' }
 
     }
     tasks.withType(Javadoc) {//防止编码问题

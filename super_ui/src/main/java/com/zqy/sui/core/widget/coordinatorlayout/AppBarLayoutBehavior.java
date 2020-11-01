@@ -1,4 +1,4 @@
-package com.zqy.sui.core.other;
+package com.zqy.sui.core.widget.coordinatorlayout;
 
 import android.content.Context;
 import android.util.AttributeSet;

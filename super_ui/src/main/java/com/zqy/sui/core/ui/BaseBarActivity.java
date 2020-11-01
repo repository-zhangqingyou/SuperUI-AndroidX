@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.zqy.sui.core.widget.superlayout.SuperImageView;
+import com.zqy.sui.core.widget.imageview.SuperImageView;
 import com.zqy.superui.R;
 /**
  * 作者: zhangqingyou 申请

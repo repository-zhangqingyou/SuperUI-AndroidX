@@ -24,6 +24,7 @@ import android.view.View;
 
 import com.zqy.superui.R;
 
+
 /**
  * TabItem is a special 'view' which allows you to declare tab items for a {@link TabLayoutX}
  * within a layout. This view is not actually added to TabLayout, it is just a dummy which allows

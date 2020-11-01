@@ -17,7 +17,6 @@
 package com.zqy.sui.core.widget.tablayout;
 
 import android.annotation.TargetApi;
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -56,6 +55,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.StringRes;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.util.Pools;
 import androidx.core.view.GravityCompat;
@@ -1205,8 +1205,8 @@ public class TabLayoutX extends HorizontalScrollView {
         private int mPosition = INVALID_POSITION;
         private View mCustomView;
 
-        TabLayoutX mParent;
-        TabView mView;
+        private TabLayoutX mParent;
+        private TabView mView;
 
         Tab() {
             // Private constructor
@@ -1242,6 +1242,10 @@ public class TabLayoutX extends HorizontalScrollView {
         @Nullable
         public View getCustomView() {
             return mCustomView;
+        }
+
+        public TabView getTabView() {
+            return mView;
         }
 
         /**
@@ -1456,7 +1460,7 @@ public class TabLayoutX extends HorizontalScrollView {
         }
     }
 
-    class TabView extends LinearLayout implements OnLongClickListener {
+   public class TabView extends LinearLayout implements OnLongClickListener {
         private Tab mTab;
         private TextView mTextView;
         private ImageView mIconView;

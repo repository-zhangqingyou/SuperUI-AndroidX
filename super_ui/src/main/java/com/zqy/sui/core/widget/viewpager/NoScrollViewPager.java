@@ -31,6 +31,13 @@ public class NoScrollViewPager extends ViewPager {
         this.noScroll = noScroll;
     }
 
+    @Override
+    public void scrollTo(int x, int y) {
+        super.scrollTo(x, y);
+    }
+
+
+
     public void setRequestDisallowInterceptTouchEvent(boolean requestDisallowInterceptTouchEvent) {
         this.requestDisallowInterceptTouchEvent = requestDisallowInterceptTouchEvent;
     }

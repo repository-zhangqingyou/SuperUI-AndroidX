@@ -25,4 +25,8 @@
     <color name="superui_red_light">#EA534E</color>
     <color name="superui_background_light">#F4F4F4</color>
 
+
+    <!--三方-->
+    <color name="multiple_image_select_primaryDark">#5CC2A9</color>
+
 </resources>

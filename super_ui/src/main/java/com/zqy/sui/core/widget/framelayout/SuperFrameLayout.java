@@ -1,4 +1,4 @@
-package com.zqy.sui.core.widget.superlayout;
+package com.zqy.sui.core.widget.framelayout;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

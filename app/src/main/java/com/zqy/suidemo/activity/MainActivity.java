@@ -10,7 +10,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
 import com.zqy.sui.core.other.drawable.SuperStateListDrawable;
-import com.zqy.sui.core.widget.superlayout.SuperTextView;
+import com.zqy.sui.core.widget.textview.SuperTextView;
 import com.zqy.suidemo.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

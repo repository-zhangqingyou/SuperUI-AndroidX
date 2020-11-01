@@ -33,7 +33,7 @@ public class GlideUtil {
      * @param isplaceholder 是否加载占位图
      */
     public static void loadImg(ImageView imageView, Object imageUrl, boolean isplaceholder) {
-        loadImg(imageView, imageUrl, isplaceholder, new ColorDrawable(Color.parseColor("F4F5F7")), new ColorDrawable(Color.parseColor("E8E8E8")));
+        loadImg(imageView, imageUrl, isplaceholder, new ColorDrawable(Color.parseColor("#F4F5F7")), new ColorDrawable(Color.parseColor("#E8E8E8")));
     }
 
     /**

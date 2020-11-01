@@ -23,7 +23,7 @@ import java.util.Map;
  * Date: 2020/4/7
  * Des:
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class AbsFragment extends Fragment {
 
     public View mRootView;
 

@@ -26,7 +26,7 @@ import java.util.Map;
  * Date: 2020/4/7
  * Des:
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class AbsActivity extends AppCompatActivity {
     private String canonicalName;  //
 
     /**

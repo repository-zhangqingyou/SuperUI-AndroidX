@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.ColorInt;
 
 import com.zqy.sui.core.other.drawable.DrawableImpl;
+import com.zqy.sui.core.other.drawable.Gradient;
 import com.zqy.sui.core.other.drawable.SuperGradientDrawable;
 
 /**
@@ -67,8 +68,12 @@ public class SuperLinearLayout extends LinearLayout implements DrawableImpl {
 
     @Override
     public void setBackground(Drawable background) {
-        if (superGradientDrawable != null)
-            superGradientDrawable.setClickEffect(false);//必须关闭才有效
+        if (superGradientDrawable != null) {
+            if (!(background instanceof SuperGradientDrawable)) {
+                //不属于SuperGradientDrawable则关闭点击效果
+                superGradientDrawable.setClickEffect(false);//必须关闭才有效
+            }
+        }
         super.setBackground(background);
     }
 
@@ -81,8 +86,12 @@ public class SuperLinearLayout extends LinearLayout implements DrawableImpl {
 
     @Override
     public void setBackgroundDrawable(Drawable background) {
-        if (superGradientDrawable != null)
-            superGradientDrawable.setClickEffect(false);//必须关闭才有效
+        if (superGradientDrawable != null) {
+            if (!(background instanceof SuperGradientDrawable)) {
+                //不属于SuperGradientDrawable则关闭点击效果
+                superGradientDrawable.setClickEffect(false);//必须关闭才有效
+            }
+        }
         super.setBackgroundDrawable(background);
     }
 
@@ -128,8 +137,20 @@ public class SuperLinearLayout extends LinearLayout implements DrawableImpl {
         superGradientDrawable.setClickStrokeColor(clickStrokeColor);
     }
 
+    /**
+     * 设置渐变颜色
+     *
+     * @param starColor
+     * @param endColor
+     * @param gradient    * LINEAR_GRADIENT:线性梯度
+     *                    * RADIAL_GRADIENT:圆形渐变
+     *                    * SWEEP_GRADIENT:扫描式渐变
+     *                    * RING:环
+     * @param orientation 渐变方向
+     * @return
+     */
     @Override
-    public void setGradient(@ColorInt int starColor, @ColorInt int endColor, int gradient, GradientDrawable.Orientation orientation) {
+    public void setGradient(@ColorInt int starColor, @ColorInt int endColor, Gradient gradient, GradientDrawable.Orientation orientation) {
         superGradientDrawable.setGradient(starColor, endColor, gradient, orientation);
     }
 
@@ -146,7 +167,8 @@ public class SuperLinearLayout extends LinearLayout implements DrawableImpl {
      */
     @Override
     public void buid() {
-        superGradientDrawable.buid();
+        //  superGradientDrawable.buid();
+        setPressed(false);
     }
 
     @Override

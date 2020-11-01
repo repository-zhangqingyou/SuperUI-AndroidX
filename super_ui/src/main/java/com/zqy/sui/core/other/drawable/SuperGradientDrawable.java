@@ -34,18 +34,17 @@ public class SuperGradientDrawable extends GradientDrawable {
     private View view;//需要设置Drawable的View
     private GradientDrawable.Orientation gradientOrientation = Orientation.LEFT_RIGHT;//渐变方向
     private boolean clickEffect = true;//设置是否有按下效果 默认有
-    private float clickAlpha;//按下时 背景颜色和字体颜色 透明度
+    private float clickAlpha = 0.7f;//按下时 背景颜色和字体颜色 透明度
     private int solidColor;//填充颜色
     private int clickSolidColor;//按下时的填充颜色
     private int clickStrokeColor;//按现时 边框颜色
     private int strokeColor;//边框颜色
-    private int textColor;//正常字体颜色
+    private int textColor = Color.GRAY;//正常字体颜色
     private int clickTextColor;//按现时 字体颜色
     private int strokeWidth;//边框宽度
     private int startColor;//渐变开始颜色
     private int endColor;//渐变结束颜色
-    private int gradient;//渐变模式
-    private int orientation;//渐变方向
+    private Gradient gradient;//渐变模式
     private int radius,
             topLeftRadius,
             topRightRadius,
@@ -105,8 +104,22 @@ public class SuperGradientDrawable extends GradientDrawable {
         textColor = typedArray.getColor(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_text_color"), Color.GRAY);//默认灰色
         clickTextColor = typedArray.getColor(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_click_text_color"), Color.TRANSPARENT);
 
-        gradient = typedArray.getInt(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_gradient"), 0);//默认线性
-        orientation = typedArray.getInt(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_orientation"), 6);//默认从左到右
+        int zqy_gradient = typedArray.getInt(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_gradient"), 0);//默认线性
+        Gradient[] valuesGradient = Gradient.values();
+        for (Gradient value : valuesGradient) {
+            if (value.ordinal() == zqy_gradient) {
+                gradient = value;
+            }
+        }
+
+        int orientation = typedArray.getInt(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_orientation"), 6);//默认从左到右
+        Orientation[] valuesOrientation = Orientation.values();
+        for (GradientDrawable.Orientation value : valuesOrientation) {
+            if (value.ordinal() == orientation) {
+                gradientOrientation = value;
+            }
+        }
+
         strokeWidth = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_stroke_width"), 0);
         radius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_radius"), SizeUtils.dp2px(5));
         topLeftRadius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_top_left_radius"), 0);
@@ -142,8 +155,21 @@ public class SuperGradientDrawable extends GradientDrawable {
         textColor = (int) attrs.get(SuperAttr.字体颜色);
         clickTextColor = (int) attrs.get(SuperAttr.按下时字体颜色);
 
-        gradient = (int) attrs.get(SuperAttr.渐变模式);
-        orientation = (int) attrs.get(SuperAttr.渐变方向);
+        int zqy_gradient = (int) attrs.get(SuperAttr.渐变模式);
+        Gradient[] valuesGradient = Gradient.values();
+        for (Gradient value : valuesGradient) {
+            if (value.ordinal() == zqy_gradient) {
+                gradient = value;
+            }
+        }
+        int orientation = (int) attrs.get(SuperAttr.渐变方向);
+        Orientation[] valuesOrientation = Orientation.values();
+        for (GradientDrawable.Orientation value : valuesOrientation) {
+            if (value.ordinal() == orientation) {
+                gradientOrientation = value;
+            }
+        }
+
         radius = (int) attrs.get(SuperAttr.四圆角);
         topLeftRadius = (int) attrs.get(SuperAttr.左上圆角);
         topRightRadius = (int) attrs.get(SuperAttr.右上圆角);
@@ -156,12 +182,6 @@ public class SuperGradientDrawable extends GradientDrawable {
 
 
     private void init() {
-        Orientation[] values = Orientation.values();
-        for (GradientDrawable.Orientation value : values) {
-            if (value.ordinal() == orientation) {
-                gradientOrientation = value;
-            }
-        }
 
 
         /**
@@ -169,8 +189,9 @@ public class SuperGradientDrawable extends GradientDrawable {
          */
         if (startColor != Color.TRANSPARENT || endColor != Color.TRANSPARENT) {
             setGradient(startColor, endColor, gradient, gradientOrientation);
+            setColors(new int[]{startColor, endColor});//设置渐变颜色
         } else {
-            setSolidColor(solidColor);
+            setColor(solidColor);
         }
 
         if (topLeftRadius > 0 || topRightRadius > 0 || bottomLeftRadius > 0 || bottomRightRadius > 0) {
@@ -179,10 +200,9 @@ public class SuperGradientDrawable extends GradientDrawable {
             setRadius(radius, radius, radius, radius);
         }
 
-
-        setStrokeColorAndWidth(strokeWidth, strokeColor)
-                .setNormalTextColor(textColor)
-                .buid();
+        setStroke(strokeWidth, strokeColor);
+        setTextColor(view, textColor);
+        buid();
     }
 
     /**
@@ -216,7 +236,6 @@ public class SuperGradientDrawable extends GradientDrawable {
     public SuperGradientDrawable setClickAlpha(@FloatRange(from = 0, to = 1) float clickAlpha) {
         //(设置透明值时需重设各属性方生效)
         this.clickAlpha = clickAlpha;
-
         return this;
     }
 
@@ -226,7 +245,8 @@ public class SuperGradientDrawable extends GradientDrawable {
      * @param color 颜色
      */
     public SuperGradientDrawable setSolidColor(@ColorInt int color) {
-        setColor(color);
+        this.solidColor = color;
+
         return this;
     }
 
@@ -248,7 +268,8 @@ public class SuperGradientDrawable extends GradientDrawable {
      * @param color       边框颜色
      */
     public SuperGradientDrawable setStrokeColorAndWidth(int strokeWidth, int color) {
-        setStroke(strokeWidth, color);
+        this.strokeColor = color;//边框颜色
+        this.strokeWidth = strokeWidth;//边框宽度
         return this;
     }
 
@@ -267,11 +288,17 @@ public class SuperGradientDrawable extends GradientDrawable {
      *
      * @param starColor
      * @param endColor
+     * @param gradient    * LINEAR_GRADIENT:线性梯度
+     *                    * RADIAL_GRADIENT:圆形渐变
+     *                    * SWEEP_GRADIENT:扫描式渐变
+     *                    * RING:环
+     * @param orientation 渐变方向
      * @return
      */
-    public SuperGradientDrawable setGradient(@ColorInt int starColor, @ColorInt int endColor, int gradient, Orientation orientation) {
-        setColors(new int[]{starColor, endColor});//设置渐变颜色
-        setGradientType(gradient);//设置线性渐变，除此之外还有：GradientDrawable.SWEEP_GRADIENT（扫描式渐变），GradientDrawable.RADIAL_GRADIENT（圆形渐变）
+    public SuperGradientDrawable setGradient(@ColorInt int starColor, @ColorInt int endColor, Gradient gradient, Orientation orientation) {
+        this.startColor = starColor;//渐变开始颜色
+        this.endColor = endColor;//渐变结束颜色
+        setGradientType(gradient.ordinal());//设置线性渐变，除此之外还有：GradientDrawable.SWEEP_GRADIENT（扫描式渐变），GradientDrawable.RADIAL_GRADIENT（圆形渐变）
         setOrientation(orientation);//设置渐变方向
         return this;
     }
@@ -282,14 +309,29 @@ public class SuperGradientDrawable extends GradientDrawable {
      *
      * @param normalTextColor 正常状态颜色
      */
-    public SuperGradientDrawable setNormalTextColor(@ColorInt int normalTextColor) {
-        if (view instanceof TextView) {
-            TextView textView = (TextView) view;
-            textView.setTextColor(normalTextColor);
-        } else if (view instanceof Button) {
-            Button button = (Button) view;
-            button.setTextColor(normalTextColor);
+    public SuperGradientDrawable setNormalTextColor(View view, @ColorInt int normalTextColor) {
+        this.view = view;
+        this.textColor = normalTextColor;
+        return this;
+    }
+
+    /**
+     * 设置textView颜色
+     *
+     * @param textColor 颜色
+     */
+    private SuperGradientDrawable setTextColor(View view, @ColorInt int textColor) {
+        if (view != null) {
+            if (view instanceof TextView) {
+                TextView textView = (TextView) view;
+                textView.setTextColor(textColor);
+            } else if (view instanceof Button) {
+                Button button = (Button) view;
+                button.setTextColor(textColor);
+            }
+
         }
+
         return this;
     }
 
@@ -307,10 +349,13 @@ public class SuperGradientDrawable extends GradientDrawable {
     /**
      * 设置完成之后必须调用 buid() ，否则不生效
      */
-    public SuperGradientDrawable buid() {
-        view.setBackground(this);
+    private SuperGradientDrawable buid() {
+        if (view != null) {
+            view.setBackground(this);
+        }
         return this;
     }
+
 
     /**
      * 按下 抬起
@@ -318,6 +363,7 @@ public class SuperGradientDrawable extends GradientDrawable {
      * @param pressed
      */
     public void setPressed(boolean pressed) {
+        //Log.d("SuperGradientDrawable", "clickEffect:" + clickEffect);
         if (clickEffect) {
             if (pressed) {
                 if (startColor != Color.TRANSPARENT || endColor != Color.TRANSPARENT) {
@@ -325,23 +371,26 @@ public class SuperGradientDrawable extends GradientDrawable {
                     if (startColor != Color.TRANSPARENT && endColor != Color.TRANSPARENT) {
                         int startAlpha = ColorUtils.setAlphaComponent(startColor, clickAlpha);
                         int endAlpha = ColorUtils.setAlphaComponent(endColor, clickAlpha);
-                        setGradient(startAlpha, endAlpha, gradient, gradientOrientation);
+                        // setGradient(startAlpha, endAlpha, gradient, gradientOrientation);
+                        setColors(new int[]{startAlpha, endAlpha});//设置渐变颜色
                     } else if (startColor != Color.TRANSPARENT && endColor == Color.TRANSPARENT) {
                         int alphaComponent = ColorUtils.setAlphaComponent(startColor, clickAlpha);
-                        setGradient(alphaComponent, endColor, gradient, gradientOrientation);
+                        //setGradient(alphaComponent, endColor, gradient, gradientOrientation);
+                        setColors(new int[]{alphaComponent, endColor});//设置渐变颜色
                     } else if (startColor == Color.TRANSPARENT && endColor != Color.TRANSPARENT) {
                         int alphaComponent = ColorUtils.setAlphaComponent(endColor, clickAlpha);
-                        setGradient(startColor, alphaComponent, gradient, gradientOrientation);
+//                        setGradient(startColor, alphaComponent, gradient, gradientOrientation);
+                        setColors(new int[]{startColor, alphaComponent});//设置渐变颜色
                     }
 
                 } else if (solidColor != Color.TRANSPARENT) {
                     //按下背景色（设置了渐变色）
                     if (clickSolidColor == Color.TRANSPARENT) {
                         int alphaComponent = ColorUtils.setAlphaComponent(solidColor, clickAlpha);
-                        setSolidColor(alphaComponent);
+                        setColor(alphaComponent);
                     } else {
                         int alphaComponent = ColorUtils.setAlphaComponent(clickSolidColor, clickAlpha);
-                        setSolidColor(alphaComponent);
+                        setColor(alphaComponent);
                     }
                 }
 
@@ -350,10 +399,10 @@ public class SuperGradientDrawable extends GradientDrawable {
                 if (strokeColor != Color.TRANSPARENT) {
                     if (clickStrokeColor == Color.TRANSPARENT) {
                         int alphaComponent = ColorUtils.setAlphaComponent(strokeColor, clickAlpha);
-                        setStrokeColorAndWidth(strokeWidth, alphaComponent);
+                        setStroke(strokeWidth, alphaComponent);
                     } else {
                         int alphaComponent = ColorUtils.setAlphaComponent(clickStrokeColor, clickAlpha);
-                        setStrokeColorAndWidth(strokeWidth, alphaComponent);
+                        setStroke(strokeWidth, alphaComponent);
                     }
                 }
 
@@ -361,10 +410,10 @@ public class SuperGradientDrawable extends GradientDrawable {
                 if (textColor != Color.TRANSPARENT) {
                     if (clickTextColor == Color.TRANSPARENT) {
                         int alphaComponent = ColorUtils.setAlphaComponent(textColor, clickAlpha);
-                        setNormalTextColor(alphaComponent);
+                        setTextColor(view, alphaComponent);
                     } else {
                         int alphaComponent = ColorUtils.setAlphaComponent(clickTextColor, clickAlpha);
-                        setNormalTextColor(alphaComponent);
+                        setTextColor(view, alphaComponent);
                     }
                 }
 
@@ -379,15 +428,16 @@ public class SuperGradientDrawable extends GradientDrawable {
             } else {
                 if (startColor == Color.TRANSPARENT && endColor == Color.TRANSPARENT) {
                     //还原填充背景色
-                    setSolidColor(solidColor);
+                    setColor(solidColor);
                 } else {
                     //还原渐变色
-                    setGradient(startColor, endColor, gradient, gradientOrientation);
+                    // setGradient(startColor, endColor, gradient, gradientOrientation);
+                    setColors(new int[]{startColor, endColor});//设置渐变颜色
                 }
                 //还原边框颜色及宽度
-                setStrokeColorAndWidth(strokeWidth, strokeColor);
+                setStroke(strokeWidth, strokeColor);
                 //字体颜色
-                setNormalTextColor(textColor);
+                setTextColor(view, textColor);
 
                 buid();
             }

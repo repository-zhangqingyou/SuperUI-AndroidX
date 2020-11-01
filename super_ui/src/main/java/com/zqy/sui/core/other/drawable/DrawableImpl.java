@@ -69,7 +69,7 @@ public interface DrawableImpl {
      * @param endColor
      * @return
      */
-    void setGradient(@ColorInt int starColor, @ColorInt int endColor, int gradient, GradientDrawable.Orientation orientation);
+    void setGradient(@ColorInt int starColor, @ColorInt int endColor, Gradient gradient, GradientDrawable.Orientation orientation);
 
 
     /**

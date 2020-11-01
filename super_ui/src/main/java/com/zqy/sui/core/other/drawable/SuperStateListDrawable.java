@@ -1,9 +1,12 @@
 package com.zqy.sui.core.other.drawable;
 
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.FloatRange;
@@ -31,7 +34,7 @@ public class SuperStateListDrawable extends GradientDrawable {
     private int clickStrokeColor;//点击边框颜色
     private int solidColor;//正常填充颜色
     private int clickSolidColor;//点击填充颜色
-    private int gradient = GradientDrawable.LINEAR_GRADIENT;// 渐变模式 GradientDrawable.LINEAR_GRADIENT（线性渐变） ， GradientDrawable.SWEEP_GRADIENT（扫描式渐变），GradientDrawable.RADIAL_GRADIENT（圆形渐变）
+    private Gradient gradient = Gradient.LINEAR_GRADIENT;// 渐变模式 GradientDrawable.LINEAR_GRADIENT（线性渐变） ， GradientDrawable.SWEEP_GRADIENT（扫描式渐变），GradientDrawable.RADIAL_GRADIENT（圆形渐变）
     private int[] colors;//设置渐变颜色
     private Orientation orientation = Orientation.LEFT_RIGHT;//设置渐变方向
     private int topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius;//圆角
@@ -74,6 +77,62 @@ public class SuperStateListDrawable extends GradientDrawable {
         this.topRightRadius = ConvertUtils.dp2px(topRightRadius);
         this.bottomLeftRadius = ConvertUtils.dp2px(bottomLeftRadius);
         this.bottomRightRadius = ConvertUtils.dp2px(bottomRightRadius);
+        return this;
+    }
+
+    /**
+     * 设置字体颜色
+     *
+     * @param normalTextColor 正常字体颜色
+     * @param clickTextColor  按下字体颜色
+     */
+    public SuperStateListDrawable setTextColorStateList(TextView textView, int normalTextColor, @ColorInt int clickTextColor) {
+        int alphaComponent = ColorUtils.setAlphaComponent(clickTextColor, clickAlpha);
+        int pressed = android.R.attr.state_pressed;
+        int[][] states = new int[][]
+                {
+                        new int[]{-pressed},//未点击
+                        new int[]{pressed},//点击
+                        new int[]{}//默认
+                };
+
+        int[] colors = new int[]
+                {
+                        normalTextColor,
+                        alphaComponent,
+                        normalTextColor,
+                };
+        ColorStateList colorStateList = new ColorStateList(states, colors);
+
+        textView.setTextColor(colorStateList);
+        return this;
+    }
+
+    /**
+     * 设置字体颜色
+     *
+     * @param normalTextColor 正常字体颜色
+     * @param clickTextColor  按下字体颜色
+     */
+    public SuperStateListDrawable setTextColorStateList(Button button, int normalTextColor, @ColorInt int clickTextColor) {
+        int alphaComponent = ColorUtils.setAlphaComponent(clickTextColor, clickAlpha);
+        int pressed = android.R.attr.state_pressed;
+        int[][] states = new int[][]
+                {
+                        new int[]{-pressed},//未点击
+                        new int[]{pressed},//点击
+                        new int[]{}//默认
+                };
+
+        int[] colors = new int[]
+                {
+                        normalTextColor,
+                        alphaComponent,
+                        normalTextColor,
+                };
+        ColorStateList colorStateList = new ColorStateList(states, colors);
+
+        button.setTextColor(colorStateList);
         return this;
     }
 
@@ -125,7 +184,7 @@ public class SuperStateListDrawable extends GradientDrawable {
      * @param orientation 渐变方向
      * @return
      */
-    public SuperStateListDrawable setGradient(@ColorInt int starColor, @ColorInt int endColor, int gradient, GradientDrawable.Orientation orientation) {
+    public SuperStateListDrawable setGradient(@ColorInt int starColor, @ColorInt int endColor, Gradient gradient, GradientDrawable.Orientation orientation) {
 //        if (starColor != Color.TRANSPARENT && endColor != Color.TRANSPARENT) {
 //            this.colors = new int[]{starColor, endColor};
 //        } else if (starColor != Color.TRANSPARENT && endColor == Color.TRANSPARENT) {
@@ -178,7 +237,7 @@ public class SuperStateListDrawable extends GradientDrawable {
         //渐变颜色 和 单背景色 不能同时设置
         if (colors != null) {
             normalGb.setColors(colors);//设置渐变颜色
-            normalGb.setGradientType(gradient);
+            normalGb.setGradientType(gradient.ordinal());
             normalGb.setOrientation(orientation);//设置渐变方向
         } else {
             if (solidColor != Color.TRANSPARENT)
@@ -215,7 +274,7 @@ public class SuperStateListDrawable extends GradientDrawable {
         //渐变颜色 和 单背景色 不能同时设置
         if (colors != null) {
             normalGb.setColors(colors);//设置渐变颜色
-            normalGb.setGradientType(gradient);
+            normalGb.setGradientType(gradient.ordinal());
             normalGb.setOrientation(orientation);//设置渐变方向
         } else {
             if (solidColor != Color.TRANSPARENT)
@@ -242,7 +301,7 @@ public class SuperStateListDrawable extends GradientDrawable {
                 }
             }
             pressedGb.setColors(alphacolor);//设置渐变颜色
-            pressedGb.setGradientType(gradient);
+            pressedGb.setGradientType(gradient.ordinal());
             pressedGb.setOrientation(orientation);//设置渐变方向
         } else {
             if (clickSolidColor == Color.TRANSPARENT) {

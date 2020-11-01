@@ -25,6 +25,7 @@ public class SuperFrameLayout extends FrameLayout implements DrawableImpl {
 
     public SuperFrameLayout(@NonNull Context context) {
         super(context);
+        init(context, null);
     }
 
     public SuperFrameLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
@@ -70,25 +71,29 @@ public class SuperFrameLayout extends FrameLayout implements DrawableImpl {
 
     @Override
     public void setBackground(Drawable background) {
-        superGradientDrawable.setClickEffect(false);//必须关闭才有效
+        if (superGradientDrawable != null)
+            superGradientDrawable.setClickEffect(false);//必须关闭才有效
         super.setBackground(background);
     }
 
     @Override
     public void setBackgroundColor(@ColorInt int color) {
-        superGradientDrawable.setClickEffect(false);//必须关闭才有效
+        if (superGradientDrawable != null)
+            superGradientDrawable.setClickEffect(false);//必须关闭才有效
         super.setBackgroundColor(color);
     }
 
     @Override
     public void setBackgroundDrawable(Drawable background) {
-        superGradientDrawable.setClickEffect(false);//必须关闭才有效
+        if (superGradientDrawable != null)
+            superGradientDrawable.setClickEffect(false);//必须关闭才有效
         super.setBackgroundDrawable(background);
     }
 
     @Override
     public void setBackgroundResource(int resId) {
-        superGradientDrawable.setClickEffect(false);//必须关闭才有效
+        if (superGradientDrawable != null)
+            superGradientDrawable.setClickEffect(false);//必须关闭才有效
         super.setBackgroundResource(resId);
     }
 

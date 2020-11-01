@@ -22,6 +22,7 @@ public class SuperLinearLayout extends LinearLayout implements DrawableImpl {
 
     public SuperLinearLayout(Context context) {
         super(context);
+        init(context, null);
     }
 
     public SuperLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -61,32 +62,37 @@ public class SuperLinearLayout extends LinearLayout implements DrawableImpl {
 
         superGradientDrawable = new SuperGradientDrawable();
         superGradientDrawable.initTypedArray(this, context, attrs);//attrs标签值初始化（反射获取，此方法无法预览，运行才有效果）
-       // superGradientDrawable.initTypedArray(this, attrMap);
+        // superGradientDrawable.initTypedArray(this, attrMap);
     }
 
     @Override
     public void setBackground(Drawable background) {
-        superGradientDrawable.setClickEffect(false);//必须关闭才有效
+        if (superGradientDrawable != null)
+            superGradientDrawable.setClickEffect(false);//必须关闭才有效
         super.setBackground(background);
     }
 
     @Override
     public void setBackgroundColor(@ColorInt int color) {
-        superGradientDrawable.setClickEffect(false);//必须关闭才有效
+        if (superGradientDrawable != null)
+            superGradientDrawable.setClickEffect(false);//必须关闭才有效
         super.setBackgroundColor(color);
     }
 
     @Override
     public void setBackgroundDrawable(Drawable background) {
-        superGradientDrawable.setClickEffect(false);//必须关闭才有效
+        if (superGradientDrawable != null)
+            superGradientDrawable.setClickEffect(false);//必须关闭才有效
         super.setBackgroundDrawable(background);
     }
 
     @Override
     public void setBackgroundResource(int resId) {
-        superGradientDrawable.setClickEffect(false);//必须关闭才有效
+        if (superGradientDrawable != null)
+            superGradientDrawable.setClickEffect(false);//必须关闭才有效
         super.setBackgroundResource(resId);
     }
+
     @Override
     public void setRadius(int radiusTopLeft, int radiusTopRight, int radiusBottomLeft, int radiusBottomRight) {
         superGradientDrawable.setRadius(radiusTopLeft, radiusTopRight, radiusBottomLeft, radiusBottomRight);
@@ -113,7 +119,7 @@ public class SuperLinearLayout extends LinearLayout implements DrawableImpl {
     }
 
     @Override
-    public void setStrokeColorAndWidth(int strokeWidth,@ColorInt  int color) {
+    public void setStrokeColorAndWidth(int strokeWidth, @ColorInt int color) {
         superGradientDrawable.setStrokeColorAndWidth(strokeWidth, color);
     }
 
@@ -123,7 +129,7 @@ public class SuperLinearLayout extends LinearLayout implements DrawableImpl {
     }
 
     @Override
-    public void setGradient(@ColorInt int starColor,@ColorInt  int endColor, int gradient, GradientDrawable.Orientation orientation) {
+    public void setGradient(@ColorInt int starColor, @ColorInt int endColor, int gradient, GradientDrawable.Orientation orientation) {
         superGradientDrawable.setGradient(starColor, endColor, gradient, orientation);
     }
 
@@ -134,6 +140,7 @@ public class SuperLinearLayout extends LinearLayout implements DrawableImpl {
     @Override
     public void setClickTextColor(@ColorInt int clickTextColor) {
     }
+
     /**
      * 设置完成之后必须调用 buid() ，否则不生效
      */

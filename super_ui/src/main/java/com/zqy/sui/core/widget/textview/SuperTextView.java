@@ -27,6 +27,7 @@ public class SuperTextView extends AppCompatTextView implements DrawableImpl {
 
     public SuperTextView(Context context) {
         super(context);
+        init(context, null);
     }
 
     public SuperTextView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -73,25 +74,29 @@ public class SuperTextView extends AppCompatTextView implements DrawableImpl {
 
     @Override
     public void setBackground(Drawable background) {
-        superGradientDrawable.setClickEffect(false);//必须关闭才有效
+        if (superGradientDrawable != null)
+            superGradientDrawable.setClickEffect(false);//必须关闭才有效
         super.setBackground(background);
     }
 
     @Override
     public void setBackgroundColor(int color) {
-        superGradientDrawable.setClickEffect(false);//必须关闭才有效
+        if (superGradientDrawable != null)
+            superGradientDrawable.setClickEffect(false);//必须关闭才有效
         super.setBackgroundColor(color);
     }
 
     @Override
     public void setBackgroundDrawable(Drawable background) {
-        superGradientDrawable.setClickEffect(false);//必须关闭才有效
+        if (superGradientDrawable != null)
+            superGradientDrawable.setClickEffect(false);//必须关闭才有效
         super.setBackgroundDrawable(background);
     }
 
     @Override
     public void setBackgroundResource(int resId) {
-        superGradientDrawable.setClickEffect(false);//必须关闭才有效
+        if (superGradientDrawable != null)
+            superGradientDrawable.setClickEffect(false);//必须关闭才有效
         super.setBackgroundResource(resId);
     }
 
@@ -121,7 +126,7 @@ public class SuperTextView extends AppCompatTextView implements DrawableImpl {
     }
 
     @Override
-    public void setStrokeColorAndWidth(int strokeWidth,@ColorInt  int color) {
+    public void setStrokeColorAndWidth(int strokeWidth, @ColorInt int color) {
         superGradientDrawable.setStrokeColorAndWidth(strokeWidth, color);
     }
 
@@ -131,7 +136,7 @@ public class SuperTextView extends AppCompatTextView implements DrawableImpl {
     }
 
     @Override
-    public void setGradient(@ColorInt int starColor,@ColorInt  int endColor, int gradient, GradientDrawable.Orientation orientation) {
+    public void setGradient(@ColorInt int starColor, @ColorInt int endColor, int gradient, GradientDrawable.Orientation orientation) {
         superGradientDrawable.setGradient(starColor, endColor, gradient, orientation);
     }
 

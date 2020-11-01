@@ -69,6 +69,7 @@ public class SuperGradientDrawable extends GradientDrawable {
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, ary);
 
+
 //        clickEffect = typedArray.getBoolean(StyleaUtils.getStyleableId(styleableName + "_zqy_click_effect"), true);//设置是否有按下效果 默认有
 //        clickAlpha = typedArray.getFloat(StyleaUtils.getStyleableId(styleableName + "_zqy_click_alpha"), 0.7f);
 //

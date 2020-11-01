@@ -26,6 +26,7 @@ import android.widget.TextView;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.ContextCompat;
@@ -65,6 +66,15 @@ public class BottomSheet extends Dialog {
     public BottomSheet(Context context) {
         super(context, R.style.BottomSheet);
     }
+
+    public BottomSheet(@NonNull Context context, int themeResId) {
+        super(context, themeResId);
+    }
+
+    public BottomSheet(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
+        super(context, cancelable, cancelListener);
+    }
+
 
     public void setOnBottomSheetShowListener(OnBottomSheetShowListener onBottomSheetShowListener) {
         mOnBottomSheetShowListener = onBottomSheetShowListener;

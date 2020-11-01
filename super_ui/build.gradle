@@ -51,9 +51,9 @@ dependencies {
     api "androidx.legacy:legacy-support-v4:$versions.androidx_v4_version"//对应support:support-v4
     api "androidx.recyclerview:recyclerview:$versions.recyclerview_version"
     //
-    api project(path: ':super_utils')
-    api project(path: ':ok_request')
-    api project(path: ':xui_lib_1.1.5')   //androidx项目
+    implementation project(path: ':super_utils')
+   // api project(path: ':ok_request')
+    implementation project(path: ':xui_lib_1.1.5')   //androidx项目
 //    api('com.github.xuexiangjys:XUI:1.1.5') {
 //        exclude group: 'androidx.appcompat'
 //    }
@@ -121,7 +121,7 @@ publish {
     repoName = 'Android' // bintray 仓库名
     groupId = 'com.bintray.zhangqingyou' // 依赖的路径
     artifactId = 'super_ui' // 依赖的名称
-    publishVersion = "$versions.publish_app_androidx_version" // 依赖的版本号
+    publishVersion = "1.0.8" // 依赖的版本号
     desc = '常用UI' // 描述
     website = 'https://gitee.com/zqycl/' // 项目网站，可填写 github 地址
     dryRun = false // true-仅运行  false-运行+上传

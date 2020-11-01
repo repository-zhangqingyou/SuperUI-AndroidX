@@ -14,6 +14,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.FloatRange;
 
 import com.blankj.utilcode.util.ColorUtils;
+import com.blankj.utilcode.util.SizeUtils;
 import com.zqy.sutils.StyleaUtils;
 
 import java.util.Map;
@@ -106,7 +107,7 @@ public class SuperGradientDrawable extends GradientDrawable {
         gradient = typedArray.getInt(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_gradient"), 0);//默认线性
         orientation = typedArray.getInt(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_orientation"), 6);//默认从左到右
         strokeWidth = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_stroke_width"), 0);
-        radius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_radius"), 5);
+        radius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_radius"), SizeUtils.dp2px(5));
         topLeftRadius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_top_left_radius"), 0);
         topRightRadius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_top_right_radius"), 0);
         bottomLeftRadius = typedArray.getDimensionPixelSize(StyleaUtils.getStyleableFieldId(packageName, styleableName, "zqy_bottom_left_radius"), 0);
@@ -171,10 +172,10 @@ public class SuperGradientDrawable extends GradientDrawable {
             setSolidColor(solidColor);
         }
 
-        if (radius > 0) {
-            setRadius(radius, radius, radius, radius);
-        } else {
+        if (topLeftRadius > 0 || topRightRadius > 0 || bottomLeftRadius > 0 || bottomRightRadius > 0) {
             setRadius(topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius);
+        } else {
+            setRadius(radius, radius, radius, radius);
         }
 
 

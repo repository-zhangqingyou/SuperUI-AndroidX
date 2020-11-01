@@ -35,8 +35,8 @@ publish {
     userOrg = 'zhangqingyou' // bintray 用户名
     repoName = 'Android' // bintray 仓库名
     groupId = 'com.bintray.zhangqingyou' // 依赖的路径
-    artifactId = 'super_xui_lib_1.1.5' // 依赖的名称
-    publishVersion = "$versions.publish_app_androidx_version" // 依赖的版本号
+    artifactId = 'super_xui_lib' // 依赖的名称
+    publishVersion = "1.0.8" // 依赖的版本号
     desc = 'XUI' // 描述
     website = 'https://gitee.com/zqycl/' // 项目网站，可填写 github 地址
     dryRun = false // true-仅运行  false-运行+上传

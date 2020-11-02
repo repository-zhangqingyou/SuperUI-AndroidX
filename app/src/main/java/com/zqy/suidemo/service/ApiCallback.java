@@ -6,8 +6,8 @@ import com.google.auto.service.AutoService;
 import com.google.gson.JsonSyntaxException;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
-import com.zqy.srequest.request.ApiCallbackService;
-import com.zqy.sutils.ToastUtil;
+import com.zqy.superhttp.request.ApiCallbackService;
+import com.zqy.superutils.ToastUtil;
 
 /**
  * 作者: zhangqingyou

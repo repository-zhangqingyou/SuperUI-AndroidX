@@ -10,16 +10,16 @@
     android:padding="12dp"
     tools:context=".activity.MainActivity">
 
-    <com.zqy.sui.core.widget.framelayout.SuperFrameLayout
+    <com.zqy.superui.core.widget.framelayout.SuperFrameLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:zqy_radius="5dp"
         app:zqy_solid_color="@color/colorPrimary">
 
-    </com.zqy.sui.core.widget.framelayout.SuperFrameLayout>
+    </com.zqy.superui.core.widget.framelayout.SuperFrameLayout>
 
 
-    <com.zqy.sui.core.widget.textview.SuperTextView
+    <com.zqy.superui.core.widget.textview.SuperTextView
         android:id="@+id/rbt_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

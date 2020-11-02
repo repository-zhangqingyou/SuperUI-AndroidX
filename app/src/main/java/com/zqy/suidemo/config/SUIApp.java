@@ -6,9 +6,9 @@ import android.os.Environment;
 
 import androidx.multidex.MultiDex;
 
-import com.zqy.srequest.SuperHttpManage;
-import com.zqy.sui.SuperUIManage;
-import com.zqy.sutils.SuperUtilsManage;
+import com.zqy.superhttp.SuperHttpManage;
+import com.zqy.superui.SuperUIManage;
+import com.zqy.superutils.SuperUtilsManage;
 
 
 /**

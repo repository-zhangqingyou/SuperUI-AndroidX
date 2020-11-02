@@ -106,9 +106,14 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.multidex:multidex:2.0.1'
-    implementation project(path: ':super_http')
-    implementation project(path: ':super_utils')
-    implementation project(path: ':super_ui')
+//    implementation project(path: ':super_http')
+//    implementation project(path: ':super_utils')
+//    implementation project(path: ':super_ui')
+
+    implementation 'com.bintray.zhangqingyou:super_utils:1.0.18'
+    implementation 'com.bintray.zhangqingyou:super_xui_lib:1.1.5'
+    implementation 'com.bintray.zhangqingyou:super_http:1.0.18'
+    implementation 'com.bintray.zhangqingyou:super_ui:1.0.18'
 
     //compileOnly只在编译时有效，不会参与打包 service自动注入包
     compileOnly 'com.google.auto.service:auto-service:1.0-rc7'

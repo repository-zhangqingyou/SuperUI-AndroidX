@@ -46,11 +46,12 @@ public class SuperFrameLayout extends FrameLayout implements DrawableImpl {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
     }
+
     private void init(Context context, AttributeSet attrs) {
         Map<Object, Object> attrMap = new HashMap<>();
 
         TypedArray typedArray = null;
-            typedArray = context.obtainStyledAttributes(attrs, R.styleable.SuperFrameLayout);
+        typedArray = context.obtainStyledAttributes(attrs, R.styleable.SuperFrameLayout);
 
         attrMap.put(SuperAttr.是否有按下效果, typedArray == null ? true : typedArray.getBoolean(R.styleable.SuperFrameLayout_zqy_click_effect, true));//默认有点击效果
         attrMap.put(SuperAttr.按下时透明度, typedArray == null ? 0.7f : typedArray.getFloat(R.styleable.SuperFrameLayout_zqy_click_alpha, 0.7f));//默认点击透明度
@@ -138,8 +139,13 @@ public class SuperFrameLayout extends FrameLayout implements DrawableImpl {
      */
     @Override
     public void setRadius(int radius) {
-        int dp2px = SizeUtils.dp2px(radius);
-        superGradientDrawable.setRadius(dp2px, dp2px, dp2px, dp2px);
+        if (radius > 0) {
+            int dp2px = SizeUtils.dp2px(radius);
+            superGradientDrawable.setRadius(dp2px, dp2px, dp2px, dp2px);
+        } else {
+            superGradientDrawable.setRadius(0, 0, 0, 0);
+        }
+
         superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
 
@@ -148,7 +154,10 @@ public class SuperFrameLayout extends FrameLayout implements DrawableImpl {
      */
     @Override
     public void setRadius(int radiusTopLeft, int radiusTopRight, int radiusBottomLeft, int radiusBottomRight) {
-        superGradientDrawable.setRadius(SizeUtils.dp2px(radiusTopLeft), SizeUtils.dp2px(radiusTopRight), SizeUtils.dp2px(radiusBottomLeft), SizeUtils.dp2px(radiusBottomRight));
+        superGradientDrawable.setRadius(radiusTopLeft < 1 ? 0 : SizeUtils.dp2px(radiusTopLeft),
+                radiusTopRight < 1 ? 0 : SizeUtils.dp2px(radiusTopRight),
+                radiusBottomLeft < 1 ? 0 : SizeUtils.dp2px(radiusBottomLeft),
+                radiusBottomRight < 1 ? 0 : SizeUtils.dp2px(radiusBottomRight));
         superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
 
@@ -159,7 +168,7 @@ public class SuperFrameLayout extends FrameLayout implements DrawableImpl {
      * @param clickSolidColor  点击（按下）填充颜色
      */
     @Override
-    public void setSolidColorState(@ColorInt int normalSolidColor,@ColorInt int clickSolidColor) {
+    public void setSolidColorState(@ColorInt int normalSolidColor, @ColorInt int clickSolidColor) {
         superGradientDrawable.setSolidColorState(normalSolidColor, clickSolidColor);
         superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
@@ -172,7 +181,7 @@ public class SuperFrameLayout extends FrameLayout implements DrawableImpl {
      * @param clickStrokeColor  点击（按下）边框颜色
      */
     @Override
-    public void setStrokeColorState(int strokeWidth,@ColorInt int normalStrokeColor,@ColorInt int clickStrokeColor) {
+    public void setStrokeColorState(int strokeWidth, @ColorInt int normalStrokeColor, @ColorInt int clickStrokeColor) {
         superGradientDrawable.setStrokeColorState(strokeWidth, normalStrokeColor, clickStrokeColor);
         superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
@@ -203,7 +212,7 @@ public class SuperFrameLayout extends FrameLayout implements DrawableImpl {
      * @param clickTextColor  按下字体颜色
      */
     @Override
-    public void setTextColorState(@ColorInt int normalTextColor,@ColorInt int clickTextColor) {
+    public void setTextColorState(@ColorInt int normalTextColor, @ColorInt int clickTextColor) {
 //        superGradientDrawable.setTextColorState(this, normalTextColor, clickTextColor);
 //        superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }

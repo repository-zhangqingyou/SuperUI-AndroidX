@@ -11,10 +11,6 @@ import androidx.annotation.FloatRange;
  * 描述:
  */
 public interface DrawableImpl {
-    /**
-     * 四角圆形度数
-     */
-    void setRadius(int radiusTopLeft, int radiusTopRight, int radiusBottomLeft, int radiusBottomRight);
 
 
     /**
@@ -26,41 +22,40 @@ public interface DrawableImpl {
 
 
     /**
-     * 设置按下透明值
+     * 设置按下透明值(包括按下时的 《字体，边框，填充》 颜色)
      *
      * @param clickAlpha
      */
     void setClickAlpha(@FloatRange(from = 0, to = 1) float clickAlpha);
 
     /**
-     * 设置填充颜色
-     *
-     * @param color 颜色
+     * 四角圆形度数（单位dp）
      */
-    void setSolidColor(@ColorInt int color);
-
+    void setRadius(int radius);
 
     /**
-     * 设置点击填充颜色
-     *
-     * @param clickSolidColor 颜色
+     * 四角圆形度数（单位dp）
      */
-    void setClickSolidColor(@ColorInt int clickSolidColor);
+    void setRadius(int radiusTopLeft, int radiusTopRight, int radiusBottomLeft, int radiusBottomRight);
+
+    /**
+     * 设置填充颜色
+     *
+     * @param normalSolidColor 正常（抬起）填充颜色
+     * @param clickSolidColor  点击（按下）填充颜色
+     */
+    void setSolidColorState(@ColorInt int normalSolidColor, @ColorInt int clickSolidColor);
+
 
     /**
      * 设置边框颜色及宽度
      *
-     * @param strokeWidth 边框宽度
-     * @param color       边框颜色
+     * @param strokeWidth       边框宽度
+     * @param normalStrokeColor 正常（抬起）边框颜色
+     * @param clickStrokeColor  点击（按下）边框颜色
      */
-    void setStrokeColorAndWidth(int strokeWidth, int color);
+    void setStrokeColorState(int strokeWidth, int normalStrokeColor, @ColorInt int clickStrokeColor);
 
-    /**
-     * 设置点击边框颜色
-     *
-     * @param clickStrokeColor 点击时边框颜色
-     */
-    void setClickStrokeColor(@ColorInt int clickStrokeColor);
 
     /**
      * 设置渐变颜色
@@ -73,24 +68,12 @@ public interface DrawableImpl {
 
 
     /**
-     * 设置textView颜色
+     * 设置字体颜色
      *
-     * @param normalTextColor 正常状态颜色
+     * @param normalTextColor 正常字体颜色
+     * @param clickTextColor  按下字体颜色
      */
-    void setNormalTextColor(@ColorInt int normalTextColor);
-
-
-    /**
-     * 设置textView选中状态颜色
-     *
-     * @param clickTextColor 按下状态颜色
-     */
-    void setClickTextColor(@ColorInt int clickTextColor);
-
-    /**
-     * 设置完成之后必须调用 buid() ，否则不生效
-     */
-    void buid();
+    void setTextColorState(@ColorInt int normalTextColor, @ColorInt int clickTextColor);
 
 
 

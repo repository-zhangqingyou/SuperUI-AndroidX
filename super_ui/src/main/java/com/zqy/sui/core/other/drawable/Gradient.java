@@ -10,7 +10,7 @@ package com.zqy.sui.core.other.drawable;
  * RING:环
  */
 public enum Gradient {
-    LINEAR_GRADIENT,//线性梯度
+    LINEAR_GRADIENT,//线性梯度(线性渐变)
     RADIAL_GRADIENT,//圆形渐变
     SWEEP_GRADIENT,//扫描式渐变
     RING;//环

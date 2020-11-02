@@ -274,6 +274,28 @@
     </declare-styleable>
 
     <!-- declare-styleable name和view名字一样才能自动提示 -->
+    <declare-styleable name="SuperConstraintLayout">
+        <attr name="zqy_click_effect" />
+        <attr name="zqy_click_alpha" />
+        <attr name="zqy_solid_color" />
+        <attr name="zqy_stroke_color" />
+        <attr name="zqy_stroke_width" />
+        <attr name="zqy_click_solid_color" />
+        <attr name="zqy_click_stroke_color" />
+        <attr name="zqy_text_color" />
+        <attr name="zqy_click_text_color" />
+        <attr name="zqy_radius" />
+        <attr name="zqy_top_left_radius" />
+        <attr name="zqy_top_right_radius" />
+        <attr name="zqy_bottom_left_radius" />
+        <attr name="zqy_bottom_right_radius" />
+        <attr name="zqy_start_color" />
+        <attr name="zqy_end_color" />
+        <attr name="zqy_gradient" />
+        <attr name="zqy_orientation" />
+    </declare-styleable>
+
+    <!-- declare-styleable name和view名字一样才能自动提示 -->
     <declare-styleable name="SuperTextView">
         <attr name="zqy_click_effect" />
         <attr name="zqy_click_alpha" />

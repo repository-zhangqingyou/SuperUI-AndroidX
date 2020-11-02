@@ -52,7 +52,7 @@ public class SuperStateListDrawable extends GradientDrawable {
 
 
     /**
-     * 设置按下透明值
+     * 设置按下透明值(包括按下时的 《字体，边框，填充》 颜色)
      *
      * @param clickAlpha
      */

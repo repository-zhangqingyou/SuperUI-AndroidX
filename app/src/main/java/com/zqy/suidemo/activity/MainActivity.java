@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         mTvTest.setGradient(Color.WHITE, Color.YELLOW, Gradient.LINEAR_GRADIENT, GradientDrawable.Orientation.LEFT_RIGHT);
-        mTvTest.setNormalTextColor(Color.BLACK);
-        mTvTest.buid();
+        mTvTest.setTextColorState(Color.BLACK, Color.BLACK);
+//        mTvTest.buid();
 
 
         //  mTvTest.setBackgroundDrawable(new ColorDrawable(Color.BLACK));

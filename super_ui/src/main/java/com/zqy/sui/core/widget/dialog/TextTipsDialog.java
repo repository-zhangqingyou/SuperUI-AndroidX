@@ -72,11 +72,9 @@ public class TextTipsDialog extends BaseDialog {
         setDialogRadiusColos(5, R.color.superui_white);
         mTvButton1.setTextSize(18);
         mTvButton2.setTextSize(18);
-        mTvButton1.setTextColor(ContextCompat.getColor(getContext(), R.color.superui_black_light1));
-        mTvButton1.setClickTextColor(ContextCompat.getColor(getContext(), R.color.superui_black_light1));
+        mTvButton1.setTextColorState(ContextCompat.getColor(getContext(), R.color.superui_black_light1), ContextCompat.getColor(getContext(), R.color.superui_black_light1));
         mTvButton1.setClickAlpha(0.5f);
-        mTvButton2.setTextColor(ContextCompat.getColor(getContext(), R.color.superui_red_light));
-        mTvButton2.setClickTextColor(ContextCompat.getColor(getContext(), R.color.superui_red_light));
+        mTvButton2.setTextColorState(ContextCompat.getColor(getContext(), R.color.superui_red_light), ContextCompat.getColor(getContext(), R.color.superui_red_light));
         mTvButton2.setClickAlpha(0.5f);
         mTvButton1.setText("");
         mTvButton2.setText("");
@@ -139,9 +137,8 @@ public class TextTipsDialog extends BaseDialog {
     }
 
     public TextTipsDialog setLeftButtonColor(@ColorInt int color) {
-        this.mTvButton1.setTextColor(color);
-        this.mTvButton1.setClickTextColor(color);
         this.mTvButton1.setClickAlpha(0.5f);
+        this.mTvButton1.setTextColorState(color, color);
         return this;
     }
 
@@ -151,9 +148,8 @@ public class TextTipsDialog extends BaseDialog {
     }
 
     public TextTipsDialog setRightButtonColor(@ColorInt int color) {
-        this.mTvButton2.setTextColor(color);
-        this.mTvButton2.setClickTextColor(color);
         this.mTvButton2.setClickAlpha(0.5f);
+        this.mTvButton2.setTextColorState(color, color);
         return this;
     }
 

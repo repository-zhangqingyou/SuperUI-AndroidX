@@ -24,7 +24,7 @@ import okhttp3.OkHttpClient;
  */
 public class SuperHttpManage {
     private static Application application;
-    private static boolean Debug;
+    private static boolean debug;
 
 
     public static void init(Application application) {
@@ -37,13 +37,12 @@ public class SuperHttpManage {
     }
 
     public static boolean isDebug() {
-        return Debug;
+        return debug;
     }
 
     public static void setDebug(boolean debug) {
-        Debug = debug;
+        SuperHttpManage.debug = debug;
     }
-
 
     private static void okGoInit() {
         try {

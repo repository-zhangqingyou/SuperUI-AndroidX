@@ -22,7 +22,7 @@ import java.util.Locale;
  */
 public class SuperUIManage {
     private static Application application;
-    private static boolean Debug;
+    private static boolean debug;
 
 
     public static void init(boolean debug, Application application) {
@@ -61,11 +61,11 @@ public class SuperUIManage {
     }
 
     public static boolean isDebug() {
-        return Debug;
+        return debug;
     }
 
     public static void setDebug(boolean debug) {
-        Debug = debug;
+        debug = debug;
         XUI.debug(debug);  //开启UI框架调试日志
     }
 

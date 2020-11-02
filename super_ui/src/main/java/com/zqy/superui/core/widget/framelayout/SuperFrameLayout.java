@@ -119,6 +119,7 @@ public class SuperFrameLayout extends FrameLayout implements DrawableImpl {
     @Override
     public void setClickEffect(boolean clickEffect) {
         superGradientDrawable.setClickEffect(clickEffect);
+        superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
 
     /**
@@ -139,6 +140,7 @@ public class SuperFrameLayout extends FrameLayout implements DrawableImpl {
     public void setRadius(int radius) {
         int dp2px = SizeUtils.dp2px(radius);
         superGradientDrawable.setRadius(dp2px, dp2px, dp2px, dp2px);
+        superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
 
     /**
@@ -147,6 +149,7 @@ public class SuperFrameLayout extends FrameLayout implements DrawableImpl {
     @Override
     public void setRadius(int radiusTopLeft, int radiusTopRight, int radiusBottomLeft, int radiusBottomRight) {
         superGradientDrawable.setRadius(SizeUtils.dp2px(radiusTopLeft), SizeUtils.dp2px(radiusTopRight), SizeUtils.dp2px(radiusBottomLeft), SizeUtils.dp2px(radiusBottomRight));
+        superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
 
     /**

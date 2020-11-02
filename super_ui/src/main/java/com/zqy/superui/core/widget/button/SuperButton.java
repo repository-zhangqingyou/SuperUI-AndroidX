@@ -123,6 +123,7 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
     @Override
     public void setClickEffect(boolean clickEffect) {
         superGradientDrawable.setClickEffect(clickEffect);
+        superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
 
     /**
@@ -143,6 +144,7 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
     public void setRadius(int radius) {
         int dp2px = SizeUtils.dp2px(radius);
         superGradientDrawable.setRadius(dp2px, dp2px, dp2px, dp2px);
+        superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
 
     /**
@@ -151,6 +153,7 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
     @Override
     public void setRadius(int radiusTopLeft, int radiusTopRight, int radiusBottomLeft, int radiusBottomRight) {
         superGradientDrawable.setRadius(SizeUtils.dp2px(radiusTopLeft), SizeUtils.dp2px(radiusTopRight), SizeUtils.dp2px(radiusBottomLeft), SizeUtils.dp2px(radiusBottomRight));
+        superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
 
     /**
@@ -160,7 +163,7 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
      * @param clickSolidColor  点击（按下）填充颜色
      */
     @Override
-    public void setSolidColorState(@ColorInt int normalSolidColor,@ColorInt int clickSolidColor) {
+    public void setSolidColorState(@ColorInt int normalSolidColor, @ColorInt int clickSolidColor) {
         superGradientDrawable.setSolidColorState(normalSolidColor, clickSolidColor);
         superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
@@ -173,7 +176,7 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
      * @param clickStrokeColor  点击（按下）边框颜色
      */
     @Override
-    public void setStrokeColorState(int strokeWidth,@ColorInt int normalStrokeColor,@ColorInt int clickStrokeColor) {
+    public void setStrokeColorState(int strokeWidth, @ColorInt int normalStrokeColor, @ColorInt int clickStrokeColor) {
         superGradientDrawable.setStrokeColorState(strokeWidth, normalStrokeColor, clickStrokeColor);
         superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
@@ -204,7 +207,7 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
      * @param clickTextColor  按下字体颜色
      */
     @Override
-    public void setTextColorState(@ColorInt int normalTextColor,@ColorInt int clickTextColor) {
+    public void setTextColorState(@ColorInt int normalTextColor, @ColorInt int clickTextColor) {
         superGradientDrawable.setTextColorState(this, normalTextColor, clickTextColor);
         superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }

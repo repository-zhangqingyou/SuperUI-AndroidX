@@ -18,7 +18,7 @@ import com.zqy.superui.core.widget.popup.BasePopup;
 public abstract class BaseTipsPopup extends BasePopup {
 
     public BaseTipsPopup(Activity activity) {
-        super(activity, ConvertUtils.dp2px(216), ConvertUtils.dp2px(216));
+        super(activity, ConvertUtils.dp2px(150), ConvertUtils.dp2px(150));
         init();
     }
 

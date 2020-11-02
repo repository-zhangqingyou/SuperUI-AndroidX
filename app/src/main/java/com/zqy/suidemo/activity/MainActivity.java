@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat;
 import com.zqy.suidemo.R;
 import com.zqy.superui.core.other.drawable.Gradient;
 import com.zqy.superui.core.other.drawable.SuperStateListDrawable;
+import com.zqy.superui.core.widget.popup.tips.LoadPopup;
 import com.zqy.superui.core.widget.textview.SuperTextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -70,23 +71,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 break;
             case R.id.rbt_test:
-//                SRequest.test(new JsonEntityCallback<CodeAndMsg>(CodeAndMsg.class) {
-//                    @Override
-//                    public void onSuccess(CodeAndMsg codeAndMsg) {
-//                        String toJson = new Gson().toJson(codeAndMsg);
-//                        mAtvContent.setText(toJson);
-//                    }
-//
-//                    @Override
-//                    public void onError(Response<String> response) {
-//                        super.onError(response);
-//                        mAtvContent.setText(response.getException().toString());
-//                    }
-//                });
-//                ServiceLoader<ApiCallbackService> apiCallbackServiceLoader = RequestManage.getApiCallbackServiceLoader();
-//                for (ApiCallbackService apiCallbackService : apiCallbackServiceLoader) {
-//                    apiCallbackService.onFinish("123456");
-//                }
+                LoadPopup loadPopup = new LoadPopup(this);
+                loadPopup.show(mTvTest);
                 break;
             case R.id.bt_test://原生Button测试
                 break;

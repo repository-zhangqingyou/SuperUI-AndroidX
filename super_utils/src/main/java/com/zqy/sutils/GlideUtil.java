@@ -44,7 +44,7 @@ public class GlideUtil {
      * @param failureImg    加载失败占位图
      */
     public static void loadImg(ImageView imageView, Object imageUrl, boolean isplaceholder, Drawable loadImg, Drawable failureImg) {
-        RequestBuilder<Drawable> objectDrawableRequestBuilder = Glide.with(UtilsManage.getApplication())
+        RequestBuilder<Drawable> objectDrawableRequestBuilder = Glide.with(SuperUtilsManage.getApplication())
                 .load(imageUrl);
         RequestOptions requestOptions = new RequestOptions();
         // requestOptions.bitmapTransform(new RoundedCorners(roundingRadius));//设置图片圆角

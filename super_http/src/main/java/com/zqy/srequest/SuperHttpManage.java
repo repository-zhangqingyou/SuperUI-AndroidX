@@ -22,26 +22,26 @@ import okhttp3.OkHttpClient;
  * 时间: 2020/9/14
  * 描述:
  */
-public class HttpManage {
+public class SuperHttpManage {
     private static Application application;
-    private static boolean DEBUG;
+    private static boolean Debug;
+
+
+    public static void init(Application application) {
+        SuperHttpManage.application = application;
+        okGoInit();
+    }
 
     public static Application getApplication() {
         return application;
     }
 
-    public static void init(Application application) {
-        HttpManage.application = application;
-        okGoInit();
+    public static boolean isDebug() {
+        return Debug;
     }
 
-
-    public static boolean isDEBUG() {
-        return DEBUG;
-    }
-
-    public static void setDEBUG(boolean dEBUG) {
-        DEBUG = dEBUG;
+    public static void setDebug(boolean debug) {
+        Debug = debug;
     }
 
 
@@ -75,8 +75,6 @@ public class HttpManage {
                 .setRetryCount(3);
 
     }
-
-
 
 
     /**

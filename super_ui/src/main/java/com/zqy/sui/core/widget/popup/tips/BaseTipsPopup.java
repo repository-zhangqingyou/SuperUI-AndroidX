@@ -41,7 +41,7 @@ public abstract class BaseTipsPopup extends BasePopup {
     private Drawable getStateListDrawable(int radius, int colorId) {
         Drawable stateListDrawable = new SuperStateListDrawable().setClickAlpha(0.9f)//设置点击后透明度
                 .setRadius(radius, radius, radius, radius)//圆角
-                .setSolidColor(ContextCompat.getColor(getRootView().getContext(), colorId))//背景颜色
+                .setSolidColorState(ContextCompat.getColor(getRootView().getContext(), colorId), ContextCompat.getColor(getRootView().getContext(), colorId))//背景颜色
                 .buid();
         return stateListDrawable;
     }

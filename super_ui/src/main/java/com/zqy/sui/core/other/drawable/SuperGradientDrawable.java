@@ -253,7 +253,7 @@ public class SuperGradientDrawable extends GradientDrawable {
      * @param normalStrokeColor 正常（抬起）边框颜色
      * @param clickStrokeColor  点击（按下）边框颜色
      */
-    public SuperGradientDrawable setStrokeColorState(int strokeWidth, int normalStrokeColor, @ColorInt int clickStrokeColor) {
+    public SuperGradientDrawable setStrokeColorState(int strokeWidth, @ColorInt int normalStrokeColor, @ColorInt int clickStrokeColor) {
         this.strokeWidth = strokeWidth;//边框宽度
         this.strokeColor = normalStrokeColor;//边框颜色
         this.clickStrokeColor = clickStrokeColor;
@@ -287,7 +287,7 @@ public class SuperGradientDrawable extends GradientDrawable {
      * @param normalTextColor 正常字体颜色
      * @param clickTextColor  按下字体颜色
      */
-    public SuperGradientDrawable setTextColorState(TextView textView, int normalTextColor, @ColorInt int clickTextColor) {
+    public SuperGradientDrawable setTextColorState(TextView textView, @ColorInt int normalTextColor, @ColorInt int clickTextColor) {
         int alphaComponent = ColorUtils.setAlphaComponent(clickTextColor, clickAlpha);
         int pressed = android.R.attr.state_pressed;
         int[][] states = new int[][]
@@ -315,7 +315,7 @@ public class SuperGradientDrawable extends GradientDrawable {
      * @param normalTextColor 正常字体颜色
      * @param clickTextColor  按下字体颜色
      */
-    public SuperGradientDrawable setTextColorState(Button button, int normalTextColor, @ColorInt int clickTextColor) {
+    public SuperGradientDrawable setTextColorState(Button button, @ColorInt int normalTextColor, @ColorInt int clickTextColor) {
         int alphaComponent = ColorUtils.setAlphaComponent(clickTextColor, clickAlpha);
         int pressed = android.R.attr.state_pressed;
         int[][] states = new int[][]

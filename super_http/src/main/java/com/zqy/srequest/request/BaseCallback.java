@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.lzy.okgo.callback.AbsCallback;
 import com.lzy.okgo.convert.StringConvert;
 import com.lzy.okgo.request.base.Request;
-import com.zqy.srequest.HttpManage;
+import com.zqy.srequest.SuperHttpManage;
 
 import okhttp3.Response;
 
@@ -54,8 +54,8 @@ public abstract class BaseCallback extends AbsCallback<String> {
             TAG = "网络请求";
         }
 
-        if (HttpManage.getApiCallbackServiceLoader() != null) {
-            for (ApiCallbackService service : HttpManage.getApiCallbackServiceLoader()) {
+        if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
+            for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
                 service.onStart(baseUrl, endUrl, request);
             }
         }
@@ -67,8 +67,8 @@ public abstract class BaseCallback extends AbsCallback<String> {
     @Override
     public void onError(com.lzy.okgo.model.Response<String> response) {
         super.onError(response);
-        if (HttpManage.getApiCallbackServiceLoader() != null) {
-            for (ApiCallbackService service : HttpManage.getApiCallbackServiceLoader()) {
+        if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
+            for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
                 service.onError(baseUrl, endUrl, response);
             }
         }
@@ -78,8 +78,8 @@ public abstract class BaseCallback extends AbsCallback<String> {
 
     @Override
     public void onSuccess(com.lzy.okgo.model.Response<String> response) {
-        if (HttpManage.getApiCallbackServiceLoader() != null) {
-            for (ApiCallbackService service : HttpManage.getApiCallbackServiceLoader()) {
+        if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
+            for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
                 service.onSuccess(baseUrl, endUrl, response);
             }
         }
@@ -90,11 +90,11 @@ public abstract class BaseCallback extends AbsCallback<String> {
     @Override
     public void onFinish() {
         super.onFinish();
-        OKRequest.setIsRequest(baseUrl, true);//设置可请求
+        SuperHttpRequest.setIsRequest(baseUrl, true);//设置可请求
         onFinish("请求完成");
 
-        if (HttpManage.getApiCallbackServiceLoader() != null) {
-            for (ApiCallbackService service : HttpManage.getApiCallbackServiceLoader()) {
+        if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
+            for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
                 service.onFinish("请求完成");
             }
         }

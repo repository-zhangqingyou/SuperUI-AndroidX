@@ -2,7 +2,7 @@ package com.zqy.srequest.request;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.FileCallback;
-import com.zqy.srequest.HttpManage;
+import com.zqy.srequest.SuperHttpManage;
 
 import java.io.File;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import java.util.Map;
  * 描述: 通用请求
  */
 
-public class OKRequest {
+public class SuperHttpRequest {
     /**
      * 当前请求响应后才能继续下个请求
      * String:当前请求标识
@@ -79,8 +79,8 @@ public class OKRequest {
                     .execute(callback);
         } else {
             callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-            if (HttpManage.getApiCallbackServiceLoader() != null) {
-                for (ApiCallbackService service : HttpManage.getApiCallbackServiceLoader()) {
+            if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
+                for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
                     service.onFinish(url + "还未响应，相同接口无法再次请求！");
                 }
             }
@@ -106,8 +106,8 @@ public class OKRequest {
                     .execute(callback);
         } else {
             callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-            if (HttpManage.getApiCallbackServiceLoader() != null) {
-                for (ApiCallbackService service : HttpManage.getApiCallbackServiceLoader()) {
+            if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
+                for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
                     service.onFinish(url + "还未响应，相同接口无法再次请求！");
                 }
             }
@@ -133,8 +133,8 @@ public class OKRequest {
                     .execute(callback);
         } else {
             callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-            if (HttpManage.getApiCallbackServiceLoader() != null) {
-                for (ApiCallbackService service : HttpManage.getApiCallbackServiceLoader()) {
+            if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
+                for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
                     service.onFinish(url + "还未响应，相同接口无法再次请求！");
                 }
             }

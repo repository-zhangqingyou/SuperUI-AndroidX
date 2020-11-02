@@ -103,7 +103,7 @@ public abstract class BaseDialog extends AppCompatDialog {
     private Drawable getStateListDrawable(int radius, int colorId) {
         Drawable stateListDrawable = new SuperStateListDrawable().setClickAlpha(1f)//设置点击后透明度
                 .setRadius(radius)//圆角
-                .setSolidColor(ContextCompat.getColor(activity, colorId))//背景颜色
+                .setSolidColorState(ContextCompat.getColor(activity, colorId),ContextCompat.getColor(activity, colorId))//背景颜色
                 .buid();
         return stateListDrawable;
     }

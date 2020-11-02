@@ -2,7 +2,7 @@
 include ':app'
 include ':xui_lib_1.1.5'
 include ':super_ui'
-include ':ok_request'
+include ':super_http'
 include ':super_utils'
 include ':lib_google_androidx'
 rootProject.name = "SuperUI-AndroidX"

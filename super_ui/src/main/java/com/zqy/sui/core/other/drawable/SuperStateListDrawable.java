@@ -86,7 +86,7 @@ public class SuperStateListDrawable extends GradientDrawable {
      * @param normalTextColor 正常字体颜色
      * @param clickTextColor  按下字体颜色
      */
-    public SuperStateListDrawable setTextColorStateList(TextView textView, int normalTextColor, @ColorInt int clickTextColor) {
+    public SuperStateListDrawable setTextColorState(TextView textView, int normalTextColor, @ColorInt int clickTextColor) {
         int alphaComponent = ColorUtils.setAlphaComponent(clickTextColor, clickAlpha);
         int pressed = android.R.attr.state_pressed;
         int[][] states = new int[][]
@@ -114,7 +114,7 @@ public class SuperStateListDrawable extends GradientDrawable {
      * @param normalTextColor 正常字体颜色
      * @param clickTextColor  按下字体颜色
      */
-    public SuperStateListDrawable setTextColorStateList(Button button, int normalTextColor, @ColorInt int clickTextColor) {
+    public SuperStateListDrawable setTextColorState(Button button, int normalTextColor, @ColorInt int clickTextColor) {
         int alphaComponent = ColorUtils.setAlphaComponent(clickTextColor, clickAlpha);
         int pressed = android.R.attr.state_pressed;
         int[][] states = new int[][]
@@ -136,46 +136,33 @@ public class SuperStateListDrawable extends GradientDrawable {
         return this;
     }
 
-    /**
-     * 正常状态背景色
-     *
-     * @param solidColor
-     */
-    public SuperStateListDrawable setSolidColor(@ColorInt int solidColor) {
-        this.solidColor = solidColor;
-        return this;
-    }
 
     /**
-     * 点击状态背景色
+     * 设置填充颜色
      *
-     * @param clickSolidColor
+     * @param normalSolidColor 正常（抬起）填充颜色
+     * @param clickSolidColor  点击（按下）填充颜色
      */
-    public SuperStateListDrawable setClickSolidColor(@ColorInt int clickSolidColor) {
+    public SuperStateListDrawable setSolidColorState(@ColorInt int normalSolidColor, @ColorInt int clickSolidColor) {
+        this.solidColor = normalSolidColor;
         this.clickSolidColor = clickSolidColor;
         return this;
     }
 
     /**
-     * 正常状态的边框色
-     */
-
-    public SuperStateListDrawable setStrokeColorAndWidth(int strokeWidth, @ColorInt int color) {
-        this.strokeWidth = ConvertUtils.dp2px(strokeWidth);
-        this.strokeColor = color;
-        return this;
-    }
-
-
-    /**
-     * 点击状态的边框色
+     * 设置边框颜色及宽度
      *
-     * @param clickColorBorder
+     * @param strokeWidth       边框宽度
+     * @param normalStrokeColor 正常（抬起）边框颜色
+     * @param clickStrokeColor  点击（按下）边框颜色
      */
-    public SuperStateListDrawable setClickStrokeColor(@ColorInt int clickColorBorder) {
-        this.clickStrokeColor = clickColorBorder;
+    public SuperStateListDrawable setStrokeColorState(int strokeWidth, @ColorInt int normalStrokeColor, @ColorInt int clickStrokeColor) {
+        this.strokeWidth = strokeWidth;//边框宽度
+        this.strokeColor = normalStrokeColor;//边框颜色
+        this.clickStrokeColor = clickStrokeColor;
         return this;
     }
+
 
     /**
      * @param starColor   渐变开始颜色
@@ -203,7 +190,7 @@ public class SuperStateListDrawable extends GradientDrawable {
     /**
      * 四角圆形度数
      */
-    public void setCornerRadii(int radiusTopLeft, int radiusTopRight, int radiusBottomLeft, int radiusBottomRight) {
+    private void setCornerRadii(int radiusTopLeft, int radiusTopRight, int radiusBottomLeft, int radiusBottomRight) {
         setCornerRadii(new float[]{radiusTopLeft,
                 radiusTopLeft, radiusTopRight, radiusTopRight,
                 radiusBottomRight, radiusBottomRight, radiusBottomLeft,
@@ -215,7 +202,6 @@ public class SuperStateListDrawable extends GradientDrawable {
      * 设置完成之后必须调用 buid() ，否则不生效
      */
     public Drawable buid() {
-
         if (clickEffect) {
             return initStateListDrawable();
         } else {

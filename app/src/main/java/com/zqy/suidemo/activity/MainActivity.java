@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtTest.setBackground(new SuperStateListDrawable()
                 .setClickAlpha(0.5f)
                 .setClickEffect(true)
-                .setTextColorStateList(mBtTest, Color.BLUE, Color.BLUE)
+                .setTextColorState(mBtTest, Color.BLUE, Color.BLUE)
                 .setRadius(5)
                 .setGradient(Color.WHITE, Color.YELLOW, Gradient.LINEAR_GRADIENT, GradientDrawable.Orientation.LEFT_RIGHT)
                 .buid());

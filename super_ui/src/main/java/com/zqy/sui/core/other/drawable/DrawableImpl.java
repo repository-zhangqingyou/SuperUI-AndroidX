@@ -54,7 +54,7 @@ public interface DrawableImpl {
      * @param normalStrokeColor 正常（抬起）边框颜色
      * @param clickStrokeColor  点击（按下）边框颜色
      */
-    void setStrokeColorState(int strokeWidth, int normalStrokeColor, @ColorInt int clickStrokeColor);
+    void setStrokeColorState(int strokeWidth,@ColorInt int normalStrokeColor, @ColorInt int clickStrokeColor);
 
 
     /**

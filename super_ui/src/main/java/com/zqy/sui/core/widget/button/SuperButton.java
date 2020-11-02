@@ -95,7 +95,7 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
     }
 
     @Override
-    public void setBackgroundColor(int color) {
+    public void setBackgroundColor(@ColorInt int color) {
         if (superGradientDrawable != null)
             superGradientDrawable.setClickEffect(false);//必须关闭才有效
         super.setBackgroundColor(color);
@@ -160,7 +160,7 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
      * @param clickSolidColor  点击（按下）填充颜色
      */
     @Override
-    public void setSolidColorState(int normalSolidColor, int clickSolidColor) {
+    public void setSolidColorState(@ColorInt int normalSolidColor,@ColorInt int clickSolidColor) {
         superGradientDrawable.setSolidColorState(normalSolidColor, clickSolidColor);
         superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
@@ -173,7 +173,7 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
      * @param clickStrokeColor  点击（按下）边框颜色
      */
     @Override
-    public void setStrokeColorState(int strokeWidth, int normalStrokeColor, int clickStrokeColor) {
+    public void setStrokeColorState(int strokeWidth,@ColorInt int normalStrokeColor,@ColorInt int clickStrokeColor) {
         superGradientDrawable.setStrokeColorState(strokeWidth, normalStrokeColor, clickStrokeColor);
         superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
@@ -204,7 +204,7 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
      * @param clickTextColor  按下字体颜色
      */
     @Override
-    public void setTextColorState(int normalTextColor, int clickTextColor) {
+    public void setTextColorState(@ColorInt int normalTextColor,@ColorInt int clickTextColor) {
         superGradientDrawable.setTextColorState(this, normalTextColor, clickTextColor);
         superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }

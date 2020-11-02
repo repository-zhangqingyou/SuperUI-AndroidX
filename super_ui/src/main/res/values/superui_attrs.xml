@@ -356,15 +356,5 @@
         </attr>
     </declare-styleable>
 
-    <!-- declare-styleable name和view名字一样才能自动提示 -->
-    <declare-styleable name="ColorStateImageView">
-        <!-- 设置图标颜色-->
-        <attr name="zqy_imgColor" format="color" />
-        <!-- 设置图标按下颜色-->
-        <attr name="zqy_clickImgColor" format="color" />
-        <!-- 按下时 图标颜色 透明度 默认0.7f -->
-        <attr name="zqy_clickImgAlpha" format="float" />
-
-    </declare-styleable>
 </resources>
 

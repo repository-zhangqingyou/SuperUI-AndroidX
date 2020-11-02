@@ -22,16 +22,14 @@ import java.util.Locale;
  */
 public class SuperUIManage {
     private static Application application;
+    private static boolean Debug;
 
-    public static Application getApplication() {
-        return application;
-    }
 
-    public static void init(Application application) {
+    public static void init(boolean debug, Application application) {
         SuperUIManage.application = application;
 
         XUI.init(application); //初始化UI框架
-        XUI.debug(true);  //开启UI框架调试日志
+        setDebug(debug);
         //初始化占位View
         getLoadingLayoutConfig()
                 .setErrorText("出错啦~请稍后重试！")
@@ -56,6 +54,19 @@ public class SuperUIManage {
 //        HttpManage.setDEBUG(true);
 
 
+    }
+
+    public static Application getApplication() {
+        return application;
+    }
+
+    public static boolean isDebug() {
+        return Debug;
+    }
+
+    public static void setDebug(boolean debug) {
+        Debug = debug;
+        XUI.debug(debug);  //开启UI框架调试日志
     }
 
     /**

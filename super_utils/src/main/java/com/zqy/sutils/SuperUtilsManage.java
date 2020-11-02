@@ -11,19 +11,19 @@ import com.orhanobut.logger.Logger;
 
 
 /**
- * 缓存工具类
+ * 工具类
  * Author: zhangqingyou
  * Date: 2020/4/7
  * Des:
  */
-public class UtilsManage {
+public class SuperUtilsManage {
     private static Application application;
     private static String logTag;
     private static IdSupplier idSupplier;
 
     public static void init(Application application) {
         Utils.init(application);//初始化android工具类
-        UtilsManage.application = application;
+        SuperUtilsManage.application = application;
 
         if (TextUtils.isEmpty(logTag)) {
             Logger.init("日志");
@@ -32,7 +32,7 @@ public class UtilsManage {
         MdidSdkHelper.InitSdk(application, true, new IIdentifierListener() {
             @Override
             public void OnSupport(boolean b, IdSupplier idSupplier) {
-                UtilsManage.idSupplier = idSupplier;
+                SuperUtilsManage.idSupplier = idSupplier;
             }
         });
     }
@@ -47,14 +47,14 @@ public class UtilsManage {
      * @param logTag 日志TAG
      */
     public static void setLogTag(String logTag) {
-        UtilsManage.logTag = logTag;
+        SuperUtilsManage.logTag = logTag;
         Logger.init(logTag);
     }
 
     /**
      * 设置缓存配置
      *
-     * @param cacheRootPath     缓存路径
+     * @param cacheRootPath 缓存路径
      */
     public static void setCache(String cacheRootPath) {
         CacheUtil.init(cacheRootPath);

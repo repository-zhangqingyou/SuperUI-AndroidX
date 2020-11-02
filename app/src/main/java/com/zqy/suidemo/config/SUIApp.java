@@ -6,9 +6,9 @@ import android.os.Environment;
 
 import androidx.multidex.MultiDex;
 
-import com.zqy.srequest.HttpManage;
+import com.zqy.srequest.SuperHttpManage;
 import com.zqy.sui.SuperUIManage;
-import com.zqy.sutils.UtilsManage;
+import com.zqy.sutils.SuperUtilsManage;
 
 
 /**
@@ -44,12 +44,12 @@ public class SUIApp extends Application {
      */
     private void initModule() {
 
-        UtilsManage.init(getApplication());//工具初始化
-        UtilsManage.setLogTag("SuperUI-AndroidX");//初始化日志Tag
-        UtilsManage.setCache(Environment.getExternalStorageDirectory() + "/.SuperUI-AndroidX");//初始化缓存路径
-        HttpManage.init(getApplication());
-        HttpManage.setDEBUG(true);
-        SuperUIManage.init(getApplication());
+        SuperUtilsManage.init(getApplication());//工具初始化
+        SuperUtilsManage.setLogTag("SuperUI-AndroidX");//初始化日志Tag
+        SuperUtilsManage.setCache(Environment.getExternalStorageDirectory() + "/.SuperUI-AndroidX");//初始化缓存路径
+        SuperHttpManage.init(getApplication());
+        SuperHttpManage.setDebug(true);
+        SuperUIManage.init(true, getApplication());
 
     }
 

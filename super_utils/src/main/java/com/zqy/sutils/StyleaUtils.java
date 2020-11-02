@@ -76,7 +76,7 @@ public class StyleaUtils {
     }
 
     public static int[] getStyleableArryId(String name) {
-        Context mContext = UtilsManage.getApplication();
+        Context mContext = SuperUtilsManage.getApplication();
         return getStyleableArryId(mContext.getPackageName(), name);
 
     }
@@ -119,13 +119,13 @@ public class StyleaUtils {
      * @return
      */
     public static int getStyleableFieldId(String styleableName, String styleableFieldName) {
-        Context context = UtilsManage.getApplication();
+        Context context = SuperUtilsManage.getApplication();
         return getStyleableFieldId(context.getPackageName(), styleableName, styleableFieldName);
     }
 
 
     public static int getAttrId(String attrName) {
-        Context mContext = UtilsManage.getApplication();
+        Context mContext = SuperUtilsManage.getApplication();
         try {
             Class<?> loadClass = mContext.getClassLoader().loadClass(mContext.getPackageName() + ".R");
             Class<?>[] classes = loadClass.getClasses();

@@ -15,15 +15,15 @@ public class AppUtils {
     public static String getAppName() {
         String appName = "";
         try {
-            PackageManager pm = UtilsManage.getApplication().getPackageManager();
-            PackageInfo pi = pm.getPackageInfo(UtilsManage.getApplication().getPackageName(), 0);
+            PackageManager pm = SuperUtilsManage.getApplication().getPackageManager();
+            PackageInfo pi = pm.getPackageInfo(SuperUtilsManage.getApplication().getPackageName(), 0);
             appName = pi == null ? null : pi.applicationInfo.loadLabel(pm).toString();
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
 
         }
         Log.d(TAG, "app名字：" + appName);
-        Log.d(TAG, "app包名：" + UtilsManage.getApplication().getPackageName());
+        Log.d(TAG, "app包名：" + SuperUtilsManage.getApplication().getPackageName());
         return appName;
     }
 
@@ -35,8 +35,8 @@ public class AppUtils {
      */
     public static String getMetaData(String metaDataName) {
         String value = "";
-        PackageManager pm = UtilsManage.getApplication().getPackageManager();
-        String packageName = UtilsManage.getApplication().getPackageName();
+        PackageManager pm = SuperUtilsManage.getApplication().getPackageManager();
+        String packageName = SuperUtilsManage.getApplication().getPackageName();
         try {
             ApplicationInfo ai = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
             value = String.valueOf(ai.metaData.get(metaDataName));

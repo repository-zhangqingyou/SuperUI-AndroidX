@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //  mTvTest.setBackgroundDrawable(new ColorDrawable(Color.BLACK));
 
-
         mBtTest.setBackground(new SuperStateListDrawable()
                 .setClickAlpha(0.5f)
                 .setClickEffect(true)

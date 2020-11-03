@@ -108,11 +108,7 @@ public class SuperFrameLayout extends FrameLayout implements DrawableImpl {
         attrMap.put(SuperAttr.左下圆角, 左下圆角);
         attrMap.put(SuperAttr.右下圆角, 右下圆角);
 
-        //设置字体颜色及按下颜色
-        if (按下时字体颜色 == Color.TRANSPARENT)
-            setTextColorState(字体颜色, 字体颜色);
-        else
-            setTextColorState(字体颜色, 按下时字体颜色);
+
 
         superGradientDrawable = new SuperGradientDrawable();
         superGradientDrawable.initTypedArray(attrMap);
@@ -120,6 +116,12 @@ public class SuperFrameLayout extends FrameLayout implements DrawableImpl {
 //        superGradientDrawable = new SuperGradientDrawable();
 //        superGradientDrawable.initTypedArray(this, context, attrs);//attrs标签值初始化（反射获取，此方法无法预览，运行才有效果）
         setBackground(superGradientDrawable);
+
+        //设置字体颜色及按下颜色
+        if (按下时字体颜色 == Color.TRANSPARENT)
+            setTextColorState(字体颜色, 字体颜色);
+        else
+            setTextColorState(字体颜色, 按下时字体颜色);
     }
 
     @Override

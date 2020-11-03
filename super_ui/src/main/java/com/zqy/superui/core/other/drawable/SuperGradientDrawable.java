@@ -13,6 +13,7 @@ import androidx.annotation.FloatRange;
 
 import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.SizeUtils;
+import com.zqy.superui.core.enums.Gradient;
 import com.zqy.superui.core.module.SuperDrawableData;
 
 /**
@@ -134,21 +135,21 @@ public class SuperGradientDrawable extends GradientDrawable {
          */
         if (startColor != Color.TRANSPARENT || endColor != Color.TRANSPARENT) {
             Orientation orientationO = null;//渐变方向
-            if (gradientOrientation == Orientation.LEFT_RIGHT.ordinal()) {
+            if (gradientOrientation == 6) {
                 orientationO = Orientation.LEFT_RIGHT;
-            } else if (gradientOrientation == Orientation.TOP_BOTTOM.ordinal()) {
+            } else if (gradientOrientation == 0) {
                 orientationO = Orientation.TOP_BOTTOM;
-            } else if (gradientOrientation == Orientation.RIGHT_LEFT.ordinal()) {
+            } else if (gradientOrientation == 2) {
                 orientationO = Orientation.RIGHT_LEFT;
-            } else if (gradientOrientation == Orientation.BOTTOM_TOP.ordinal()) {
+            } else if (gradientOrientation == 4) {
                 orientationO = Orientation.BOTTOM_TOP;
-            } else if (gradientOrientation == Orientation.BL_TR.ordinal()) {
+            } else if (gradientOrientation == 5) {
                 orientationO = Orientation.BL_TR;
-            } else if (gradientOrientation == Orientation.BR_TL.ordinal()) {
+            } else if (gradientOrientation == 3) {
                 orientationO = Orientation.BR_TL;
-            } else if (gradientOrientation == Orientation.TL_BR.ordinal()) {
+            } else if (gradientOrientation == 7) {
                 orientationO = Orientation.TL_BR;
-            } else if (gradientOrientation == Orientation.TR_BL.ordinal()) {
+            } else if (gradientOrientation == 1) {
                 orientationO = Orientation.TR_BL;
             }
             setOrientation(orientationO);//设置渐变方向

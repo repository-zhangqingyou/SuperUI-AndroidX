@@ -12,7 +12,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
 import com.zqy.suidemo.R;
-import com.zqy.superui.core.other.drawable.Gradient;
+import com.zqy.superui.core.enums.Gradient;
 import com.zqy.superui.core.other.drawable.SuperStateListDrawable;
 import com.zqy.superui.core.widget.popup.tips.LoadPopup;
 import com.zqy.superui.core.widget.textview.SuperTextView;

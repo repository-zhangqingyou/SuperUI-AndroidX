@@ -12,9 +12,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.blankj.utilcode.util.SizeUtils;
 import com.zqy.superui.R;
+import com.zqy.superui.core.enums.Gradient;
 import com.zqy.superui.core.module.SuperDrawableData;
 import com.zqy.superui.core.other.drawable.DrawableImpl;
-import com.zqy.superui.core.other.drawable.Gradient;
 import com.zqy.superui.core.other.drawable.SuperGradientDrawable;
 
 /**
@@ -51,8 +51,8 @@ public class SuperConstraintLayout extends ConstraintLayout implements DrawableI
         int 按下时边框颜色 = Color.TRANSPARENT;
         int 字体颜色 = Color.GRAY;
         int 按下时字体颜色 = Color.TRANSPARENT;
-        int 渐变模式 = Gradient.LINEAR_GRADIENT.ordinal();
-        int 渐变方向 = GradientDrawable.Orientation.LEFT_RIGHT.ordinal();
+        int 渐变模式 = 0;
+        int 渐变方向 = 6;
         int 边框宽度 = 0;
         int 四圆角 = SizeUtils.dp2px(5);
         int 左上圆角 = 0;
@@ -71,8 +71,8 @@ public class SuperConstraintLayout extends ConstraintLayout implements DrawableI
             按下时边框颜色 = typedArray.getColor(R.styleable.SuperConstraintLayout_zqy_click_stroke_color, Color.TRANSPARENT);
             字体颜色 = typedArray.getColor(R.styleable.SuperConstraintLayout_zqy_text_color, Color.GRAY);
             按下时字体颜色 = typedArray.getColor(R.styleable.SuperConstraintLayout_zqy_click_text_color, Color.TRANSPARENT);
-            渐变模式 = typedArray.getInt(R.styleable.SuperConstraintLayout_zqy_gradient, Gradient.LINEAR_GRADIENT.ordinal());//默认 线性梯度(线性渐变)
-            渐变方向 = typedArray.getInt(R.styleable.SuperConstraintLayout_zqy_orientation, GradientDrawable.Orientation.LEFT_RIGHT.ordinal());//默认从左到右
+            渐变模式 = typedArray.getInt(R.styleable.SuperConstraintLayout_zqy_gradient, 0);//默认 线性梯度(线性渐变)
+            渐变方向 = typedArray.getInt(R.styleable.SuperConstraintLayout_zqy_orientation, 6);//默认从左到右
             边框宽度 = typedArray.getDimensionPixelSize(R.styleable.SuperConstraintLayout_zqy_stroke_width, 0);
             四圆角 = typedArray.getDimensionPixelSize(R.styleable.SuperConstraintLayout_zqy_radius, SizeUtils.dp2px(5));//默认圆角5dp
             左上圆角 = typedArray.getDimensionPixelSize(R.styleable.SuperConstraintLayout_zqy_top_left_radius, 0);

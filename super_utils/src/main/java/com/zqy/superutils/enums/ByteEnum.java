@@ -1,4 +1,4 @@
-package com.zqy.superutils.em;
+package com.zqy.superutils.enums;
 
 /**
  * 作者: zhangqingyou

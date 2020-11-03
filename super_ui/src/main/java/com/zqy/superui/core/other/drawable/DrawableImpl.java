@@ -5,6 +5,8 @@ import android.graphics.drawable.GradientDrawable;
 import androidx.annotation.ColorInt;
 import androidx.annotation.FloatRange;
 
+import com.zqy.superui.core.enums.Gradient;
+
 /**
  * 作者: zhangqingyou
  * 时间: 2020/9/12 14:15

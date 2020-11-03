@@ -13,6 +13,7 @@ import androidx.annotation.FloatRange;
 
 import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.ConvertUtils;
+import com.zqy.superui.core.enums.Gradient;
 
 
 /**

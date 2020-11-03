@@ -12,13 +12,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.blankj.utilcode.util.SizeUtils;
 import com.zqy.superui.R;
+import com.zqy.superui.core.module.SuperDrawableData;
 import com.zqy.superui.core.other.drawable.DrawableImpl;
 import com.zqy.superui.core.other.drawable.Gradient;
-import com.zqy.superui.core.other.drawable.SuperAttr;
 import com.zqy.superui.core.other.drawable.SuperGradientDrawable;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 作者: zhangqingyou
@@ -84,30 +81,28 @@ public class SuperConstraintLayout extends ConstraintLayout implements DrawableI
             右下圆角 = typedArray.getDimensionPixelSize(R.styleable.SuperConstraintLayout_zqy_bottom_right_radius, 0);
             typedArray.recycle();
         }
-        Map<Object, Object> attrMap = new HashMap<>();
-        attrMap.put(SuperAttr.是否有按下效果, 是否有按下效果);
-        attrMap.put(SuperAttr.按下时透明度, 按下时透明度);
-        attrMap.put(SuperAttr.填充颜色, 填充颜色);
-        attrMap.put(SuperAttr.边框颜色, 边框颜色);
-        attrMap.put(SuperAttr.渐变开始颜色, 渐变开始颜色);
-        attrMap.put(SuperAttr.渐变结束颜色, 渐变结束颜色);
-        attrMap.put(SuperAttr.按下时填充颜色, 按下时填充颜色);
-        attrMap.put(SuperAttr.按下时边框颜色, 按下时边框颜色);
-        attrMap.put(SuperAttr.字体颜色, 字体颜色);
-        attrMap.put(SuperAttr.按下时字体颜色, 按下时字体颜色);
-        attrMap.put(SuperAttr.渐变模式, 渐变模式);
-        attrMap.put(SuperAttr.渐变方向, 渐变方向);
-        attrMap.put(SuperAttr.边框宽度, 边框宽度);
-        attrMap.put(SuperAttr.四圆角, 四圆角);
-        attrMap.put(SuperAttr.左上圆角, 左上圆角);
-        attrMap.put(SuperAttr.右上圆角, 右上圆角);
-        attrMap.put(SuperAttr.左下圆角, 左下圆角);
-        attrMap.put(SuperAttr.右下圆角, 右下圆角);
-
-
+        SuperDrawableData superDrawableData = new SuperDrawableData();
+        superDrawableData.setClickEffect(是否有按下效果);
+        superDrawableData.setClickAlpha(按下时透明度);
+        superDrawableData.setNormalSolidColor(填充颜色);
+        superDrawableData.setStrokeColor(边框颜色);
+        superDrawableData.setStartColor(渐变开始颜色);
+        superDrawableData.setEndColor(渐变结束颜色);
+        superDrawableData.setClickSolidColor(按下时填充颜色);
+        superDrawableData.setClickStrokeColor(按下时边框颜色);
+        superDrawableData.setNormalTextColor(字体颜色);
+        superDrawableData.setClickTextColor(按下时字体颜色);
+        superDrawableData.setGradient(渐变模式);
+        superDrawableData.setGradientOrientation(渐变方向);
+        superDrawableData.setStrokeWidth(边框宽度);
+        superDrawableData.setRadius(四圆角);
+        superDrawableData.setTopLeftRadius(左上圆角);
+        superDrawableData.setTopRightRadius(右上圆角);
+        superDrawableData.setBottomLeftRadius(左下圆角);
+        superDrawableData.setBottomRightRadius(右下圆角);
 
         superGradientDrawable = new SuperGradientDrawable();
-        superGradientDrawable.initTypedArray(attrMap);
+        superGradientDrawable.initTypedArray(superDrawableData);
         //此方法耗时
 //        superGradientDrawable = new SuperGradientDrawable();
 //        superGradientDrawable.initTypedArray(this, context, attrs);//attrs标签值初始化（反射获取，此方法无法预览，运行才有效果）

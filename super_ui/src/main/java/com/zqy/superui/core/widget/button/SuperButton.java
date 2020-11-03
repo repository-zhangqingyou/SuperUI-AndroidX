@@ -50,33 +50,74 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
     }
 
     private void init(Context context, AttributeSet attrs) {
+        boolean 是否有按下效果 = true;
+        float 按下时透明度 = 0.7f;
+        int 填充颜色 = Color.TRANSPARENT;
+        int 边框颜色 = Color.TRANSPARENT;
+        int 渐变开始颜色 = Color.TRANSPARENT;
+        int 渐变结束颜色 = Color.TRANSPARENT;
+        int 按下时填充颜色 = Color.TRANSPARENT;
+        int 按下时边框颜色 = Color.TRANSPARENT;
+        int 字体颜色 = Color.GRAY;
+        int 按下时字体颜色 = Color.TRANSPARENT;
+        int 渐变模式 = Gradient.LINEAR_GRADIENT.ordinal();
+        int 渐变方向 = GradientDrawable.Orientation.LEFT_RIGHT.ordinal();
+        int 边框宽度 = 0;
+        int 四圆角 = SizeUtils.dp2px(5);
+        int 左上圆角 = 0;
+        int 右上圆角 = 0;
+        int 左下圆角 = 0;
+        int 右下圆角 = 0;
+        if (attrs != null) {
+            TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SuperButton);
+            是否有按下效果 = typedArray.getBoolean(R.styleable.SuperButton_zqy_click_effect, true);//默认有点击效果
+            按下时透明度 = typedArray.getFloat(R.styleable.SuperButton_zqy_click_alpha, 0.7f);//默认点击透明度
+            填充颜色 = typedArray.getColor(R.styleable.SuperButton_zqy_solid_color, Color.TRANSPARENT);
+            边框颜色 = typedArray.getColor(R.styleable.SuperButton_zqy_stroke_color, Color.TRANSPARENT);
+            渐变开始颜色 = typedArray.getColor(R.styleable.SuperButton_zqy_start_color, Color.TRANSPARENT);
+            渐变结束颜色 = typedArray.getColor(R.styleable.SuperButton_zqy_end_color, Color.TRANSPARENT);
+            按下时填充颜色 = typedArray.getColor(R.styleable.SuperButton_zqy_click_solid_color, Color.TRANSPARENT);
+            按下时边框颜色 = typedArray.getColor(R.styleable.SuperButton_zqy_click_stroke_color, Color.TRANSPARENT);
+            字体颜色 = typedArray.getColor(R.styleable.SuperButton_zqy_text_color, Color.GRAY);
+            按下时字体颜色 = typedArray.getColor(R.styleable.SuperButton_zqy_click_text_color, Color.TRANSPARENT);
+            渐变模式 = typedArray.getInt(R.styleable.SuperButton_zqy_gradient, Gradient.LINEAR_GRADIENT.ordinal());//默认 线性梯度(线性渐变)
+            渐变方向 = typedArray.getInt(R.styleable.SuperButton_zqy_orientation, GradientDrawable.Orientation.LEFT_RIGHT.ordinal());//默认从左到右
+            边框宽度 = typedArray.getDimensionPixelSize(R.styleable.SuperButton_zqy_stroke_width, 0);
+            四圆角 = typedArray.getDimensionPixelSize(R.styleable.SuperButton_zqy_radius, SizeUtils.dp2px(5));//默认圆角5dp
+            左上圆角 = typedArray.getDimensionPixelSize(R.styleable.SuperButton_zqy_top_left_radius, 0);
+            右上圆角 = typedArray.getDimensionPixelSize(R.styleable.SuperButton_zqy_top_right_radius, 0);
+            左下圆角 = typedArray.getDimensionPixelSize(R.styleable.SuperButton_zqy_bottom_left_radius, 0);
+            右下圆角 = typedArray.getDimensionPixelSize(R.styleable.SuperButton_zqy_bottom_right_radius, 0);
+            typedArray.recycle();
+        }
         Map<Object, Object> attrMap = new HashMap<>();
+        attrMap.put(SuperAttr.是否有按下效果, 是否有按下效果);
+        attrMap.put(SuperAttr.按下时透明度, 按下时透明度);
+        attrMap.put(SuperAttr.填充颜色, 填充颜色);
+        attrMap.put(SuperAttr.边框颜色, 边框颜色);
+        attrMap.put(SuperAttr.渐变开始颜色, 渐变开始颜色);
+        attrMap.put(SuperAttr.渐变结束颜色, 渐变结束颜色);
+        attrMap.put(SuperAttr.按下时填充颜色, 按下时填充颜色);
+        attrMap.put(SuperAttr.按下时边框颜色, 按下时边框颜色);
+        attrMap.put(SuperAttr.字体颜色, 字体颜色);
+        attrMap.put(SuperAttr.按下时字体颜色, 按下时字体颜色);
+        attrMap.put(SuperAttr.渐变模式, 渐变模式);
+        attrMap.put(SuperAttr.渐变方向, 渐变方向);
+        attrMap.put(SuperAttr.边框宽度, 边框宽度);
+        attrMap.put(SuperAttr.四圆角, 四圆角);
+        attrMap.put(SuperAttr.左上圆角, 左上圆角);
+        attrMap.put(SuperAttr.右上圆角, 右上圆角);
+        attrMap.put(SuperAttr.左下圆角, 左下圆角);
+        attrMap.put(SuperAttr.右下圆角, 右下圆角);
 
-        TypedArray typedArray = null;
-        if (attrs != null)
-            typedArray = context.obtainStyledAttributes(attrs, R.styleable.SuperButton);
+        //设置字体颜色及按下颜色
+        if (按下时字体颜色 == Color.TRANSPARENT)
+            setTextColorState(字体颜色, 字体颜色);
+        else
+            setTextColorState(字体颜色, 按下时字体颜色);
 
-        attrMap.put(SuperAttr.是否有按下效果, typedArray == null ? true : typedArray.getBoolean(R.styleable.SuperButton_zqy_click_effect, true));//默认有点击效果
-        attrMap.put(SuperAttr.按下时透明度, typedArray == null ? 0.7f : typedArray.getFloat(R.styleable.SuperButton_zqy_click_alpha, 0.7f));//默认点击透明度
-        attrMap.put(SuperAttr.填充颜色, typedArray == null ? Color.TRANSPARENT : typedArray.getColor(R.styleable.SuperButton_zqy_solid_color, Color.TRANSPARENT));
-        attrMap.put(SuperAttr.边框颜色, typedArray == null ? Color.TRANSPARENT : typedArray.getColor(R.styleable.SuperButton_zqy_stroke_color, Color.TRANSPARENT));
-        attrMap.put(SuperAttr.渐变开始颜色, typedArray == null ? Color.TRANSPARENT : typedArray.getColor(R.styleable.SuperButton_zqy_start_color, Color.TRANSPARENT));
-        attrMap.put(SuperAttr.渐变结束颜色, typedArray == null ? Color.TRANSPARENT : typedArray.getColor(R.styleable.SuperButton_zqy_end_color, Color.TRANSPARENT));
-        attrMap.put(SuperAttr.按下时填充颜色, typedArray == null ? Color.TRANSPARENT : typedArray.getColor(R.styleable.SuperButton_zqy_click_solid_color, Color.TRANSPARENT));
-        attrMap.put(SuperAttr.按下时边框颜色, typedArray == null ? Color.TRANSPARENT : typedArray.getColor(R.styleable.SuperButton_zqy_click_stroke_color, Color.TRANSPARENT));
-        attrMap.put(SuperAttr.字体颜色, typedArray == null ? Color.GRAY : typedArray.getColor(R.styleable.SuperButton_zqy_text_color, Color.GRAY));
-        attrMap.put(SuperAttr.按下时字体颜色, typedArray == null ? Color.TRANSPARENT : typedArray.getColor(R.styleable.SuperButton_zqy_click_text_color, Color.TRANSPARENT));
-        attrMap.put(SuperAttr.渐变模式, typedArray == null ? Gradient.LINEAR_GRADIENT.ordinal() : typedArray.getInt(R.styleable.SuperButton_zqy_gradient, Gradient.LINEAR_GRADIENT.ordinal()));//默认 线性梯度(线性渐变)
-        attrMap.put(SuperAttr.渐变方向, typedArray == null ? GradientDrawable.Orientation.LEFT_RIGHT.ordinal() : typedArray.getInt(R.styleable.SuperButton_zqy_orientation, GradientDrawable.Orientation.LEFT_RIGHT.ordinal()));//默认从左到右
-        attrMap.put(SuperAttr.边框宽度, typedArray == null ? 0 : typedArray.getDimensionPixelSize(R.styleable.SuperButton_zqy_stroke_width, 0));
-        attrMap.put(SuperAttr.四圆角, typedArray == null ? SizeUtils.dp2px(5) : typedArray.getDimensionPixelSize(R.styleable.SuperButton_zqy_radius, SizeUtils.dp2px(5)));//默认圆角5dp
-        attrMap.put(SuperAttr.左上圆角, typedArray == null ? 0 : typedArray.getDimensionPixelSize(R.styleable.SuperButton_zqy_top_left_radius, 0));
-        attrMap.put(SuperAttr.右上圆角, typedArray == null ? 0 : typedArray.getDimensionPixelSize(R.styleable.SuperButton_zqy_top_right_radius, 0));
-        attrMap.put(SuperAttr.左下圆角, typedArray == null ? 0 : typedArray.getDimensionPixelSize(R.styleable.SuperButton_zqy_bottom_left_radius, 0));
-        attrMap.put(SuperAttr.右下圆角, typedArray == null ? 0 : typedArray.getDimensionPixelSize(R.styleable.SuperButton_zqy_bottom_right_radius, 0));
-        typedArray.recycle();
         superGradientDrawable = new SuperGradientDrawable();
-        superGradientDrawable.initTypedArray(this, attrMap);
+        superGradientDrawable.initTypedArray(attrMap);
         //此方法耗时
 //        superGradientDrawable = new SuperGradientDrawable();
 //        superGradientDrawable.initTypedArray(this, context, attrs);//attrs标签值初始化（反射获取，此方法无法预览，运行才有效果）
@@ -123,7 +164,7 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
     @Override
     public void setClickEffect(boolean clickEffect) {
         superGradientDrawable.setClickEffect(clickEffect);
-        superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
+        //superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
 
     /**
@@ -134,7 +175,7 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
     @Override
     public void setClickAlpha(float clickAlpha) {
         superGradientDrawable.setClickAlpha(clickAlpha);
-        superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
+        // superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
 
     /**
@@ -149,7 +190,7 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
             superGradientDrawable.setRadius(0, 0, 0, 0);
         }
 
-        superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
+        // superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
 
     /**
@@ -161,7 +202,7 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
                 radiusTopRight < 1 ? 0 : SizeUtils.dp2px(radiusTopRight),
                 radiusBottomLeft < 1 ? 0 : SizeUtils.dp2px(radiusBottomLeft),
                 radiusBottomRight < 1 ? 0 : SizeUtils.dp2px(radiusBottomRight));
-        superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
+        // superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
 
     /**
@@ -217,7 +258,7 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
     @Override
     public void setTextColorState(@ColorInt int normalTextColor, @ColorInt int clickTextColor) {
         superGradientDrawable.setTextColorState(this, normalTextColor, clickTextColor);
-        superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
+        // superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
 
     /**

@@ -30,13 +30,17 @@ import com.zqy.superui.core.enums.Gradient;
 public class SuperStateListDrawable extends GradientDrawable {
     private float clickAlpha = 0.7f;// //设置按下背景色的透明值
     private boolean clickEffect = true;//设置是否有按下效果 默认有
-    private int strokeWidth;//边框宽度
-    private int strokeColor;//正常边框
-    private int clickStrokeColor;//点击边框颜色
-    private int solidColor;//正常填充颜色
+
+    private int normalSolidColor;//正常填充颜色
     private int clickSolidColor;//点击填充颜色
-    private Gradient gradient = Gradient.LINEAR_GRADIENT;// 渐变模式 GradientDrawable.LINEAR_GRADIENT（线性渐变） ， GradientDrawable.SWEEP_GRADIENT（扫描式渐变），GradientDrawable.RADIAL_GRADIENT（圆形渐变）
+
+
+    private int normalStrokeColor;//正常边框
+    private int clickStrokeColor;//点击边框颜色
+    private int strokeWidth;//边框宽度
+
     private int[] colors;//设置渐变颜色
+    private Gradient gradient = Gradient.LINEAR_GRADIENT;// 渐变模式 GradientDrawable.LINEAR_GRADIENT（线性渐变） ， GradientDrawable.SWEEP_GRADIENT（扫描式渐变），GradientDrawable.RADIAL_GRADIENT（圆形渐变）
     private Orientation orientation = Orientation.LEFT_RIGHT;//设置渐变方向
     private int topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius;//圆角
 
@@ -145,7 +149,7 @@ public class SuperStateListDrawable extends GradientDrawable {
      * @param clickSolidColor  点击（按下）填充颜色
      */
     public SuperStateListDrawable setSolidColorState(@ColorInt int normalSolidColor, @ColorInt int clickSolidColor) {
-        this.solidColor = normalSolidColor;
+        this.normalSolidColor = normalSolidColor;
         this.clickSolidColor = clickSolidColor;
         return this;
     }
@@ -159,7 +163,7 @@ public class SuperStateListDrawable extends GradientDrawable {
      */
     public SuperStateListDrawable setStrokeColorState(int strokeWidth, @ColorInt int normalStrokeColor, @ColorInt int clickStrokeColor) {
         this.strokeWidth = strokeWidth;//边框宽度
-        this.strokeColor = normalStrokeColor;//边框颜色
+        this.normalStrokeColor = normalStrokeColor;//边框颜色
         this.clickStrokeColor = clickStrokeColor;
         return this;
     }
@@ -227,14 +231,14 @@ public class SuperStateListDrawable extends GradientDrawable {
             normalGb.setGradientType(gradient.ordinal());
             normalGb.setOrientation(orientation);//设置渐变方向
         } else {
-            if (solidColor != Color.TRANSPARENT)
-                normalGb.setColor(solidColor);//设置背景色(只支持纯色,不支持 Bitmap 或 Drawable)
+            if (normalSolidColor != Color.TRANSPARENT)
+                normalGb.setColor(normalSolidColor);//设置背景色(只支持纯色,不支持 Bitmap 或 Drawable)
         }
 
         //设置圆角
         setCornerRadii(topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius);
         //设置按钮的描边粗细和颜色
-        normalGb.setStroke(strokeColor, strokeWidth);
+        normalGb.setStroke(normalStrokeColor, strokeWidth);
         return normalGb;
     }
 
@@ -264,8 +268,8 @@ public class SuperStateListDrawable extends GradientDrawable {
             normalGb.setGradientType(gradient.ordinal());
             normalGb.setOrientation(orientation);//设置渐变方向
         } else {
-            if (solidColor != Color.TRANSPARENT)
-                normalGb.setColor(solidColor);//设置背景色(只支持纯色,不支持 Bitmap 或 Drawable)
+            if (normalSolidColor != Color.TRANSPARENT)
+                normalGb.setColor(normalSolidColor);//设置背景色(只支持纯色,不支持 Bitmap 或 Drawable)
         }
 
         //设置圆角
@@ -273,7 +277,7 @@ public class SuperStateListDrawable extends GradientDrawable {
         normalGb.setCornerRadii(topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius);
 
         //设置按钮的描边粗细和颜色
-        normalGb.setStroke(strokeWidth, strokeColor);
+        normalGb.setStroke(strokeWidth, normalStrokeColor);
 
         //************************************************************************************************
         SuperStateListDrawable pressedGb = new SuperStateListDrawable();//点击
@@ -292,8 +296,8 @@ public class SuperStateListDrawable extends GradientDrawable {
             pressedGb.setOrientation(orientation);//设置渐变方向
         } else {
             if (clickSolidColor == Color.TRANSPARENT) {
-                if (solidColor != Color.TRANSPARENT) {
-                    int alphaComponent = ColorUtils.setAlphaComponent(solidColor, clickAlpha);
+                if (normalSolidColor != Color.TRANSPARENT) {
+                    int alphaComponent = ColorUtils.setAlphaComponent(normalSolidColor, clickAlpha);
                     pressedGb.setColor(alphaComponent);//设置背景色(只支持纯色,不支持 Bitmap 或 Drawable)
                 }
             } else {
@@ -308,8 +312,8 @@ public class SuperStateListDrawable extends GradientDrawable {
 
         //设置按钮的描边粗细和颜色
         if (clickStrokeColor == Color.TRANSPARENT) {
-            if (strokeColor != Color.TRANSPARENT) {
-                int alphaComponent = ColorUtils.setAlphaComponent(strokeColor, clickAlpha);
+            if (normalStrokeColor != Color.TRANSPARENT) {
+                int alphaComponent = ColorUtils.setAlphaComponent(normalStrokeColor, clickAlpha);
                 pressedGb.setStroke(strokeWidth, alphaComponent);//设置背景色(只支持纯色,不支持 Bitmap 或 Drawable)
             }
         } else {

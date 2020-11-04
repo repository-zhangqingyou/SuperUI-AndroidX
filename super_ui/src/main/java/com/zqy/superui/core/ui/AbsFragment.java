@@ -136,12 +136,11 @@ public abstract class AbsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (isViewPagerFragment) {//是否是ViewPager+Fragment
-            onFragmentVisibleChange(isVisible);
-        } else {
-            onFragmentVisibleChange(true);
-        }
-
+//        if (isViewPagerFragment) {//是否是ViewPager+Fragment
+//            onFragmentVisibleChange(isVisible);
+//        } else {
+//            onFragmentVisibleChange(true);
+//        }
 
     }
 

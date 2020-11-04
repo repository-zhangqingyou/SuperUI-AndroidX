@@ -1,5 +1,6 @@
 package com.zqy.superui.core.other.adapter;
 
+import android.util.Log;
 import android.view.View;
 
 import com.zqy.superui.core.other.adapter.impl.AdapterImpl;
@@ -43,11 +44,15 @@ public abstract class AbsAdapter<T, V extends BaseViewHolder> extends DataAdapte
 //        int key = t.hashCode();
 //        int value = getLayout(t, position);
 //        viewTypeLayoutIdMap.put(key, value);
-        return getLayout(getDataList().get(position), position);
+        int layout = getLayout(getDataList().get(position), position);
+        Log.d(TAG, "getItemViewType:" + layout);
+        return layout;
     }
+
 
     @Override
     public void onBindViewHolder(V viewHolder, int position) {
+        Log.d(TAG, "onBindViewHolder:position:" + position);
         if (getDataList() != null) {
             onBindViewHolder(viewHolder, getDataList().get(position), position);
             //绑定监听事件

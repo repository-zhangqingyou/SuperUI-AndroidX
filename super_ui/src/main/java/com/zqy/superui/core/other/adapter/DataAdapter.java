@@ -16,6 +16,7 @@ import java.util.List;
  * Des: 包含基本数据操作的 Adapter
  */
 public abstract class DataAdapter<T, V extends BaseViewHolder> extends RecyclerView.Adapter<V> {
+    public String TAG = getClass().getSimpleName();
     private List<T> mList;
 
     public DataAdapter() {

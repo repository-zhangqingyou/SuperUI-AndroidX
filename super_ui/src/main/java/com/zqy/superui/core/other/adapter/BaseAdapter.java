@@ -1,6 +1,7 @@
 package com.zqy.superui.core.other.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public abstract class BaseAdapter<T> extends AbsAdapter<T, BaseViewHolder> {
 
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        Log.d(TAG, "onCreateViewHolder:viewType:" + viewType);
         context = viewGroup.getContext();
         BaseViewHolder baseViewHolder = null;
         if (getDataList() != null) {

@@ -266,18 +266,54 @@ public class XUIPopup extends XUIBasePopup {
         mAnimStyle = animStyle;
     }
 
+    private FrameLayout contentView;
+    private FrameLayout container;//容器
 
     @Override
     public void setContentView(View root) {
-        FrameLayout container = (FrameLayout) LayoutInflater.from(getContext()).inflate(R.layout.xui_layout_popup, null, false);
-        mArrowDown = container.findViewById(R.id.arrow_down);
-        mArrowUp = container.findViewById(R.id.arrow_up);
-        FrameLayout box = container.findViewById(R.id.box);
-        box.addView(root);
-
-        super.setContentView(container);
+        contentView = (FrameLayout) LayoutInflater.from(getContext()).inflate(R.layout.xui_layout_popup, null, false);
+        mArrowDown = contentView.findViewById(R.id.arrow_down);
+        mArrowUp = contentView.findViewById(R.id.arrow_up);
+        container = contentView.findViewById(R.id.box);
+        container.addView(root);
+        super.setContentView(contentView);
     }
 
+    /**
+     * 获取xml解析的view
+     *
+     * @return
+     */
+    public FrameLayout getContentView() {
+        return contentView;
+    }
+
+    /**
+     * 获取xml解析的view中的容器View
+     *
+     * @return
+     */
+    public FrameLayout getContainer() {
+        return container;
+    }
+
+    /**
+     * 获取向上的箭头ImageView
+     *
+     * @return
+     */
+    public ImageView getArrowUp() {
+        return mArrowUp;
+    }
+
+    /**
+     * 获取向下的箭头ImageView
+     *
+     * @return
+     */
+    public ImageView getArrowDown() {
+        return mArrowDown;
+    }
 
     private void setViewVisibility(View view, boolean visible) {
         if (view != null) {

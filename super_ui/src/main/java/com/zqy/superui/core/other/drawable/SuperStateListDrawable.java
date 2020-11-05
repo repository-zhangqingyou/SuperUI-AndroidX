@@ -227,19 +227,19 @@ public class SuperStateListDrawable extends GradientDrawable {
         // normalGb.setShape(GradientDrawable.OVAL);
         //渐变颜色 和 单背景色 不能同时设置
         if (colors != null) {
-            normalGb.setColors(colors);//设置渐变颜色
-            normalGb.setGradientType(gradient.ordinal());
-            normalGb.setOrientation(orientation);//设置渐变方向
+            setColors(colors);//设置渐变颜色
+            setGradientType(gradient.ordinal());
+            setOrientation(orientation);//设置渐变方向
         } else {
             if (normalSolidColor != Color.TRANSPARENT)
-                normalGb.setColor(normalSolidColor);//设置背景色(只支持纯色,不支持 Bitmap 或 Drawable)
+                setColor(normalSolidColor);//设置背景色(只支持纯色,不支持 Bitmap 或 Drawable)
         }
 
         //设置圆角
         setCornerRadii(topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius);
         //设置按钮的描边粗细和颜色
-        normalGb.setStroke(normalStrokeColor, strokeWidth);
-        return normalGb;
+        setStroke(normalStrokeColor, strokeWidth);
+        return this;
     }
 
 

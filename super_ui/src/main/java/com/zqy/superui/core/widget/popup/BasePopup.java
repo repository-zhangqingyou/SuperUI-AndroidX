@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 
@@ -55,16 +56,20 @@ public abstract class BasePopup extends PopupWindow {
     public abstract void listener();
 
 
-    private View mainRootView;
+    private LinearLayout rootView;
+    private View childView;
 
     private void init(int width, int height) {
+        rootView = new LinearLayout(getActivity());
+        rootView.setGravity(Gravity.CENTER);
+        rootView.setOrientation(LinearLayout.VERTICAL);
         if (getLayout() instanceof Integer) {
-            mainRootView = View.inflate(activity, (Integer) getLayout(), null);
+            rootView.addView(childView = View.inflate(activity, (Integer) getLayout(), null));
         } else if (getLayout() instanceof View) {
-            mainRootView = (View) getLayout();
+            rootView.addView(childView = (View) getLayout());
         }
 
-        setContentView(mainRootView);
+        setContentView(rootView);
 
         setWidth(width);
 
@@ -76,14 +81,14 @@ public abstract class BasePopup extends PopupWindow {
         setAnimationStyle(android.R.style.Animation_Toast);//动画
         setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));//去掉popupwindow的四周黑线，解决popupwindow四围有空白的问题
 
-        initView(mainRootView);
+        initView(rootView);
         initData();
         listener();
 
     }
 
     public <T extends View> T findViewById(int id) {
-        return mainRootView.findViewById(id);
+        return rootView.findViewById(id);
     }
 
     /**
@@ -154,12 +159,16 @@ public abstract class BasePopup extends PopupWindow {
      * 设置PopupWindow圆角
      */
     public void setRootViewBackground(Drawable drawable) {
-        mainRootView.setBackground(drawable);
+        rootView.setBackground(drawable);
     }
 
 
-    public View getRootView() {
-        return mainRootView;
+    public LinearLayout getRootView() {
+        return rootView;
+    }
+
+    public View getChildView() {
+        return childView;
     }
 
     public Activity getActivity() {

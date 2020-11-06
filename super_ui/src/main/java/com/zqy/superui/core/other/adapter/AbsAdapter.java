@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.zqy.superui.core.other.adapter.impl.AdapterImpl;
+import com.zqy.superui.core.other.adapter.impl.ItemListener;
 import com.zqy.superui.core.other.adapter.viewholder.BaseViewHolder;
 
 import java.util.List;
@@ -16,9 +17,9 @@ import java.util.List;
  * Des:
  */
 public abstract class AbsAdapter<T, V extends BaseViewHolder> extends DataAdapter<T, V> implements AdapterImpl<T, V> {
-    private OnItemClickListener mOnItemClickListener;
-    private OnItemLongClickListener mOnItemLongClickListener;
-    private OnItemButtonClickListener onItemButtonClickListener;
+    private ItemListener.OnItemClickListener mOnItemClickListener;
+    private ItemListener.OnItemLongClickListener mOnItemLongClickListener;
+    private ItemListener.OnItemViewClickListener onItemViewClickListener;
 
     public AbsAdapter() {
         super();
@@ -71,41 +72,28 @@ public abstract class AbsAdapter<T, V extends BaseViewHolder> extends DataAdapte
     }
 
 
-    public interface OnItemClickListener<T> {
-        void onItemClick(View view, T item, int position);
+    public void setOnItemClickListener(ItemListener.OnItemClickListener onItemClickListener) {
+        this.mOnItemClickListener = onItemClickListener;
     }
 
-    public interface OnItemLongClickListener<T> {
-        void onItemLongClick(View view, T item, int position);
+    public void setOnItemLongClickListener(ItemListener.OnItemLongClickListener onItemLongClickListener) {
+        this.mOnItemLongClickListener = onItemLongClickListener;
     }
 
-    public interface OnItemButtonClickListener<T> {
-        void onItemClick(View view, T item, int position);
+    public void setOnItemViewClickListener(ItemListener.OnItemViewClickListener onItemViewClickListener) {
+        this.onItemViewClickListener = onItemViewClickListener;
     }
 
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        mOnItemClickListener = onItemClickListener;
-    }
-
-    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
-        mOnItemLongClickListener = onItemLongClickListener;
-    }
-
-    public void setOnItemButtonClickListener(OnItemButtonClickListener onItemButtonClickListener) {
-        this.onItemButtonClickListener = onItemButtonClickListener;
-    }
-
-
-    public OnItemClickListener getOnItemClickListener() {
+    public ItemListener.OnItemClickListener getOnItemClickListener() {
         return mOnItemClickListener;
     }
 
-    public OnItemLongClickListener getOnItemLongClickListener() {
+    public ItemListener.OnItemLongClickListener getOnItemLongClickListener() {
         return mOnItemLongClickListener;
     }
 
-    public OnItemButtonClickListener getOnItemButtonClickListener() {
-        return onItemButtonClickListener;
+    public ItemListener.OnItemViewClickListener getOnItemViewClickListener() {
+        return onItemViewClickListener;
     }
 
     /**

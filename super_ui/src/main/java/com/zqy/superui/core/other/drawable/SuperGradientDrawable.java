@@ -294,64 +294,63 @@ public class SuperGradientDrawable extends GradientDrawable {
      * @param pressed true：按下时，false:抬起时(正常时)
      */
     public void setPressed(boolean pressed) {
-       // Log.d("SuperGradientDrawable", "clickEffect:" + clickEffect);
-        if (clickEffect) {
-            if (pressed) {
-                /**
-                 * 按下时
-                 */
-                if (startColor != Color.TRANSPARENT || endColor != Color.TRANSPARENT) {
-                    if (startColor != Color.TRANSPARENT && endColor != Color.TRANSPARENT) {
-                        int startAlpha = ColorUtils.setAlphaComponent(startColor, clickAlpha);
-                        int endAlpha = ColorUtils.setAlphaComponent(endColor, clickAlpha);
-                        setColors(new int[]{startAlpha, endAlpha});//设置渐变颜色
-                    } else if (startColor != Color.TRANSPARENT && endColor == Color.TRANSPARENT) {
-                        int alphaComponent = ColorUtils.setAlphaComponent(startColor, clickAlpha);
-                        setColors(new int[]{alphaComponent, endColor});//设置渐变颜色
-                    } else if (startColor == Color.TRANSPARENT && endColor != Color.TRANSPARENT) {
-                        int alphaComponent = ColorUtils.setAlphaComponent(endColor, clickAlpha);
-                        setColors(new int[]{startColor, alphaComponent});//设置渐变颜色
-                    }
-
-                } else if (normalSolidColor != Color.TRANSPARENT) {
-                    //按下背景色（设置了渐变色）
-                    if (clickSolidColor == Color.TRANSPARENT) {
-                        int alphaComponent = ColorUtils.setAlphaComponent(normalSolidColor, clickAlpha);
-                        setColor(alphaComponent);
-                    } else {
-                        int alphaComponent = ColorUtils.setAlphaComponent(clickSolidColor, clickAlpha);
-                        setColor(alphaComponent);
-                    }
+        // Log.d("SuperGradientDrawable", "clickEffect:" + clickEffect);
+        if (clickEffect && pressed) {
+            /**
+             * 按下时
+             */
+            if (startColor != Color.TRANSPARENT || endColor != Color.TRANSPARENT) {
+                if (startColor != Color.TRANSPARENT && endColor != Color.TRANSPARENT) {
+                    int startAlpha = ColorUtils.setAlphaComponent(startColor, clickAlpha);
+                    int endAlpha = ColorUtils.setAlphaComponent(endColor, clickAlpha);
+                    setColors(new int[]{startAlpha, endAlpha});//设置渐变颜色
+                } else if (startColor != Color.TRANSPARENT && endColor == Color.TRANSPARENT) {
+                    int alphaComponent = ColorUtils.setAlphaComponent(startColor, clickAlpha);
+                    setColors(new int[]{alphaComponent, endColor});//设置渐变颜色
+                } else if (startColor == Color.TRANSPARENT && endColor != Color.TRANSPARENT) {
+                    int alphaComponent = ColorUtils.setAlphaComponent(endColor, clickAlpha);
+                    setColors(new int[]{startColor, alphaComponent});//设置渐变颜色
                 }
 
-
-                //设置边框颜色及宽度
-                if (normalStrokeColor != Color.TRANSPARENT) {
-                    if (clickStrokeColor == Color.TRANSPARENT) {
-                        int alphaComponent = ColorUtils.setAlphaComponent(normalStrokeColor, clickAlpha);
-                        setStroke(strokeWidth, alphaComponent);
-                    } else {
-                        int alphaComponent = ColorUtils.setAlphaComponent(clickStrokeColor, clickAlpha);
-                        setStroke(strokeWidth, alphaComponent);
-                    }
-                }
-
-
-            } else {
-                /**
-                 * 抬起时
-                 */
-                if (startColor == Color.TRANSPARENT && endColor == Color.TRANSPARENT) {
-                    //还原填充背景色
-                    setColor(normalSolidColor);
+            } else if (normalSolidColor != Color.TRANSPARENT) {
+                //按下背景色（设置了渐变色）
+                if (clickSolidColor == Color.TRANSPARENT) {
+                    int alphaComponent = ColorUtils.setAlphaComponent(normalSolidColor, clickAlpha);
+                    setColor(alphaComponent);
                 } else {
-                    //还原渐变色
-                    setColors(new int[]{startColor, endColor});//设置渐变颜色
+                    int alphaComponent = ColorUtils.setAlphaComponent(clickSolidColor, clickAlpha);
+                    setColor(alphaComponent);
                 }
-                //还原边框颜色及宽度
-                setStroke(strokeWidth, normalStrokeColor);
             }
+
+
+            //设置边框颜色及宽度
+            if (normalStrokeColor != Color.TRANSPARENT) {
+                if (clickStrokeColor == Color.TRANSPARENT) {
+                    int alphaComponent = ColorUtils.setAlphaComponent(normalStrokeColor, clickAlpha);
+                    setStroke(strokeWidth, alphaComponent);
+                } else {
+                    int alphaComponent = ColorUtils.setAlphaComponent(clickStrokeColor, clickAlpha);
+                    setStroke(strokeWidth, alphaComponent);
+                }
+            }
+
+
+        } else {
+            /**
+             * 抬起时
+             */
+            if (startColor == Color.TRANSPARENT && endColor == Color.TRANSPARENT) {
+                //还原填充背景色
+                setColor(normalSolidColor);
+            } else {
+                //还原渐变色
+                setColors(new int[]{startColor, endColor});//设置渐变颜色
+            }
+            //还原边框颜色及宽度
+            setStroke(strokeWidth, normalStrokeColor);
         }
+
     }
 
     /**

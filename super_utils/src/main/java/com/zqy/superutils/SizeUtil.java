@@ -1,4 +1,5 @@
 package com.zqy.superutils;
+
 import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.ViewGroup.LayoutParams;
@@ -46,7 +47,6 @@ public class SizeUtil {
     }
 
     public static void init(Context paramContext) {
-
         DisplayMetrics displayMetrics = paramContext.getResources()
                 .getDisplayMetrics();
         SCREEN_WIDTH = displayMetrics.widthPixels;
@@ -62,17 +62,20 @@ public class SizeUtil {
     }
 
 
-
-
-
-
-
+    /**
+     * 根据字体大小获取合适的长度
+     *
+     * @param paramContext
+     * @param paramInt
+     * @return
+     */
     public static int getTextSize(Context paramContext, int paramInt) {
         return (int) (paramInt * getSCALE_X(paramContext) / DENSITY);
     }
 
     /**
      * 快速双击
+     *
      * @return
      */
     public static boolean isFastDoubleClick() {

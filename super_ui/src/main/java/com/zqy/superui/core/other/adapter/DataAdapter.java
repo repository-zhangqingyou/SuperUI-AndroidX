@@ -34,7 +34,10 @@ public abstract class DataAdapter<T, V extends BaseViewHolder> extends RecyclerV
         this.mList = beanList;
     }
 
-
+    @Override
+    public int getItemCount() {
+        return mList.size();
+    }
     /**
      * 替换所有数据（全部刷新）
      *

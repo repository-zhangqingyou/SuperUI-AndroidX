@@ -1,25 +1,26 @@
-package com.xuexiang.xui.widget.popupwindow.popup;
+package com.zqy.superui.core.widget.popup;
 
 import android.content.Context;
 import android.graphics.Point;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
-import com.xuexiang.xui.R;
 import com.xuexiang.xui.UIConsts;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.widget.popupwindow.popup.XUIBasePopup;
+import com.xuexiang.xui.widget.popupwindow.popup.XUIPopup;
+import com.zqy.superui.R;
 
 /**
- * 提供一个浮层，支持自定义浮层的内容，支持在指定 {@link View} 的任一方向旁边展示该浮层，支持自定义浮层出现/消失的动画。
- *
- * @author xuexiang
- * @since 2019/1/14 下午10:00
+ * 作者: zhangqingyou
+ * 时间: 2020/11/8 16:46
+ * 描述: 提供一个浮层，支持自定义浮层的内容，支持在指定 {@link View} 的任一方向旁边展示该浮层，支持自定义浮层出现/消失的动画。
  */
-public class XUIPopup extends XUIBasePopup {
+public class BaseXUIPopup extends XUIBasePopup {
 
     public static final int ANIM_GROW_FROM_LEFT = 1;
     public static final int ANIM_GROW_FROM_RIGHT = 2;
@@ -62,13 +63,15 @@ public class XUIPopup extends XUIBasePopup {
      * 计算位置后的偏移y值，当浮层在View的下方时使用
      */
     private int mOffsetYWhenBottom = 0;
+    private LinearLayout mLlArrowUp;
+    private LinearLayout mLlArrowDown;
 
-    public XUIPopup(Context context) {
+    public BaseXUIPopup(Context context) {
         this(context, DIRECTION_NONE);
     }
 
 
-    public XUIPopup(Context context, int preferredDirection) {
+    public BaseXUIPopup(Context context, int preferredDirection) {
         super(context);
         mAnimStyle = ANIM_AUTO;
         mPreferredDirection = preferredDirection;
@@ -87,7 +90,7 @@ public class XUIPopup extends XUIBasePopup {
     /**
      * 设置根据计算得到的位置后的偏移值
      */
-    public XUIPopup setPositionOffsetX(int offsetX) {
+    public BaseXUIPopup setPositionOffsetX(int offsetX) {
         mOffsetX = offsetX;
         return this;
     }
@@ -98,7 +101,7 @@ public class XUIPopup extends XUIBasePopup {
      *
      * @param offsetYWhenTop mDirection!=DIRECTION_BOTTOM 时的 offsetY
      */
-    public XUIPopup setPositionOffsetYWhenTop(int offsetYWhenTop) {
+    public BaseXUIPopup setPositionOffsetYWhenTop(int offsetYWhenTop) {
         mOffsetYWhenTop = offsetYWhenTop;
         return this;
     }
@@ -109,7 +112,7 @@ public class XUIPopup extends XUIBasePopup {
      *
      * @param offsetYWhenBottom mDirection==DIRECTION_BOTTOM 时的 offsetY
      */
-    public XUIPopup setPositionOffsetYWhenBottom(int offsetYWhenBottom) {
+    public BaseXUIPopup setPositionOffsetYWhenBottom(int offsetYWhenBottom) {
         mOffsetYWhenBottom = offsetYWhenBottom;
         return this;
     }
@@ -120,7 +123,7 @@ public class XUIPopup extends XUIBasePopup {
      * @param preferredDirection
      * @return
      */
-    public XUIPopup setPreferredDirection(int preferredDirection) {
+    public BaseXUIPopup setPreferredDirection(int preferredDirection) {
         mPreferredDirection = preferredDirection;
         return this;
     }
@@ -250,11 +253,11 @@ public class XUIPopup extends XUIBasePopup {
                 break;
         }
 
-        if (showArrow != null) {
-            final int arrowWidth = mArrowUp.getMeasuredWidth();
-            ViewGroup.MarginLayoutParams param = (ViewGroup.MarginLayoutParams) showArrow.getLayoutParams();
-            param.leftMargin = mArrowCenter - mX - arrowWidth / 2;
-        }
+//        if (showArrow != null) {
+//            final int arrowWidth = mArrowUp.getMeasuredWidth();
+//            ViewGroup.MarginLayoutParams param = (ViewGroup.MarginLayoutParams) showArrow.getLayoutParams();
+//            param.leftMargin = mArrowCenter - mX - arrowWidth / 2;
+//        }
     }
 
     /**
@@ -266,17 +269,21 @@ public class XUIPopup extends XUIBasePopup {
         mAnimStyle = animStyle;
     }
 
-    private FrameLayout contentView;
+    private LinearLayout contentView;
     private FrameLayout container;//容器
 
     @Override
     public void setContentView(View root) {
-        contentView = (FrameLayout) LayoutInflater.from(getContext()).inflate(R.layout.xui_layout_popup, null, false);
+        contentView = (LinearLayout) LayoutInflater.from(getContext()).inflate(R.layout.superui_xui_layout_popup, null, false);
+        mLlArrowUp = contentView.findViewById(R.id.ll_ArrowUp);
+        mLlArrowDown = contentView.findViewById(R.id.ll_ArrowDown);
         mArrowDown = contentView.findViewById(R.id.arrow_down);
         mArrowUp = contentView.findViewById(R.id.arrow_up);
         container = contentView.findViewById(R.id.box);
+
         container.addView(root);
         super.setContentView(contentView);
+
     }
 
     /**
@@ -284,7 +291,7 @@ public class XUIPopup extends XUIBasePopup {
      *
      * @return
      */
-    public FrameLayout getContentView() {
+    public LinearLayout getContentView() {
         return contentView;
     }
 
@@ -295,6 +302,24 @@ public class XUIPopup extends XUIBasePopup {
      */
     public FrameLayout getContainer() {
         return container;
+    }
+
+    /**
+     * 向上的箭头ImageView的父布局
+     *
+     * @return
+     */
+    public LinearLayout getLlArrowUp() {
+        return mLlArrowUp;
+    }
+
+    /**
+     * 向下的箭头ImageView的父布局
+     *
+     * @return
+     */
+    public LinearLayout getLlArrowDown() {
+        return mLlArrowDown;
     }
 
     /**
@@ -320,7 +345,7 @@ public class XUIPopup extends XUIBasePopup {
      *
      * @return
      */
-    public void setArrowUpLayoutParams(FrameLayout.LayoutParams layoutParams) {
+    public void setArrowUpLayoutParams(LinearLayout.LayoutParams layoutParams) {
         mArrowUp.setLayoutParams(layoutParams);
     }
 
@@ -329,7 +354,7 @@ public class XUIPopup extends XUIBasePopup {
      *
      * @return
      */
-    public void setArrowDownLayoutParams(FrameLayout.LayoutParams layoutParams) {
+    public void setArrowDownLayoutParams(LinearLayout.LayoutParams layoutParams) {
         mArrowDown.setLayoutParams(layoutParams);
     }
 
@@ -339,9 +364,6 @@ public class XUIPopup extends XUIBasePopup {
         }
     }
 
-//    public ViewGroup.LayoutParams generateLayoutParam(int width, int height) {
-//        return new FrameLayout.LayoutParams(width, height);
-//    }
 
     /**
      * 向下显示
@@ -386,3 +408,4 @@ public class XUIPopup extends XUIBasePopup {
     }
 
 }
+

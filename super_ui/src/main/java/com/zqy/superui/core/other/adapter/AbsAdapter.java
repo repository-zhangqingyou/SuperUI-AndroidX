@@ -1,10 +1,8 @@
 package com.zqy.superui.core.other.adapter;
 
 import android.util.Log;
-import android.view.View;
 
 import com.zqy.superui.core.other.adapter.impl.AdapterImpl;
-import com.zqy.superui.core.other.adapter.impl.ItemListener;
 import com.zqy.superui.core.other.adapter.viewholder.BaseViewHolder;
 
 import java.util.List;
@@ -17,9 +15,7 @@ import java.util.List;
  * Des:
  */
 public abstract class AbsAdapter<T, V extends BaseViewHolder> extends DataAdapter<T, V> implements AdapterImpl<T, V> {
-    private ItemListener.OnItemClickListener mOnItemClickListener;
-    private ItemListener.OnItemLongClickListener mOnItemLongClickListener;
-    private ItemListener.OnItemViewClickListener onItemViewClickListener;
+
 
     public AbsAdapter() {
         super();
@@ -31,6 +27,15 @@ public abstract class AbsAdapter<T, V extends BaseViewHolder> extends DataAdapte
     }
 
 
+    /**
+     * 获取当前加载的那个布局
+     *
+     * @param
+     * @return
+     */
+    public int getLayoutId(BaseViewHolder viewHolder) {
+        return viewHolder.getLayoutId();
+    }
     /**
      * 共享Item。其实RecycledViewPool的内部维护了一个Map，
      * <p>
@@ -71,55 +76,6 @@ public abstract class AbsAdapter<T, V extends BaseViewHolder> extends DataAdapte
         return 0;
     }
 
-
-    public void setOnItemClickListener(ItemListener.OnItemClickListener onItemClickListener) {
-        this.mOnItemClickListener = onItemClickListener;
-    }
-
-    public void setOnItemLongClickListener(ItemListener.OnItemLongClickListener onItemLongClickListener) {
-        this.mOnItemLongClickListener = onItemLongClickListener;
-    }
-
-    public void setOnItemViewClickListener(ItemListener.OnItemViewClickListener onItemViewClickListener) {
-        this.onItemViewClickListener = onItemViewClickListener;
-    }
-
-    public ItemListener.OnItemClickListener getOnItemClickListener() {
-        return mOnItemClickListener;
-    }
-
-    public ItemListener.OnItemLongClickListener getOnItemLongClickListener() {
-        return mOnItemLongClickListener;
-    }
-
-    public ItemListener.OnItemViewClickListener getOnItemViewClickListener() {
-        return onItemViewClickListener;
-    }
-
-    /**
-     * 注册item点击、长按事件
-     *
-     * @param holder
-     * @param position
-     */
-    public void onBindItemClickListener(final V holder, final int position) {
-        if (mOnItemClickListener != null)
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mOnItemClickListener.onItemClick(view, getDataList().get(position), position);
-                }
-            });
-
-        if (mOnItemLongClickListener != null)
-            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    mOnItemLongClickListener.onItemLongClick(v, getDataList().get(position), position);
-                    return true;
-                }
-            });
-    }
 
 
 }

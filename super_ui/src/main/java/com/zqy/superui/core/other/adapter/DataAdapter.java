@@ -1,8 +1,11 @@
 package com.zqy.superui.core.other.adapter;
 
 
+import android.view.View;
+
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.zqy.superui.core.other.adapter.impl.ItemListener;
 import com.zqy.superui.core.other.adapter.viewholder.BaseViewHolder;
 
 import java.util.ArrayList;
@@ -18,6 +21,9 @@ import java.util.List;
 public abstract class DataAdapter<T, V extends BaseViewHolder> extends RecyclerView.Adapter<V> {
     public String TAG = getClass().getSimpleName();
     private List<T> mList;
+    private ItemListener.OnItemClickListener mOnItemClickListener;
+    private ItemListener.OnItemLongClickListener mOnItemLongClickListener;
+    private ItemListener.OnItemViewClickListener onItemViewClickListener;
 
     public DataAdapter() {
         this(new ArrayList<T>());
@@ -30,15 +36,14 @@ public abstract class DataAdapter<T, V extends BaseViewHolder> extends RecyclerV
 
 
     /**
-     * 获取当前加载的那个布局
+     * 替换所有数据（全部刷新）
      *
-     * @param
-     * @return
+     * @param data
      */
-    public int getLayoutId(BaseViewHolder viewHolder) {
-        return viewHolder.getLayoutId();
+    public void replaceAll(List<T> data) {
+        mList.clear();
+        addAllNotifyAll(0, data);
     }
-
 
     /**
      * 添加数据集到列表头部 (全部刷新)
@@ -144,15 +149,7 @@ public abstract class DataAdapter<T, V extends BaseViewHolder> extends RecyclerV
 
     }
 
-    /**
-     * 替换所有数据（全部刷新）
-     *
-     * @param data
-     */
-    public void replaceAll(List<T> data) {
-        mList.clear();
-        addAllNotifyAll(0, data);
-    }
+
 
 
     /**
@@ -329,4 +326,53 @@ public abstract class DataAdapter<T, V extends BaseViewHolder> extends RecyclerV
     }
 
 
+
+    public void setOnItemClickListener(ItemListener.OnItemClickListener onItemClickListener) {
+        this.mOnItemClickListener = onItemClickListener;
+    }
+
+    public void setOnItemLongClickListener(ItemListener.OnItemLongClickListener onItemLongClickListener) {
+        this.mOnItemLongClickListener = onItemLongClickListener;
+    }
+
+    public void setOnItemViewClickListener(ItemListener.OnItemViewClickListener onItemViewClickListener) {
+        this.onItemViewClickListener = onItemViewClickListener;
+    }
+
+    public ItemListener.OnItemClickListener getOnItemClickListener() {
+        return mOnItemClickListener;
+    }
+
+    public ItemListener.OnItemLongClickListener getOnItemLongClickListener() {
+        return mOnItemLongClickListener;
+    }
+
+    public ItemListener.OnItemViewClickListener getOnItemViewClickListener() {
+        return onItemViewClickListener;
+    }
+
+    /**
+     * 注册item点击、长按事件
+     *
+     * @param holder
+     * @param position
+     */
+    public void onBindItemClickListener(final V holder, final int position) {
+        if (mOnItemClickListener != null)
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mOnItemClickListener.onItemClick(view, getDataList().get(position), position);
+                }
+            });
+
+        if (mOnItemLongClickListener != null)
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    mOnItemLongClickListener.onItemLongClick(v, getDataList().get(position), position);
+                    return true;
+                }
+            });
+    }
 }

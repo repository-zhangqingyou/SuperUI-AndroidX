@@ -191,6 +191,9 @@ public class SuperGradientDrawable extends GradientDrawable {
      * @param clickSolidColor  点击（按下）填充颜色
      */
     public SuperGradientDrawable setSolidColorState(@ColorInt int normalSolidColor, @ColorInt int clickSolidColor) {
+        this.startColor =  Color.TRANSPARENT;//渐变开始颜色
+        this.endColor =  Color.TRANSPARENT;//渐变结束颜色
+        //设置填充色之前必须将渐变色去掉
         this.normalSolidColor = normalSolidColor;
         this.clickSolidColor = clickSolidColor;
         return this;

@@ -191,6 +191,11 @@ public class SuperConstraintLayout extends ConstraintLayout implements DrawableI
         // superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
     }
 
+    @Override
+    public void setSolidColorState(int normalSolidColor) {
+        setSolidColorState(normalSolidColor,normalSolidColor);
+    }
+
     /**
      * 设置填充颜色
      *
@@ -201,6 +206,11 @@ public class SuperConstraintLayout extends ConstraintLayout implements DrawableI
     public void setSolidColorState(@ColorInt int normalSolidColor, @ColorInt int clickSolidColor) {
         superGradientDrawable.setSolidColorState(normalSolidColor, clickSolidColor);
         superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
+    }
+
+    @Override
+    public void setStrokeColorState(int strokeWidth, int normalStrokeColor) {
+        setStrokeColorState(strokeWidth, normalStrokeColor, normalStrokeColor);
     }
 
     /**
@@ -214,6 +224,11 @@ public class SuperConstraintLayout extends ConstraintLayout implements DrawableI
     public void setStrokeColorState(int strokeWidth, @ColorInt int normalStrokeColor, @ColorInt int clickStrokeColor) {
         superGradientDrawable.setStrokeColorState(strokeWidth, normalStrokeColor, clickStrokeColor);
         superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
+    }
+
+    @Override
+    public void setGradient(int starColor, int endColor) {
+        setGradient(starColor, starColor, Gradient.LINEAR_GRADIENT, GradientDrawable.Orientation.LEFT_RIGHT);
     }
 
 
@@ -233,6 +248,11 @@ public class SuperConstraintLayout extends ConstraintLayout implements DrawableI
     public void setGradient(@ColorInt int starColor, @ColorInt int endColor, Gradient gradient, GradientDrawable.Orientation orientation) {
         superGradientDrawable.setGradient(starColor, endColor, gradient, orientation);
         superGradientDrawable.setPressed(false);//true：按下时，false:抬起时(正常时)
+    }
+
+    @Override
+    public void setTextColorState(int normalTextColor) {
+        setTextColorState(normalTextColor,normalTextColor);
     }
 
     /**

@@ -30,6 +30,22 @@ public class FragmentStatePageAdapter extends FragmentStatePagerAdapter {
         this.mFragments = mFragments;
     }
 
+    public void setTitles(List<String> mTitles) {
+        this.mTitles = mTitles;
+    }
+
+    public void setFragments(List<Fragment> mFragments) {
+        this.mFragments = mFragments;
+    }
+
+    public void addFragments(List<Fragment> mFragments) {
+        if (this.mFragments == null) {
+            this.mFragments = mFragments;
+        } else {
+            this.mFragments.addAll(mFragments);
+        }
+
+    }
 
     public void setDestroyItem(boolean destroyItem) {
         isDestroyItem = destroyItem;

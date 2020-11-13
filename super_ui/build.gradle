@@ -119,7 +119,7 @@ publish {
     repoName = 'Android' // bintray 仓库名
     groupId = 'com.bintray.zhangqingyou' // 依赖的路径
     artifactId = 'super_ui' // 依赖的名称
-    publishVersion = "1.0.57" // 依赖的版本号
+    publishVersion = "1.0.58" // 依赖的版本号
     desc = '常用UI' // 描述
     website = 'https://gitee.com/zqycl/' // 项目网站，可填写 github 地址
     dryRun = false // true-仅运行  false-运行+上传

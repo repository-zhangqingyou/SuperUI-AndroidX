@@ -273,7 +273,7 @@ public class SuperStateListDrawable extends GradientDrawable {
         //设置圆角
         setCornerRadii(topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius);
         //设置按钮的描边粗细和颜色
-        setStroke(normalStrokeColor, strokeWidth);
+        setStroke(strokeWidth, normalStrokeColor);
         return this;
     }
 

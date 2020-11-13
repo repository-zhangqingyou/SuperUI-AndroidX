@@ -6,7 +6,7 @@
     android:background="@color/superui_black_light"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="20dp">
+    >
 
 
     <ImageView

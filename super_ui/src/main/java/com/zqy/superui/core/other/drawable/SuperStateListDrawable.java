@@ -13,6 +13,7 @@ import androidx.annotation.FloatRange;
 
 import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.ConvertUtils;
+import com.blankj.utilcode.util.SizeUtils;
 import com.zqy.superui.core.enums.Gradient;
 
 
@@ -176,7 +177,7 @@ public class SuperStateListDrawable extends GradientDrawable {
      * @param clickStrokeColor  点击（按下）边框颜色
      */
     public SuperStateListDrawable setStrokeColorState(int strokeWidth, @ColorInt int normalStrokeColor, @ColorInt int clickStrokeColor) {
-        this.strokeWidth = strokeWidth;//边框宽度
+        this.strokeWidth = SizeUtils.dp2px(strokeWidth);//边框宽度
         this.normalStrokeColor = normalStrokeColor;//边框颜色
         this.clickStrokeColor = clickStrokeColor;
         return this;

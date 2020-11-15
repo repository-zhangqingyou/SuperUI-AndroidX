@@ -2,8 +2,8 @@ package com.zqy.superui;
 
 import android.app.Application;
 
-import com.weavey.loading.lib.LoadingLayout;
 import com.xuexiang.xui.XUI;
+import com.zqy.superui.loadinglayout.LoadingLayout;
 
 /**
  * Author: zhangqingyou
@@ -33,7 +33,7 @@ public class SuperUIManage {
                 .setReloadButtonText("点我重试哦")
                 .setReloadButtonTextSize(16)
                 //.setReloadButtonTextColor(R.color.bui_black_light)
-                .setReloadButtonWidthAndHeight(150, 40);
+                .setReloadButtonWH(150, 40);
 
         //设置默认字体为华文行楷，这里写你的字体库
         //  XUI.getInstance().initFontStyle("fonts/hwxk.ttf");

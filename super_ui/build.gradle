@@ -46,7 +46,7 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api fileTree(dir: 'libs', include: ['*.aar'])
     api group: "androidx.appcompat", name: "appcompat", version: "$versions.appcompat_version"
-//对应appcompat-v7
+   //对应appcompat-v7
     api group: "androidx.constraintlayout", name: "constraintlayout", version: "$versions.constraintlayout_version"
     api "com.google.android.material:material:$versions.material_version"//对应support:design
     api "androidx.legacy:legacy-support-v4:$versions.androidx_v4_version"//对应support:support-v4
@@ -54,9 +54,7 @@ dependencies {
     //
     implementation project(path: ':super_utils')
     implementation project(path: ':xui_lib_1.1.5')   //androidx项目
-//    api('com.github.xuexiangjys:XUI:1.1.5') {
-//        exclude group: 'androidx.appcompat'
-//    }
+
 
     //AgentWeb 是一个基于的 Android WebView ，极度容易使用以及功能强大的库
     api 'com.just.agentweb:agentweb-androidx:4.1.4' // (必选)
@@ -71,8 +69,6 @@ dependencies {
     api 'com.scwang.smart:refresh-header-two-level:2.0.1'   //二级刷新头
     api 'com.scwang.smart:refresh-footer-ball:2.0.1'        //球脉冲加载
     api 'com.scwang.smart:refresh-footer-classics:2.0.1'    //经典加载
-    //继承FrameLayout，在xml渲染完成后，加上加载中、无网络、无数据、出错四个页面，根据需要控制显示哪一层
-    api('com.lai.weavey:loadinglayout:1.3.1')
     //Android界最万能的TabLayout(不仅仅是TabLayout), 支持任意类型的item, 支持Drawable类型的指示器,智能开启滚动等
     api 'com.github.angcyo.DslTablayout:TabLayout:1.6.1'
     api 'com.github.angcyo.DslTablayout:ViewPager1Delegate:1.6.1'  //可选
@@ -119,7 +115,7 @@ publish {
     repoName = 'Android' // bintray 仓库名
     groupId = 'com.bintray.zhangqingyou' // 依赖的路径
     artifactId = 'super_ui' // 依赖的名称
-    publishVersion = "1.0.59" // 依赖的版本号
+    publishVersion = "1.0.61" // 依赖的版本号
     desc = '常用UI' // 描述
     website = 'https://gitee.com/zqycl/' // 项目网站，可填写 github 地址
     dryRun = false // true-仅运行  false-运行+上传

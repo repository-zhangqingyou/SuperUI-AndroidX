@@ -597,11 +597,11 @@ public class LoadingLayout extends FrameLayout {
         errorText.setLayoutParams(layoutParams_errorText);
 
         LinearLayout.LayoutParams layoutParams_emptyText = (LinearLayout.LayoutParams) emptyText.getLayoutParams();
-        layoutParams_errorText.topMargin = i;
+        layoutParams_emptyText.topMargin = i;
         emptyText.setLayoutParams(layoutParams_emptyText);
 
         LinearLayout.LayoutParams layoutParams_networkText = (LinearLayout.LayoutParams) networkText.getLayoutParams();
-        layoutParams_errorText.topMargin = i;
+        layoutParams_networkText.topMargin = i;
         networkText.setLayoutParams(layoutParams_networkText);
     }
 

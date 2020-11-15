@@ -80,7 +80,7 @@ public class LoadingLayout extends FrameLayout {
     private static int emptyImgHeight = ViewGroup.LayoutParams.WRAP_CONTENT;
     private static int networkImgWidth = ViewGroup.LayoutParams.WRAP_CONTENT;
     private static int networkImgHeight = ViewGroup.LayoutParams.WRAP_CONTENT;
-    private static int marginTop_dp = SizeUtils.dp2px(10);
+    private static int marginTop_dp = 10;
     private static int loadingLayoutId = R.layout.widget_loading_page;
     private static int backgroundColor = R.color.base_loading_background;
 
@@ -591,16 +591,17 @@ public class LoadingLayout extends FrameLayout {
      * @return
      */
     public void setTextMarginTop(int marginTop) {
+        int i = marginTop > 0 ? SizeUtils.dp2px(marginTop) : marginTop;
         LinearLayout.LayoutParams layoutParams_errorText = (LinearLayout.LayoutParams) errorText.getLayoutParams();
-        layoutParams_errorText.topMargin = marginTop;
+        layoutParams_errorText.topMargin = i;
         errorText.setLayoutParams(layoutParams_errorText);
 
         LinearLayout.LayoutParams layoutParams_emptyText = (LinearLayout.LayoutParams) emptyText.getLayoutParams();
-        layoutParams_errorText.topMargin = marginTop;
+        layoutParams_errorText.topMargin = i;
         emptyText.setLayoutParams(layoutParams_emptyText);
 
         LinearLayout.LayoutParams layoutParams_networkText = (LinearLayout.LayoutParams) networkText.getLayoutParams();
-        layoutParams_errorText.topMargin = marginTop;
+        layoutParams_errorText.topMargin = i;
         networkText.setLayoutParams(layoutParams_networkText);
     }
 

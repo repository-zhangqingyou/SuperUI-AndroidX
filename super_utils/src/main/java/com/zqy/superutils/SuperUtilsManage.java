@@ -18,8 +18,6 @@ import com.tencent.bugly.beta.interfaces.BetaPatchListener;
 
 import java.util.Locale;
 
-import io.realm.Realm;
-
 
 /**
  * 工具类
@@ -35,7 +33,7 @@ public class SuperUtilsManage {
     public static void init(Application application) {
         SuperUtilsManage.application = application;
         Utils.init(application);//初始化android工具类
-        Realm.init(application);//realm数据库
+       // Realm.init(application);//realm数据库
         if (TextUtils.isEmpty(logTag)) {
             Logger.init("日志");
         }

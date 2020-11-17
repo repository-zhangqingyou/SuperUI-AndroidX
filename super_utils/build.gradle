@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'realm-android'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.novoda.bintray-release'
 android {
@@ -41,7 +40,8 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$versions.glide"
     //svg动画
     api 'com.eftimoff:android-pathview:1.0.8@aar'
-    
+
+
     //集成全量更新和热更新一体的平台  注意： 升级SDK已经集成crash上报功能，已经集成Bugly的用户需要注释掉原来Bugly的jcenter库
     api 'com.tencent.bugly:crashreport_upgrade:1.4.5'
     //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
@@ -60,7 +60,7 @@ publish {
     repoName = 'Android' // bintray 仓库名
     groupId = 'com.bintray.zhangqingyou' // 依赖的路径
     artifactId = 'super_utils' // 依赖的名称
-    publishVersion = "1.0.42" // 依赖的版本号
+    publishVersion = "1.0.44" // 依赖的版本号
     desc = '常用工具' // 描述
     website = 'https://gitee.com/zqycl/' // 项目网站，可填写 github 地址
     dryRun = false // true-仅运行  false-运行+上传

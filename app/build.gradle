@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'realm-android'
 
 def time = "${new Date().format("yyyyMMdd")}"//
 def codename = "1"//当日迭代号

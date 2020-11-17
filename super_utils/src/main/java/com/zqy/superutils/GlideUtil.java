@@ -11,6 +11,8 @@ import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.signature.ObjectKey;
 
+import java.io.File;
+
 /**
  * 加载图片工具类
  * Author: zhangqingyou
@@ -33,7 +35,7 @@ public class GlideUtil {
      * @param isplaceholder 是否加载占位图
      */
     public static void loadImg(ImageView imageView, Object imageUrl, boolean isplaceholder) {
-    loadImg(imageView, imageUrl, isplaceholder, new ColorDrawable(Color.parseColor("#F4F5F7")), new ColorDrawable(Color.parseColor("#E8E8E8")));
+        loadImg(imageView, imageUrl, isplaceholder, new ColorDrawable(Color.parseColor("#F4F5F7")), new ColorDrawable(Color.parseColor("#E8E8E8")));
     }
 
     /**
@@ -44,8 +46,14 @@ public class GlideUtil {
      * @param failureImg    加载失败占位图
      */
     public static void loadImg(ImageView imageView, Object imageUrl, boolean isplaceholder, Drawable loadImg, Drawable failureImg) {
-        RequestBuilder<Drawable> objectDrawableRequestBuilder = Glide.with(SuperUtilsManage.getApplication())
-                .load(imageUrl);
+        RequestBuilder<Drawable> objectDrawableRequestBuilder;
+        if (imageUrl instanceof File) {
+            objectDrawableRequestBuilder = Glide.with(SuperUtilsManage.getApplication())
+                    .load((File) imageUrl);
+        } else {
+            objectDrawableRequestBuilder = Glide.with(SuperUtilsManage.getApplication())
+                    .load(imageUrl);
+        }
         RequestOptions requestOptions = new RequestOptions();
         // requestOptions.bitmapTransform(new RoundedCorners(roundingRadius));//设置图片圆角
         requestOptions.fitCenter();//比例填充

@@ -63,7 +63,7 @@ public class XUIListPopup<T extends XUIListPopup> extends XUIPopup {
      * @param maxHeight 弹窗最大的高度
      * @return
      */
-    protected T create(int width, int maxHeight) {
+    public T create(int width, int maxHeight) {
         int margin = DensityUtils.dp2px(getContext(), 5);
         if (maxHeight != 0) {
             mListView = new XUIWrapContentListView(getContext(), maxHeight);
@@ -91,7 +91,7 @@ public class XUIListPopup<T extends XUIListPopup> extends XUIPopup {
      * @param width 弹窗的宽度
      * @return
      */
-    protected T create(int width) {
+    public T create(int width) {
         return create(width, 0);
     }
 

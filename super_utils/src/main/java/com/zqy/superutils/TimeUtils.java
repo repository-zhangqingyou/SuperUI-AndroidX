@@ -3,6 +3,7 @@ package com.zqy.superutils;
 import android.util.Log;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * 作者: zhangqingyou
@@ -62,11 +63,32 @@ public class TimeUtils {
         return calendar.get(Calendar.YEAR) == (thisyearCalender.get(Calendar.YEAR));
     }
 
+    /**
+     * 格式化播放时间
+     *
+     * @param seconds 秒数
+     *                时间＜1小时显示分秒，显示样式 00:20
+     *                时间 ≥1小时显示时分秒，显示样式 01:11:12
+     */
+    public static String formatSeconds(long seconds) {
+        String standardTime;
+        if (seconds <= 0) {
+            standardTime = "00:00";
+        } else if (seconds < 60) {
+            standardTime = String.format(Locale.getDefault(), "00:%02d", seconds % 60);
+        } else if (seconds < 3600) {
+            standardTime = String.format(Locale.getDefault(), "%02d:%02d", seconds / 60, seconds % 60);
+        } else {
+            standardTime = String.format(Locale.getDefault(), "%02d:%02d:%02d", seconds / 3600, seconds % 3600 / 60, seconds % 60);
+        }
+        return standardTime;
+    }
+
 
     /**
      * 获取格式化时间
      *
-     * @param timeStamp 单位 毫秒
+     * @param timeStamp 时间戳 单位 毫秒
      * @return
      */
     public static String formatTaime(Long timeStamp) {

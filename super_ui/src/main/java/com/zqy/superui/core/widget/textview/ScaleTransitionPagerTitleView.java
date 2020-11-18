@@ -1,6 +1,7 @@
 package com.zqy.superui.core.widget.textview;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.text.TextUtils;
 import android.view.Gravity;
 
@@ -14,6 +15,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorT
  */
 public class ScaleTransitionPagerTitleView extends ColorTransitionPagerTitleView {
     private float mMinScale = 0.75f;
+    private boolean isBold;//选中是否加粗
 
     public ScaleTransitionPagerTitleView(Context context) {
         super(context);
@@ -38,6 +40,28 @@ public class ScaleTransitionPagerTitleView extends ColorTransitionPagerTitleView
         setPadding(padding, 0, padding, 0);
         setSingleLine();
         setEllipsize(TextUtils.TruncateAt.END);
+    }
+
+    /**
+     * 设置选中是否加粗
+     *
+     * @param isBold
+     */
+    public void setSelectedBold(boolean isBold) {
+        //  mTvTextBar.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));//加粗
+        this.isBold = isBold;
+    }
+
+    @Override
+    public void onSelected(int index, int totalCount) {
+        setTextColor(mSelectedColor);
+        if (isBold) setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));//加粗
+    }
+
+    @Override
+    public void onDeselected(int index, int totalCount) {
+        setTextColor(mNormalColor);
+        if (isBold) setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));//取消加粗
     }
 
     @Override

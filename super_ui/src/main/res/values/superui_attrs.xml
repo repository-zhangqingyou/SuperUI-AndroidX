@@ -356,5 +356,20 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="SuperRoundImageView">
+        <attr name="zqy_is_circle" format="boolean" />
+        <attr name="zqy_is_cover_src" format="boolean" />
+        <attr name="zqy_corner_radius" format="dimension" />
+        <attr name="zqy_corner_top_left_radius" format="dimension" />
+        <attr name="zqy_corner_top_right_radius" format="dimension" />
+        <attr name="zqy_corner_bottom_left_radius" format="dimension" />
+        <attr name="zqy_corner_bottom_right_radius" format="dimension" />
+        <attr name="zqy_border_width" format="dimension" />
+        <attr name="zqy_border_color" format="color" />
+        <attr name="zqy_inner_border_width" format="dimension" />
+        <attr name="zqy_inner_border_color" format="color" />
+        <attr name="zqy_mask_color" format="color" />
+    </declare-styleable>
+
 </resources>
 

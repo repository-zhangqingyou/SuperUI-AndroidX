@@ -73,3 +73,7 @@
 @android.support.annotation.Keep <fields>;
 @android.support.annotation.Keep <methods>;
 }
+
+ #svg
+-keep class com.squareup.wire.** { *; }
+-keep class com.opensource.svgaplayer.proto.** { *; }

@@ -9,6 +9,7 @@ import com.blankj.utilcode.util.Utils;
 import com.bun.miitmdid.core.MdidSdkHelper;
 import com.bun.miitmdid.interfaces.IIdentifierListener;
 import com.bun.miitmdid.interfaces.IdSupplier;
+import com.opensource.svgaplayer.SVGAParser;
 import com.orhanobut.logger.Logger;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
@@ -33,11 +34,11 @@ public class SuperUtilsManage {
     public static void init(Application application) {
         SuperUtilsManage.application = application;
         Utils.init(application);//初始化android工具类
-       // Realm.init(application);//realm数据库
+        // Realm.init(application);//realm数据库
         if (TextUtils.isEmpty(logTag)) {
             Logger.init("日志");
         }
-
+        SVGAParser.Companion.shareParser().init(getApplication());
         MdidSdkHelper.InitSdk(application, true, new IIdentifierListener() {
             @Override
             public void OnSupport(boolean b, IdSupplier idSupplier) {

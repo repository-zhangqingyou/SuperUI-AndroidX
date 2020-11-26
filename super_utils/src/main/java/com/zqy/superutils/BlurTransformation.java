@@ -55,7 +55,7 @@ public class BlurTransformation extends BitmapTransformation {
     /**
      * @param context   上下文对象
      * @param image     需要模糊的图片
-     * @param outWidth  输入出的宽度
+     * @param outWidth  输出的宽度
      * @param outHeight 输出的高度
      * @return 模糊处理后的Bitmap
      */

@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -64,7 +65,9 @@ public abstract class BasePopup extends PopupWindow {
         rootView.setGravity(Gravity.CENTER);
         rootView.setOrientation(LinearLayout.VERTICAL);
         if (getLayout() instanceof Integer) {
-            rootView.addView(childView = View.inflate(activity, (Integer) getLayout(), null));
+            // rootView.addView(childView = View.inflate(activity, (Integer) getLayout(), null));
+            childView = LayoutInflater.from(getActivity()).inflate((Integer) getLayout(), rootView, false);
+            rootView.addView(childView);
         } else if (getLayout() instanceof View) {
             rootView.addView(childView = (View) getLayout());
         }

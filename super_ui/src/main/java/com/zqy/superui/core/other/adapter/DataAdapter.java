@@ -38,6 +38,7 @@ public abstract class DataAdapter<T, V extends BaseViewHolder> extends RecyclerV
     public int getItemCount() {
         return mList.size();
     }
+
     /**
      * 替换所有数据（全部刷新）
      *
@@ -152,8 +153,30 @@ public abstract class DataAdapter<T, V extends BaseViewHolder> extends RecyclerV
 
     }
 
+    /**
+     * 添加数据集合到最后位置(全部刷新)
+     *
+     * @param datas
+     */
 
+    public void addItemToLastNotifyAll(T datas) {
+        if (datas != null) {
+            mList.add(datas);
+            notifyDataSetChanged();
+        }
 
+    }
+
+    /**
+     * 添加数据集合到最后位置(全部刷新)
+     *
+     * @param datas
+     */
+
+    public void addItemToLast(T datas) {
+        addItem(getItemCount(), datas);
+
+    }
 
     /**
      * 添加数据集合到指定位置（全部刷新）
@@ -327,7 +350,6 @@ public abstract class DataAdapter<T, V extends BaseViewHolder> extends RecyclerV
     public List<T> getDataList() {
         return mList;
     }
-
 
 
     public void setOnItemClickListener(ItemListener.OnItemClickListener onItemClickListener) {

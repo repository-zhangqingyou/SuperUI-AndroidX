@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.IntDef;
@@ -375,6 +376,17 @@ public class LoadingLayout extends FrameLayout {
     }
 
     /**
+     * 设置Empty状态提示文本的字体颜色
+     *
+     * @param color
+     * @return
+     */
+    public LoadingLayout setEmptyTextColor(@ColorInt int color) {
+        emptyText.setTextColor(color);
+        return this;
+    }
+
+    /**
      * 设置Error状态提示文本的字体大小，仅对当前所在的地方有效
      *
      * @param sp
@@ -387,6 +399,17 @@ public class LoadingLayout extends FrameLayout {
     }
 
     /**
+     * 设置Error状态提示文本的字体颜色
+     *
+     * @param color
+     * @return
+     */
+    public LoadingLayout setErrorTextColor(@ColorInt int color) {
+        errorText.setTextColor(color);
+        return this;
+    }
+
+    /**
      * 设置No_Network状态提示文本的字体大小，仅对当前所在的地方有效
      *
      * @param sp
@@ -395,6 +418,18 @@ public class LoadingLayout extends FrameLayout {
     public LoadingLayout setNoNetworkTextSize(int sp) {
 
         networkText.setTextSize(sp);
+        return this;
+    }
+
+
+    /**
+     * 设置No_Network状态提示文本的字体颜色
+     *
+     * @param color
+     * @return
+     */
+    public LoadingLayout setNoNetworkTextColor(@ColorInt int color) {
+        networkText.setTextColor(color);
         return this;
     }
 

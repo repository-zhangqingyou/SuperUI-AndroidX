@@ -124,10 +124,7 @@ public class LoadingLayout extends FrameLayout {
         networkPage = LayoutInflater.from(mContext).inflate(R.layout.widget_nonetwork_page, null);
         defineLoadingPage = null;
 
-        loadingPage.setBackgroundColor(ContextCompat.getColor(mContext, backgroundColor));
-        errorPage.setBackgroundColor(ContextCompat.getColor(mContext, backgroundColor));
-        emptyPage.setBackgroundColor(ContextCompat.getColor(mContext, backgroundColor));
-        networkPage.setBackgroundColor(ContextCompat.getColor(mContext, backgroundColor));
+        setStatusBackgroundColor(ContextCompat.getColor(mContext, backgroundColor));
 
         errorText = errorPage.findViewById(R.id.error_text);
         emptyText = emptyPage.findViewById(R.id.empty_text);
@@ -543,6 +540,21 @@ public class LoadingLayout extends FrameLayout {
 
         this.listener = listener;
         return this;
+    }
+
+    /**
+     * 设置所有状态页的背景颜色
+     *
+     * @param color
+     * @return
+     */
+    public LoadingLayout setStatusBackgroundColor(@ColorInt int color) {
+        loadingPage.setBackgroundColor(color);
+        errorPage.setBackgroundColor(color);
+        emptyPage.setBackgroundColor(color);
+        networkPage.setBackgroundColor(color);
+        return this;
+
     }
 
     /**

@@ -11,6 +11,7 @@
     tools:context=".activity.MainActivity">
 
     <com.zqy.superui.core.widget.framelayout.SuperFrameLayout
+        android:id="@+id/superFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:zqy_radius="5dp"

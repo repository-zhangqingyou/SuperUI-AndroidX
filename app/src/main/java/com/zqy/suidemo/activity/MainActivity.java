@@ -14,14 +14,17 @@ import androidx.core.content.ContextCompat;
 import com.zqy.suidemo.R;
 import com.zqy.superui.core.enums.Gradient;
 import com.zqy.superui.core.other.drawable.SuperStateListDrawable;
+import com.zqy.superui.core.widget.framelayout.SuperFrameLayout;
 import com.zqy.superui.core.widget.popup.tips.LoadPopup;
 import com.zqy.superui.core.widget.textview.SuperTextView;
+import com.zqy.superutils.VisibilityAnimationUtil;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private SuperTextView mTvTest;
     private AppCompatTextView mAtvContent;
     private Button mBtTest;
+    private SuperFrameLayout mSuperFrameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAtvContent.setOnClickListener(this);
         mBtTest = findViewById(R.id.bt_test);
         mBtTest.setOnClickListener(this);
+        mSuperFrameLayout = findViewById(R.id.superFrameLayout);
         //  RSAEncrypt.genKeyPair();
 //        String s = RSAEncrypt.encryptPublicKey("123");
 //        String s1 = RSAEncrypt.decryptPrivateKey(s, RSAEncrypt.PRIVATE_KEY);
@@ -62,7 +66,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setRadius(5)
                 .setGradient(Color.WHITE, Color.YELLOW, Gradient.LINEAR_GRADIENT, GradientDrawable.Orientation.LEFT_RIGHT)
                 .buid());
+
     }
+
+    boolean isShow = true;
 
     @Override
     public void onClick(View v) {
@@ -74,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 loadPopup.show(mTvTest);
                 break;
             case R.id.bt_test://原生Button测试
+                VisibilityAnimationUtil.setVisibilityLeft(mSuperFrameLayout, 500, isShow = !isShow);
                 break;
             case R.id.atv_content:
                 break;

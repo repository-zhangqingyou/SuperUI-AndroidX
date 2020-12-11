@@ -9,10 +9,13 @@ import android.view.View;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 /**
- * 垂直滑动水平分割线设置  - LinearLayoutManager
+ * 作者: zhangqingyou
+ * 时间: 2020/12/11 14:27
+ * 描述: GridLayoutManager 专用
  */
-public class GridDividerItemDecoration extends RecyclerView.ItemDecoration  {
+public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
     private int space;
     private int color;
     private Paint mPaint;
@@ -64,21 +67,21 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration  {
         //得到View的位置
         int childPosition = parent.getChildAdapterPosition(view);
         //第一排，顶部不画
-        if (childPosition  < span) {
+        if (childPosition < span) {
             //最左边的，左边不画
-            if (childPosition  % span == 0) {
+            if (childPosition % span == 0) {
                 outRect.set(0, 0, offset, 0);
                 //最右边，右边不画
-            } else if (childPosition  % span == span - 1) {
+            } else if (childPosition % span == span - 1) {
                 outRect.set(offset, 0, 0, 0);
             } else {
                 outRect.set(offset, 0, offset, 0);
             }
         } else {
             //上下的分割线，就从第二排开始，每个区域的顶部直接添加设定大小，不用再均分了
-            if (childPosition  % span == 0) {
+            if (childPosition % span == 0) {
                 outRect.set(0, space, offset, 0);
-            } else if (childPosition  % span == span - 1) {
+            } else if (childPosition % span == span - 1) {
                 outRect.set(offset, space, 0, 0);
             } else {
                 outRect.set(offset, space, offset, 0);

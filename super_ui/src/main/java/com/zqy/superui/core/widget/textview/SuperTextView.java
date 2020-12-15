@@ -238,7 +238,7 @@ public class SuperTextView extends AppCompatTextView implements DrawableImpl {
 
     @Override
     public void setGradient(int starColor, int endColor) {
-        setGradient(starColor, starColor, Gradient.LINEAR_GRADIENT, GradientDrawable.Orientation.LEFT_RIGHT);
+        setGradient(starColor, endColor, Gradient.LINEAR_GRADIENT, GradientDrawable.Orientation.LEFT_RIGHT);
 
     }
 

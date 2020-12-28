@@ -1,5 +1,7 @@
 package com.zqy.superhttp.module;
 
+import android.text.TextUtils;
+
 import java.io.Serializable;
 
 
@@ -9,7 +11,7 @@ import java.io.Serializable;
  * 描述: 通用请求
  */
 
-public class BaseModule implements Serializable {
+public class AbsModule implements Serializable {
 
 
     /**
@@ -19,11 +21,16 @@ public class BaseModule implements Serializable {
      */
 
     private int code;
+    private int Code;
     private String msg;
+    private String Msg;
     private Object data;
 
     public int getCode() {
-        return code;
+        if (code != 0)
+            return code;
+        else
+            return Code;
     }
 
     public void setCode(int code) {
@@ -31,7 +38,10 @@ public class BaseModule implements Serializable {
     }
 
     public String getMsg() {
-        return msg;
+        if (TextUtils.isEmpty(msg))
+            return Msg;
+        else
+            return msg;
     }
 
     public void setMsg(String msg) {

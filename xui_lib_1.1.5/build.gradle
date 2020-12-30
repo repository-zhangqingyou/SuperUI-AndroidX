@@ -28,6 +28,7 @@ dependencies {
     //动态切换字体
     api 'io.github.inflationx:calligraphy3:3.1.1'
     api 'io.github.inflationx:viewpump:2.0.3'
+
 }
 publish {
     bintrayUser = 'zhangqingyou'//用户账号

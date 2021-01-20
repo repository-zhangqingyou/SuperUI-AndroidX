@@ -1,4 +1,4 @@
-package com.zqy.superutils;
+package com.zqy.superutils.glide;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -11,6 +11,7 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.signature.ObjectKey;
+import com.zqy.superutils.SuperUtilsManage;
 
 import java.io.File;
 

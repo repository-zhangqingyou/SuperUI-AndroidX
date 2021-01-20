@@ -16,6 +16,7 @@ import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.beta.download.DownloadListener;
 import com.tencent.bugly.beta.download.DownloadTask;
 import com.tencent.bugly.beta.interfaces.BetaPatchListener;
+import com.zqy.superutils.glide.GlideCacheUtil;
 
 import java.util.Locale;
 

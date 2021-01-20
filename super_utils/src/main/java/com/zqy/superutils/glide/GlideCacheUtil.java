@@ -1,4 +1,4 @@
-package com.zqy.superutils;
+package com.zqy.superutils.glide;
 
 import android.content.Context;
 import android.os.Looper;

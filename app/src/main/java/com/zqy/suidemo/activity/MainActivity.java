@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setGradient(Color.WHITE, Color.YELLOW, Gradient.LINEAR_GRADIENT, GradientDrawable.Orientation.LEFT_RIGHT)
                 .buid());
 
-        mQMUIRadiusImageView2.setScaleType(ImageView.ScaleType.FIT_XY);
+        mQMUIRadiusImageView2.setScaleType(ImageView.ScaleType.CENTER_CROP);
         mQMUIRadiusImageView2.setRadiusAndShadow(SizeUtils.dp2px(5),
                 HIDE_RADIUS_SIDE_BOTTOM, 0, 0);
 

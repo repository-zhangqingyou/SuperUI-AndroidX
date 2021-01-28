@@ -6,11 +6,14 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
+import com.blankj.utilcode.util.SizeUtils;
+import com.qmuiteam.qmui.widget.QMUIRadiusImageView2;
 import com.zqy.suidemo.R;
 import com.zqy.superui.core.enums.Gradient;
 import com.zqy.superui.core.other.drawable.SuperStateListDrawable;
@@ -19,12 +22,15 @@ import com.zqy.superui.core.widget.popup.tips.LoadPopup;
 import com.zqy.superui.core.widget.textview.SuperTextView;
 import com.zqy.superutils.VisibilityAnimationUtil;
 
+import static com.qmuiteam.qmui.layout.IQMUILayout.HIDE_RADIUS_SIDE_BOTTOM;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private SuperTextView mTvTest;
     private AppCompatTextView mAtvContent;
     private Button mBtTest;
     private SuperFrameLayout mSuperFrameLayout;
+    private QMUIRadiusImageView2 mQMUIRadiusImageView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtTest = findViewById(R.id.bt_test);
         mBtTest.setOnClickListener(this);
         mSuperFrameLayout = findViewById(R.id.superFrameLayout);
+        mQMUIRadiusImageView2 = findViewById(R.id.qMUIRadiusImageView2);
+        mQMUIRadiusImageView2.setOnClickListener(this);
         //  RSAEncrypt.genKeyPair();
 //        String s = RSAEncrypt.encryptPublicKey("123");
 //        String s1 = RSAEncrypt.decryptPrivateKey(s, RSAEncrypt.PRIVATE_KEY);
@@ -67,6 +75,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setGradient(Color.WHITE, Color.YELLOW, Gradient.LINEAR_GRADIENT, GradientDrawable.Orientation.LEFT_RIGHT)
                 .buid());
 
+        mQMUIRadiusImageView2.setScaleType(ImageView.ScaleType.FIT_XY);
+        mQMUIRadiusImageView2.setRadiusAndShadow(SizeUtils.dp2px(5),
+                HIDE_RADIUS_SIDE_BOTTOM, 0, 0);
+
+
     }
 
     boolean isShow = true;
@@ -85,6 +98,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.atv_content:
                 break;
+
+            case R.id.qMUIRadiusImageView2:
+                break;
+
+
         }
     }
 

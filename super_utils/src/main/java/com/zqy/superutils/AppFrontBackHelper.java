@@ -45,8 +45,12 @@ public class AppFrontBackHelper {
         return mInstance;
     }
 
-
-    public void setOnAppStatusListener(OnAppStatusListener mOnAppStatusListener) {
+    /**
+     * 可添加多个监听
+     *
+     * @param mOnAppStatusListener
+     */
+    public void addOnAppStatusListener(OnAppStatusListener mOnAppStatusListener) {
         if (mOnAppStatusListener != null)
             listenerList.add(mOnAppStatusListener);
     }

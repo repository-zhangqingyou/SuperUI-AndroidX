@@ -18,7 +18,7 @@ public class CustomNews implements Serializable {
     @Transient
     private static final long serialVersionUID = 1L;
     @Id(autoincrement = true)//主键自动增长
-    private long id;//自定义消息ID
+    private Long id;//自定义消息ID 必须为Long 否则不能自增长
     private String messageId;//自定义消息ID
     private int msgType;//消息类型
     private long msgTime;//消息时间
@@ -47,11 +47,11 @@ public class CustomNews implements Serializable {
     public CustomNews() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

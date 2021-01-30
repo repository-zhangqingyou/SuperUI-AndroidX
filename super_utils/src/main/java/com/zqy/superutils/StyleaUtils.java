@@ -2,6 +2,8 @@ package com.zqy.superutils;
 
 import android.content.Context;
 
+import com.zqy.superutils.manager.SuperUtilsManage;
+
 import java.lang.reflect.Field;
 
 /**

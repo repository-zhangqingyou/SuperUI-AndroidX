@@ -1,6 +1,7 @@
-package com.zqy.superutils;
+package com.zqy.superutils.manager;
 
 import android.app.Application;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -17,6 +18,8 @@ import com.tencent.bugly.beta.download.DownloadListener;
 import com.tencent.bugly.beta.download.DownloadTask;
 import com.tencent.bugly.beta.interfaces.BetaPatchListener;
 import com.zqy.superutils.glide.GlideCacheUtil;
+
+import org.greenrobot.greendao.AbstractDaoSession;
 
 import java.util.Locale;
 
@@ -65,10 +68,11 @@ public class SuperUtilsManage {
     /**
      * 设置缓存配置
      *
-     * @param cacheRootPath 缓存路径
+     * @param cacheRootPath 设置外部存储目录缓存路径（文件夹）
      */
     public static void setCache(String cacheRootPath) {
-        CacheUtil.init(cacheRootPath);
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + cacheRootPath;
+        CacheManager.init(path);
     }
 
     /**
@@ -83,6 +87,7 @@ public class SuperUtilsManage {
 
     /**
      * Bugly配置渠道信息已失效 先初始化Tinker再初始化Bugly
+     * (不使用则不初始化)
      *
      * @param isInitBetaPatch 是否初始化补丁更新
      * @param buglyAppId
@@ -180,5 +185,24 @@ public class SuperUtilsManage {
         }
 
 
+    }
+
+
+    /**
+     * GreenDB数据库初始化 (不使用则不初始化)
+     * 初始化示例：
+     * // 常规SQLite数据库
+     * GreenDaoContext greenDaoContext = new GreenDaoContext(this);//里面有个上下文GreenDaoContext继承了ContextWrapper,里面设置了数据库路径，
+     * // greenDaoContext.setCurrentUserId(userId);
+     * DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(greenDaoContext, AppUtils.getAppName() + "数据库");//
+     * Database db = helper.getWritableDb();
+     * // 数据库db = helper.getEncryptedWritableDb（“encryption-key”）;
+     * DaoSession daoSession = new DaoMaster(db).newSession();
+     * SuperUtilsManage.initGreenDB(daoSession);
+     *
+     * @param daoSession
+     */
+    public static void initGreenDB(AbstractDaoSession daoSession) {
+        GreenDBManager.init(daoSession);
     }
 }

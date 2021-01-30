@@ -1,6 +1,8 @@
 package com.zqy.superutils;
 
 
+import com.zqy.superutils.manager.SuperUtilsManage;
+
 public class ResourcesUtil {
 
     public static int getLayoutId(String paramString) {

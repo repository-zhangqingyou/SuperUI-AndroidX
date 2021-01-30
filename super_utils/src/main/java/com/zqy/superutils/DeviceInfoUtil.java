@@ -11,6 +11,8 @@ import android.util.Log;
 import com.blankj.utilcode.util.DeviceUtils;
 import com.blankj.utilcode.util.PhoneUtils;
 import com.bun.miitmdid.interfaces.IdSupplier;
+import com.zqy.superutils.manager.CacheManager;
+import com.zqy.superutils.manager.SuperUtilsManage;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -36,11 +38,11 @@ public class DeviceInfoUtil {
     public static String getOAID(boolean isReadCache) {
         IdSupplier idSupplier = SuperUtilsManage.getIdSupplier();
         if (isReadCache) {
-            String oaid = CacheUtil.readString(CacheUtil.getDeviceMD5Path(), "OAID");
+            String oaid = CacheManager.readString(CacheManager.getDeviceMD5Path(), "OAID");
             if (TextUtils.isEmpty(oaid)) {
                 if (idSupplier != null) {
                     oaid = idSupplier.getOAID();
-                    CacheUtil.writeString(CacheUtil.getDeviceMD5Path(), "OAID", oaid);
+                    CacheManager.writeString(CacheManager.getDeviceMD5Path(), "OAID", oaid);
                 }
 
             }
@@ -60,11 +62,11 @@ public class DeviceInfoUtil {
     public static String getAAID(boolean isReadCache) {
         IdSupplier idSupplier = SuperUtilsManage.getIdSupplier();
         if (isReadCache) {
-            String aaid = CacheUtil.readString(CacheUtil.getDeviceMD5Path(), "AAID");
+            String aaid = CacheManager.readString(CacheManager.getDeviceMD5Path(), "AAID");
             if (TextUtils.isEmpty(aaid)) {
                 if (idSupplier != null) {
                     aaid = idSupplier.getAAID();
-                    CacheUtil.writeString(CacheUtil.getDeviceMD5Path(), "AAID", aaid);
+                    CacheManager.writeString(CacheManager.getDeviceMD5Path(), "AAID", aaid);
                 }
 
             }
@@ -84,11 +86,11 @@ public class DeviceInfoUtil {
     public static String getVAID(boolean isReadCache) {
         IdSupplier idSupplier = SuperUtilsManage.getIdSupplier();
         if (isReadCache) {
-            String vaid = CacheUtil.readString(CacheUtil.getDeviceMD5Path(), "VAID");
+            String vaid = CacheManager.readString(CacheManager.getDeviceMD5Path(), "VAID");
             if (TextUtils.isEmpty(vaid)) {
                 if (idSupplier != null) {
                     vaid = idSupplier.getVAID();
-                    CacheUtil.writeString(CacheUtil.getDeviceMD5Path(), "VAID", vaid);
+                    CacheManager.writeString(CacheManager.getDeviceMD5Path(), "VAID", vaid);
                 }
 
             }
@@ -126,10 +128,10 @@ public class DeviceInfoUtil {
     @SuppressLint("MissingPermission")
     public static String getImei(boolean isReadCache) {
         if (isReadCache) {
-            String imei = CacheUtil.readString(CacheUtil.getDeviceMD5Path(), "单个IMEI");
+            String imei = CacheManager.readString(CacheManager.getDeviceMD5Path(), "单个IMEI");
             if (TextUtils.isEmpty(imei)) {
                 imei = PhoneUtils.getIMEI();
-                CacheUtil.writeString(CacheUtil.getDeviceMD5Path(), "单个IMEI", imei);
+                CacheManager.writeString(CacheManager.getDeviceMD5Path(), "单个IMEI", imei);
             }
             return imei;
         }
@@ -146,10 +148,10 @@ public class DeviceInfoUtil {
     @SuppressLint("MissingPermission")
     public static String getImeiArray(boolean isReadCache) {
         if (isReadCache) {
-            String imeiArray = CacheUtil.readString(CacheUtil.getDeviceMD5Path(), "IMEI串");
+            String imeiArray = CacheManager.readString(CacheManager.getDeviceMD5Path(), "IMEI串");
             if (TextUtils.isEmpty(imeiArray)) {
                 imeiArray = getImeiArray();
-                CacheUtil.writeString(CacheUtil.getDeviceMD5Path(), "IMEI串", imeiArray);
+                CacheManager.writeString(CacheManager.getDeviceMD5Path(), "IMEI串", imeiArray);
             }
             return imeiArray;
         }
@@ -165,10 +167,10 @@ public class DeviceInfoUtil {
      */
     public static String getUniqueDeviceId(boolean isReadCache) {
         if (isReadCache) {
-            String uniqueDeviceIdMD5 = CacheUtil.readString(CacheUtil.getDeviceMD5Path(), "设备码");
+            String uniqueDeviceIdMD5 = CacheManager.readString(CacheManager.getDeviceMD5Path(), "设备码");
             if (TextUtils.isEmpty(uniqueDeviceIdMD5)) {
                 uniqueDeviceIdMD5 = DeviceUtils.getUniqueDeviceId();
-                CacheUtil.writeString(CacheUtil.getDeviceMD5Path(), "设备码", uniqueDeviceIdMD5);
+                CacheManager.writeString(CacheManager.getDeviceMD5Path(), "设备码", uniqueDeviceIdMD5);
             }
             return uniqueDeviceIdMD5;
         }
@@ -271,21 +273,21 @@ public class DeviceInfoUtil {
      * 清除IMEI
      */
     public static void clearImei() {
-        CacheUtil.delteString(CacheUtil.getDeviceMD5Path(), "单个IMEI");
+        CacheManager.delteString(CacheManager.getDeviceMD5Path(), "单个IMEI");
     }
 
     /**
      * 清除IMEI串
      */
     public static void clearImeiArray() {
-        CacheUtil.delteString(CacheUtil.getDeviceMD5Path(), "IMEI串");
+        CacheManager.delteString(CacheManager.getDeviceMD5Path(), "IMEI串");
     }
 
     /**
      * 清除设备唯一标识
      */
     public static void clearUniqueDeviceId() {
-        CacheUtil.delteString(CacheUtil.getDeviceMD5Path(), "设备码");
+        CacheManager.delteString(CacheManager.getDeviceMD5Path(), "设备码");
     }
 
     /**

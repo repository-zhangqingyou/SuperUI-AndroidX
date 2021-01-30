@@ -1,4 +1,4 @@
-package com.zqy.superutils;
+package com.zqy.superutils.manager;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -21,7 +21,7 @@ import java.util.List;
  * Date: 2020/4/7
  * Des:
  */
-public class CacheUtil {
+public class CacheManager {
 
 
     //系统包目录
@@ -33,7 +33,7 @@ public class CacheUtil {
     private static String cacheRootPath;
 
     protected static void init(String cacheRootPath) {
-        CacheUtil.cacheRootPath = cacheRootPath;
+        CacheManager.cacheRootPath = cacheRootPath;
     }
 
     //*******************************系统包目录********************************
@@ -65,7 +65,7 @@ public class CacheUtil {
     private static String getStoragePath() {
         if (TextUtils.isEmpty(storagePath)) {
             if (TextUtils.isEmpty(cacheRootPath)) {
-                storagePath = Environment.getExternalStorageDirectory() + "/.zqy/" + SuperUtilsManage.getApplication().getPackageName();
+                storagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/.zqy/" + SuperUtilsManage.getApplication().getPackageName();
                 //storagePath = Environment.getExternalStorageDirectory() + "/" + CacheUtil.cacheRootPath;
             } else {
                 // storagePath = Environment.getExternalStorageDirectory() + "/" + CacheUtil.cacheRootPath + "/" + UtilsManage.getApplication().getPackageName();

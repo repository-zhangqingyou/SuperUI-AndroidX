@@ -6,9 +6,15 @@ import android.os.Environment;
 
 import androidx.multidex.MultiDex;
 
+import com.blankj.utilcode.util.AppUtils;
+import com.zqy.suidemo.database.DaoMaster;
+import com.zqy.suidemo.database.DaoSession;
 import com.zqy.superhttp.SuperHttpManage;
 import com.zqy.superui.SuperUIManage;
-import com.zqy.superutils.SuperUtilsManage;
+import com.zqy.superutils.database.GreenDaoContext;
+import com.zqy.superutils.manager.SuperUtilsManage;
+
+import org.greenrobot.greendao.database.Database;
 
 
 /**
@@ -50,6 +56,16 @@ public class SUIApp extends Application {
         SuperHttpManage.init(getApplication());
         SuperHttpManage.setDebug(true);
         SuperUIManage.init(true, getApplication());
+
+
+        // 常规SQLite数据库
+        GreenDaoContext greenDaoContext = new GreenDaoContext(this);//里面有个上下文GreenDaoContext继承了ContextWrapper,里面设置了数据库路径，
+        // greenDaoContext.setCurrentUserId(userId);
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(greenDaoContext, AppUtils.getAppName() + "数据库");//
+        Database db = helper.getWritableDb();
+        // 数据库db = helper.getEncryptedWritableDb（“encryption-key”）;
+        DaoSession daoSession = new DaoMaster(db).newSession();
+        SuperUtilsManage.initGreenDB(daoSession);
 
     }
 

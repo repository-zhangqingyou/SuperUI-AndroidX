@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.util.Log;
 
 import com.zqy.superutils.countdownutil.CountdownTimerTask;
+import com.zqy.superutils.manager.SuperUtilsManage;
 
 public class AppUtils {
     private final static String TAG = "AppUtils";

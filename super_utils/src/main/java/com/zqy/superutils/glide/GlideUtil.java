@@ -11,7 +11,7 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.signature.ObjectKey;
-import com.zqy.superutils.SuperUtilsManage;
+import com.zqy.superutils.manager.SuperUtilsManage;
 
 import java.io.File;
 

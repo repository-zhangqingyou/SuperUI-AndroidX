@@ -25,11 +25,11 @@ android {
 //        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
     }
 
-    greendao {
-        schemaVersion 1 //数据库版本号，升级数据库需要修改版本号
-        daoPackage 'com.zqy.suidemo.database'//一般为app包名+生成文件的文件夹名
-        targetGenDir 'src/main/java'  //自动生成的greendao代码存放路径
-    }
+//    greendao {
+//        schemaVersion 1 //数据库版本号，升级数据库需要修改版本号
+//        daoPackage 'com.zqy.suidemo.database'//一般为app包名+生成文件的文件夹名
+//        targetGenDir 'src/main/java'  //自动生成的greendao代码存放路径
+//    }
 
     //***********************************多渠道构建***************************************
     flavorDimensions "channel"

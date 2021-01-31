@@ -11,7 +11,6 @@ import com.lzy.okgo.model.HttpHeaders;
 import com.zqy.superhttp.request.ApiCallbackService;
 
 import java.lang.reflect.Field;
-import java.util.ServiceLoader;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -25,6 +24,7 @@ import okhttp3.OkHttpClient;
 public class SuperHttpManage {
     private static Application application;
     private static boolean debug;
+    private static ApiCallbackService apiCallbackService;
 
 
     public static void init(Application application) {
@@ -76,18 +76,29 @@ public class SuperHttpManage {
     }
 
 
+//    /**
+//     * 设置所有接口响应回调
+//     *
+//     * @param serviceLoader
+//     */
+//    private static ServiceLoader<ApiCallbackService> serviceLoader;
+//
+//    public static ServiceLoader<ApiCallbackService> getApiCallbackServiceLoader() {
+//        if (serviceLoader == null) {
+//            serviceLoader = ServiceLoader.load(ApiCallbackService.class);
+//        }
+//        return serviceLoader;
+//    }
     /**
-     * 设置所有接口响应回调
-     *
-     * @param serviceLoader
+     * okhttp设置所有接口响应回调
      */
-    private static ServiceLoader<ApiCallbackService> serviceLoader;
-
-    public static ServiceLoader<ApiCallbackService> getApiCallbackServiceLoader() {
-        if (serviceLoader == null) {
-            serviceLoader = ServiceLoader.load(ApiCallbackService.class);
-        }
-        return serviceLoader;
+    public static ApiCallbackService getApiCallbackService() {
+        return apiCallbackService;
     }
-
+    /**
+     * okhttp设置所有接口响应回调
+     */
+    public static void setApiCallbackService(ApiCallbackService apiCallbackService) {
+        SuperHttpManage.apiCallbackService = apiCallbackService;
+    }
 }

@@ -28,10 +28,9 @@ public class CustomNews implements Serializable {
     private String extra;//扩展消息
     private boolean isRead;//是否已读
 
-    @Generated(hash = 1542762410)
-    public CustomNews(long id, String messageId, int msgType, long msgTime,
-                      String contentType, String title, String message, String extra,
-                      boolean isRead) {
+    @Generated(hash = 756270220)
+    public CustomNews(Long id, String messageId, int msgType, long msgTime,
+            String contentType, String title, String message, String extra, boolean isRead) {
         this.id = id;
         this.messageId = messageId;
         this.msgType = msgType;

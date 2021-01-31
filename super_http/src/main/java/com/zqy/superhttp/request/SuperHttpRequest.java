@@ -79,12 +79,14 @@ public class SuperHttpRequest {
                     .execute(callback);
         } else {
             callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-            if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
-                for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
-                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
-                }
+//            if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
+//                for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
+//                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
+//                }
+//            }
+            if (SuperHttpManage.getApiCallbackService() != null) {
+                SuperHttpManage.getApiCallbackService().onFinish(url + "还未响应，相同接口无法再次请求！");
             }
-
 
         }
 
@@ -106,10 +108,13 @@ public class SuperHttpRequest {
                     .execute(callback);
         } else {
             callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-            if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
-                for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
-                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
-                }
+//            if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
+//                for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
+//                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
+//                }
+//            }
+            if (SuperHttpManage.getApiCallbackService() != null) {
+                SuperHttpManage.getApiCallbackService().onFinish(url + "还未响应，相同接口无法再次请求！");
             }
         }
 
@@ -133,10 +138,13 @@ public class SuperHttpRequest {
                     .execute(callback);
         } else {
             callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-            if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
-                for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
-                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
-                }
+            //    if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
+//                for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
+//                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
+//                }
+//            }
+            if (SuperHttpManage.getApiCallbackService() != null) {
+                SuperHttpManage.getApiCallbackService().onFinish(url + "还未响应，相同接口无法再次请求！");
             }
         }
 

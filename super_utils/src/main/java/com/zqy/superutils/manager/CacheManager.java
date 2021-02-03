@@ -40,7 +40,7 @@ public class CacheManager {
 
     private static String getSystemPath() {
         if (TextUtils.isEmpty(systemPath))
-            systemPath = SuperUtilsManage.getApplication().getFilesDir().getAbsolutePath();
+            systemPath = SuperUtilsManager.getApplication().getFilesDir().getAbsolutePath();
         return systemPath;
     }
 
@@ -65,7 +65,7 @@ public class CacheManager {
     private static String getStoragePath() {
         if (TextUtils.isEmpty(storagePath)) {
             if (TextUtils.isEmpty(cacheRootPath)) {
-                storagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/.zqy/" + SuperUtilsManage.getApplication().getPackageName();
+                storagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/.zqy/" + SuperUtilsManager.getApplication().getPackageName();
                 //storagePath = Environment.getExternalStorageDirectory() + "/" + CacheUtil.cacheRootPath;
             } else {
                 // storagePath = Environment.getExternalStorageDirectory() + "/" + CacheUtil.cacheRootPath + "/" + UtilsManage.getApplication().getPackageName();

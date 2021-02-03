@@ -11,7 +11,7 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.signature.ObjectKey;
-import com.zqy.superutils.manager.SuperUtilsManage;
+import com.zqy.superutils.manager.SuperUtilsManager;
 
 import java.io.File;
 
@@ -52,10 +52,10 @@ public class GlideUtil {
         RequestBuilder<Drawable> objectDrawableRequestBuilder;
         RequestOptions requestOptions = new RequestOptions();
         if (imageUrl instanceof File) {
-            objectDrawableRequestBuilder = Glide.with(SuperUtilsManage.getApplication())
+            objectDrawableRequestBuilder = Glide.with(SuperUtilsManager.getApplication())
                     .load((File) imageUrl);
         } else {
-            objectDrawableRequestBuilder = Glide.with(SuperUtilsManage.getApplication())
+            objectDrawableRequestBuilder = Glide.with(SuperUtilsManager.getApplication())
                     .load(imageUrl);
             /**
              * 第二种方法：

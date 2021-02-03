@@ -12,7 +12,7 @@ import com.blankj.utilcode.util.DeviceUtils;
 import com.blankj.utilcode.util.PhoneUtils;
 import com.bun.miitmdid.interfaces.IdSupplier;
 import com.zqy.superutils.manager.CacheManager;
-import com.zqy.superutils.manager.SuperUtilsManage;
+import com.zqy.superutils.manager.SuperUtilsManager;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class DeviceInfoUtil {
      * @param
      */
     public static String getOAID(boolean isReadCache) {
-        IdSupplier idSupplier = SuperUtilsManage.getIdSupplier();
+        IdSupplier idSupplier = SuperUtilsManager.getIdSupplier();
         if (isReadCache) {
             String oaid = CacheManager.readString(CacheManager.getDeviceMD5Path(), "OAID");
             if (TextUtils.isEmpty(oaid)) {
@@ -60,7 +60,7 @@ public class DeviceInfoUtil {
      * @param
      */
     public static String getAAID(boolean isReadCache) {
-        IdSupplier idSupplier = SuperUtilsManage.getIdSupplier();
+        IdSupplier idSupplier = SuperUtilsManager.getIdSupplier();
         if (isReadCache) {
             String aaid = CacheManager.readString(CacheManager.getDeviceMD5Path(), "AAID");
             if (TextUtils.isEmpty(aaid)) {
@@ -84,7 +84,7 @@ public class DeviceInfoUtil {
      * @param
      */
     public static String getVAID(boolean isReadCache) {
-        IdSupplier idSupplier = SuperUtilsManage.getIdSupplier();
+        IdSupplier idSupplier = SuperUtilsManager.getIdSupplier();
         if (isReadCache) {
             String vaid = CacheManager.readString(CacheManager.getDeviceMD5Path(), "VAID");
             if (TextUtils.isEmpty(vaid)) {
@@ -184,7 +184,7 @@ public class DeviceInfoUtil {
         String imei = "";
         if (Build.VERSION.SDK_INT < 21) {//api小于21时只有这一个方法，所以获取到的值可能是meid,也可能是imei
             try {
-                TelephonyManager tm = (TelephonyManager) SuperUtilsManage.getApplication().getSystemService(Activity.TELEPHONY_SERVICE);
+                TelephonyManager tm = (TelephonyManager) SuperUtilsManager.getApplication().getSystemService(Activity.TELEPHONY_SERVICE);
                 imei = tm.getDeviceId();
             } catch (Exception e) {
             }
@@ -192,7 +192,7 @@ public class DeviceInfoUtil {
         } else {
             try {
 
-                TelephonyManager tm = (TelephonyManager) SuperUtilsManage.getApplication().getSystemService(Context.TELEPHONY_SERVICE);
+                TelephonyManager tm = (TelephonyManager) SuperUtilsManager.getApplication().getSystemService(Context.TELEPHONY_SERVICE);
                 boolean ret = false;
                 if (tm != null && tm.getClass() != null && tm.getClass().getDeclaredMethods() != null) {
                     for (Method m : tm.getClass().getDeclaredMethods()) {
@@ -222,7 +222,7 @@ public class DeviceInfoUtil {
 
         if (Build.VERSION.SDK_INT < 21) return imei2;
         try {
-            TelephonyManager tm = (TelephonyManager) SuperUtilsManage.getApplication().getSystemService(Context.TELEPHONY_SERVICE);
+            TelephonyManager tm = (TelephonyManager) SuperUtilsManager.getApplication().getSystemService(Context.TELEPHONY_SERVICE);
             boolean ret = false;
             if (tm != null && tm.getClass() != null && tm.getClass().getDeclaredMethods() != null) {
                 for (Method m : tm.getClass().getDeclaredMethods()) {
@@ -249,7 +249,7 @@ public class DeviceInfoUtil {
 
         if (Build.VERSION.SDK_INT < 21) return meid;
         try {
-            TelephonyManager tm = (TelephonyManager) SuperUtilsManage.getApplication().getSystemService(Context.TELEPHONY_SERVICE);
+            TelephonyManager tm = (TelephonyManager) SuperUtilsManager.getApplication().getSystemService(Context.TELEPHONY_SERVICE);
             boolean ret = false;
             if (tm != null && tm.getClass() != null && tm.getClass().getDeclaredMethods() != null) {
                 for (Method m : tm.getClass().getDeclaredMethods()) {
@@ -329,7 +329,7 @@ public class DeviceInfoUtil {
     private static String getImeiOrMeid() {
         String meid = "";
         try {
-            TelephonyManager tm = (TelephonyManager) SuperUtilsManage.getApplication().getSystemService(Activity.TELEPHONY_SERVICE);
+            TelephonyManager tm = (TelephonyManager) SuperUtilsManager.getApplication().getSystemService(Activity.TELEPHONY_SERVICE);
             if (tm != null) {
                 meid = tm.getDeviceId();
             }
@@ -348,7 +348,7 @@ public class DeviceInfoUtil {
     @SuppressLint({"MissingPermission", "NewApi"})
     private static Map getImeiAndMeid() {
         Map<String, String> map = new HashMap<String, String>();
-        TelephonyManager mTelephonyManager = (TelephonyManager) SuperUtilsManage.getApplication().getSystemService(Activity.TELEPHONY_SERVICE);
+        TelephonyManager mTelephonyManager = (TelephonyManager) SuperUtilsManager.getApplication().getSystemService(Activity.TELEPHONY_SERVICE);
         Class<?> clazz = null;
         Method method = null;//(int slotId)
 

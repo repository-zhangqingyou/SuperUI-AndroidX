@@ -30,13 +30,13 @@ import java.util.Locale;
  * Date: 2020/4/7
  * Des:
  */
-public class SuperUtilsManage {
+public class SuperUtilsManager {
     private static Application application;
     private static String logTag;
     private static IdSupplier idSupplier;
 
     public static void init(Application application) {
-        SuperUtilsManage.application = application;
+        SuperUtilsManager.application = application;
         Utils.init(application);//初始化android工具类
         // Realm.init(application);//realm数据库
         if (TextUtils.isEmpty(logTag)) {
@@ -46,7 +46,7 @@ public class SuperUtilsManage {
         MdidSdkHelper.InitSdk(application, true, new IIdentifierListener() {
             @Override
             public void OnSupport(boolean b, IdSupplier idSupplier) {
-                SuperUtilsManage.idSupplier = idSupplier;
+                SuperUtilsManager.idSupplier = idSupplier;
             }
         });
     }
@@ -61,7 +61,7 @@ public class SuperUtilsManage {
      * @param logTag 日志TAG
      */
     public static void setLogTag(String logTag) {
-        SuperUtilsManage.logTag = logTag;
+        SuperUtilsManager.logTag = logTag;
         Logger.init(logTag);
     }
 

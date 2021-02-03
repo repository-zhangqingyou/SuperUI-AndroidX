@@ -2,7 +2,7 @@ package com.zqy.superutils;
 
 import android.content.Context;
 
-import com.zqy.superutils.manager.SuperUtilsManage;
+import com.zqy.superutils.manager.SuperUtilsManager;
 
 import java.lang.reflect.Field;
 
@@ -78,7 +78,7 @@ public class StyleaUtils {
     }
 
     public static int[] getStyleableArryId(String name) {
-        Context mContext = SuperUtilsManage.getApplication();
+        Context mContext = SuperUtilsManager.getApplication();
         return getStyleableArryId(mContext.getPackageName(), name);
 
     }
@@ -121,13 +121,13 @@ public class StyleaUtils {
      * @return
      */
     public static int getStyleableFieldId(String styleableName, String styleableFieldName) {
-        Context context = SuperUtilsManage.getApplication();
+        Context context = SuperUtilsManager.getApplication();
         return getStyleableFieldId(context.getPackageName(), styleableName, styleableFieldName);
     }
 
 
     public static int getAttrId(String attrName) {
-        Context mContext = SuperUtilsManage.getApplication();
+        Context mContext = SuperUtilsManager.getApplication();
         try {
             Class<?> loadClass = mContext.getClassLoader().loadClass(mContext.getPackageName() + ".R");
             Class<?>[] classes = loadClass.getClasses();

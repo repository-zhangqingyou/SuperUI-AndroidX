@@ -6,7 +6,7 @@ import android.content.pm.PackageManager;
 import android.util.Log;
 
 import com.zqy.superutils.countdownutil.CountdownTimerTask;
-import com.zqy.superutils.manager.SuperUtilsManage;
+import com.zqy.superutils.manager.SuperUtilsManager;
 
 public class AppUtils {
     private final static String TAG = "AppUtils";
@@ -16,15 +16,15 @@ public class AppUtils {
     public static String getAppName() {
         String appName = "";
         try {
-            PackageManager pm = SuperUtilsManage.getApplication().getPackageManager();
-            PackageInfo pi = pm.getPackageInfo(SuperUtilsManage.getApplication().getPackageName(), 0);
+            PackageManager pm = SuperUtilsManager.getApplication().getPackageManager();
+            PackageInfo pi = pm.getPackageInfo(SuperUtilsManager.getApplication().getPackageName(), 0);
             appName = pi == null ? null : pi.applicationInfo.loadLabel(pm).toString();
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
 
         }
         Log.d(TAG, "app名字：" + appName);
-        Log.d(TAG, "app包名：" + SuperUtilsManage.getApplication().getPackageName());
+        Log.d(TAG, "app包名：" + SuperUtilsManager.getApplication().getPackageName());
         return appName;
     }
 
@@ -36,8 +36,8 @@ public class AppUtils {
      */
     public static String getMetaData(String metaDataName) {
         String value = "";
-        PackageManager pm = SuperUtilsManage.getApplication().getPackageManager();
-        String packageName = SuperUtilsManage.getApplication().getPackageName();
+        PackageManager pm = SuperUtilsManager.getApplication().getPackageManager();
+        String packageName = SuperUtilsManager.getApplication().getPackageName();
         try {
             ApplicationInfo ai = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
             value = String.valueOf(ai.metaData.get(metaDataName));

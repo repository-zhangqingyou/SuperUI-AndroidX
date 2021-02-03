@@ -18,7 +18,7 @@ import com.zqy.superhttp.request.ApiCallbackService;
 import com.zqy.superui.SuperUIManager;
 import com.zqy.superutils.ToastUtil;
 import com.zqy.superutils.database.GreenDaoContext;
-import com.zqy.superutils.manager.SuperUtilsManage;
+import com.zqy.superutils.manager.SuperUtilsManager;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -56,9 +56,9 @@ public class SUIApp extends Application {
      */
     private void initModule() {
 
-        SuperUtilsManage.init(getApplication());//工具初始化
-        SuperUtilsManage.setLogTag("SuperUI-AndroidX");//初始化日志Tag
-        SuperUtilsManage.setCache(Environment.getExternalStorageDirectory() + "/.SuperUI-AndroidX");//初始化缓存路径
+        SuperUtilsManager.init(getApplication());//工具初始化
+        SuperUtilsManager.setLogTag("SuperUI-AndroidX");//初始化日志Tag
+        SuperUtilsManager.setCache(Environment.getExternalStorageDirectory() + "/.SuperUI-AndroidX");//初始化缓存路径
         SuperHttpManager.init(getApplication());
         SuperHttpManager.setDebug(true);
         SuperHttpManager.setApiCallbackService(new ApiCallbackService() {
@@ -131,7 +131,7 @@ public class SUIApp extends Application {
         Database db = helper.getWritableDb();
         // 数据库db = helper.getEncryptedWritableDb（“encryption-key”）;
         DaoSession daoSession = new DaoMaster(db).newSession();
-        SuperUtilsManage.initGreenDB(daoSession);
+        SuperUtilsManager.initGreenDB(daoSession);
 
     }
 

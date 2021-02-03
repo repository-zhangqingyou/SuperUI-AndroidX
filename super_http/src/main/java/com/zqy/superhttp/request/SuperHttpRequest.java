@@ -2,7 +2,7 @@ package com.zqy.superhttp.request;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.FileCallback;
-import com.zqy.superhttp.SuperHttpManager;
+import com.zqy.superhttp.SuperHttpManage;
 
 import java.io.File;
 import java.util.HashMap;
@@ -79,12 +79,14 @@ public class SuperHttpRequest {
                     .execute(callback);
         } else {
             callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-            if (SuperHttpManager.getApiCallbackServiceLoader() != null) {
-                for (ApiCallbackService service : SuperHttpManager.getApiCallbackServiceLoader()) {
-                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
-                }
+//            if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
+//                for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
+//                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
+//                }
+//            }
+            if (SuperHttpManage.getApiCallbackService() != null) {
+                SuperHttpManage.getApiCallbackService().onFinish(url + "还未响应，相同接口无法再次请求！");
             }
-
 
         }
 
@@ -106,10 +108,13 @@ public class SuperHttpRequest {
                     .execute(callback);
         } else {
             callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-            if (SuperHttpManager.getApiCallbackServiceLoader() != null) {
-                for (ApiCallbackService service : SuperHttpManager.getApiCallbackServiceLoader()) {
-                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
-                }
+//            if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
+//                for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
+//                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
+//                }
+//            }
+            if (SuperHttpManage.getApiCallbackService() != null) {
+                SuperHttpManage.getApiCallbackService().onFinish(url + "还未响应，相同接口无法再次请求！");
             }
         }
 
@@ -133,10 +138,13 @@ public class SuperHttpRequest {
                     .execute(callback);
         } else {
             callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-            if (SuperHttpManager.getApiCallbackServiceLoader() != null) {
-                for (ApiCallbackService service : SuperHttpManager.getApiCallbackServiceLoader()) {
-                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
-                }
+            //    if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
+//                for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
+//                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
+//                }
+//            }
+            if (SuperHttpManage.getApiCallbackService() != null) {
+                SuperHttpManage.getApiCallbackService().onFinish(url + "还未响应，相同接口无法再次请求！");
             }
         }
 

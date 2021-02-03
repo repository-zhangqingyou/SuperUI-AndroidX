@@ -22,13 +22,13 @@ import okhttp3.OkHttpClient;
  * 时间: 2020/9/14
  * 描述:
  */
-public class SuperHttpManage {
+public class SuperHttpManager {
     private static Application application;
     private static boolean debug;
 
 
     public static void init(Application application) {
-        SuperHttpManage.application = application;
+        SuperHttpManager.application = application;
         okGoInit();
     }
 
@@ -41,7 +41,7 @@ public class SuperHttpManage {
     }
 
     public static void setDebug(boolean debug) {
-        SuperHttpManage.debug = debug;
+        SuperHttpManager.debug = debug;
     }
 
     private static void okGoInit() {

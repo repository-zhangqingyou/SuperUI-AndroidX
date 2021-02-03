@@ -2,7 +2,7 @@ package com.zqy.superhttp.request;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import com.zqy.superhttp.SuperHttpManage;
+import com.zqy.superhttp.SuperHttpManager;
 import com.zqy.superutils.ParameterizedTypeImpl;
 
 import java.lang.reflect.Type;
@@ -42,8 +42,8 @@ public abstract class JsonArryEntityCallback<T> extends BaseCallback {
             List<T> list = new Gson().fromJson(response.body(), type);
             onSuccess(list);
         } catch (JsonSyntaxException e) {
-            if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
-                for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
+            if (SuperHttpManager.getApiCallbackServiceLoader() != null) {
+                for (ApiCallbackService service : SuperHttpManager.getApiCallbackServiceLoader()) {
                     response.setException(new JsonSyntaxException("json数据格式错误:" + e.getMessage()));
                     service.onError(getBaseUrl(), getEndUrl(), response);
                 }

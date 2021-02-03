@@ -9,7 +9,7 @@ import androidx.multidex.MultiDex;
 import com.blankj.utilcode.util.AppUtils;
 import com.zqy.suidemo.database.DaoMaster;
 import com.zqy.suidemo.database.DaoSession;
-import com.zqy.superhttp.SuperHttpManage;
+import com.zqy.superhttp.SuperHttpManager;
 import com.zqy.superui.SuperUIManage;
 import com.zqy.superutils.database.GreenDaoContext;
 import com.zqy.superutils.manager.SuperUtilsManage;
@@ -53,8 +53,8 @@ public class SUIApp extends Application {
         SuperUtilsManage.init(getApplication());//工具初始化
         SuperUtilsManage.setLogTag("SuperUI-AndroidX");//初始化日志Tag
         SuperUtilsManage.setCache(Environment.getExternalStorageDirectory() + "/.SuperUI-AndroidX");//初始化缓存路径
-        SuperHttpManage.init(getApplication());
-        SuperHttpManage.setDebug(true);
+        SuperHttpManager.init(getApplication());
+        SuperHttpManager.setDebug(true);
         SuperUIManage.init(true, getApplication());
 
 

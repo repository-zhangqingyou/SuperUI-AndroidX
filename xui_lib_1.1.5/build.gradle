@@ -31,8 +31,7 @@ dependencies {
 
 }
 publish {
-    bintrayUser = 'zhangqingyou'//用户账号
-    bintrayKey = '96d51763bea57597abf85991eff2432c18d5faad'//apikey
+
     userOrg = 'zhangqingyou' // bintray 用户名
     repoName = 'Android' // bintray 仓库名
     groupId = 'com.bintray.zhangqingyou' // 依赖的路径

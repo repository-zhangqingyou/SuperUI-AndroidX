@@ -10,13 +10,13 @@ import com.zqy.superui.loadinglayout.LoadingLayout;
  * Date: 2020/4/7
  * Des:
  */
-public class SuperUIManage {
+public class SuperUIManager {
     private static Application application;
     private static boolean debug;
 
 
     public static void init(boolean debug, Application application) {
-        SuperUIManage.application = application;
+        SuperUIManager.application = application;
 
         XUI.init(application); //初始化UI框架
         setDebug(debug);
@@ -55,7 +55,7 @@ public class SuperUIManage {
     }
 
     public static void setDebug(boolean debug) {
-        debug = debug;
+        SuperUIManager.debug = debug;
         XUI.debug(debug);  //开启UI框架调试日志
     }
 

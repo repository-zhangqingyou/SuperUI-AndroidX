@@ -76,29 +76,16 @@ public class SuperHttpManager {
     }
 
 
-//    /**
-//     * 设置所有接口响应回调
-//     *
-//     * @param serviceLoader
-//     */
-//    private static ServiceLoader<ApiCallbackService> serviceLoader;
-//
-//    public static ServiceLoader<ApiCallbackService> getApiCallbackServiceLoader() {
-//        if (serviceLoader == null) {
-//            serviceLoader = ServiceLoader.load(ApiCallbackService.class);
-//        }
-//        return serviceLoader;
-//    }
     /**
-     * okhttp设置所有接口响应回调
+     * 接口全局响应回调
      */
     public static ApiCallbackService getApiCallbackService() {
         return apiCallbackService;
     }
     /**
-     * okhttp设置所有接口响应回调
+     * 接口全局响应回调
      */
     public static void setApiCallbackService(ApiCallbackService apiCallbackService) {
-        SuperHttpManage.apiCallbackService = apiCallbackService;
+        SuperHttpManager.apiCallbackService = apiCallbackService;
     }
 }

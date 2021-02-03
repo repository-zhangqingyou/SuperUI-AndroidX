@@ -2,7 +2,7 @@ package com.zqy.superhttp.request;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.FileCallback;
-import com.zqy.superhttp.SuperHttpManage;
+import com.zqy.superhttp.SuperHttpManager;
 
 import java.io.File;
 import java.util.HashMap;
@@ -21,7 +21,7 @@ public class SuperHttpRequest {
      * String:当前请求标识
      * Boolean：是否可请求
      */
-    private static Map<String, Boolean> requestResponseMap = new HashMap<>();
+    private static Map<String, Boolean> apiMap = new HashMap<>();
 
     /**
      * 设置接口是否可请求
@@ -30,7 +30,7 @@ public class SuperHttpRequest {
      * @param isRequest 当前地址是否可请求
      */
     protected static void setIsRequest(String url, boolean isRequest) {
-        requestResponseMap.put(url, isRequest);
+        apiMap.put(url, isRequest);
     }
 
     /**
@@ -41,11 +41,11 @@ public class SuperHttpRequest {
      */
     private static boolean isRequest(String url) {
         boolean isRequest = true;
-        if (requestResponseMap.containsKey(url)) {
-            isRequest = requestResponseMap.get(url);
+        if (apiMap.containsKey(url)) {
+            isRequest = apiMap.get(url);
         } else {
             //默认可请求
-            requestResponseMap.put(url, true);
+            apiMap.put(url, true);
         }
         return isRequest;
 
@@ -71,21 +71,16 @@ public class SuperHttpRequest {
      * @param callback
      */
     public static void postJson(String url, String json, BaseCallback callback) {
-        if (isRequest(url)) {//防止同一个接口频繁请求，当前请求响应后才能继续下个请求
-            setIsRequest(url, false);
+        if (isRequest(url)) {
             OkGo.<String>post(url)
-                    //.tag(requestTag(url))
+                    .tag(url)
                     .upJson(json)
                     .execute(callback);
         } else {
-            callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-//            if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
-//                for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
-//                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
-//                }
-//            }
-            if (SuperHttpManage.getApiCallbackService() != null) {
-                SuperHttpManage.getApiCallbackService().onFinish(url + "还未响应，相同接口无法再次请求！");
+            callback.onFinish("【" + url + "】还未响应，勿频繁请求！");
+
+            if (SuperHttpManager.getApiCallbackService() != null) {
+                SuperHttpManager.getApiCallbackService().onFinish("【" + url + "】还未响应，勿频繁请求！");
             }
 
         }
@@ -93,8 +88,7 @@ public class SuperHttpRequest {
     }
 
     public static void get(String url, Map<String, Object> params, BaseCallback callback) {
-        if (isRequest(url)) {//防止同一个接口频繁请求，当前请求响应后才能继续下个请求
-            setIsRequest(url, false);
+        if (isRequest(url)) {
             Map<String, String> param = new LinkedHashMap<>();
             for (Map.Entry<String, Object> entry : params.entrySet()) {
                 String key = entry.getKey();
@@ -103,18 +97,13 @@ public class SuperHttpRequest {
                     param.put(entry.getKey(), entry.getValue().toString());
             }
             OkGo.<String>get(url)
-                    // .tag(requestTag(url))
+                    .tag(url)
                     .params(param)
                     .execute(callback);
         } else {
-            callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-//            if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
-//                for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
-//                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
-//                }
-//            }
-            if (SuperHttpManage.getApiCallbackService() != null) {
-                SuperHttpManage.getApiCallbackService().onFinish(url + "还未响应，相同接口无法再次请求！");
+            callback.onFinish("【" + url + "】还未响应，勿频繁请求！");
+            if (SuperHttpManager.getApiCallbackService() != null) {
+                SuperHttpManager.getApiCallbackService().onFinish("【" + url + "】还未响应，勿频繁请求！");
             }
         }
 
@@ -122,8 +111,7 @@ public class SuperHttpRequest {
     }
 
     public static void post(String url, Map<String, Object> params, BaseCallback callback) {
-        if (isRequest(url)) {//防止同一个接口频繁请求，当前请求响应后才能继续下个请求
-            setIsRequest(url, false);
+        if (isRequest(url)) {
             Map<String, String> param = new LinkedHashMap<>();
             for (Map.Entry<String, Object> entry : params.entrySet()) {
                 String key = entry.getKey();
@@ -133,18 +121,13 @@ public class SuperHttpRequest {
             }
 
             OkGo.<String>post(url)
-                    //.tag(requestTag(url))
+                    .tag(url)
                     .params(param)
                     .execute(callback);
         } else {
-            callback.onFinish(url + "还未响应，相同接口无法再次请求！");
-            //    if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
-//                for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
-//                    service.onFinish(url + "还未响应，相同接口无法再次请求！");
-//                }
-//            }
-            if (SuperHttpManage.getApiCallbackService() != null) {
-                SuperHttpManage.getApiCallbackService().onFinish(url + "还未响应，相同接口无法再次请求！");
+            callback.onFinish("【" + url + "】还未响应，勿频繁请求！");
+            if (SuperHttpManager.getApiCallbackService() != null) {
+                SuperHttpManager.getApiCallbackService().onFinish("【" + url + "】还未响应，勿频繁请求！");
             }
         }
 

@@ -13,9 +13,9 @@ import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
 import com.zqy.suidemo.database.DaoMaster;
 import com.zqy.suidemo.database.DaoSession;
-import com.zqy.superhttp.SuperHttpManage;
+import com.zqy.superhttp.SuperHttpManager;
 import com.zqy.superhttp.request.ApiCallbackService;
-import com.zqy.superui.SuperUIManage;
+import com.zqy.superui.SuperUIManager;
 import com.zqy.superutils.ToastUtil;
 import com.zqy.superutils.database.GreenDaoContext;
 import com.zqy.superutils.manager.SuperUtilsManage;
@@ -59,9 +59,9 @@ public class SUIApp extends Application {
         SuperUtilsManage.init(getApplication());//工具初始化
         SuperUtilsManage.setLogTag("SuperUI-AndroidX");//初始化日志Tag
         SuperUtilsManage.setCache(Environment.getExternalStorageDirectory() + "/.SuperUI-AndroidX");//初始化缓存路径
-        SuperHttpManage.init(getApplication());
-        SuperHttpManage.setDebug(true);
-        SuperHttpManage.setApiCallbackService(new ApiCallbackService() {
+        SuperHttpManager.init(getApplication());
+        SuperHttpManager.setDebug(true);
+        SuperHttpManager.setApiCallbackService(new ApiCallbackService() {
             @Override
             public void onStart(String baseUrl, String endUrl, Request request) {
             }
@@ -121,7 +121,7 @@ public class SUIApp extends Application {
                 Log.d(endUrl, "成功啦！请求信息:" + requestString + "\n返回信息：" + bodyString);
             }
         });
-        SuperUIManage.init(true, getApplication());
+        SuperUIManager.init(true, getApplication());
 
 
         // 常规SQLite数据库

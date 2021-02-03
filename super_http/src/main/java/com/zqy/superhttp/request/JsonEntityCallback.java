@@ -2,7 +2,7 @@ package com.zqy.superhttp.request;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import com.zqy.superhttp.SuperHttpManage;
+import com.zqy.superhttp.SuperHttpManager;
 
 
 /**
@@ -35,12 +35,9 @@ public abstract class JsonEntityCallback<T> extends BaseCallback {
             T t = new Gson().fromJson(response.body(), classOfBean);
             onSuccess(t);
         } catch (JsonSyntaxException e) {
-//            for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
-//                response.setException(new JsonSyntaxException("json数据格式错误:" + e.getMessage()));
-//                service.onError(getBaseUrl(), getEndUrl(), response);
-//            }
-            if (SuperHttpManage.getApiCallbackService() != null) {
-                SuperHttpManage.getApiCallbackService().onError(getBaseUrl(), getEndUrl(), response);
+
+            if (SuperHttpManager.getApiCallbackService() != null) {
+                SuperHttpManager.getApiCallbackService().onError(getBaseUrl(), getEndUrl(), response);
             }
 
         }

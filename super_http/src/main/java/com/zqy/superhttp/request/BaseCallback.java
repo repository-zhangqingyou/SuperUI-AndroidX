@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.lzy.okgo.callback.AbsCallback;
 import com.lzy.okgo.convert.StringConvert;
 import com.lzy.okgo.request.base.Request;
-import com.zqy.superhttp.SuperHttpManage;
+import com.zqy.superhttp.SuperHttpManager;
 
 import okhttp3.Response;
 
@@ -41,6 +41,7 @@ public abstract class BaseCallback extends AbsCallback<String> {
     @Override
     public void onStart(Request<String, ? extends Request> request) {
         super.onStart(request);
+        SuperHttpRequest.setIsRequest(baseUrl, false);//设置不可请求
         try {
             baseUrl = request.getBaseUrl();
             String url = baseUrl.replace("//", "");
@@ -53,15 +54,8 @@ public abstract class BaseCallback extends AbsCallback<String> {
         } catch (Exception e) {
             TAG = "网络请求";
         }
-//
-//        if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
-//            for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
-//                service.onStart(baseUrl, endUrl, request);
-//            }
-//        }
-
-        if (SuperHttpManage.getApiCallbackService() != null) {
-            SuperHttpManage.getApiCallbackService().onStart(baseUrl, endUrl, request);
+        if (SuperHttpManager.getApiCallbackService() != null) {
+            SuperHttpManager.getApiCallbackService().onStart(baseUrl, endUrl, request);
         }
 
     }
@@ -70,26 +64,18 @@ public abstract class BaseCallback extends AbsCallback<String> {
     @Override
     public void onError(com.lzy.okgo.model.Response<String> response) {
         super.onError(response);
-//        if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
-//            for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
-//                service.onError(baseUrl, endUrl, response);
-//            }
-//        }
-        if (SuperHttpManage.getApiCallbackService() != null) {
-            SuperHttpManage.getApiCallbackService().onError(baseUrl, endUrl, response);
+
+        if (SuperHttpManager.getApiCallbackService() != null) {
+            SuperHttpManager.getApiCallbackService().onError(baseUrl, endUrl, response);
         }
 
     }
 
     @Override
     public void onSuccess(com.lzy.okgo.model.Response<String> response) {
-        //    if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
-//            for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
-//                service.onSuccess(baseUrl, endUrl, response);
-//            }
-//        }
-        if (SuperHttpManage.getApiCallbackService() != null) {
-            SuperHttpManage.getApiCallbackService().onSuccess(baseUrl, endUrl, response);
+
+        if (SuperHttpManager.getApiCallbackService() != null) {
+            SuperHttpManager.getApiCallbackService().onSuccess(baseUrl, endUrl, response);
         }
     }
 
@@ -98,14 +84,8 @@ public abstract class BaseCallback extends AbsCallback<String> {
         super.onFinish();
         SuperHttpRequest.setIsRequest(baseUrl, true);//设置可请求
         onFinish("请求完成");
-
-//        if (SuperHttpManage.getApiCallbackServiceLoader() != null) {
-//            for (ApiCallbackService service : SuperHttpManage.getApiCallbackServiceLoader()) {
-//                service.onFinish("请求完成");
-//            }
-//        }
-        if (SuperHttpManage.getApiCallbackService() != null) {
-            SuperHttpManage.getApiCallbackService().onFinish("请求完成");
+        if (SuperHttpManager.getApiCallbackService() != null) {
+            SuperHttpManager.getApiCallbackService().onFinish("请求完成");
         }
     }
 

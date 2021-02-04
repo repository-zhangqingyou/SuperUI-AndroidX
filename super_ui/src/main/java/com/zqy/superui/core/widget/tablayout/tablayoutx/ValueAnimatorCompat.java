@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.zqy.superui.core.widget.tablayout;
+package com.zqy.superui.core.widget.tablayout.tablayoutx;
 
 import android.view.animation.Interpolator;
 

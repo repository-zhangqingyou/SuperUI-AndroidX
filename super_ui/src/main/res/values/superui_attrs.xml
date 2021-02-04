@@ -82,7 +82,7 @@
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="TabLayoutX">
+    <declare-styleable name="CommonTabLayout">
         <attr name="zqy_tabIndicatorColor" format="color" />
         <attr name="zqy_tabIndicatorHeight" format="dimension" />
         <attr name="zqy_tabContentStart" format="dimension" />

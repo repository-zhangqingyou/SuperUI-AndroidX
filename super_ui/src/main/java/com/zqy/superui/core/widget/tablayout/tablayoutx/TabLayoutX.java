@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.zqy.superui.core.widget.tablayout;
+package com.zqy.superui.core.widget.tablayout.tablayoutx;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -248,31 +248,31 @@ public class TabLayoutX extends HorizontalScrollView {
         super.addView(mTabStrip, 0, new LayoutParams(
                 LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TabLayoutX,
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CommonTabLayout,
                 defStyleAttr, R.style.Widget_Design_TabLayout);
 
         //自己的自定义属性
-        mTabLineOffset = a.getDimensionPixelSize(R.styleable.TabLayoutX_zqy_tabLineOffset, 0);
+        mTabLineOffset = a.getDimensionPixelSize(R.styleable.CommonTabLayout_zqy_tabLineOffset, 0);
 
         mTabStrip.setSelectedIndicatorHeight(
-                a.getDimensionPixelSize(R.styleable.TabLayoutX_zqy_tabIndicatorHeight, 0));
-        mTabStrip.setSelectedIndicatorColor(a.getColor(R.styleable.TabLayoutX_zqy_tabIndicatorColor, 0));
+                a.getDimensionPixelSize(R.styleable.CommonTabLayout_zqy_tabIndicatorHeight, 0));
+        mTabStrip.setSelectedIndicatorColor(a.getColor(R.styleable.CommonTabLayout_zqy_tabIndicatorColor, 0));
 
         mTabPaddingStart = mTabPaddingTop = mTabPaddingEnd = mTabPaddingBottom = a
-                .getDimensionPixelSize(R.styleable.TabLayoutX_zqy_tabPadding, 0);
-        mTabPaddingStart = a.getDimensionPixelSize(R.styleable.TabLayoutX_zqy_tabPaddingStart,
+                .getDimensionPixelSize(R.styleable.CommonTabLayout_zqy_tabPadding, 0);
+        mTabPaddingStart = a.getDimensionPixelSize(R.styleable.CommonTabLayout_zqy_tabPaddingStart,
                 mTabPaddingStart);
-        mTabPaddingTop = a.getDimensionPixelSize(R.styleable.TabLayoutX_zqy_tabPaddingTop,
+        mTabPaddingTop = a.getDimensionPixelSize(R.styleable.CommonTabLayout_zqy_tabPaddingTop,
                 mTabPaddingTop);
-        mTabPaddingEnd = a.getDimensionPixelSize(R.styleable.TabLayoutX_zqy_tabPaddingEnd,
+        mTabPaddingEnd = a.getDimensionPixelSize(R.styleable.CommonTabLayout_zqy_tabPaddingEnd,
                 mTabPaddingEnd);
-        mTabPaddingBottom = a.getDimensionPixelSize(R.styleable.TabLayoutX_zqy_tabPaddingBottom,
+        mTabPaddingBottom = a.getDimensionPixelSize(R.styleable.CommonTabLayout_zqy_tabPaddingBottom,
                 mTabPaddingBottom);
 
-        mTabTextAppearance = a.getResourceId(R.styleable.TabLayoutX_zqy_tabTextAppearance,
+        mTabTextAppearance = a.getResourceId(R.styleable.CommonTabLayout_zqy_tabTextAppearance,
                 R.style.TextAppearance_Design_Tab);
 
-        mTabTextStyle = a.getInt(R.styleable.TabLayoutX_zqy_textStyle, 0);
+        mTabTextStyle = a.getInt(R.styleable.CommonTabLayout_zqy_textStyle, 0);
 
 
         // Text colors/sizes come from the text appearance first
@@ -289,27 +289,27 @@ public class TabLayoutX extends HorizontalScrollView {
             ta.recycle();
         }
 
-        if (a.hasValue(R.styleable.TabLayoutX_zqy_tabTextColor)) {
+        if (a.hasValue(R.styleable.CommonTabLayout_zqy_tabTextColor)) {
             // If we have an explicit text color set, use it instead
-            mTabTextColors = a.getColorStateList(R.styleable.TabLayoutX_zqy_tabTextColor);
+            mTabTextColors = a.getColorStateList(R.styleable.CommonTabLayout_zqy_tabTextColor);
         }
 
-        if (a.hasValue(R.styleable.TabLayoutX_zqy_tabSelectedTextColor)) {
+        if (a.hasValue(R.styleable.CommonTabLayout_zqy_tabSelectedTextColor)) {
             // We have an explicit selected text color set, so we need to make merge it with the
             // current colors. This is exposed so that developers can use theme attributes to set
             // this (theme attrs in ColorStateLists are Lollipop+)
-            final int selected = a.getColor(R.styleable.TabLayoutX_zqy_tabSelectedTextColor, 0);
+            final int selected = a.getColor(R.styleable.CommonTabLayout_zqy_tabSelectedTextColor, 0);
             mTabTextColors = createColorStateList(mTabTextColors.getDefaultColor(), selected);
         }
 
-        mRequestedTabMinWidth = a.getDimensionPixelSize(R.styleable.TabLayoutX_zqy_tabMinWidth,
+        mRequestedTabMinWidth = a.getDimensionPixelSize(R.styleable.CommonTabLayout_zqy_tabMinWidth,
                 INVALID_WIDTH);
-        mRequestedTabMaxWidth = a.getDimensionPixelSize(R.styleable.TabLayoutX_zqy_tabMaxWidth,
+        mRequestedTabMaxWidth = a.getDimensionPixelSize(R.styleable.CommonTabLayout_zqy_tabMaxWidth,
                 INVALID_WIDTH);
-        mTabBackgroundResId = a.getResourceId(R.styleable.TabLayoutX_zqy_tabBackground, 0);
-        mContentInsetStart = a.getDimensionPixelSize(R.styleable.TabLayoutX_zqy_tabContentStart, 0);
-        mMode = a.getInt(R.styleable.TabLayoutX_zqy_tabMode, MODE_FIXED);
-        mTabGravity = a.getInt(R.styleable.TabLayoutX_zqy_tabGravity, GRAVITY_FILL);
+        mTabBackgroundResId = a.getResourceId(R.styleable.CommonTabLayout_zqy_tabBackground, 0);
+        mContentInsetStart = a.getDimensionPixelSize(R.styleable.CommonTabLayout_zqy_tabContentStart, 0);
+        mMode = a.getInt(R.styleable.CommonTabLayout_zqy_tabMode, MODE_FIXED);
+        mTabGravity = a.getInt(R.styleable.CommonTabLayout_zqy_tabGravity, GRAVITY_FILL);
         a.recycle();
 
         // TODO add attr for these

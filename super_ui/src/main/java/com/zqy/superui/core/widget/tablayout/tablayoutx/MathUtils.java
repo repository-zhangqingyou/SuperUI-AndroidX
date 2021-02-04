@@ -14,24 +14,16 @@
  * limitations under the License.
  */
 
-package com.zqy.superui.core.widget.tablayout;
+package com.zqy.superui.core.widget.tablayout.tablayoutx;
 
-import android.os.Build;
+class MathUtils {
 
-class ViewUtils {
+    static int constrain(int amount, int low, int high) {
+        return amount < low ? low : (amount > high ? high : amount);
+    }
 
-    static final ValueAnimatorCompat.Creator DEFAULT_ANIMATOR_CREATOR
-            = new ValueAnimatorCompat.Creator() {
-        @Override
-        public ValueAnimatorCompat createAnimator() {
-            return new ValueAnimatorCompat(Build.VERSION.SDK_INT >= 12
-                    ? new ValueAnimatorCompatImplHoneycombMr1()
-                    : new ValueAnimatorCompatImplGingerbread());
-        }
-    };
-
-    static ValueAnimatorCompat createAnimator() {
-        return DEFAULT_ANIMATOR_CREATOR.createAnimator();
+    static float constrain(float amount, float low, float high) {
+        return amount < low ? low : (amount > high ? high : amount);
     }
 
 }

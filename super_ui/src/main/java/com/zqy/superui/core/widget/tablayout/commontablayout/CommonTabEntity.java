@@ -7,7 +7,7 @@ import androidx.annotation.DrawableRes;
  * 时间: 2021/2/3 21:22
  * 描述:
  */
-public interface TabEntityX {
+public interface CommonTabEntity {
     String getTabTitle();
 
     @DrawableRes

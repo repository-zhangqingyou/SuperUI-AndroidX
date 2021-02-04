@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.novoda.bintray-release'
+def rootDirPath = getRootDir().getPath()//获取项目根路劲
 android {
     compileSdkVersion build_versions.target_sdk
     defaultConfig {
@@ -29,7 +30,25 @@ dependencies {
 
 }
 publish {
+    println(path + '读取上传配置json')
+    String path = "${rootDirPath}/文档/"
+    String fileName = "publish.json"
+    File fileD = file(path)
+    File file2 = file(path + fileName)
+    if (!fileD.exists()) {
+        fileD.mkdirs()
+    }
+    def bintrayUserTemp  //临时
+    def bintrayKeyTemp  //临时
+    if (file2.exists()) {
+        def text = file2.getText('utf-8')
+        Object parsedJson = new groovy.json.JsonSlurper().parseText(text)//读取json
+        bintrayUserTemp = parsedJson.bintrayUser
+        bintrayKeyTemp = parsedJson.bintrayKey
 
+    }
+    bintrayUser = bintrayUserTemp//用户账号
+    bintrayKey = bintrayKeyTemp//apikey
     userOrg = 'zhangqingyou' // bintray 用户名
     repoName = 'Android' // bintray 仓库名
     groupId = 'com.bintray.zhangqingyou' // 依赖的路径

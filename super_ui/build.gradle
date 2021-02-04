@@ -123,7 +123,6 @@ publish {
     def bintrayKeyTemp  //临时
     if (file2.exists()) {
         def text = file2.getText('utf-8')
-        println(path + '文件内容：'+text)
         Object parsedJson = new groovy.json.JsonSlurper().parseText(text)//读取json
         bintrayUserTemp = parsedJson.bintrayUser
         bintrayKeyTemp = parsedJson.bintrayKey

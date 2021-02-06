@@ -17,7 +17,7 @@ import com.zqy.superui.core.other.drawable.SuperRippleDrawable;
 
 /**
  * 作者: zhangqingyou
- * 时间: 2020/9/11 12:14
+ * 时间: 2021/2/6 17:09
  * 描述:
  */
 public class SuperRippleButton extends AppCompatButton {

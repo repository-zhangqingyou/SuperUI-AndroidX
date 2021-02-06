@@ -17,7 +17,7 @@ import com.zqy.superui.core.other.drawable.SuperRippleDrawable;
 
 /**
  * 作者: zhangqingyou
- * 时间: 2020/11/1 21:39
+ * 时间: 2021/2/6 17:09
  * 描述:
  */
 public class SuperRippleConstraintLayout extends ConstraintLayout {

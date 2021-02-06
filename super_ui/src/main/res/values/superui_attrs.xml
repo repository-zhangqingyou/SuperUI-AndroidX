@@ -376,7 +376,7 @@
         <attr name="zqy_border_color" format="color" />
         <attr name="zqy_inner_border_width" format="dimension" />
         <attr name="zqy_inner_border_color" format="color" />
-        <attr name="zqy_solid_color" format="color" />
+        <attr name="zqy_solid_color" />
     </declare-styleable>
 
 

@@ -113,7 +113,7 @@ public class SuperRoundImageView extends AppCompatImageView {
                 cornerBottomLeftRadius = ta.getDimensionPixelSize(attr, cornerBottomLeftRadius);
             } else if (attr == R.styleable.SuperRoundImageView_zqy_corner_bottom_right_radius) {
                 cornerBottomRightRadius = ta.getDimensionPixelSize(attr, cornerBottomRightRadius);
-            } else if (attr == R.styleable.SuperRoundImageView_zqy_mask_color) {
+            } else if (attr == R.styleable.SuperRoundImageView_zqy_solid_color) {
                 maskColor = ta.getColor(attr, maskColor);
             }
         }

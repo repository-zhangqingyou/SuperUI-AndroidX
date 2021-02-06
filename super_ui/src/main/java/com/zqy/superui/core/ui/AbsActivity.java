@@ -37,7 +37,6 @@ public abstract class AbsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init(getLayout());
-
         canonicalName = this.getClass().getCanonicalName();
         Log.d("BaseActivity", canonicalName);
 
@@ -262,7 +261,6 @@ public abstract class AbsActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
 //        if (isSupportSlideBack()) {
 //            SlideBack.unregister(this);
 //        }

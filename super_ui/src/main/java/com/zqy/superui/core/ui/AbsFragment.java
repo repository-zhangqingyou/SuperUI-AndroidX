@@ -223,7 +223,6 @@ public abstract class AbsFragment extends Fragment {
     public void setPaddingNumTop(View view, int num) {
         try {
             view.setPadding(0, BarUtils.getStatusBarHeight() + num, 0, 0);
-
         } catch (Exception e) {
 
         }

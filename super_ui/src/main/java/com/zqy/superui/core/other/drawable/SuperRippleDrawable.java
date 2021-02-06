@@ -34,7 +34,7 @@ public class SuperRippleDrawable {
     private float clickAlpha = 0.7f;// //设置按下的透明值
 
     private int rippleColor;//正常波纹颜色
-    private int pressColor;//点击波纹颜色
+    private int pressColor;//长按颜色
 
     private int normalStrokeColor;//正常边框
     private int strokeWidth;//边框宽度
@@ -275,7 +275,6 @@ public class SuperRippleDrawable {
     private Drawable initStateListDrawable() {
         float[] radii = getCornerRadii(topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius);
         RoundRectShape roundRectShape = new RoundRectShape(radii, null, null);
-
 //        ShapeDrawable contentDrawable = new ShapeDrawable();
 //        contentDrawable.setShape(roundRectShape);
 //        contentDrawable.getPaint().setColor(Color.parseColor("#f7c653"));

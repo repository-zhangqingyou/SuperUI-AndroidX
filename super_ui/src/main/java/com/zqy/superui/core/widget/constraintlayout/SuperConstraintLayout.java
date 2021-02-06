@@ -23,6 +23,7 @@ import com.zqy.superui.core.other.drawable.SuperGradientDrawable;
  * 描述:
  */
 public class SuperConstraintLayout extends ConstraintLayout implements DrawableImpl {
+
     private SuperGradientDrawable superGradientDrawable;
 
     public SuperConstraintLayout(Context context) {

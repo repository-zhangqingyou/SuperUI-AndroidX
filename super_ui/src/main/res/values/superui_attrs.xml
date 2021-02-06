@@ -32,12 +32,20 @@
     <attr name="zqy_start_color" format="color" />
     <!--渐变结束颜色-->
     <attr name="zqy_end_color" format="color" />
+
+    <attr name="zqy_ripple_color" format="color" /><!--正常波纹颜色-->
+    <attr name="zqy_press_color" format="color" /> <!--长按颜色-->
+    <attr name="zqy_is_foreground" format="boolean" /> <!--是否前背景-->
+
+
     <!--linear_gradient 设置线性渐变，sweep_gradient（扫描式渐变），radial_gradient（圆形渐变）-->
     <attr name="zqy_gradient" format="enum">
         <enum name="linear_gradient" value="0" />
         <enum name="sweep_gradient" value="2" />
         <enum name="radial_gradient" value="1" />
     </attr>
+
+
     <!--设置渐变方向-->
     <!--
     top_bottom,从上到下
@@ -371,5 +379,121 @@
         <attr name="zqy_mask_color" format="color" />
     </declare-styleable>
 
+
+    <declare-styleable name="SuperRippleButton">
+        <attr name="zqy_click_alpha" />
+        <attr name="zqy_solid_color" />
+        <attr name="zqy_ripple_color" /><!--正常波纹颜色-->
+        <attr name="zqy_stroke_color" />
+        <attr name="zqy_stroke_width" />
+        <attr name="zqy_press_color" /> <!--长按颜色-->
+        <attr name="zqy_text_color" />
+        <attr name="zqy_click_text_color" />
+        <attr name="zqy_radius" />
+        <attr name="zqy_top_left_radius" />
+        <attr name="zqy_top_right_radius" />
+        <attr name="zqy_bottom_left_radius" />
+        <attr name="zqy_bottom_right_radius" />
+        <attr name="zqy_start_color" />
+        <attr name="zqy_end_color" />
+        <attr name="zqy_gradient" />
+        <attr name="zqy_orientation" />
+        <attr name="zqy_is_foreground" /> <!--是否前背景-->
+    </declare-styleable>
+
+    <declare-styleable name="SuperRippleTextView">
+        <attr name="zqy_click_alpha" />
+        <attr name="zqy_solid_color" />
+        <attr name="zqy_ripple_color" /><!--正常波纹颜色-->
+        <attr name="zqy_stroke_color" />
+        <attr name="zqy_stroke_width" />
+        <attr name="zqy_press_color" /> <!--长按颜色-->
+        <attr name="zqy_text_color" />
+        <attr name="zqy_click_text_color" />
+        <attr name="zqy_radius" />
+        <attr name="zqy_top_left_radius" />
+        <attr name="zqy_top_right_radius" />
+        <attr name="zqy_bottom_left_radius" />
+        <attr name="zqy_bottom_right_radius" />
+        <attr name="zqy_start_color" />
+        <attr name="zqy_end_color" />
+        <attr name="zqy_gradient" />
+        <attr name="zqy_orientation" />
+        <attr name="zqy_is_foreground" /> <!--是否前背景-->
+    </declare-styleable>
+
+
+    <declare-styleable name="SuperRippleConstraintLayout">
+        <attr name="zqy_solid_color" />
+        <attr name="zqy_ripple_color" /><!--正常波纹颜色-->
+        <attr name="zqy_stroke_color" />
+        <attr name="zqy_stroke_width" />
+        <attr name="zqy_press_color" /> <!--长按颜色-->
+        <attr name="zqy_radius" />
+        <attr name="zqy_top_left_radius" />
+        <attr name="zqy_top_right_radius" />
+        <attr name="zqy_bottom_left_radius" />
+        <attr name="zqy_bottom_right_radius" />
+        <attr name="zqy_start_color" />
+        <attr name="zqy_end_color" />
+        <attr name="zqy_gradient" />
+        <attr name="zqy_orientation" />
+        <attr name="zqy_is_foreground" /> <!--是否前背景-->
+    </declare-styleable>
+
+    <declare-styleable name="SuperRippleFrameLayout">
+        <attr name="zqy_solid_color" />
+        <attr name="zqy_ripple_color" /><!--正常波纹颜色-->
+        <attr name="zqy_stroke_color" />
+        <attr name="zqy_stroke_width" />
+        <attr name="zqy_press_color" /> <!--长按颜色-->
+        <attr name="zqy_radius" />
+        <attr name="zqy_top_left_radius" />
+        <attr name="zqy_top_right_radius" />
+        <attr name="zqy_bottom_left_radius" />
+        <attr name="zqy_bottom_right_radius" />
+        <attr name="zqy_start_color" />
+        <attr name="zqy_end_color" />
+        <attr name="zqy_gradient" />
+        <attr name="zqy_orientation" />
+        <attr name="zqy_is_foreground" /> <!--是否前背景-->
+    </declare-styleable>
+
+
+    <declare-styleable name="SuperRippleLinearLayout">
+        <attr name="zqy_solid_color" />
+        <attr name="zqy_ripple_color" /><!--正常波纹颜色-->
+        <attr name="zqy_stroke_color" />
+        <attr name="zqy_stroke_width" />
+        <attr name="zqy_press_color" /> <!--长按颜色-->
+        <attr name="zqy_radius" />
+        <attr name="zqy_top_left_radius" />
+        <attr name="zqy_top_right_radius" />
+        <attr name="zqy_bottom_left_radius" />
+        <attr name="zqy_bottom_right_radius" />
+        <attr name="zqy_start_color" />
+        <attr name="zqy_end_color" />
+        <attr name="zqy_gradient" />
+        <attr name="zqy_orientation" />
+        <attr name="zqy_is_foreground" /> <!--是否前背景-->
+    </declare-styleable>
+
+    <declare-styleable name="SuperRippleImageView">
+        <attr name="zqy_solid_color" />
+        <attr name="zqy_ripple_color" /><!--正常波纹颜色-->
+        <attr name="zqy_stroke_color" />
+        <attr name="zqy_stroke_width" />
+        <attr name="zqy_press_color" /> <!--长按颜色-->
+        <attr name="zqy_radius" />
+        <attr name="zqy_top_left_radius" />
+        <attr name="zqy_top_right_radius" />
+        <attr name="zqy_bottom_left_radius" />
+        <attr name="zqy_bottom_right_radius" />
+        <attr name="zqy_start_color" />
+        <attr name="zqy_end_color" />
+        <attr name="zqy_gradient" />
+        <attr name="zqy_orientation" />
+        <attr name="zqy_is_foreground" /> <!--是否前背景-->
+    </declare-styleable>
 </resources>
 

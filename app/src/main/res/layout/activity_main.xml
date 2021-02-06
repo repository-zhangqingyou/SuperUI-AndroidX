@@ -53,8 +53,8 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="12dp"
-        app:qmui_selected_mask_color="#4D000000"
         android:scaleType="centerCrop"
+        app:qmui_selected_mask_color="#4D000000"
         app:srcCompat="@mipmap/ic_launcher_round" />
 
 
@@ -78,9 +78,17 @@
         <ImageView
             android:id="@+id/iv_R"
             android:layout_width="wrap_content"
-            android:src="@mipmap/ic_launcher"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher" />
     </LinearLayout>
+
+    <com.zqy.superui.core.widget.textview.SuperTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sdasda"
+        app:zqy_radius="@dimen/_20sdp"
+        app:zqy_ripple_color="@color/xui_config_color_light_yellow"
+        app:zqy_solid_color="@color/blue" />
 
 
 </LinearLayout>

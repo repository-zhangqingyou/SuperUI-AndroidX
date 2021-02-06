@@ -17,7 +17,6 @@ import com.blankj.utilcode.util.SizeUtils;
 import com.qmuiteam.qmui.widget.QMUIRadiusImageView2;
 import com.zqy.suidemo.R;
 import com.zqy.superui.core.enums.Gradient;
-import com.zqy.superui.core.other.drawable.SuperRippleDrawable;
 import com.zqy.superui.core.other.drawable.SuperStateListDrawable;
 import com.zqy.superui.core.widget.framelayout.SuperFrameLayout;
 import com.zqy.superui.core.widget.popup.tips.LoadPopup;
@@ -82,11 +81,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                .setGradient(Color.WHITE, Color.YELLOW, Gradient.LINEAR_GRADIENT, GradientDrawable.Orientation.LEFT_RIGHT)
 //                .buid());
 
-        Drawable buid = new SuperRippleDrawable()
-                .setRadius(20)
-                //.setGradient(Color.WHITE, Color.YELLOW, Gradient.LINEAR_GRADIENT, GradientDrawable.Orientation.LEFT_RIGHT)
-                .setRipple(Color.BLUE, Color.YELLOW)
-                .buid();
+//        Drawable buid = new SuperRippleDrawable()
+//                .setRadius(20)
+//                //.setGradient(Color.WHITE, Color.YELLOW, Gradient.LINEAR_GRADIENT, GradientDrawable.Orientation.LEFT_RIGHT)
+//                .setRipple(Color.BLUE, Color.YELLOW)
+//                .buid();
        // mIvR.setBackground(buid);
        // mIvR.setForeground(buid);
 

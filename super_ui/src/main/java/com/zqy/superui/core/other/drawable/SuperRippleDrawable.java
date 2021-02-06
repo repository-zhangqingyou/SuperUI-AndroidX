@@ -157,6 +157,28 @@ public class SuperRippleDrawable {
 
 
     /**
+     * @param starColor 渐变开始颜色
+     * @param endColor  渐变结束颜色
+     * @return
+     */
+    public SuperRippleDrawable setSolidColor(@ColorInt int solidColor) {
+        setGradient(solidColor, solidColor);
+        return this;
+    }
+
+
+    /**
+     * @param starColor 渐变开始颜色
+     * @param endColor  渐变结束颜色
+     * @return
+     */
+    public SuperRippleDrawable setGradient(@ColorInt int starColor, @ColorInt int endColor) {
+        setGradient(starColor, endColor, Gradient.LINEAR_GRADIENT, GradientDrawable.Orientation.LEFT_RIGHT);
+        return this;
+    }
+
+
+    /**
      * @param starColor   渐变开始颜色
      * @param endColor    渐变结束颜色
      * @param gradient    渐变模式 GradientDrawable.LINEAR_GRADIENT（线性渐变） ， GradientDrawable.SWEEP_GRADIENT（扫描式渐变），GradientDrawable.RADIAL_GRADIENT（圆形渐变）

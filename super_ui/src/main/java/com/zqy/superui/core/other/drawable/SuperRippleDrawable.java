@@ -34,7 +34,7 @@ public class SuperRippleDrawable {
     private float clickAlpha = 0.7f;// //设置按下的透明值
 
     private int rippleColor;//正常波纹颜色
-    private int pressColor;//长按颜色
+    private int maskColor;//<!--(面具)长按蒙面颜色-->
 
     private int normalStrokeColor;//正常边框
     private int strokeWidth;//边框宽度
@@ -157,8 +157,6 @@ public class SuperRippleDrawable {
 
 
     /**
-     * @param starColor 渐变开始颜色
-     * @param endColor  渐变结束颜色
      * @return
      */
     public SuperRippleDrawable setSolidColor(@ColorInt int solidColor) {
@@ -200,20 +198,18 @@ public class SuperRippleDrawable {
      */
     public SuperRippleDrawable setRipple(@ColorInt int rippleColor) {
         this.rippleColor = rippleColor;
-        if (colors != null && colors.length >= 2) {
-            this.pressColor = colors[1];
-        }
+        this.maskColor = ColorUtils.setAlphaComponent(rippleColor, 0.53f);
         return this;
     }
 
     /**
      * @param rippleColor //水波纹颜色
-     * @param pressColor  //长按颜色
+     * @param maskColor   //<!--(面具)长按蒙面颜色-->
      * @return
      */
-    public SuperRippleDrawable setRipple(@ColorInt int rippleColor, @ColorInt int pressColor) {
+    public SuperRippleDrawable setRipple(@ColorInt int rippleColor, @ColorInt int maskColor) {
         this.rippleColor = rippleColor;
-        this.pressColor = pressColor;
+        this.maskColor = maskColor;
         return this;
     }
 
@@ -266,17 +262,6 @@ public class SuperRippleDrawable {
         return colorStateList;
     }
 
-//    /**
-//     * 四角圆形度数
-//     */
-//    private void setCornerRadii(Drawable drawable, int radiusTopLeft, int radiusTopRight, int radiusBottomLeft, int radiusBottomRight) {
-//        //一个包含8个弧度值，指定外部圆角矩形的 4个角部的弧度及 ：new float[] {l, l, t, t, r, r, b, b};
-//        // 前2个 左上角， 3 4 ， 右上角， 56， 右下， 78 ，左下，如果没弧度的话，传入null即可。
-//        drawable.setsetCornerRadii(new float[]{radiusTopLeft,
-//                radiusTopLeft, radiusTopRight, radiusTopRight,
-//                radiusBottomRight, radiusBottomRight, radiusBottomLeft,
-//                radiusBottomLeft});
-//    }
 
     /**
      * 四角圆形度数
@@ -317,10 +302,11 @@ public class SuperRippleDrawable {
 
         ShapeDrawable maskDrawable = new ShapeDrawable();
         maskDrawable.setShape(roundRectShape);
+        maskDrawable.getPaint().setColor(maskColor);//maskColor   //<!--(面具)长按蒙面颜色-->
         maskDrawable.getPaint().setStyle(Paint.Style.FILL);
 
         //contentDrawable实际是默认初始化时展示的；maskDrawable 控制了rippleDrawable的范围
-        RippleDrawable rippleDrawable = new RippleDrawable(getRippleColorStateList(rippleColor, pressColor), contentDrawable, maskDrawable);
+        RippleDrawable rippleDrawable = new RippleDrawable(getRippleColorStateList(rippleColor, rippleColor), contentDrawable, maskDrawable);
         return rippleDrawable;
 
     }

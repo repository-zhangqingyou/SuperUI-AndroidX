@@ -34,7 +34,7 @@
     <attr name="zqy_end_color" format="color" />
 
     <attr name="zqy_ripple_color" format="color" /><!--正常波纹颜色-->
-    <attr name="zqy_press_color" format="color" /> <!--长按颜色-->
+    <attr name="zqy_mask_color" format="color" /> <!--(面具)长按蒙面颜色-->
     <attr name="zqy_is_foreground" format="boolean" /> <!--是否前背景-->
 
 
@@ -386,7 +386,7 @@
         <attr name="zqy_ripple_color" /><!--正常波纹颜色-->
         <attr name="zqy_stroke_color" />
         <attr name="zqy_stroke_width" />
-        <attr name="zqy_press_color" /> <!--长按颜色-->
+        <attr name="zqy_mask_color" /> <!--(面具)长按蒙面颜色-->
         <attr name="zqy_text_color" />
         <attr name="zqy_click_text_color" />
         <attr name="zqy_radius" />
@@ -407,7 +407,7 @@
         <attr name="zqy_ripple_color" /><!--正常波纹颜色-->
         <attr name="zqy_stroke_color" />
         <attr name="zqy_stroke_width" />
-        <attr name="zqy_press_color" /> <!--长按颜色-->
+        <attr name="zqy_mask_color" /> <!--(面具)长按蒙面颜色-->
         <attr name="zqy_text_color" />
         <attr name="zqy_click_text_color" />
         <attr name="zqy_radius" />
@@ -428,7 +428,7 @@
         <attr name="zqy_ripple_color" /><!--正常波纹颜色-->
         <attr name="zqy_stroke_color" />
         <attr name="zqy_stroke_width" />
-        <attr name="zqy_press_color" /> <!--长按颜色-->
+        <attr name="zqy_mask_color" /> <!--(面具)长按蒙面颜色-->
         <attr name="zqy_radius" />
         <attr name="zqy_top_left_radius" />
         <attr name="zqy_top_right_radius" />
@@ -446,7 +446,7 @@
         <attr name="zqy_ripple_color" /><!--正常波纹颜色-->
         <attr name="zqy_stroke_color" />
         <attr name="zqy_stroke_width" />
-        <attr name="zqy_press_color" /> <!--长按颜色-->
+        <attr name="zqy_mask_color" /> <!--(面具)长按蒙面颜色-->
         <attr name="zqy_radius" />
         <attr name="zqy_top_left_radius" />
         <attr name="zqy_top_right_radius" />
@@ -465,7 +465,7 @@
         <attr name="zqy_ripple_color" /><!--正常波纹颜色-->
         <attr name="zqy_stroke_color" />
         <attr name="zqy_stroke_width" />
-        <attr name="zqy_press_color" /> <!--长按颜色-->
+        <attr name="zqy_mask_color" /> <!--(面具)长按蒙面颜色-->
         <attr name="zqy_radius" />
         <attr name="zqy_top_left_radius" />
         <attr name="zqy_top_right_radius" />
@@ -483,7 +483,7 @@
         <attr name="zqy_ripple_color" /><!--正常波纹颜色-->
         <attr name="zqy_stroke_color" />
         <attr name="zqy_stroke_width" />
-        <attr name="zqy_press_color" /> <!--长按颜色-->
+        <attr name="zqy_mask_color" /> <!--(面具)长按蒙面颜色-->
         <attr name="zqy_radius" />
         <attr name="zqy_top_left_radius" />
         <attr name="zqy_top_right_radius" />

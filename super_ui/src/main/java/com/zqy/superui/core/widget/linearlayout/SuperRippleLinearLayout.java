@@ -56,7 +56,7 @@ public class SuperRippleLinearLayout extends LinearLayout {
             int 右下圆角 = typedArray.getDimensionPixelSize(R.styleable.SuperRippleLinearLayout_zqy_bottom_right_radius, 0);
 
             int 正常波纹颜色 = typedArray.getColor(R.styleable.SuperRippleLinearLayout_zqy_ripple_color, Color.TRANSPARENT);//正常波纹颜色
-            int 长按颜色 = typedArray.getColor(R.styleable.SuperRippleLinearLayout_zqy_press_color, Color.TRANSPARENT);//长按颜色
+            int mask = typedArray.getColor(R.styleable.SuperRippleLinearLayout_zqy_mask_color, Color.TRANSPARENT);//<!--(面具)长按蒙面颜色-->
             boolean 是否前背景 = typedArray.getBoolean(R.styleable.SuperRippleLinearLayout_zqy_is_foreground, false);//是否前背景
             typedArray.recycle();
 
@@ -91,10 +91,13 @@ public class SuperRippleLinearLayout extends LinearLayout {
             }
 
 
-            if (长按颜色 == Color.TRANSPARENT)
-                superRippleDrawable.setRipple(正常波纹颜色);
-            else
-                superRippleDrawable.setRipple(正常波纹颜色, 长按颜色);
+            if (正常波纹颜色 != Color.TRANSPARENT) {
+                if (mask == Color.TRANSPARENT) {
+                    superRippleDrawable.setRipple(正常波纹颜色);
+                } else {
+                    superRippleDrawable.setRipple(正常波纹颜色, mask);
+                }
+            }
 
 
             if (是否前背景 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
@@ -188,6 +191,27 @@ public class SuperRippleLinearLayout extends LinearLayout {
     }
 
 
+
+    /**
+     * 设置水波纹
+     *
+     * @param rippleColor 水波纹颜色
+     */
+    public void setRipple(int rippleColor) {
+        superRippleDrawable.setRipple(rippleColor);
+    }
+
+
+    /**
+     * 设置水波纹
+     *
+     * @param rippleColor 水波纹颜色
+     * @param maskColor   (面具)长按蒙面颜色
+     */
+    public void setRipple(int rippleColor, int maskColor) {
+        superRippleDrawable.setRipple(rippleColor, maskColor);
+    }
+
     /**
      * 设置完成之后必须调用 buid() ，否则不生效
      */
@@ -197,4 +221,5 @@ public class SuperRippleLinearLayout extends LinearLayout {
         else
             setBackground(superRippleDrawable.buid());
     }
+
 }

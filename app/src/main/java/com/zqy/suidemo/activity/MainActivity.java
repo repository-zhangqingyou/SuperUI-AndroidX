@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -16,11 +17,11 @@ import com.blankj.utilcode.util.SizeUtils;
 import com.qmuiteam.qmui.widget.QMUIRadiusImageView2;
 import com.zqy.suidemo.R;
 import com.zqy.superui.core.enums.Gradient;
+import com.zqy.superui.core.other.drawable.SuperRippleDrawable;
 import com.zqy.superui.core.other.drawable.SuperStateListDrawable;
 import com.zqy.superui.core.widget.framelayout.SuperFrameLayout;
 import com.zqy.superui.core.widget.popup.tips.LoadPopup;
 import com.zqy.superui.core.widget.textview.SuperTextView;
-import com.zqy.superutils.VisibilityAnimationUtil;
 
 import static com.qmuiteam.qmui.layout.IQMUILayout.HIDE_RADIUS_SIDE_BOTTOM;
 
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mBtTest;
     private SuperFrameLayout mSuperFrameLayout;
     private QMUIRadiusImageView2 mQMUIRadiusImageView2;
+    private LinearLayout mLlR;
+    private ImageView mIvR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSuperFrameLayout = findViewById(R.id.superFrameLayout);
         mQMUIRadiusImageView2 = findViewById(R.id.qMUIRadiusImageView2);
         mQMUIRadiusImageView2.setOnClickListener(this);
+        mLlR = findViewById(R.id.ll_R);
+        mLlR.setOnClickListener(this);
+        mIvR = findViewById(R.id.iv_R);
+        mIvR.setOnClickListener(this);
         //  RSAEncrypt.genKeyPair();
 //        String s = RSAEncrypt.encryptPublicKey("123");
 //        String s1 = RSAEncrypt.decryptPrivateKey(s, RSAEncrypt.PRIVATE_KEY);
@@ -66,14 +73,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         //  mTvTest.setBackgroundDrawable(new ColorDrawable(Color.BLACK));
+//
+//        mBtTest.setBackground(new SuperStateListDrawable()
+//                .setClickAlpha(0.5f)
+//                .setClickEffect(true)
+//                .setTextColorState(mBtTest, Color.BLUE, Color.BLUE)
+//                .setRadius(5)
+//                .setGradient(Color.WHITE, Color.YELLOW, Gradient.LINEAR_GRADIENT, GradientDrawable.Orientation.LEFT_RIGHT)
+//                .buid());
 
-        mBtTest.setBackground(new SuperStateListDrawable()
-                .setClickAlpha(0.5f)
-                .setClickEffect(true)
-                .setTextColorState(mBtTest, Color.BLUE, Color.BLUE)
-                .setRadius(5)
-                .setGradient(Color.WHITE, Color.YELLOW, Gradient.LINEAR_GRADIENT, GradientDrawable.Orientation.LEFT_RIGHT)
-                .buid());
+        Drawable buid = new SuperRippleDrawable()
+                .setRadius(20)
+                //.setGradient(Color.WHITE, Color.YELLOW, Gradient.LINEAR_GRADIENT, GradientDrawable.Orientation.LEFT_RIGHT)
+                .setRipple(Color.BLUE, Color.YELLOW)
+                .buid();
+       // mIvR.setBackground(buid);
+       // mIvR.setForeground(buid);
+
+        // mBtTest.setBackground(new RippleDrawable());
 
         mQMUIRadiusImageView2.setScaleType(ImageView.ScaleType.CENTER_CROP);
         mQMUIRadiusImageView2.setRadiusAndShadow(SizeUtils.dp2px(5),
@@ -94,14 +111,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 loadPopup.show(mTvTest);
                 break;
             case R.id.bt_test://原生Button测试
-                VisibilityAnimationUtil.setVisibilityLeft(mSuperFrameLayout, 500, isShow = !isShow);
+                //VisibilityAnimationUtil.setVisibilityLeft(mSuperFrameLayout, 500, isShow = !isShow);
                 break;
             case R.id.atv_content:
                 break;
 
             case R.id.qMUIRadiusImageView2:
                 break;
-
+            case R.id.iv_R:
+                break;
 
         }
     }

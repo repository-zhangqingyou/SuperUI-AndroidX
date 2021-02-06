@@ -30,6 +30,8 @@ dependencies {
     api 'com.orhanobut:logger:1.8'
     //最全最强工具库
     api 'com.blankj:utilcode:1.29.0'
+    api "com.github.Bjelijah:SDP:1.0.1"
+   // api 'com.intuit.sdp:sdp-android:1.0.6'
     //判断虚拟机
     api 'com.lahm.library:easy-protector-release:1.1.2'//latest.release
     //json解析库

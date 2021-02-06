@@ -207,8 +207,12 @@ public class SuperStateListDrawable extends GradientDrawable {
         return this;
     }
 
-
-    private ColorStateList getColorStateList(@ColorInt int normalStrokeColor, @ColorInt int clickStrokeColor) {
+    /**
+     * @param normalColor //正常颜色
+     * @param clickColor  //点击颜色
+     * @return
+     */
+    private ColorStateList getColorStateList(@ColorInt int normalColor, @ColorInt int clickColor) {
         int pressed = android.R.attr.state_pressed;
         int[][] states = new int[][]
                 {
@@ -219,9 +223,9 @@ public class SuperStateListDrawable extends GradientDrawable {
 
         int[] colors = new int[]
                 {
-                        normalStrokeColor,
-                        clickStrokeColor,
-                        normalStrokeColor,
+                        normalColor,
+                        clickColor,
+                        normalColor,
                 };
         ColorStateList colorStateList = new ColorStateList(states, colors);
         return colorStateList;

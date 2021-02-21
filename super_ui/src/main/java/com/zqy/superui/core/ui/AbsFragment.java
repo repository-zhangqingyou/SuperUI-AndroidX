@@ -24,9 +24,8 @@ import java.util.Map;
  * Des:
  */
 public abstract class AbsFragment extends Fragment {
-
     public View mRootView;
-
+    private Map<String, Fragment> stringFragmentMap;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -148,26 +147,16 @@ public abstract class AbsFragment extends Fragment {
     /**
      * 显示指定Fragment（其他隐藏）
      */
-    private Map<String, Fragment> stringFragmentMap;
-
-    public void showFragment(@IdRes int containerViewId, Class<? extends Fragment> clazzFragment) {
+    public void showFragment(@IdRes int containerViewId, Fragment fragment) {
         if (stringFragmentMap == null) stringFragmentMap = new LinkedHashMap();
         //开启事务
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
 
-        String canonicalName = clazzFragment.getCanonicalName();
+        String canonicalName = fragment.getClass().getCanonicalName();
         if (stringFragmentMap.get(canonicalName) == null) {
-            try {
-                Fragment fragment = clazzFragment.newInstance();
-                transaction.add(containerViewId, fragment, canonicalName);
-                stringFragmentMap.put(canonicalName, fragment);
-                Log.d("canonicalName", "---put---" + canonicalName);
-            } catch (IllegalAccessException e) {
-                Log.d("canonicalName", "---Exception---" + e.toString());
-            } catch (java.lang.InstantiationException e) {
-                Log.d("canonicalName", "---Exception---" + e.toString());
-            }
-
+            transaction.add(containerViewId, fragment, canonicalName);
+            stringFragmentMap.put(canonicalName, fragment);
+            Log.d("canonicalName", "---put---" + canonicalName);
         }
 
 
@@ -186,6 +175,25 @@ public abstract class AbsFragment extends Fragment {
             Log.d("canonicalName", "---commit---");
         } catch (Exception e) {
             Log.d("canonicalName", "---Exception---" + e.getMessage());
+        }
+    }
+
+    /**
+     * 显示指定Fragment（其他隐藏）
+     */
+    public void showFragment(@IdRes int containerViewId, Class<? extends Fragment> clazzFragment) {
+        String canonicalName = clazzFragment.getCanonicalName();
+        if (stringFragmentMap.get(canonicalName) == null) {
+            try {
+                Fragment fragment = clazzFragment.newInstance();
+                showFragment(containerViewId, fragment);
+            } catch (IllegalAccessException e) {
+                Log.d("canonicalName", "---Exception---" + e.toString());
+            } catch (java.lang.InstantiationException e) {
+                Log.d("canonicalName", "---Exception---" + e.toString());
+            }
+        } else {
+            showFragment(containerViewId, stringFragmentMap.get(canonicalName));
         }
     }
 

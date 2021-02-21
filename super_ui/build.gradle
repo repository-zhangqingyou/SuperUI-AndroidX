@@ -63,14 +63,14 @@ dependencies {
     api 'com.just.agentweb:filechooser-androidx:4.1.4'// (可选)
     api 'com.download.library:downloader-androidx:4.1.4'// (可选)
     //万能下拉刷新和上拉加载
-    api 'com.scwang.smart:refresh-layout-kernel:2.0.1'      //核心必须依赖
-    api 'com.scwang.smart:refresh-header-classics:2.0.1'    //经典刷新头
+    api 'com.scwang.smart:refresh-layout-kernel:2.0.3'      //核心必须依赖
+    api 'com.scwang.smart:refresh-header-classics:2.0.3'    //经典刷新头
     api 'com.scwang.smart:refresh-header-radar:2.0.1'       //雷达刷新头
     api 'com.scwang.smart:refresh-header-falsify:2.0.1'     //虚拟刷新头
     api 'com.scwang.smart:refresh-header-material:2.0.1'    //谷歌刷新头
     api 'com.scwang.smart:refresh-header-two-level:2.0.1'   //二级刷新头
     api 'com.scwang.smart:refresh-footer-ball:2.0.1'        //球脉冲加载
-    api 'com.scwang.smart:refresh-footer-classics:2.0.1'    //经典加载
+    api 'com.scwang.smart:refresh-footer-classics:2.0.3'    //经典加载
     //Android界最万能的TabLayout(不仅仅是TabLayout), 支持任意类型的item, 支持Drawable类型的指示器,智能开启滚动等
     api 'com.github.angcyo.DslTablayout:TabLayout:1.6.1'
     api 'com.github.angcyo.DslTablayout:ViewPager1Delegate:1.6.1'  //可选
@@ -134,7 +134,7 @@ publish {
     repoName = 'Android' // bintray 仓库名
     groupId = 'com.bintray.zhangqingyou' // 依赖的路径
     artifactId = 'super_ui' // 依赖的名称
-    publishVersion = "1.0.83" // 依赖的版本号
+    publishVersion = "1.0.84" // 依赖的版本号
     desc = '常用UI' // 描述
     website = 'https://gitee.com/zqycl/' // 项目网站，可填写 github 地址
     dryRun = false // true-仅运行  false-运行+上传

@@ -28,6 +28,7 @@ import java.util.Map;
  */
 public abstract class AbsActivity extends AppCompatActivity {
     private String canonicalName;  //
+    private Map<String, Fragment> stringFragmentMap;
 
     /**
      * 是否支持侧滑返回
@@ -153,26 +154,16 @@ public abstract class AbsActivity extends AppCompatActivity {
     /**
      * 显示指定Fragment（其他隐藏）
      */
-    private Map<String, Fragment> stringFragmentMap;
-
-    public void showFragment(@IdRes int containerViewId, Class<? extends Fragment> clazzFragment) {
+    public void showFragment(@IdRes int containerViewId, Fragment fragment) {
         if (stringFragmentMap == null) stringFragmentMap = new LinkedHashMap();
         //开启事务
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        String canonicalName = clazzFragment.getCanonicalName();
+        String canonicalName = fragment.getClass().getCanonicalName();
         if (stringFragmentMap.get(canonicalName) == null) {
-            try {
-                Fragment fragment = clazzFragment.newInstance();
-                transaction.add(containerViewId, fragment, canonicalName);
-                stringFragmentMap.put(canonicalName, fragment);
-                Log.d("canonicalName", "---put---" + canonicalName);
-            } catch (IllegalAccessException e) {
-                Log.d("canonicalName", "---Exception---" + e.toString());
-            } catch (InstantiationException e) {
-                Log.d("canonicalName", "---Exception---" + e.toString());
-            }
-
+            transaction.add(containerViewId, fragment, canonicalName);
+            stringFragmentMap.put(canonicalName, fragment);
+            Log.d("canonicalName", "---put---" + canonicalName);
         }
 
 
@@ -194,6 +185,24 @@ public abstract class AbsActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 显示指定Fragment（其他隐藏）
+     */
+    public void showFragment(@IdRes int containerViewId, Class<? extends Fragment> clazzFragment) {
+        String canonicalName = clazzFragment.getCanonicalName();
+        if (stringFragmentMap.get(canonicalName) == null) {
+            try {
+                Fragment fragment = clazzFragment.newInstance();
+                showFragment(containerViewId, fragment);
+            } catch (IllegalAccessException e) {
+                Log.d("canonicalName", "---Exception---" + e.toString());
+            } catch (InstantiationException e) {
+                Log.d("canonicalName", "---Exception---" + e.toString());
+            }
+        } else {
+            showFragment(containerViewId, stringFragmentMap.get(canonicalName));
+        }
+    }
 
     /**
      * 查找Fragment
@@ -247,8 +256,6 @@ public abstract class AbsActivity extends AppCompatActivity {
         super.onStop();
         Glide.get(this).clearMemory();//清理Glide
     }
-
-
 
 
     /**

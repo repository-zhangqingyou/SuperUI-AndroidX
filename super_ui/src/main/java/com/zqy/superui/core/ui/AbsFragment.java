@@ -182,6 +182,7 @@ public abstract class AbsFragment extends Fragment {
      * 显示指定Fragment（其他隐藏）
      */
     public void showFragment(@IdRes int containerViewId, Class<? extends Fragment> clazzFragment) {
+        if (stringFragmentMap == null) stringFragmentMap = new LinkedHashMap();
         String canonicalName = clazzFragment.getCanonicalName();
         if (stringFragmentMap.get(canonicalName) == null) {
             try {

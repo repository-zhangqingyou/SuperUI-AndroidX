@@ -26,6 +26,7 @@ import java.util.Map;
 public abstract class AbsFragment extends Fragment {
     public View mRootView;
     private Map<String, Fragment> stringFragmentMap;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -218,8 +219,6 @@ public abstract class AbsFragment extends Fragment {
     }
 
 
-
-
     public void setPaddingTop(View view) {
         try {
             view.setPadding(0, BarUtils.getStatusBarHeight(), 0, 0);
@@ -269,5 +268,12 @@ public abstract class AbsFragment extends Fragment {
         BarUtils.setNavBarLightMode(getActivity(), isLightMode);
     }
 
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (stringFragmentMap != null) {
+            stringFragmentMap.clear();
+            stringFragmentMap = null;
+        }
+    }
 }

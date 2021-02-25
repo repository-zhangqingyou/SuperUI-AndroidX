@@ -269,6 +269,10 @@ public abstract class AbsActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (stringFragmentMap != null) {
+            stringFragmentMap.clear();
+            stringFragmentMap = null;
+        }
 //        if (isSupportSlideBack()) {
 //            SlideBack.unregister(this);
 //        }

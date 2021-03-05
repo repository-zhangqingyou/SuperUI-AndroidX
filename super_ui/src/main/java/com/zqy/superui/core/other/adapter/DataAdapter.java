@@ -146,7 +146,7 @@ public abstract class DataAdapter<T, V extends BaseViewHolder> extends RecyclerV
                  *  positionStart:刷新起始位置
                  *  itemCount：新增数据个数
                  */
-                notifyItemRangeChanged(sizes - size, size);//只刷新添加的数据
+                notifyItemRangeChanged(sizes - size-1, size);//只刷新添加的数据
             } else
                 notifyDataSetChanged();
         }

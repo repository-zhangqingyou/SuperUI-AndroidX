@@ -43,12 +43,7 @@ public class SuperUtilsManager {
             Logger.init("日志");
         }
         SVGAParser.Companion.shareParser().init(getApplication());
-        MdidSdkHelper.InitSdk(application, true, new IIdentifierListener() {
-            @Override
-            public void OnSupport(boolean b, IdSupplier idSupplier) {
-                SuperUtilsManager.idSupplier = idSupplier;
-            }
-        });
+
     }
 
     public static Application getApplication() {
@@ -84,6 +79,17 @@ public class SuperUtilsManager {
         return idSupplier;
     }
 
+    /**
+     * 初始化移动安全联盟SDK(不使用则不初始化)
+     */
+    public static void initMdidSdk() {
+        MdidSdkHelper.InitSdk(application, true, new IIdentifierListener() {
+            @Override
+            public void OnSupport(boolean b, IdSupplier idSupplier) {
+                SuperUtilsManager.idSupplier = idSupplier;
+            }
+        });
+    }
 
     /**
      * Bugly配置渠道信息已失效 先初始化Tinker再初始化Bugly

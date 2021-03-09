@@ -40,6 +40,7 @@ public class SuperRippleTextView extends AppCompatTextView {
     }
 
     private void init(Context context, AttributeSet attrs) {
+        superRippleDrawable = new SuperRippleDrawable();
         if (attrs != null) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SuperRippleTextView);
             float 按下时透明度 = typedArray.getFloat(R.styleable.SuperRippleTextView_zqy_click_alpha, 0.7f);//默认点击透明度
@@ -63,7 +64,6 @@ public class SuperRippleTextView extends AppCompatTextView {
             boolean 是否前背景 = typedArray.getBoolean(R.styleable.SuperRippleTextView_zqy_is_foreground, false);//是否前背景
             typedArray.recycle();
 
-            superRippleDrawable = new SuperRippleDrawable();
 
             if (四圆角 > 0)
                 superRippleDrawable.setRadius(四圆角);

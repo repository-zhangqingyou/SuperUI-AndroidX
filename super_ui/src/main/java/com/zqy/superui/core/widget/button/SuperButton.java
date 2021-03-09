@@ -47,6 +47,7 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
     }
 
     private void init(Context context, AttributeSet attrs) {
+        superGradientDrawable = new SuperGradientDrawable();
         boolean 是否有按下效果 = true;
         float 按下时透明度 = 0.7f;
         int 填充颜色 = Color.TRANSPARENT;
@@ -107,7 +108,6 @@ public class SuperButton extends AppCompatButton implements DrawableImpl {
         superDrawableData.setBottomLeftRadius(左下圆角);
         superDrawableData.setBottomRightRadius(右下圆角);
 
-        superGradientDrawable = new SuperGradientDrawable();
         superGradientDrawable.init(superDrawableData);
         //此方法耗时
 //        superGradientDrawable = new SuperGradientDrawable();

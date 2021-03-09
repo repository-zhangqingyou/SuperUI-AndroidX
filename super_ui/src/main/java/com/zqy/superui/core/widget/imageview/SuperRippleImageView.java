@@ -40,6 +40,7 @@ public class SuperRippleImageView extends AppCompatImageView {
     }
 
     private void init(Context context, AttributeSet attrs) {
+        superRippleDrawable = new SuperRippleDrawable();
         if (attrs != null) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SuperRippleImageView);
             int 填充颜色 = typedArray.getColor(R.styleable.SuperRippleImageView_zqy_solid_color, Color.TRANSPARENT);
@@ -60,7 +61,6 @@ public class SuperRippleImageView extends AppCompatImageView {
             boolean 是否前背景 = typedArray.getBoolean(R.styleable.SuperRippleImageView_zqy_is_foreground, true);//是否前背景    默认前景
             typedArray.recycle();
 
-            superRippleDrawable = new SuperRippleDrawable();
 
             if (四圆角 > 0)
                 superRippleDrawable.setRadius(四圆角);

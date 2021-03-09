@@ -40,6 +40,7 @@ public class SuperRippleFrameLayout extends FrameLayout {
     }
 
     private void init(Context context, AttributeSet attrs) {
+        superRippleDrawable = new SuperRippleDrawable();
         if (attrs != null) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SuperRippleFrameLayout);
             int 填充颜色 = typedArray.getColor(R.styleable.SuperRippleFrameLayout_zqy_solid_color, Color.TRANSPARENT);
@@ -60,7 +61,6 @@ public class SuperRippleFrameLayout extends FrameLayout {
             boolean 是否前背景 = typedArray.getBoolean(R.styleable.SuperRippleFrameLayout_zqy_is_foreground, false);//是否前背景
             typedArray.recycle();
 
-            superRippleDrawable = new SuperRippleDrawable();
 
             if (四圆角 > 0)
                 superRippleDrawable.setRadius(四圆角);

@@ -40,6 +40,8 @@ public class SuperRippleLinearLayout extends LinearLayout {
     }
 
     private void init(Context context, AttributeSet attrs) {
+        superRippleDrawable = new SuperRippleDrawable();
+
         if (attrs != null) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SuperRippleLinearLayout);
             int 填充颜色 = typedArray.getColor(R.styleable.SuperRippleLinearLayout_zqy_solid_color, Color.TRANSPARENT);
@@ -59,8 +61,6 @@ public class SuperRippleLinearLayout extends LinearLayout {
             int mask = typedArray.getColor(R.styleable.SuperRippleLinearLayout_zqy_mask_color, Color.TRANSPARENT);//<!--(面具)长按蒙面颜色-->
             boolean 是否前背景 = typedArray.getBoolean(R.styleable.SuperRippleLinearLayout_zqy_is_foreground, false);//是否前背景
             typedArray.recycle();
-
-            superRippleDrawable = new SuperRippleDrawable();
 
             if (四圆角 > 0)
                 superRippleDrawable.setRadius(四圆角);

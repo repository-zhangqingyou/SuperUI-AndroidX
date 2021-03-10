@@ -1,8 +1,6 @@
 package com.zqy.superui.core.other.adapter;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,30 +59,26 @@ public abstract class WaterRippleAdapter<T> extends AbsAdapter<T, BaseViewHolder
         if (getOnItemClickListener() != null)
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(final View view) {
-                    Handler handler = new Handler(Looper.getMainLooper());
-                    handler.postDelayed(new Runnable() {//延迟才有水波纹效果
+                public void onClick(View view) {
+                    view.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             getOnItemClickListener().onItemClick(view, getDataList().get(position), position);
                         }
-                    }, 300);
-
+                    }, getItemClickDelayMillis());
                 }
             });
 
         if (getOnItemLongClickListener() != null)
             holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
-                public boolean onLongClick(final View v) {
-                    Handler handler = new Handler(Looper.getMainLooper());
-                    handler.postDelayed(new Runnable() {
+                public boolean onLongClick(View view) {
+                    view.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            getOnItemLongClickListener().onItemLongClick(v, getDataList().get(position), position);
+                            getOnItemLongClickListener().onItemLongClick(view, getDataList().get(position), position);
                         }
-                    }, 300);
-
+                    }, getItemClickDelayMillis());
                     return true;
                 }
             });
@@ -194,6 +188,15 @@ public abstract class WaterRippleAdapter<T> extends AbsAdapter<T, BaseViewHolder
      */
     @Override
     public int getZoomDuration() {
+        return 200;
+    }
+
+    /**
+     * ItemC点击延时 （防连续点击）
+     *
+     * @return
+     */
+    public int getItemClickDelayMillis() {
         return 200;
     }
 }

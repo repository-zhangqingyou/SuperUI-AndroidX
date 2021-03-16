@@ -84,6 +84,7 @@ public class LoadingLayout extends FrameLayout {
     private static int marginTop_dp = 10;
     private static int loadingLayoutId = R.layout.widget_loading_page;
     private static int backgroundColor = R.color.base_loading_background;
+    private static boolean isReloadButtonVisibility;
 
     public LoadingLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -184,6 +185,15 @@ public class LoadingLayout extends FrameLayout {
 
         errorReloadBtn.setTextColor(ContextCompat.getColor(mContext, buttonTextColor));
         networkReloadBtn.setTextColor(ContextCompat.getColor(mContext, buttonTextColor));
+
+        if (isReloadButtonVisibility) {
+            errorReloadBtn.setVisibility(VISIBLE);
+            networkReloadBtn.setVisibility(VISIBLE);
+        } else {
+            errorReloadBtn.setVisibility(GONE);
+            networkReloadBtn.setVisibility(GONE);
+        }
+
 
         setReloadButtonWH(buttonWidth, buttonHeight);
         setErrorImageWH(errorImgWidth, errorImgHeight);
@@ -812,6 +822,11 @@ public class LoadingLayout extends FrameLayout {
         public Config setReloadButtonTextSize(int sp) {
 
             buttonTextSize = sp;
+            return mConfig;
+        }
+
+        public Config setReloadButtonVisibility(boolean reloadButtonVisibility) {
+            isReloadButtonVisibility = reloadButtonVisibility;
             return mConfig;
         }
 

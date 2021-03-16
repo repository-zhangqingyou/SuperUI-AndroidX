@@ -28,6 +28,12 @@ public class PermissionUtils {
         permission(permissions);
     }
 
+    /**
+     *
+     * @param text 提示内容
+     * @param permissions 权限名组
+     * @param permissionCallback  结果回调
+     */
     public static void request(String text, String[] permissions, PermissionCallback permissionCallback) {
         PermissionUtils.text = text;
         PermissionUtils.permissionCallback = permissionCallback;

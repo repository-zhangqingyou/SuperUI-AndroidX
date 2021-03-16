@@ -528,6 +528,24 @@ public class LoadingLayout extends FrameLayout {
     }
 
     /**
+     * 设置ReloadButton的文本颜色，仅对当前所在的地方有效
+     *
+     * @param isReloadButtonVisibility
+     * @return
+     */
+    public LoadingLayout setIsReloadButtonVisibility(boolean isReloadButtonVisibility) {
+        if (isReloadButtonVisibility) {
+            errorReloadBtn.setVisibility(VISIBLE);
+            networkReloadBtn.setVisibility(VISIBLE);
+        } else {
+            errorReloadBtn.setVisibility(GONE);
+            networkReloadBtn.setVisibility(GONE);
+        }
+        return this;
+    }
+
+
+    /**
      * 设置ReloadButton的背景，仅对当前所在的地方有效
      *
      * @param id

@@ -3,7 +3,9 @@ package com.zqy.superhttp.request;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.zqy.superhttp.SuperHttpManager;
-import com.zqy.superhttp.module.Result;
+
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 
 /**
@@ -13,15 +15,19 @@ import com.zqy.superhttp.module.Result;
  */
 
 public abstract class JsonBeanCallback<T> extends BaseCallback {
-    private Class<Result<T>> classOfBean;//json对象实体
+    private Class<T> classOfBean;//json对象实体
 
-    public JsonBeanCallback(Class<Result<T>> classOfBean) {
-        this.classOfBean = classOfBean;
+    public JsonBeanCallback() {
+        super();
+        Type type = getClass().getGenericSuperclass();
+        ParameterizedType ptype = (ParameterizedType) type;
+        Type[] types = ptype.getActualTypeArguments();
+        classOfBean = (Class<T>) types[0];
     }
 
-    public JsonBeanCallback(String requestName, Class<Result<T>> classOfBean) {
+    public JsonBeanCallback(String requestName) {
         super(requestName);
-        this.classOfBean = classOfBean;
+        classOfBean = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
     @Override
@@ -33,7 +39,7 @@ public abstract class JsonBeanCallback<T> extends BaseCallback {
     public void onSuccess(com.lzy.okgo.model.Response<String> response) {
         super.onSuccess(response);
         try {
-            Result<T> tResult = new Gson().fromJson(response.body(), classOfBean);
+            T tResult = new Gson().fromJson(response.body(), classOfBean);
             onSuccess(tResult);
 //            Object code = map.get("code");
 //            Object msg = map.get("msg");
@@ -62,6 +68,6 @@ public abstract class JsonBeanCallback<T> extends BaseCallback {
     /**
      * 对返回数据进行操作的回调， UI线程
      */
-    public abstract void onSuccess(Result<T> result);
+    public abstract void onSuccess(T result);
 
 }

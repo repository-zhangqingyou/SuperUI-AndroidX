@@ -13,18 +13,42 @@ import com.zqy.superhttp.module.Result;
  */
 
 public abstract class JsonBeanCallback<T> extends BaseCallback {
+    private Class<Result<T>> classOfBean;//json对象实体
+
+    public JsonBeanCallback(Class<Result<T>> classOfBean) {
+        this.classOfBean = classOfBean;
+    }
+
+    public JsonBeanCallback(String requestName, Class<Result<T>> classOfBean) {
+        super(requestName);
+        this.classOfBean = classOfBean;
+    }
 
     @Override
     public void onFinish(String msg) {
-
     }
+
 
     @Override
     public void onSuccess(com.lzy.okgo.model.Response<String> response) {
         super.onSuccess(response);
         try {
-            Result<T> t = new Gson().fromJson(response.body(), Result.class);
-            onSuccess(t);
+            Result<T> tResult = new Gson().fromJson(response.body(), classOfBean);
+            onSuccess(tResult);
+//            Object code = map.get("code");
+//            Object msg = map.get("msg");
+//            Object data = map.get("data");
+//
+//            Result<T> tResult = new Result<>();
+//            if (code instanceof Integer) {
+//                tResult.setCode((Integer) code);
+//            }
+//            if (msg instanceof String) {
+//                tResult.setMsg((String) msg);
+//            }
+//            tResult.setData(new Gson().fromJson(response.body(), T.class));
+
+
         } catch (JsonSyntaxException e) {
 
             if (SuperHttpManager.getApiCallbackService() != null) {

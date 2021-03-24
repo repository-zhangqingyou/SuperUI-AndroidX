@@ -45,7 +45,6 @@ publish {
         Object parsedJson = new groovy.json.JsonSlurper().parseText(text)//读取json
         bintrayUserTemp = parsedJson.bintrayUser
         bintrayKeyTemp = parsedJson.bintrayKey
-
     }
     bintrayUser = bintrayUserTemp//用户账号
     bintrayKey = bintrayKeyTemp//apikey

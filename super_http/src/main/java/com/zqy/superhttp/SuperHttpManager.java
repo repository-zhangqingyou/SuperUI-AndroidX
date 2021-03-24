@@ -8,7 +8,7 @@ import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.cookie.CookieJarImpl;
 import com.lzy.okgo.cookie.store.SPCookieStore;
 import com.lzy.okgo.model.HttpHeaders;
-import com.zqy.superhttp.request.ApiCallbackService;
+import com.zqy.superhttp.http.ApiCallbackService;
 
 import java.lang.reflect.Field;
 import java.util.concurrent.TimeUnit;

@@ -1,16 +1,16 @@
-package com.zqy.superhttp.module;
+package com.zqy.superhttp.response;
 
 import java.io.Serializable;
+
 
 /**
  * 作者: zhangqingyou
  * 时间: 2021/3/24
  * 描述:
  */
-public class Result<T> implements Serializable {
-    public int code;
-    public String msg;
-    public T data;
+public class Result<T> extends BaseResult<T> implements Serializable {
+    private int code;
+    private String msg;
 
     public int getCode() {
         return code;
@@ -28,11 +28,5 @@ public class Result<T> implements Serializable {
         this.msg = msg;
     }
 
-    public T getData() {
-        return data;
-    }
 
-    public void setData(T data) {
-        this.data = data;
-    }
 }

@@ -1,4 +1,4 @@
-package com.zqy.superhttp.request;
+package com.zqy.superhttp.http;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;

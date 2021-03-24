@@ -14,7 +14,7 @@ import com.lzy.okgo.request.base.Request;
 import com.zqy.suidemo.database.DaoMaster;
 import com.zqy.suidemo.database.DaoSession;
 import com.zqy.superhttp.SuperHttpManager;
-import com.zqy.superhttp.request.ApiCallbackService;
+import com.zqy.superhttp.http.ApiCallbackService;
 import com.zqy.superui.SuperUIManager;
 import com.zqy.superutils.ToastUtil;
 import com.zqy.superutils.database.GreenDaoContext;

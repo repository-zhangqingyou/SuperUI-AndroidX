@@ -33,7 +33,7 @@ public class Result<T> extends BaseResult<T> implements Serializable {
         return "Result{" +
                 "code=" + code +
                 ", msg='" + msg + '\'' +
-                ", data=" + data != null ? data.toString() : "null" +
+                ", data=" + (data != null ? data.toString() : "null") +
                 '}';
     }
 }

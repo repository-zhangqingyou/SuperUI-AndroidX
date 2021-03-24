@@ -2,9 +2,9 @@ package com.zqy.superhttp.request;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 import com.zqy.superhttp.SuperHttpManager;
 
-import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 
@@ -15,19 +15,13 @@ import java.lang.reflect.Type;
  */
 
 public abstract class JsonBeanCallback<T> extends BaseCallback {
-    private Class<T> classOfBean;//json对象实体
 
     public JsonBeanCallback() {
         super();
-        Type type = getClass().getGenericSuperclass();
-        ParameterizedType ptype = (ParameterizedType) type;
-        Type[] types = ptype.getActualTypeArguments();
-        classOfBean = (Class<T>) types[0];
     }
 
     public JsonBeanCallback(String requestName) {
         super(requestName);
-        classOfBean = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
     @Override
@@ -39,7 +33,10 @@ public abstract class JsonBeanCallback<T> extends BaseCallback {
     public void onSuccess(com.lzy.okgo.model.Response<String> response) {
         super.onSuccess(response);
         try {
-            T tResult = new Gson().fromJson(response.body(), classOfBean);
+            Type type = new TypeToken<T>() {
+            }.getType();
+
+            T tResult = new Gson().fromJson(response.body(), type);
             onSuccess(tResult);
 //            Object code = map.get("code");
 //            Object msg = map.get("msg");
@@ -60,9 +57,7 @@ public abstract class JsonBeanCallback<T> extends BaseCallback {
             if (SuperHttpManager.getApiCallbackService() != null) {
                 SuperHttpManager.getApiCallbackService().onError(getBaseUrl(), getEndUrl(), response);
             }
-
         }
-
     }
 
     /**

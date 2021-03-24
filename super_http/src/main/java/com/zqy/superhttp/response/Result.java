@@ -28,5 +28,12 @@ public class Result<T> extends BaseResult<T> implements Serializable {
         this.msg = msg;
     }
 
-
+    @Override
+    public String toString() {
+        return "Result{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data != null ? data.toString() : "null" +
+                '}';
+    }
 }

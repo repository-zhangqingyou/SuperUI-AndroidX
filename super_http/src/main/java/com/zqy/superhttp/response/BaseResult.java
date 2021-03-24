@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 public class BaseResult<T> implements Serializable {
 
-    private T data;
+    protected T data;
 
     public T getData() {
         return data;

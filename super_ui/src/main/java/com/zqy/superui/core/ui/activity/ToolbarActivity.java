@@ -16,8 +16,13 @@ public abstract class ToolbarActivity extends AbsActivity implements Toolbar.OnM
     public void initData() {
         Toolbar mToolbar = getToolbar();
         int toolbarMenu = getToolbarMenu();
-        if (mToolbar != null && toolbarMenu > 0) {
-            mToolbar.inflateMenu(toolbarMenu);
+        if (mToolbar != null ) {
+           // mToolbar.setTitleTextAppearance(this, R.style.ToolbarTitleAppearance);
+
+            if (toolbarMenu > 0){
+                mToolbar.inflateMenu(toolbarMenu);
+            }
+
         }
 
     }
@@ -32,6 +37,7 @@ public abstract class ToolbarActivity extends AbsActivity implements Toolbar.OnM
                     onNavigationBackClick(v);
                 }
             });
+
 
             mToolbar.setOnMenuItemClickListener(this);
 

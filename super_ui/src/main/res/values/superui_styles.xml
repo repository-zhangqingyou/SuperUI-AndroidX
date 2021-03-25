@@ -75,4 +75,10 @@
         <item name="contentInsetStart">0dp</item>
         <item name="contentInsetStartWithNavigation">0dp</item>
     </style>
+
+    <style name="SuperUI.Theme.ToolBar.Base.Title" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
 </resources>

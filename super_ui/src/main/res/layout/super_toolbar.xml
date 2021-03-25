@@ -5,9 +5,11 @@
     android:id="@+id/toolbar"
     style="@style/SuperUI_ToolbarStyle"
     android:gravity="center_vertical"
-    app:navigationIcon="@drawable/superui_ic_keyboard_arrow_left_black_40dp"
+    app:contentInsetStart="0dp"
+    app:navigationIcon="@drawable/superui_ic_keyboard_arrow_left_black_35dp"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     app:title="返回"
+    app:titleTextAppearance="@style/SuperUI.Theme.ToolBar.Base.Title"
     app:titleTextColor="@android:color/black">
 
     <TextView

@@ -56,16 +56,6 @@ public abstract class SimpleToolbarActivity extends ToolbarActivity {
 
     }
 
-    @Override
-    public void initData() {
-
-    }
-
-    @Override
-    public void listener() {
-        super.listener();
-    }
-
     /**
      * 根视图
      *

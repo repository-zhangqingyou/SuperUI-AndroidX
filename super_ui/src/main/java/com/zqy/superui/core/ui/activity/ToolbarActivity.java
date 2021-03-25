@@ -3,6 +3,7 @@ package com.zqy.superui.core.ui.activity;
 
 import android.view.View;
 
+import androidx.annotation.MenuRes;
 import androidx.appcompat.widget.Toolbar;
 
 /**
@@ -11,6 +12,16 @@ import androidx.appcompat.widget.Toolbar;
  * 描述: 含有顶部标题的Activity
  */
 public abstract class ToolbarActivity extends AbsActivity implements Toolbar.OnMenuItemClickListener {
+    @Override
+    public void initData() {
+        Toolbar mToolbar = getToolbar();
+        int toolbarMenu = getToolbarMenu();
+        if (mToolbar != null && toolbarMenu > 0) {
+            mToolbar.inflateMenu(toolbarMenu);
+        }
+
+    }
+
     @Override
     public void listener() {
         Toolbar mToolbar = getToolbar();
@@ -39,6 +50,10 @@ public abstract class ToolbarActivity extends AbsActivity implements Toolbar.OnM
     }
 
     public abstract Toolbar getToolbar();
+
+    @MenuRes
+    public abstract int getToolbarMenu();
+
 
     @Override
     protected void onDestroy() {

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_RootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/SuperUI_ToolbarStyle"
+        android:gravity="center_vertical"
+        app:navigationIcon="@drawable/superui_ic_keyboard_arrow_left_black_40dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="返回"
+        app:titleTextColor="@android:color/black" />
+
+    <LinearLayout
+        android:id="@+id/ll_Container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical" />
+
+</LinearLayout>

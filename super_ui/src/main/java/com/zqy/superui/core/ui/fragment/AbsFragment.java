@@ -1,4 +1,4 @@
-package com.zqy.superui.core.ui;
+package com.zqy.superui.core.ui.fragment;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +13,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.BarUtils;
+import com.zqy.superui.R;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -26,10 +28,16 @@ import java.util.Map;
 public abstract class AbsFragment extends Fragment {
     public View mRootView;
     private Map<String, Fragment> stringFragmentMap;
+    public int _8sdp, _10sdp, _12sdp;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        ARouter.getInstance().inject(this);//获取传参
+        _8sdp = getResources().getDimensionPixelSize(R.dimen._8sdp);
+        _10sdp = getResources().getDimensionPixelSize(R.dimen._10sdp);
+        _12sdp = getResources().getDimensionPixelSize(R.dimen._12sdp);
         if (mRootView == null) {
             mRootView = inflater.inflate(getLayoutId(), container, false);
             initView(mRootView);

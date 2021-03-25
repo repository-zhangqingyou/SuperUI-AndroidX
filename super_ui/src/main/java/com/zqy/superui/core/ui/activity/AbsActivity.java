@@ -1,4 +1,4 @@
-package com.zqy.superui.core.ui;
+package com.zqy.superui.core.ui.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,21 +15,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.BarUtils;
 import com.bumptech.glide.Glide;
+import com.zqy.superui.R;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
  * Author: zhangqingyou
- * Date: 2020/4/7
+ * Date: 2021/3/25
  * Des:
  */
 public abstract class AbsActivity extends AppCompatActivity {
     private String canonicalName;  //
     private Map<String, Fragment> stringFragmentMap;
-
+    public int _8sdp, _10sdp, _12sdp;
     /**
      * 是否支持侧滑返回
      */
@@ -37,6 +39,10 @@ public abstract class AbsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ARouter.getInstance().inject(this);//获取传参
+        _8sdp = getResources().getDimensionPixelSize(R.dimen._8sdp);
+        _10sdp = getResources().getDimensionPixelSize(R.dimen._10sdp);
+        _12sdp = getResources().getDimensionPixelSize(R.dimen._12sdp);
         init(getLayout());
         canonicalName = this.getClass().getCanonicalName();
         Log.d("BaseActivity", canonicalName);

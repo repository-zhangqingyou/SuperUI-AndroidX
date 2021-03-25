@@ -12,15 +12,15 @@ import com.zqy.superhttp.response.BaseResult;
  * 描述: json对象实体类
  */
 
-public abstract class JsonBeanCallback<T> extends BaseCallback {
-    private Class<BaseResult<T>> classOfBean;//json对象实体
+public abstract class JsonBeanCallback<T, K extends BaseResult<T>> extends BaseCallback {
+    private Class<K> classOfBean;//json对象实体
 
-    public JsonBeanCallback(Class<BaseResult<T>> classOfBean) {
+    public JsonBeanCallback(Class<K> classOfBean) {
         super();
         this.classOfBean = classOfBean;
     }
 
-    public JsonBeanCallback(String requestName, Class<BaseResult<T>> classOfBean) {
+    public JsonBeanCallback(String requestName, Class<K> classOfBean) {
         super(requestName);
         this.classOfBean = classOfBean;
     }
@@ -35,7 +35,7 @@ public abstract class JsonBeanCallback<T> extends BaseCallback {
         super.onSuccess(response);
         try {
 
-            BaseResult<T> tResult = new Gson().fromJson(response.body(), classOfBean);
+            K tResult = new Gson().fromJson(response.body(), classOfBean);
 
             onSuccess(tResult);
         } catch (JsonSyntaxException e) {
@@ -48,6 +48,6 @@ public abstract class JsonBeanCallback<T> extends BaseCallback {
     /**
      * 对返回数据进行操作的回调， UI线程
      */
-    public abstract void onSuccess(BaseResult<T> result);
+    public abstract void onSuccess(K result);
 
 }

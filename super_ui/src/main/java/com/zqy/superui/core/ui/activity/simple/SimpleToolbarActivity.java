@@ -4,6 +4,7 @@ package com.zqy.superui.core.ui.activity.simple;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -20,6 +21,7 @@ public abstract class SimpleToolbarActivity extends ToolbarActivity {
     private Toolbar mToolbar;
     private LinearLayout mLlContainer;
     private LinearLayout mLlRootView;
+    private TextView mTbText;
 
     @Override
     public Object getLayout() {
@@ -40,6 +42,7 @@ public abstract class SimpleToolbarActivity extends ToolbarActivity {
     @Override
     public void initView() {
         mToolbar = findViewById(R.id.toolbar);
+        mTbText = findViewById(R.id.tb_Text);
         mLlContainer = findViewById(R.id.ll_Container);
         mLlRootView = findViewById(R.id.ll_RootView);
 
@@ -80,5 +83,13 @@ public abstract class SimpleToolbarActivity extends ToolbarActivity {
      */
     public abstract Object getContentLayout();
 
+    /**
+     * Toolbar中间文本
+     *
+     * @return
+     */
+    public TextView getTbText() {
+        return mTbText;
+    }
 }
 

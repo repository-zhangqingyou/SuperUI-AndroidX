@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    style="@style/SuperUI_ToolbarStyle"
+    android:gravity="center_vertical"
+    app:navigationIcon="@drawable/superui_ic_keyboard_arrow_left_black_40dp"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    app:title="返回"
+    app:titleTextColor="@android:color/black">
+
+    <TextView
+        android:id="@+id/tb_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="#03081A"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        tools:text="xxxx" />
+
+</androidx.appcompat.widget.Toolbar>

@@ -9,6 +9,7 @@
     app:navigationIcon="@drawable/superui_ic_keyboard_arrow_left_black_35dp"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     app:title="返回"
+    app:titleMargin="0dp"
     app:titleTextAppearance="@style/SuperUI.Theme.ToolBar.Base.Title"
     app:titleTextColor="@android:color/black">
 

@@ -15,7 +15,7 @@ import java.util.Map;
  * 描述: 通用请求
  */
 
-public class SuperHttpRequest {
+public class SuperHttpConnection {
     /**
      * 当前请求响应后才能继续下个请求
      * String:当前请求标识
@@ -130,7 +130,6 @@ public class SuperHttpRequest {
                 SuperHttpManager.getApiCallbackService().onFinish("【" + url + "】还未响应，勿频繁请求！");
             }
         }
-
 
     }
     //--------------------------------------------------基本请求 end-------------------------------------------------

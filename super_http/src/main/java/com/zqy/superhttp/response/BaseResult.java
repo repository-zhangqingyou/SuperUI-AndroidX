@@ -8,7 +8,6 @@ import java.io.Serializable;
  * 描述:
  */
 public class BaseResult<T> implements Serializable {
-
     protected T data;
 
     public T getData() {
@@ -18,5 +17,4 @@ public class BaseResult<T> implements Serializable {
     public void setData(T data) {
         this.data = data;
     }
-
 }

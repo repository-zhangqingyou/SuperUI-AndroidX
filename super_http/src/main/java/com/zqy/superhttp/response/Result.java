@@ -12,6 +12,7 @@ public class Result<T> extends BaseResult<T> implements Serializable {
     private int code;
     private String msg;
 
+
     public int getCode() {
         return code;
     }
@@ -27,6 +28,7 @@ public class Result<T> extends BaseResult<T> implements Serializable {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
 
     @Override
     public String toString() {

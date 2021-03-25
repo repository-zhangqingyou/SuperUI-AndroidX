@@ -41,7 +41,7 @@ public abstract class BaseCallback extends AbsCallback<String> {
     @Override
     public void onStart(Request<String, ? extends Request> request) {
         super.onStart(request);
-        SuperHttpRequest.setIsRequest(baseUrl, false);//设置不可请求
+        SuperHttpConnection.setIsRequest(baseUrl, false);//设置不可请求
         try {
             baseUrl = request.getBaseUrl();
             String url = baseUrl.replace("//", "");
@@ -82,7 +82,7 @@ public abstract class BaseCallback extends AbsCallback<String> {
     @Override
     public void onFinish() {
         super.onFinish();
-        SuperHttpRequest.setIsRequest(baseUrl, true);//设置可请求
+        SuperHttpConnection.setIsRequest(baseUrl, true);//设置可请求
         onFinish("请求完成");
         if (SuperHttpManager.getApiCallbackService() != null) {
             SuperHttpManager.getApiCallbackService().onFinish("请求完成");

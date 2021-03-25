@@ -6,7 +6,7 @@
     style="@style/SuperUI_ToolbarStyle"
     android:gravity="center_vertical"
     app:contentInsetStart="0dp"
-    app:navigationIcon="@drawable/superui_ic_keyboard_arrow_left_black_35dp"
+    app:navigationIcon="@drawable/superui_ic_keyboard_arrow_left_black_30dp"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     app:title="返回"
     app:titleMargin="0dp"

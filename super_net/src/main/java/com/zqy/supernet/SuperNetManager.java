@@ -42,8 +42,8 @@ public class SuperNetManager {
     }
 
 
-    public static <S> S getApiService(Class<S> service) {
-        Retrofit retrofit = RetrofitHelp.getInstance().getRetrofit();
+    public static <S> S getApiService(Class<S> service, String baseUrl) {
+        Retrofit retrofit = new RetrofitHelp().getRetrofit(baseUrl);
         return retrofit.create(service);
     }
 

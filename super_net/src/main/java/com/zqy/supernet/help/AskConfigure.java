@@ -8,17 +8,14 @@ import okhttp3.Interceptor;
  * 描述: 请求框架配置参数
  */
 public class AskConfigure {
-
     private int timeout;//请求超时时间（单位秒）
-    private String baseUrl;//请求地址前缀
     private Interceptor interceptor;//可添加公共请求参数的拦截器
 
     public AskConfigure() {
     }
 
-    public AskConfigure(int timeout, String baseUrl, Interceptor interceptor) {
+    public AskConfigure(int timeout, Interceptor interceptor) {
         this.timeout = timeout;
-        this.baseUrl = baseUrl;
         this.interceptor = interceptor;
     }
 
@@ -30,13 +27,6 @@ public class AskConfigure {
         this.timeout = timeout;
     }
 
-    public String getBaseUrl() {
-        return baseUrl;
-    }
-
-    public void setBaseUrl(String baseUrl) {
-        this.baseUrl = baseUrl;
-    }
 
     public Interceptor getInterceptor() {
         return interceptor;

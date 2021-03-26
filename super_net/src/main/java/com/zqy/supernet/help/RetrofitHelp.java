@@ -12,46 +12,23 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 
-//import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-
 /**
  * Retrofit封装
  */
 public class RetrofitHelp {
-    private static RetrofitHelp mInstance;
-    private Retrofit retrofit;
-    // private S apiService;
-
-    private RetrofitHelp() {
-    }
-
-    /**
-     * 单例模式
-     */
-    public static RetrofitHelp getInstance() {
-        if (mInstance == null) {
-            synchronized (RetrofitHelp.class) {
-                if (mInstance == null) {
-                    mInstance = new RetrofitHelp();
-                }
-            }
-        }
-        return mInstance;
-    }
 
     /**
      * 初始化Retrofit
      */
     @NonNull
-    public Retrofit getRetrofit() {
-        if (retrofit == null) retrofit = new Retrofit.Builder()
-                .baseUrl(SuperNetManager.getAskConfigure().getBaseUrl())
+    public Retrofit getRetrofit(String baseUrl) {
+        return new Retrofit.Builder()
+                .baseUrl(baseUrl)
                 .client(getOkHttpClient())
                 //添加GSON解析：返回数据转换成GSON类型
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .addConverterFactory(CustomGsonConverterFactory.create())
                 .build();
-        return retrofit;
 
     }
 

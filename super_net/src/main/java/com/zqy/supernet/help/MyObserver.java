@@ -14,6 +14,7 @@ import io.reactivex.rxjava3.disposables.Disposable;
  * Observer加入加载框
  * @param <T>
  */
+@Deprecated
 public abstract class MyObserver<T> extends BaseObserver<T> {
     private boolean mShowDialog;
     private ProgressDialog dialog;

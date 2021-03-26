@@ -24,7 +24,7 @@ public abstract class BaseObserver<T> implements Observer<BaseResult<T>> {
             } else {
                 onFailure(null, result.getMsg());
             }
-        }else {
+        } else {
             onSuccess(response.getData());
         }
 
@@ -35,11 +35,19 @@ public abstract class BaseObserver<T> implements Observer<BaseResult<T>> {
         onFailure(e, RxExceptionUtil.exceptionHandler(e));
     }
 
+    /**
+     * 完成时
+     */
     @Override
     public void onComplete() {
 
     }
 
+    /**
+     * 订阅
+     *
+     * @param d
+     */
     @Override
     public void onSubscribe(Disposable d) {
     }

@@ -4,8 +4,8 @@ import android.content.Context;
 
 import com.trello.rxlifecycle4.android.ActivityEvent;
 import com.trello.rxlifecycle4.components.RxActivity;
-import com.trello.rxlifecycle4.components.RxFragment;
 import com.trello.rxlifecycle4.components.support.RxAppCompatActivity;
+import com.trello.rxlifecycle4.components.support.RxFragment;
 import com.trello.rxlifecycle4.components.support.RxFragmentActivity;
 
 import org.reactivestreams.Publisher;

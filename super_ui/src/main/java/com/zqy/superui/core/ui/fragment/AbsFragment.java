@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.BarUtils;
+import com.trello.rxlifecycle4.components.support.RxFragment;
 import com.zqy.superui.R;
 
 import java.util.LinkedHashMap;
@@ -25,7 +26,7 @@ import java.util.Map;
  * Date: 2020/4/7
  * Des:
  */
-public abstract class AbsFragment extends Fragment {
+public abstract class AbsFragment extends RxFragment {
     public View mRootView;
     private Map<String, Fragment> stringFragmentMap;
     public int _8sdp, _10sdp, _12sdp;

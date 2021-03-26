@@ -1,6 +1,9 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
+//bintray依赖仓库用
 apply plugin: 'com.novoda.bintray-release'
+//jitpack.io依赖仓库用
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.zhangqingyou'
 def rootDirPath = getRootDir().getPath()//获取项目根路劲
 android {
     compileSdkVersion build_versions.target_sdk
@@ -95,3 +98,16 @@ publish {
     licences = ['Apache-2.0']
 }
 
+buildscript {
+    apply from: '../versions.gradle'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        //classpath 'com.android.tools.build:gradle:3.0.1'
+        // 添加上传到jcenter所需的插件 （jitpack.io依赖仓库用）
+        classpath "com.github.dcendents:android-maven-gradle-plugin:$versions.android_maven_gradle_plugin"
+//适配gradle 4.6
+    }
+}

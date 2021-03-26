@@ -25,8 +25,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:${versions.android_gradle_plugin}"
         //集成全量更新和热更新一体的平台
         classpath "com.tencent.bugly:tinker-support:$versions.tinker_support"
-        // 添加上传到jcenter所需的插件
-        classpath "com.github.dcendents:android-maven-gradle-plugin:$versions.android_maven_gradle_plugin"//适配gradle 4.6
+
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:$versions.gradle_bintray_plugin"//bintray官方构建上传插件
         classpath "com.novoda:bintray-release:$versions.bintray_release"// bintray三方构建上传插件
         // greendao数据库

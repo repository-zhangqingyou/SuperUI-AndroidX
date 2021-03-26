@@ -71,9 +71,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        //classpath 'com.android.tools.build:gradle:3.0.1'
-        // 添加上传到jcenter所需的插件 （jitpack.io依赖仓库用）
+        // 添加上传到jitpack.io依赖仓库所需的插件 （适配gradle 4.6）
         classpath "com.github.dcendents:android-maven-gradle-plugin:$versions.android_maven_gradle_plugin"
-//适配gradle 4.6
     }
 }

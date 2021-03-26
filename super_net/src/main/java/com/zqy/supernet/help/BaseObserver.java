@@ -32,7 +32,7 @@ public abstract class BaseObserver<T> implements Observer<BaseResult<T>> {
 
     @Override
     public void onError(Throwable e) {//服务器错误信息处理
-        onFailure(e, RxExceptionUtil.exceptionHandler(e));
+        onFailure(e, RxExceptionHelp.exceptionHandler(e));
     }
 
     /**

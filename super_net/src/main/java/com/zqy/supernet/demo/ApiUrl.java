@@ -31,6 +31,25 @@ import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
+/**
+ * 作者: zhangqingyou
+ * 时间: 2021/3/26
+ * 描述:
+ *
+ * @Body 实际上是将类转换成json实体作为请求体来请求网络，一时间没找到可以接受json格式的请求体作为参数
+ * @Query或@QueryMap 一般用于Get，用于形如“?a=xxxx&b=xxxx&c=xxxx”；也可用于Query类型的Post请求
+ * @Field或@FieldMap 对应POST请求，不过需要结合@FormUrlEncoded来使用 例如：
+ * <p>
+ * //@POST("/")
+ * //@FormUrlEncoded
+ * //Call<WeatherBeans> requestWeatherBeans(
+ * //            @Field("app") String app,
+ * //            @Field("weaid") String weaid,
+ * //            @Field("appkey") String appkey,
+ * //            @Field("sign") String sign,
+ * //            @Field("format") String format);
+ * /
+ */
 public interface ApiUrl {
     /**
      * 有效链接
@@ -51,16 +70,21 @@ public interface ApiUrl {
     //第一种方式：GET不带参数
     @GET("retrofit.txt")
     Observable<Result<DemoBean>> getUser();
+
     @GET
     Observable<DemoBean> getUser(@Url String url);
+
     @GET
     Observable<DemoBean> getUser1(@Url String url); //简洁方式   直接获取所需数据
+
     //第二种方式：GET带参数
     @GET("api/data/{type}/{count}/{page}")
     Observable<DemoBean> getUser(@Path("type") String type, @Path("count") int count, @Path("page") int page);
+
     //第三种方式：GET带请求参数：https://api.github.com/users/whatever?client_id=xxxx&client_secret=yyyy
     @GET("users/whatever")
     Observable<DemoBean> getUser(@Query("client_id") String id, @Query("client_secret") String secret);
+
     @GET("users/whatever")
     Observable<DemoBean> getUser(@QueryMap Map<String, String> info);
 
@@ -77,6 +101,7 @@ public interface ApiUrl {
     @POST("auth/login")
     @FormUrlEncoded
     Observable<DemoBean> postUser(@Field("username") String username, @Field("password") String password);
+
     //多个参数
     Observable<DemoBean> postUser(@FieldMap Map<String, String> map);
 
@@ -91,7 +116,7 @@ public interface ApiUrl {
      */
     @PUT("member")
     Observable<DemoBean> put(@HeaderMap Map<String, String> headers,
-                         @Query("nickname") String nickname);
+                             @Query("nickname") String nickname);
 
     /**
      * TODO 文件上传
@@ -119,6 +144,7 @@ public interface ApiUrl {
 
     /**
      * 来自https://blog.csdn.net/impure/article/details/79658098
+     *
      * @Streaming 这个注解必须添加，否则文件全部写入内存，文件过大会造成内存溢出
      */
     @Streaming

@@ -3,7 +3,7 @@ package com.zqy.supernet;
 import android.app.Application;
 
 import com.zqy.supernet.help.AskConfigure;
-import com.zqy.supernet.help.RetrofitUtils;
+import com.zqy.supernet.help.RetrofitHelp;
 
 import retrofit2.Retrofit;
 
@@ -21,6 +21,8 @@ public class SuperNetManager {
     public static void init(Application application, AskConfigure askConfigure) {
         SuperNetManager.application = application;
         SuperNetManager.askConfigure = askConfigure;
+
+
     }
 
     public static Application getApplication() {
@@ -41,7 +43,7 @@ public class SuperNetManager {
 
 
     public static <S> S getApiService(Class<S> service) {
-        Retrofit retrofit = RetrofitUtils.getInstance().getRetrofit();
+        Retrofit retrofit = RetrofitHelp.getInstance().getRetrofit();
         return retrofit.create(service);
     }
 

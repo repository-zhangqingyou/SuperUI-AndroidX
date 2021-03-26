@@ -4,6 +4,7 @@ package com.zqy.supernet.help;
 import androidx.annotation.NonNull;
 
 import com.zqy.supernet.SuperNetManager;
+import com.zqy.supernet.help.interceptor.LogInterceptor;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,36 +18,27 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Retrofit封装
  */
-public class RetrofitUtils {
-    private static RetrofitUtils mInstance;
+public class RetrofitHelp {
+    private static RetrofitHelp mInstance;
     private Retrofit retrofit;
     // private S apiService;
 
-    private RetrofitUtils() {
+    private RetrofitHelp() {
     }
 
     /**
      * 单例模式
      */
-    public static RetrofitUtils getInstance() {
+    public static RetrofitHelp getInstance() {
         if (mInstance == null) {
-            synchronized (RetrofitUtils.class) {
+            synchronized (RetrofitHelp.class) {
                 if (mInstance == null) {
-                    mInstance = new RetrofitUtils();
+                    mInstance = new RetrofitHelp();
                 }
             }
         }
         return mInstance;
     }
-
-
-//    public <S> S getApiService(Class<S> service) {
-//        // 初始化Retrofit
-//        if (apiService == null) apiService = getRetrofit().create(service);
-//        return apiService;
-//
-//        // return getRetrofit().create(service);
-//    }
 
     /**
      * 初始化Retrofit

@@ -12,7 +12,7 @@ import retrofit2.HttpException;
 /**
  * 异常处理
  */
-public class RxExceptionUtil {
+public class RxExceptionHelp {
     public static String exceptionHandler(Throwable e){
         String errorMsg = "未知错误";
         if (e instanceof UnknownHostException) {

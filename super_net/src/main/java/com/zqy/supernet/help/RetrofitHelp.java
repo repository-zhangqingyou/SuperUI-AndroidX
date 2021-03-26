@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 //import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
@@ -49,8 +48,8 @@ public class RetrofitHelp {
                 .baseUrl(SuperNetManager.getAskConfigure().getBaseUrl())
                 .client(getOkHttpClient())
                 //添加GSON解析：返回数据转换成GSON类型
-                .addCallAdapterFactory(RxJava3CallAdapterFactory.createSynchronous())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .addConverterFactory(CustomGsonConverterFactory.create())
                 .build();
         return retrofit;
 
@@ -65,7 +64,7 @@ public class RetrofitHelp {
                 .readTimeout(SuperNetManager.getAskConfigure().getTimeout(), TimeUnit.SECONDS)//设置读取超时时间
                 .connectTimeout(SuperNetManager.getAskConfigure().getTimeout(), TimeUnit.SECONDS)//设置请求超时时间
                 .writeTimeout(SuperNetManager.getAskConfigure().getTimeout(), TimeUnit.SECONDS)//设置写入超时时间
-                .addInterceptor(new LogInterceptor())//添加打印拦截器
+                .addInterceptor(SuperNetManager.getAskConfigure().getInterceptor() != null ? SuperNetManager.getAskConfigure().getInterceptor() : new LogInterceptor())//添加打印拦截器
                 .retryOnConnectionFailure(true)//设置出现错误进行重新连接。
                 .build();
     }

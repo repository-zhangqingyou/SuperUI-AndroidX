@@ -5,6 +5,7 @@ import android.app.Application;
 import com.zqy.supernet.help.AskConfigure;
 import com.zqy.supernet.help.RetrofitHelp;
 
+import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 
 
@@ -17,6 +18,7 @@ public class SuperNetManager {
     private static Application application;
     private static boolean debug;
     private static AskConfigure askConfigure;
+    private static OnResponseListener onResponseListener;
 
     public static void init(Application application, AskConfigure askConfigure) {
         SuperNetManager.application = application;
@@ -45,6 +47,31 @@ public class SuperNetManager {
     public static <S> S getApiService(Class<S> service, String baseUrl) {
         Retrofit retrofit = new RetrofitHelp().getRetrofit(baseUrl);
         return retrofit.create(service);
+    }
+
+    /**
+     * 获取全局响应结果回调
+     *
+     * @return
+     */
+    public static OnResponseListener getOnResponseListener() {
+        return onResponseListener;
+    }
+
+    /**
+     * 设置全局响应结果监听
+     *
+     * @param onResponseListener
+     */
+    public static void setOnResponseListener(OnResponseListener onResponseListener) {
+        SuperNetManager.onResponseListener = onResponseListener;
+    }
+
+    /**
+     * 全局响应结果回调
+     */
+    public interface OnResponseListener {
+        void onResponse(ResponseBody responseBody);
     }
 
 

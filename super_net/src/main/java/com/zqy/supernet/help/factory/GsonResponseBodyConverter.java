@@ -5,6 +5,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
+import com.zqy.supernet.SuperNetManager;
 
 import java.io.IOException;
 
@@ -27,6 +28,9 @@ public class GsonResponseBodyConverter<T> implements Converter<ResponseBody, T> 
 
     @Override
     public T convert(ResponseBody value) throws IOException {
+        if (SuperNetManager.getOnResponseListener() != null)
+            SuperNetManager.getOnResponseListener().onResponse(value);
+
         JsonReader jsonReader = gson.newJsonReader(value.charStream());
         try {
             T result = adapter.read(jsonReader);

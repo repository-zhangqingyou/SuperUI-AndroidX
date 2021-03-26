@@ -114,7 +114,7 @@ dependencies {
  Activity 需继承自 RxAppCompatActivity 或 RxFragmentActivity 或 RxActivity
  Fragment 需继承  RxFragment
      */
-    api 'com.trello.rxlifecycle4:rxlifecycle-components:4.0.2'
+    api "com.trello.rxlifecycle4:rxlifecycle-components:$versions.rxlifecycle4"
 
     /*
     XTabLayout是基于design包中的TabLayout进行了功能的扩展，在保留原有功能的基础上，

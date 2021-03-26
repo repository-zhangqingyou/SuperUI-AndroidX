@@ -36,15 +36,15 @@ android {
 dependencies {
     implementation project(path: ':super_utils')
     //rxjava3基本
-    api "io.reactivex.rxjava3:rxjava:3.0.11"
-    api 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    api "io.reactivex.rxjava3:rxjava:$versions.rxjava3"
+    api "io.reactivex.rxjava3:rxandroid:$versions.rxandroid"
     //github地址：https://github.com/square/retrofit
     //文档地址：https://square.github.io/retrofit/
-    api 'com.squareup.retrofit2:retrofit:2.9.0'
+    api "com.squareup.retrofit2:retrofit:$versions.retrofit"
     //retrofit添加Json解析返回数据
-    api 'com.squareup.retrofit2:converter-gson:2.9.0'
+    api "com.squareup.retrofit2:converter-gson:$versions.retrofit"
     //retrofit添加Rxjava支持
-    api 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
+    api "com.squareup.retrofit2:adapter-rxjava3:$versions.retrofit"
 
 
     /*
@@ -57,11 +57,11 @@ dependencies {
  Activity 需继承自 RxAppCompatActivity 或 RxFragmentActivity 或 RxActivity
  Fragment 需继承  RxFragment
      */
-    api 'com.trello.rxlifecycle4:rxlifecycle:4.0.2'
+    api "com.trello.rxlifecycle4:rxlifecycle:$versions.rxlifecycle4"
     // 如果要绑定到特定于Android的生命周期
-    api 'com.trello.rxlifecycle4:rxlifecycle-android:4.0.2'
+    api "com.trello.rxlifecycle4:rxlifecycle-android:$versions.rxlifecycle4"
     // 如果您需要预先编写的“活动和片段”，则可以将其子类化为提供者
-    api 'com.trello.rxlifecycle4:rxlifecycle-components:4.0.2'
+    api "com.trello.rxlifecycle4:rxlifecycle-components:$versions.rxlifecycle4"
 
 }
 publish {

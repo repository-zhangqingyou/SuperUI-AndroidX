@@ -53,7 +53,7 @@ public class RetrofitUtils {
      */
     @NonNull
     public Retrofit getRetrofit() {
-        if (retrofit == null) new Retrofit.Builder()
+        if (retrofit == null) retrofit = new Retrofit.Builder()
                 .baseUrl(SuperNetManager.getAskConfigure().getBaseUrl())
                 .client(getOkHttpClient())
                 //添加GSON解析：返回数据转换成GSON类型

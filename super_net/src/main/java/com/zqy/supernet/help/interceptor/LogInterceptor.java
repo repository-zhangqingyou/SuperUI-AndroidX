@@ -2,6 +2,8 @@ package com.zqy.supernet.help.interceptor;
 
 import android.util.Log;
 
+import com.zqy.supernet.SuperNetManager;
+
 import java.io.IOException;
 import java.util.Locale;
 
@@ -26,6 +28,11 @@ public class LogInterceptor implements Interceptor{
         okhttp3.MediaType mediaType = response.body().contentType();
         String content = response.body().string();
         Log.e(TAG, "response body:" + content);
+
+        if (SuperNetManager.getOnApiListener() != null) {
+            SuperNetManager.getOnApiListener().onStart(request);
+        }
+
         return response.newBuilder()
                 .body(okhttp3.ResponseBody.create(mediaType, content))
                 .build();

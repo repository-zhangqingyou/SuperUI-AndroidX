@@ -112,7 +112,6 @@ public class BasicParamsInterceptor implements Interceptor {
 
         }
         if (SuperNetManager.getOnApiListener() != null) {
-            String url = request.url().toString();
             SuperNetManager.getOnApiListener().onStart(request);
         }
 

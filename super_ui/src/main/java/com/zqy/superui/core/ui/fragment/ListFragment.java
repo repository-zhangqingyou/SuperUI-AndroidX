@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * 时间: 2021/2/7 15:46
  * 描述:  带有列表的基类Fragment
  */
-public abstract class ListFragment extends AbsFragment {
+public abstract class ListFragment extends SuperUIFragment {
     private RecyclerView recyclerView;
     private RecyclerView.ItemDecoration itemDecoration;
     private RecyclerView.LayoutManager layoutManager;

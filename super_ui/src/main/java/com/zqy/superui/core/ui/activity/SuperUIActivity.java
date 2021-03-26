@@ -28,7 +28,7 @@ import java.util.Map;
  * Date: 2021/3/25
  * Des:
  */
-public abstract class AbsActivity extends RxAppCompatActivity {
+public abstract class SuperUIActivity extends RxAppCompatActivity {
     private String canonicalName;  //
     private Map<String, Fragment> stringFragmentMap;
     public int _8sdp, _10sdp, _12sdp;

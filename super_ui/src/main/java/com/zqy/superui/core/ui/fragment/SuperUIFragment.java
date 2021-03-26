@@ -26,7 +26,7 @@ import java.util.Map;
  * Date: 2020/4/7
  * Des:
  */
-public abstract class AbsFragment extends RxFragment {
+public abstract class SuperUIFragment extends RxFragment {
     public View mRootView;
     private Map<String, Fragment> stringFragmentMap;
     public int _8sdp, _10sdp, _12sdp;

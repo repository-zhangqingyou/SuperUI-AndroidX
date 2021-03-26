@@ -11,7 +11,7 @@ import androidx.appcompat.widget.Toolbar;
  * 时间: 2021/3/25
  * 描述: 含有顶部标题的Activity
  */
-public abstract class ToolbarActivity extends AbsActivity implements Toolbar.OnMenuItemClickListener {
+public abstract class ToolbarActivity extends SuperUIActivity implements Toolbar.OnMenuItemClickListener {
     @Override
     public void initData() {
         Toolbar mToolbar = getToolbar();

@@ -2,8 +2,8 @@ package com.zqy.supernet.demo;
 
 
 import com.trello.rxlifecycle4.components.RxActivity;
-import com.trello.rxlifecycle4.components.RxFragment;
 import com.trello.rxlifecycle4.components.support.RxAppCompatActivity;
+import com.trello.rxlifecycle4.components.support.RxFragment;
 import com.zqy.supernet.SuperNetManager;
 import com.zqy.supernet.demo.bean.DemoBean;
 import com.zqy.supernet.help.BaseObserver;

@@ -25,6 +25,8 @@ public class RxExceptionHelp {
         } else if (e instanceof ParseException || e instanceof JSONException
                 || e instanceof JSONException) {
             errorMsg = "数据解析错误";
+        }else {
+            errorMsg=e.getMessage();
         }
         return errorMsg;
     }

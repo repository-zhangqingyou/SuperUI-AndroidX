@@ -2,6 +2,8 @@ package com.zqy.supernet.help.interceptor;
 
 import android.text.TextUtils;
 
+import com.zqy.supernet.SuperNetManager;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -109,6 +111,12 @@ public class BasicParamsInterceptor implements Interceptor {
             }
 
         }
+        if (SuperNetManager.getOnApiListener() != null) {
+            String url = request.url().toString();
+            SuperNetManager.getOnApiListener().onStart(request);
+        }
+
+
         return chain.proceed(request);
     }
 

@@ -1,7 +1,9 @@
 package com.zqy.supernet.help;
 
+import com.zqy.supernet.SuperNetManager;
 import com.zqy.supernet.response.BaseResult;
 import com.zqy.supernet.response.Result;
+import com.zqy.superutils.JsonUtils;
 
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
@@ -14,8 +16,13 @@ import io.reactivex.rxjava3.disposables.Disposable;
  */
 public abstract class BaseObserver<T> implements Observer<BaseResult<T>> {
 
+
     @Override
     public void onNext(BaseResult<T> response) {
+        if (SuperNetManager.getOnApiListener() != null && response != null) {
+            SuperNetManager.getOnApiListener().onSuccess(response.getClass().getCanonicalName(), JsonUtils.objectToJson(response));
+        }
+
         //在这边对 基础数据 进行统一处理  举个例子：
         if (response instanceof Result) {
             Result result = (Result) response;
@@ -28,10 +35,14 @@ public abstract class BaseObserver<T> implements Observer<BaseResult<T>> {
             onSuccess(response.getData());
         }
 
+
     }
 
     @Override
     public void onError(Throwable e) {//服务器错误信息处理
+        if (SuperNetManager.getOnApiListener() != null)
+            SuperNetManager.getOnApiListener().onError(RxExceptionHelp.exceptionHandler(e));
+
         onFailure(e, RxExceptionHelp.exceptionHandler(e));
     }
 
@@ -40,7 +51,8 @@ public abstract class BaseObserver<T> implements Observer<BaseResult<T>> {
      */
     @Override
     public void onComplete() {
-
+        if (SuperNetManager.getOnApiListener() != null)
+            SuperNetManager.getOnApiListener().onFinish();
     }
 
     /**

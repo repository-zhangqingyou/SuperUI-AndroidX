@@ -28,7 +28,7 @@ public class RequestUtils {
 
     private static ApiUrl getApiUrl() {
         if (apiUrl == null) {
-            apiUrl = SuperNetManager.getApiService(ApiUrl.class);
+            apiUrl = SuperNetManager.getApiService(ApiUrl.class,Constans.BaseUrl);
         }
         return apiUrl;
     }

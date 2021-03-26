@@ -1,0 +1,95 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.novoda.bintray-release'
+def rootDirPath = getRootDir().getPath()//获取项目根路劲
+android {
+    compileSdkVersion build_versions.target_sdk
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        //加上这一句
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+
+    lintOptions {
+        abortOnError false // 即使有报错也不会停止打包
+        checkReleaseBuilds false // 打包Release版本的时候也不进行Lint检测
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+}
+
+dependencies {
+    implementation project(path: ':super_utils')
+    //rxjava3基本
+    implementation "io.reactivex.rxjava3:rxjava:3.0.11"
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+
+
+    //github地址：https://github.com/square/retrofit
+    //文档地址：https://square.github.io/retrofit/
+    api 'com.squareup.retrofit2:retrofit:2.9.0'
+    //retrofit添加Json解析返回数据
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    //retrofit添加Rxjava支持
+    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
+
+
+    /*
+    防止Rxjava引发的内存泄漏
+ 当使用RxJava订阅并执行耗时任务后，当Activity被finish时，如果耗时任务还未完成，没有及时取消订阅，
+ 就会导致Activity无法被回收，从而引发内存泄漏。为了解决这个问题，就产生了RxLifecycle，
+ 让RxJava变得有生命周期感知，使得其能及时取消订阅，避免出现内存泄漏问题
+
+ 基本使用
+ Activity 需继承自 RxAppCompatActivity 或 RxFragmentActivity 或 RxActivity
+ Fragment 需继承  RxFragment
+     */
+    implementation 'com.trello.rxlifecycle4:rxlifecycle:4.0.2'
+    // 如果要绑定到特定于Android的生命周期
+    implementation 'com.trello.rxlifecycle4:rxlifecycle-android:4.0.2'
+    // 如果您需要预先编写的“活动和片段”，则可以将其子类化为提供者
+    implementation 'com.trello.rxlifecycle4:rxlifecycle-components:4.0.2'
+
+}
+publish {
+    println(path + '读取上传配置json')
+    String path = "${rootDirPath}/文档/"
+    String fileName = "publish.json"
+    File fileD = file(path)
+    File file2 = file(path + fileName)
+    if (!fileD.exists()) {
+        fileD.mkdirs()
+    }
+    def bintrayUserTemp  //临时
+    def bintrayKeyTemp  //临时
+    if (file2.exists()) {
+        def text = file2.getText('utf-8')
+        Object parsedJson = new groovy.json.JsonSlurper().parseText(text)//读取json
+        bintrayUserTemp = parsedJson.bintrayUser
+        bintrayKeyTemp = parsedJson.bintrayKey
+    }
+    bintrayUser = bintrayUserTemp//用户账号
+    bintrayKey = bintrayKeyTemp//apikey
+    userOrg = 'zhangqingyou' // bintray 用户名
+    repoName = 'Android' // bintray 仓库名
+    groupId = 'com.bintray.zhangqingyou' // 依赖的路径
+    artifactId = 'super_net' // 依赖的名称
+    publishVersion = "1.0.0" // 依赖的版本号
+    desc = '通用网络请求' // 描述
+    website = 'https://gitee.com/zqycl/' // 项目网站，可填写 github 地址
+    dryRun = false // true-仅运行  false-运行+上传
+    licences = ['Apache-2.0']
+}
+
+

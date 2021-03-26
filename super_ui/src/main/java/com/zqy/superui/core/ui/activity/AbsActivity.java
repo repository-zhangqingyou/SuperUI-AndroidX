@@ -11,13 +11,13 @@ import android.view.View;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.BarUtils;
 import com.bumptech.glide.Glide;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import com.zqy.superui.R;
 
 import java.util.LinkedHashMap;
@@ -28,7 +28,7 @@ import java.util.Map;
  * Date: 2021/3/25
  * Des:
  */
-public abstract class AbsActivity extends AppCompatActivity {
+public abstract class AbsActivity extends RxAppCompatActivity {
     private String canonicalName;  //
     private Map<String, Fragment> stringFragmentMap;
     public int _8sdp, _10sdp, _12sdp;

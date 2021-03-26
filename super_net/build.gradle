@@ -42,9 +42,9 @@ dependencies {
     //文档地址：https://square.github.io/retrofit/
     api 'com.squareup.retrofit2:retrofit:2.9.0'
     //retrofit添加Json解析返回数据
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    api 'com.squareup.retrofit2:converter-gson:2.9.0'
     //retrofit添加Rxjava支持
-    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
+    api 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
 
 
     /*
@@ -57,11 +57,11 @@ dependencies {
  Activity 需继承自 RxAppCompatActivity 或 RxFragmentActivity 或 RxActivity
  Fragment 需继承  RxFragment
      */
-    implementation 'com.trello.rxlifecycle4:rxlifecycle:4.0.2'
+    api 'com.trello.rxlifecycle4:rxlifecycle:4.0.2'
     // 如果要绑定到特定于Android的生命周期
-    implementation 'com.trello.rxlifecycle4:rxlifecycle-android:4.0.2'
+    api 'com.trello.rxlifecycle4:rxlifecycle-android:4.0.2'
     // 如果您需要预先编写的“活动和片段”，则可以将其子类化为提供者
-    implementation 'com.trello.rxlifecycle4:rxlifecycle-components:4.0.2'
+    api 'com.trello.rxlifecycle4:rxlifecycle-components:4.0.2'
 
 }
 publish {

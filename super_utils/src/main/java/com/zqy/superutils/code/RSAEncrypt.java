@@ -104,9 +104,9 @@ public class RSAEncrypt {
      * @return 密文
      * @throws Exception 加密过程中的异常信息
      */
-//    public static String encryptPublicKey(String str) {
-//        return encryptPublicKey(str, PUBLIC_KEY);
-//    }
+    public static String encryptPublicKey(String str, String publicKey) {
+        return encryptPublicKey(str, publicKey, charsetName);
+    }
 
     /**
      * RSA公钥加密
@@ -116,7 +116,7 @@ public class RSAEncrypt {
      * @return 密文
      * @throws Exception 加密过程中的异常信息
      */
-    public static String encryptPublicKey(String str, String publicKey,String charsetName) {
+    public static String encryptPublicKey(String str, String publicKey, String charsetName) {
         //base64编码的公钥
         String encrypted = null;
         try {
@@ -152,7 +152,7 @@ public class RSAEncrypt {
             }
             byte[] bytes = out.toByteArray();
             out.close();
-            encrypted =  new String(EncodeUtils.base64Encode(bytes),charsetName);
+            encrypted = new String(EncodeUtils.base64Encode(bytes), charsetName);
             // encrypted = new String(encryptedData, charsetName);
         } catch (Exception e) {
             e.printStackTrace();
@@ -170,13 +170,25 @@ public class RSAEncrypt {
      * @return 铭文
      * @throws Exception 解密过程中的异常信息
      */
-    public static String decryptPublicKey(String str, String publicKey,String charsetName) {
+    public static String decryptPublicKey(String str, String publicKey) {
+        return decryptPublicKey(str, publicKey, charsetName);
+    }
+
+    /**
+     * RSA公钥解密
+     *
+     * @param str       加密字符串
+     * @param publicKey 公钥
+     * @return 铭文
+     * @throws Exception 解密过程中的异常信息
+     */
+    public static String decryptPublicKey(String str, String publicKey, String charsetName) {
         //64位解码加密后的字符串
         String decryptedData = null;
         try {
-            byte[] inputByte = str.getBytes(charsetName);
 
             byte[] decoded = EncodeUtils.base64Decode(publicKey);//基本64位解码
+            byte[] inputByte = EncodeUtils.base64Decode(str);//基本64位解码
 
             X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(decoded);
             KeyFactory keyFactory = KeyFactory.getInstance(RSA);
@@ -206,14 +218,13 @@ public class RSAEncrypt {
             byte[] bytes = out.toByteArray();
             out.close();
 
-            decryptedData =  new String(bytes,charsetName);
+            decryptedData = new String(bytes, charsetName);
             //  decryptedData = new String(out.toByteArray(), charsetName);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return decryptedData;
     }
-
 
     /**
      * RSA私钥解密
@@ -223,14 +234,25 @@ public class RSAEncrypt {
      * @return 铭文
      * @throws Exception 解密过程中的异常信息
      */
-    public static String decryptPrivateKey(String str, String privateKey,String charsetName) {
+    public static String decryptPrivateKey(String str, String privateKey) {
+        return decryptPrivateKey(str, privateKey, charsetName);
+    }
+
+    /**
+     * RSA私钥解密
+     *
+     * @param str        加密字符串
+     * @param privateKey 私钥
+     * @return 铭文
+     * @throws Exception 解密过程中的异常信息
+     */
+    public static String decryptPrivateKey(String str, String privateKey, String charsetName) {
         //64位解码加密后的字符串
         String decryptedData = null;
         try {
-            byte[] inputByte = str.getBytes(charsetName);
 
             byte[] decoded = EncodeUtils.base64Decode(privateKey);//基本64位解码
-
+            byte[] inputByte = EncodeUtils.base64Decode(str);//基本64位解码
 
             // 得到私钥对象
             PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(decoded);

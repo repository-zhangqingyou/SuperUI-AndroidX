@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         initView();
     }
 
@@ -94,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mQMUIRadiusImageView2.setScaleType(ImageView.ScaleType.CENTER_CROP);
         mQMUIRadiusImageView2.setRadiusAndShadow(SizeUtils.dp2px(5),
                 HIDE_RADIUS_SIDE_BOTTOM, 0, 0);
+
+
 
 
     }

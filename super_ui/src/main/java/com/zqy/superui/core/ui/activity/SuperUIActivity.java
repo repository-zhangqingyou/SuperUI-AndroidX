@@ -145,7 +145,7 @@ public abstract class SuperUIActivity extends RxAppCompatActivity {
 
 
     /**
-     * 消息提示
+     * 消息
      *
      * @param text
      */

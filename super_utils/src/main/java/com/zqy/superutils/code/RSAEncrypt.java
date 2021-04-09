@@ -107,8 +107,8 @@ public class RSAEncrypt {
      * @return 密文
      * @throws Exception 加密过程中的异常信息
      */
-    public static String encryptPublicKey(String str, String publicKey) {
-        return encryptPublicKey(str, publicKey, charsetName);
+    public static String encryptPublicKey(String str, String publicKey, boolean isURLEncoder) {
+        return encryptPublicKey(str, publicKey, charsetName,isURLEncoder);
     }
 
     /**
@@ -119,7 +119,7 @@ public class RSAEncrypt {
      * @return 密文
      * @throws Exception 加密过程中的异常信息
      */
-    public static String encryptPublicKey(String str, String publicKey, String charsetName) {
+    public static String encryptPublicKey(String str, String publicKey, String charsetName, boolean isURLEncoder) {
         //base64编码的公钥
         String encrypted = null;
         try {
@@ -160,12 +160,18 @@ public class RSAEncrypt {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try {
-            String encode = URLEncoder.encode(encrypted, "utf-8");
-            return encode;
-        } catch (UnsupportedEncodingException e) {
-            return null;
+
+        if (isURLEncoder) {
+            try {
+                String encode = URLEncoder.encode(encrypted, "utf-8");
+                return encode;
+            } catch (UnsupportedEncodingException e) {
+                return null;
+            }
+        } else {
+            return encrypted;
         }
+
     }
 
     /**

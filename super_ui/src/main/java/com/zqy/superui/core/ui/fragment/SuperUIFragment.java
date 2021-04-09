@@ -23,6 +23,7 @@ import com.zqy.superui.R;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Author: zhangqingyou
@@ -104,7 +105,7 @@ public abstract class SuperUIFragment extends RxFragment {
      * @param text
      */
     public void toast(String text, int duration, int gravity) {
-        if (!TextUtils.isEmpty(text)) {
+        if (!Objects.requireNonNull(getActivity()).isFinishing() && !TextUtils.isEmpty(text)) {
             Toast toast = Toast.makeText(getContext(), text, duration);
             toast.setGravity(gravity, 0, 0);
             toast.show();
@@ -126,8 +127,6 @@ public abstract class SuperUIFragment extends RxFragment {
     public void toastTop(String text) {
         toast(text, Toast.LENGTH_LONG, Gravity.TOP);
     }
-
-
 
 
     private boolean isVisible;

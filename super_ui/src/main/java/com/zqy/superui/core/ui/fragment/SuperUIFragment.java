@@ -1,10 +1,13 @@
 package com.zqy.superui.core.ui.fragment;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
@@ -93,6 +96,38 @@ public abstract class SuperUIFragment extends RxFragment {
     protected <T extends View> T findViewById(int id) {
         return mRootView.findViewById(id);
     }
+
+
+    /**
+     * 消息提示
+     *
+     * @param text
+     */
+    public void toast(String text, int duration, int gravity) {
+        if (!TextUtils.isEmpty(text)) {
+            Toast toast = Toast.makeText(getContext(), text, duration);
+            toast.setGravity(gravity, 0, 0);
+            toast.show();
+        }
+    }
+
+    public void toast(String text, int duration) {
+        toast(text, duration, Gravity.CENTER);
+    }
+
+    public void toast(String text) {
+        toast(text, Toast.LENGTH_SHORT, Gravity.CENTER);
+    }
+
+    public void toastBottom(String text) {
+        toast(text, Toast.LENGTH_LONG, Gravity.BOTTOM);
+    }
+
+    public void toastTop(String text) {
+        toast(text, Toast.LENGTH_LONG, Gravity.TOP);
+    }
+
+
 
 
     private boolean isVisible;

@@ -10,8 +10,9 @@ import com.blankj.utilcode.util.ToastUtils;
 /**
  * 作者: zhangqingyou
  * 时间: 2020/6/12 10:28
- * 描述:
+ * 描述:  android 11 及以上不显示
  */
+@Deprecated
 public class ToastUtil {
 
     /**

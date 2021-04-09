@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
@@ -32,6 +35,7 @@ public abstract class SuperUIActivity extends RxAppCompatActivity {
     private String canonicalName;  //
     private Map<String, Fragment> stringFragmentMap;
     public int _8sdp, _10sdp, _12sdp;
+
     /**
      * 是否支持侧滑返回
      */
@@ -137,6 +141,36 @@ public abstract class SuperUIActivity extends RxAppCompatActivity {
      */
     public void setPaddingTop(View view) {
         view.setPadding(0, BarUtils.getStatusBarHeight(), 0, 0);
+    }
+
+
+    /**
+     * 消息提示
+     *
+     * @param text
+     */
+    public void toast(String text, int duration, int gravity) {
+        if (!TextUtils.isEmpty(text)) {
+            Toast toast = Toast.makeText(getContext(), text, duration);
+            toast.setGravity(gravity, 0, 0);
+            toast.show();
+        }
+    }
+
+    public void toast(String text, int duration) {
+        toast(text, duration, Gravity.CENTER);
+    }
+
+    public void toast(String text) {
+        toast(text, Toast.LENGTH_SHORT, Gravity.CENTER);
+    }
+
+    public void toastBottom(String text) {
+        toast(text, Toast.LENGTH_LONG, Gravity.BOTTOM);
+    }
+
+    public void toastTop(String text) {
+        toast(text, Toast.LENGTH_LONG, Gravity.TOP);
     }
 
 

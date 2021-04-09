@@ -150,7 +150,7 @@ public abstract class SuperUIActivity extends RxAppCompatActivity {
      * @param text
      */
     public void toast(String text, int duration, int gravity) {
-        if (!TextUtils.isEmpty(text)) {
+        if (!isFinishing() && !TextUtils.isEmpty(text)) {
             Toast toast = Toast.makeText(getContext(), text, duration);
             toast.setGravity(gravity, 0, 0);
             toast.show();

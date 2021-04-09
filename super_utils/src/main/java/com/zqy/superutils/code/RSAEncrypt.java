@@ -4,6 +4,9 @@ package com.zqy.superutils.code;
 import com.blankj.utilcode.util.EncodeUtils;
 
 import java.io.ByteArrayOutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.security.Key;
 import java.security.KeyFactory;
 import java.security.KeyPair;
@@ -157,9 +160,12 @@ public class RSAEncrypt {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return encrypted;
-
+        try {
+            String encode = URLEncoder.encode(encrypted, "utf-8");
+            return encode;
+        } catch (UnsupportedEncodingException e) {
+            return null;
+        }
     }
 
     /**
@@ -188,7 +194,7 @@ public class RSAEncrypt {
         try {
 
             byte[] decoded = EncodeUtils.base64Decode(publicKey);//基本64位解码
-            byte[] inputByte = EncodeUtils.base64Decode(str);//基本64位解码
+            byte[] inputByte = EncodeUtils.base64Decode(URLDecoder.decode(str, "utf-8"));//基本64位解码
 
             X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(decoded);
             KeyFactory keyFactory = KeyFactory.getInstance(RSA);
@@ -219,7 +225,7 @@ public class RSAEncrypt {
             out.close();
 
             decryptedData = new String(bytes, charsetName);
-            //  decryptedData = new String(out.toByteArray(), charsetName);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -252,7 +258,7 @@ public class RSAEncrypt {
         try {
 
             byte[] decoded = EncodeUtils.base64Decode(privateKey);//基本64位解码
-            byte[] inputByte = EncodeUtils.base64Decode(str);//基本64位解码
+            byte[] inputByte = EncodeUtils.base64Decode(URLDecoder.decode(str, "utf-8"));//基本64位解码
 
             // 得到私钥对象
             PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(decoded);

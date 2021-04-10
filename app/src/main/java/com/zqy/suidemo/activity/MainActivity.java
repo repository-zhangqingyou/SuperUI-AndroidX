@@ -1,5 +1,6 @@
 package com.zqy.suidemo.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -24,6 +25,7 @@ import com.zqy.superui.core.widget.textview.SuperTextView;
 
 import static com.qmuiteam.qmui.layout.IQMUILayout.HIDE_RADIUS_SIDE_BOTTOM;
 
+//
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private SuperTextView mTvTest;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private QMUIRadiusImageView2 mQMUIRadiusImageView2;
     private LinearLayout mLlR;
     private ImageView mIvR;
+    private SuperTextView mTvLottie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mLlR.setOnClickListener(this);
         mIvR = findViewById(R.id.iv_R);
         mIvR.setOnClickListener(this);
+        mTvLottie = findViewById(R.id.tv_Lottie);
+        mTvLottie.setOnClickListener(this);
         //  RSAEncrypt.genKeyPair();
 //        String s = RSAEncrypt.encryptPublicKey("123");
 //        String s1 = RSAEncrypt.decryptPrivateKey(s, RSAEncrypt.PRIVATE_KEY);
@@ -87,16 +92,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                //.setGradient(Color.WHITE, Color.YELLOW, Gradient.LINEAR_GRADIENT, GradientDrawable.Orientation.LEFT_RIGHT)
 //                .setRipple(Color.BLUE, Color.YELLOW)
 //                .buid();
-       // mIvR.setBackground(buid);
-       // mIvR.setForeground(buid);
+        // mIvR.setBackground(buid);
+        // mIvR.setForeground(buid);
 
         // mBtTest.setBackground(new RippleDrawable());
 
         mQMUIRadiusImageView2.setScaleType(ImageView.ScaleType.CENTER_CROP);
         mQMUIRadiusImageView2.setRadiusAndShadow(SizeUtils.dp2px(5),
                 HIDE_RADIUS_SIDE_BOTTOM, 0, 0);
-
-
 
 
     }
@@ -121,6 +124,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.qMUIRadiusImageView2:
                 break;
             case R.id.iv_R:
+                break;
+            case R.id.tv_Lottie://Lottie动画
+                startActivity(new Intent(this, LottieActivity.class));
                 break;
 
         }

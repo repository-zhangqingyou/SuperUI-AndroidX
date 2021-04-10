@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
 import com.bun.miitmdid.core.MdidSdkHelper;
 import com.bun.miitmdid.interfaces.IIdentifierListener;
@@ -34,6 +35,7 @@ public class SuperUtilsManager {
     private static Application application;
     private static String logTag;
     private static IdSupplier idSupplier;
+    private static boolean debug;
 
     public static void init(Application application) {
         SuperUtilsManager.application = application;
@@ -44,10 +46,25 @@ public class SuperUtilsManager {
         }
         SVGAParser.Companion.shareParser().init(getApplication());
 
+        ARouter.init(application);
     }
 
     public static Application getApplication() {
         return application;
+    }
+
+
+    public static boolean isDebug() {
+        return debug;
+    }
+
+    public static void setDebug(boolean debug) {
+        SuperUtilsManager.debug = debug;
+        if (debug) {
+            ARouter.openDebug();
+            ARouter.openLog();
+        }
+
     }
 
     /**

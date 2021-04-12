@@ -227,6 +227,27 @@ public class CacheManager {
 
     }
 
+    /**
+     * 清除表中某条数据
+     *
+     * @param context
+     * @param sharedPreferencesName
+     */
+    public static void delteSP(Context context, String sharedPreferencesName, String key) {
+        if (!TextUtils.isEmpty(sharedPreferencesName) && !TextUtils.isEmpty(key)) {
+            SharedPreferences sharedPreferences = context.getSharedPreferences(sharedPreferencesName, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.remove(key);
+            editor.commit();
+        }
+    }
+
+    /**
+     * 清除表中所有数据
+     *
+     * @param context
+     * @param sharedPreferencesName
+     */
     public static void delteSP(Context context, String sharedPreferencesName) {
         if (!TextUtils.isEmpty(sharedPreferencesName)) {
             SharedPreferences sharedPreferences = context.getSharedPreferences(sharedPreferencesName, Context.MODE_PRIVATE);

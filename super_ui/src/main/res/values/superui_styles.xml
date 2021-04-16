@@ -7,8 +7,26 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <!-- 全屏Activity-->
+    <style name="SuperUI_ActivityFullScreen" parent="SuperUI_AppTheme">
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 无ActionBar -->
+        <item name="android:windowActionBar">false</item>
+        <!-- 全屏即无通知栏 -->
+        <item name="android:windowFullscreen">true</item>
+        <!-- 是否有遮盖 -->
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    <!-- 全屏透明Activity-->
+    <style name="SuperUI_ActivityFullScreenTranslucent" parent="SuperUI_ActivityFullScreen">
+        <!--Activity全局透明-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Activity</item>
+    </style>
 
-
+    <!-- 透明Activity-->
     <style name="SuperUI_ActivityTranslucent" parent="SuperUI_AppTheme">
         <!--Activity全局透明-->
         <item name="android:windowBackground">@android:color/transparent</item>

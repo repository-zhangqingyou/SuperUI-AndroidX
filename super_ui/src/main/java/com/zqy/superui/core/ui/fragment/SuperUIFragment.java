@@ -133,6 +133,8 @@ public abstract class SuperUIFragment extends RxFragment {
     private boolean isViewPagerFragment;//是否是ViewPager+Fragment
 
     /**
+     * setUserVisibleHint的使用场景:FragmentPagerAdapter+ViewPager
+     *
      * ViewPager+Fragment
      * 因为Fragment懒加载机制的原因，切换时Fragment并未销毁，不会触发onPause()，因此需要用setUserVisibleHint()来判断
      * 在Fragment OnCreateView()方法之前调用的

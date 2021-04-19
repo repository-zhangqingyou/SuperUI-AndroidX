@@ -20,8 +20,6 @@ import com.tencent.bugly.beta.download.DownloadTask;
 import com.tencent.bugly.beta.interfaces.BetaPatchListener;
 import com.zqy.superutils.glide.GlideCacheUtil;
 
-import org.greenrobot.greendao.AbstractDaoSession;
-
 import java.util.Locale;
 
 
@@ -210,22 +208,4 @@ public class SuperUtilsManager {
 
     }
 
-
-    /**
-     * GreenDB数据库初始化 (不使用则不初始化)
-     * 初始化示例：
-     * // 常规SQLite数据库
-     * GreenDaoContext greenDaoContext = new GreenDaoContext(this);//里面有个上下文GreenDaoContext继承了ContextWrapper,里面设置了数据库路径，
-     * // greenDaoContext.setCurrentUserId(userId);
-     * DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(greenDaoContext, AppUtils.getAppName() + "数据库");//
-     * Database db = helper.getWritableDb();
-     * // 数据库db = helper.getEncryptedWritableDb（“encryption-key”）;
-     * DaoSession daoSession = new DaoMaster(db).newSession();
-     * SuperUtilsManage.initGreenDB(daoSession);
-     *
-     * @param daoSession
-     */
-    public static void initGreenDB(AbstractDaoSession daoSession) {
-        GreenDBManager.init(daoSession);
-    }
 }

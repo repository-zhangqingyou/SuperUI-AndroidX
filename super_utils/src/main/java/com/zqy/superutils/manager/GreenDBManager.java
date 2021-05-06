@@ -26,7 +26,7 @@ public class GreenDBManager {
      *
      * @param daoSession
      */
-    protected static void init(AbstractDaoSession daoSession) {
+    public static void init(AbstractDaoSession daoSession) {
         greenDBHelper = new GreenDBHelper(daoSession);
     }
 

@@ -18,6 +18,7 @@ import com.zqy.superhttp.http.ApiCallbackService;
 import com.zqy.superui.SuperUIManager;
 import com.zqy.superutils.ToastUtil;
 import com.zqy.superutils.database.GreenDaoContext;
+import com.zqy.superutils.manager.GreenDBManager;
 import com.zqy.superutils.manager.SuperUtilsManager;
 
 import org.greenrobot.greendao.database.Database;
@@ -131,7 +132,8 @@ public class SUIApp extends Application {
         Database db = helper.getWritableDb();
         // 数据库db = helper.getEncryptedWritableDb（“encryption-key”）;
         DaoSession daoSession = new DaoMaster(db).newSession();
-        SuperUtilsManager.initGreenDB(daoSession);
+        GreenDBManager.init(daoSession);
+       // SuperUtilsManager.initGreenDB(daoSession);
 
     }
 

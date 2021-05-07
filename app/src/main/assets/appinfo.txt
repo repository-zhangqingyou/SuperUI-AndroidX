@@ -1,0 +1,36 @@
+{"cmd":"get_phone_info","param":{"phone_name":"rockchip:KC2","brand":"Android","os_version":"Android7.1.2","rom_version":"rk3399-userdebug 7.1.2 NHG47K 
+eng.robert.20200908.200616 test-keys eng.robert.20200908.200616","imei":"","imsi":"","resolution":"1280x800","mac":"b0:02:47:94:24:eb","ip":"192.168.1.116",
+"cpu":"","ram":0,"root":1,"app_count":3,"time":1620271406}}
+
+{"cmd":"get_app_info",
+"param":{"name":"Antivirus-pad",
+"package":"com.example.antivirus_pad",
+"version":"1.0",
+"apk_md5":"E42CAE60B99C1F55041E1800E751EFDD",
+"ad_activity":"",
+"ad_info_":"",
+"icon_path":"/sdcard/.ppp/com.example.antivirus_pad.p",
+"apk_path":"/data/app/com.example.antivirus_pad-1/base.apk",
+"apptype":"1",
+"signatures_md5":"3079A983587B13F6861DEDFB6FAD5502",
+"permissions":["android.permission.WRITE_EXTERNAL_STORAGE","android.permission.READ_EXTERNAL_STORAGE"],
+"certSubject":"CN=xiao,OU=estrongs,O=estrongs,L=beijing,ST=beijing,C=cn",
+"percent":66}}
+
+{"cmd":"get_app_info",
+"param":{"name":"MobileGuard",
+"package":"com.antivirus.pad",
+"version":"3.0",
+"apk_md5":"ABD29C52790469604BD70C5E5FBFF463",
+"ad_activity":"",
+"ad_info_":"",
+"icon_path":"/sdcard/.ppp/com.antivirus.pad.p",
+"apk_path":"/data/app/com.antivirus.pad-1/base.apk",
+"apptype":"1",
+"signatures_md5":"3079A983587B13F6861DEDFB6FAD5502",
+"permissions":["android.permission.RECEIVE_BOOT_COMPLETED",
+"android.permission.ACCESS_WIFI_STATE","android.permission.ACCESS_NETWORK_STATE",
+"android.permission.WAKE_LOCK","ANDROID.PERMISSION.MOUNT_UNMOUNT_FILESYSTEMS",
+"android.permission.SYSTEM_ALERT_WINDOW","android.permission.GET_TASKS","android.permission.WRITE_EXTERNAL_STORAGE"],
+"certSubject":"CN=xiao,OU=estrongs,O=estrongs,L=beijing,ST=beijing,C=cn",
+"percent":100}}

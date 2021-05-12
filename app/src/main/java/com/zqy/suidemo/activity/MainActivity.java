@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 HIDE_RADIUS_SIDE_BOTTOM, 0, 0);
 
 
-
         String json = ResourceUtils.readAssets2String("appinfo.txt");
         String analyze = analyze(json);
         if (!TextUtils.isEmpty(analyze)) {
@@ -174,9 +173,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tv_Lottie://Lottie动画
                 startActivity(new Intent(this, LottieActivity.class));
                 break;
-
         }
     }
+
+
 
     /**
      * 单背景样式

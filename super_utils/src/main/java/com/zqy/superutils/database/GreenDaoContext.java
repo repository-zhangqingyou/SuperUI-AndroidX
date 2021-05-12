@@ -55,8 +55,8 @@ public class GreenDaoContext extends ContextWrapper {
         StringBuffer buffer = new StringBuffer();
         buffer.append(baseFile.getPath());
         dbDir = buffer.toString();// 数据库所在目录
-        buffer.append(File.separator);//分隔器
-        buffer.append(dbName + "-" + currentUserId + ".db");
+        buffer.append(File.separator);//分隔器 AppUtils.getAppName() + "_数据库"
+        buffer.append(dbName + "_" + currentUserId + ".db");
         String dbPath = buffer.toString();// 数据库路径
         // 判断目录是否存在，不存在则创建该目录
         File dirFile = new File(dbDir);
@@ -79,7 +79,7 @@ public class GreenDaoContext extends ContextWrapper {
         if (isFileCreateSuccess)
             return dbFile;
         else
-            return super.getDatabasePath(dbName);
+            return super.getDatabasePath(dbName + "_" + currentUserId + ".db");
     }
 
     /**

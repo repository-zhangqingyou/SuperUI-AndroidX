@@ -23,7 +23,6 @@ import com.zqy.superui.R;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Author: zhangqingyou
@@ -105,7 +104,7 @@ public abstract class SuperUIFragment extends RxFragment {
      * @param text
      */
     public void toast(String text, int duration, int gravity) {
-        if (!Objects.requireNonNull(getActivity()).isFinishing() && !TextUtils.isEmpty(text)) {
+        if (getActivity() != null && !getActivity().isFinishing() && !TextUtils.isEmpty(text)) {
             Toast toast = Toast.makeText(getContext(), text, duration);
             toast.setGravity(gravity, 0, 0);
             toast.show();
@@ -134,7 +133,7 @@ public abstract class SuperUIFragment extends RxFragment {
 
     /**
      * setUserVisibleHint的使用场景:FragmentPagerAdapter+ViewPager
-     *
+     * <p>
      * ViewPager+Fragment
      * 因为Fragment懒加载机制的原因，切换时Fragment并未销毁，不会触发onPause()，因此需要用setUserVisibleHint()来判断
      * 在Fragment OnCreateView()方法之前调用的

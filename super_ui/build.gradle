@@ -69,9 +69,9 @@ dependencies {
 
 
     //AgentWeb 是一个基于的 Android WebView ，极度容易使用以及功能强大的库
-    api 'com.just.agentweb:agentweb-androidx:4.1.4' // (必选)
-    api 'com.just.agentweb:filechooser-androidx:4.1.4'// (可选)
-    api 'com.download.library:downloader-androidx:4.1.4'// (可选)
+    api 'com.github.Justson.AgentWeb:agentweb-core:v4.1.9-androidx' // (必选)
+    api 'com.github.Justson.AgentWeb:agentweb-filechooser:v4.1.9-androidx' // (可选)
+    api 'com.github.Justson:Downloader:v4.1.9-androidx' // (可选)
     //万能下拉刷新和上拉加载
     api 'com.scwang.smart:refresh-layout-kernel:2.0.3'      //核心必须依赖
     api 'com.scwang.smart:refresh-header-classics:2.0.3'    //经典刷新头

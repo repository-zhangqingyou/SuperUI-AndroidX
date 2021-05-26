@@ -12,7 +12,6 @@ public class Result<T> extends BaseResult<T> implements Serializable {
     private int code;
     private String msg;
 
-
     public int getCode() {
         return code;
     }

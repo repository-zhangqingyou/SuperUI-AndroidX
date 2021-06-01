@@ -11,6 +11,7 @@ import com.blankj.utilcode.util.AppUtils;
 import com.google.gson.JsonSyntaxException;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
+import com.tencent.tinker.loader.app.TinkerApplication;
 import com.zqy.suidemo.database.DaoMaster;
 import com.zqy.suidemo.database.DaoSession;
 import com.zqy.superhttp.SuperHttpManager;
@@ -29,8 +30,12 @@ import org.greenrobot.greendao.database.Database;
  * 时间: 2020/8/19 15:07
  * 描述:
  */
-public class SUIApp extends Application {
+public class SUIApp extends TinkerApplication {
     private static Application application;
+
+    protected SUIApp(int tinkerFlags) {
+        super(tinkerFlags);
+    }
 
     /**
      * 获取Application
@@ -133,7 +138,7 @@ public class SUIApp extends Application {
         // 数据库db = helper.getEncryptedWritableDb（“encryption-key”）;
         DaoSession daoSession = new DaoMaster(db).newSession();
         GreenDBManager.init(daoSession);
-       // SuperUtilsManager.initGreenDB(daoSession);
+        // SuperUtilsManager.initGreenDB(daoSession);
 
     }
 

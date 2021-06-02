@@ -126,8 +126,6 @@ public class SuperUtilsManager {
         Beta.autoInit = true;
         // 设置是否显示弹窗提示用户重启
         Beta.canNotifyUserRestart = true;
-        // 设置是否显示弹窗提示用户重启
-        Beta.canNotifyUserRestart = true;
         //自动检查更新开关  true表示初始化时自动检查升级; false表示不会自动检查升级,需要手动调用Beta.checkUpgrade()方法;
         Beta.autoCheckUpgrade = false;
 
@@ -143,6 +141,7 @@ public class SuperUtilsManager {
             @Override
             public void onCompleted(DownloadTask downloadTask) {
                 GlideCacheUtil.getInstance().clearImageAllCache(application);
+                downloadTask.getSaveFile();
             }
 
             @Override

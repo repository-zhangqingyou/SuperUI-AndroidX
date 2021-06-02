@@ -114,9 +114,10 @@ public class SuperUtilsManager {
      * //@param isInitBetaPatch 是否初始化补丁更新
      *
      * @param buglyAppId
-     * @param channel    渠道ud
+     * @param channel     渠道ud
+     * @param isBetaPatch 是否初始化热跟新
      */
-    public static void initBugly(String buglyAppId, String channel) {
+    public static void initBugly(String buglyAppId, String channel, boolean isBetaPatch) {
 
         // 设置是否显示弹窗提示用户重启
         Beta.canNotifyUserRestart = true;
@@ -133,56 +134,6 @@ public class SuperUtilsManager {
         Beta.appChannel = channel;
 
 
-        Beta.betaPatchListener = new BetaPatchListener() {
-            @Override
-            public void onPatchReceived(String patchFile) {
-                Log.d("initTinker", "补丁下载地址");
-                Toast.makeText(getApplication(), "补丁下载地址" + patchFile, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onDownloadReceived(long savedLength, long totalLength) {
-                String format = String.format(Locale.getDefault(), "%s %d%%",
-                        Beta.strNotificationDownloading,
-                        (int) (totalLength == 0 ? 0 : savedLength * 100 / totalLength));
-
-                Log.d("initTinker", format);
-
-                Toast.makeText(getApplication(), format,
-                        Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onDownloadSuccess(String msg) {
-                Log.d("initTinker", "补丁下载成功");
-                Toast.makeText(getApplication(), "补丁下载成功", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onDownloadFailure(String msg) {
-                Log.d("initTinker", "补丁下载失败");
-                Toast.makeText(getApplication(), "补丁下载失败", Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public void onApplySuccess(String msg) {
-                Log.d("initTinker", "补丁应用成功");
-                Toast.makeText(getApplication(), "补丁应用成功", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onApplyFailure(String msg) {
-                Log.d("initTinker", "补丁应用失败");
-                Toast.makeText(getApplication(), "补丁应用失败", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onPatchRollback() {
-                Log.d("initTinker", "补丁回滚");
-                Toast.makeText(getApplication(), "补丁回滚", Toast.LENGTH_SHORT).show();
-            }
-        };
 
         /*注册下载监听，监听下载事件*/
         Beta.registerDownloadListener(new DownloadListener() {
@@ -201,8 +152,62 @@ public class SuperUtilsManager {
 
             }
         });
-        //必须要所有配置设置完毕才 安装tinker
-        Beta.installTinker();
+        if (isBetaPatch) {
+            Beta.betaPatchListener = new BetaPatchListener() {
+                @Override
+                public void onPatchReceived(String patchFile) {
+                    Log.d("initTinker", "补丁下载地址");
+                    Toast.makeText(getApplication(), "补丁下载地址" + patchFile, Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onDownloadReceived(long savedLength, long totalLength) {
+                    String format = String.format(Locale.getDefault(), "%s %d%%",
+                            Beta.strNotificationDownloading,
+                            (int) (totalLength == 0 ? 0 : savedLength * 100 / totalLength));
+
+                    Log.d("initTinker", format);
+
+                    Toast.makeText(getApplication(), format,
+                            Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onDownloadSuccess(String msg) {
+                    Log.d("initTinker", "补丁下载成功");
+                    Toast.makeText(getApplication(), "补丁下载成功", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onDownloadFailure(String msg) {
+                    Log.d("initTinker", "补丁下载失败");
+                    Toast.makeText(getApplication(), "补丁下载失败", Toast.LENGTH_SHORT).show();
+
+                }
+
+                @Override
+                public void onApplySuccess(String msg) {
+                    Log.d("initTinker", "补丁应用成功");
+                    Toast.makeText(getApplication(), "补丁应用成功", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onApplyFailure(String msg) {
+                    Log.d("initTinker", "补丁应用失败");
+                    Toast.makeText(getApplication(), "补丁应用失败", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onPatchRollback() {
+                    Log.d("initTinker", "补丁回滚");
+                    Toast.makeText(getApplication(), "补丁回滚", Toast.LENGTH_SHORT).show();
+                }
+            };
+            //必须要所有配置设置完毕才 安装tinker
+            Beta.installTinker();
+            Beta.init(getApplication(), true);
+        }
+
 
         /***** Bugly高级设置 *****/
         BuglyStrategy strategy = new BuglyStrategy();
@@ -213,7 +218,6 @@ public class SuperUtilsManager {
         /***** 统一初始化Bugly产品，包含Beta *****/
         Bugly.init(getApplication(), buglyAppId, true, strategy);
 
-        Beta.init(getApplication(), true);
 
     }
 

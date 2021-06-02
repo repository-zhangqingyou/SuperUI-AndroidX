@@ -203,7 +203,7 @@ public class SuperUtilsManager {
             };
             //必须要所有配置设置完毕才 安装tinker
             Beta.installTinker();
-            Beta.init(getApplication(), true);
+           // Beta.init(getApplication(), true);
         }
 
 

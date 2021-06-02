@@ -118,22 +118,20 @@ public class SuperUtilsManager {
      * @param isBetaPatch 是否初始化热跟新
      */
     public static void initBugly(String buglyAppId, String channel, boolean isBetaPatch) {
-
+        /**
+         * true表示app启动自动初始化升级模块; false不会自动初始化;
+         * 开发者如果担心sdk初始化影响app启动速度，可以设置为false，
+         * 在后面某个时刻手动调用Beta.init(getApplicationContext(),false);
+         */
+        Beta.autoInit = true;
         // 设置是否显示弹窗提示用户重启
         Beta.canNotifyUserRestart = true;
         // 设置是否显示弹窗提示用户重启
         Beta.canNotifyUserRestart = true;
         //自动检查更新开关  true表示初始化时自动检查升级; false表示不会自动检查升级,需要手动调用Beta.checkUpgrade()方法;
         Beta.autoCheckUpgrade = false;
-        /**
-         * true表示app启动自动初始化升级模块; false不会自动初始化;
-         * 开发者如果担心sdk初始化影响app启动速度，可以设置为false，
-         * 在后面某个时刻手动调用Beta.init(getApplicationContext(),false);
-         */
-        Beta.autoInit = false;
+
         Beta.appChannel = channel;
-
-
 
         /*注册下载监听，监听下载事件*/
         Beta.registerDownloadListener(new DownloadListener() {
@@ -217,8 +215,6 @@ public class SuperUtilsManager {
         strategy.setAppChannel(channel);
         /***** 统一初始化Bugly产品，包含Beta *****/
         Bugly.init(getApplication(), buglyAppId, true, strategy);
-
-
     }
 
 }

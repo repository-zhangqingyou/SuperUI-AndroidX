@@ -122,8 +122,8 @@ public class SuperUtilsManager {
         Beta.canNotifyUserRestart = true;
         // 设置是否显示弹窗提示用户重启
         Beta.canNotifyUserRestart = true;
-        //自动检查更新开关
-        Beta.autoCheckUpgrade = true;
+        //自动检查更新开关  true表示初始化时自动检查升级; false表示不会自动检查升级,需要手动调用Beta.checkUpgrade()方法;
+        Beta.autoCheckUpgrade = false;
         /**
          * true表示app启动自动初始化升级模块; false不会自动初始化;
          * 开发者如果担心sdk初始化影响app启动速度，可以设置为false，

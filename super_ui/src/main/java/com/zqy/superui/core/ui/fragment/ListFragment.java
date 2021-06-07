@@ -4,6 +4,10 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.zqy.superui.core.other.adapter.DataAdapter;
+
+import java.util.List;
+
 
 /**
  * 作者: zhangqingyou
@@ -48,6 +52,23 @@ public abstract class ListFragment extends SuperUIFragment {
 
     }
 
+    public void setData(List<Object> list) {
+        if (adapter instanceof DataAdapter) {
+            DataAdapter dataAdapter = (DataAdapter) adapter;
+            dataAdapter.replaceAll(list);
+        }
+    }
+
+    public void addData(List<Object> list, boolean isNotifyAll) {
+        if (adapter instanceof DataAdapter) {
+            DataAdapter dataAdapter = (DataAdapter) adapter;
+            if (isNotifyAll) {
+                dataAdapter.addItemToLastNotifyAll(list);
+            } else
+                dataAdapter.addItemsToLast(list);
+        }
+    }
+
 
     public abstract RecyclerView getRecyclerView();
 
@@ -58,9 +79,6 @@ public abstract class ListFragment extends SuperUIFragment {
     public abstract RecyclerView.Adapter getAdapter();//适配器
 
     public abstract boolean isEnableOverScrollMode();//是否开启阴影
-
-
-
 
 
 }

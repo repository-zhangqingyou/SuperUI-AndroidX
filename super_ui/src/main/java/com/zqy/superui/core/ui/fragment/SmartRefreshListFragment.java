@@ -38,7 +38,7 @@ public abstract class SmartRefreshListFragment extends ListFragment implements O
         SmartRefreshLayout smartRefreshLayout = getSmartRefreshLayout();
         //下拉
         if (smartRefreshLayout != null) {
-            smartRefreshLayout.setOnRefreshListener(this);
+            smartRefreshLayout.setOnRefreshLoadMoreListener(this);
         }
     }
 

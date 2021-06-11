@@ -25,7 +25,7 @@ public abstract class SmartRefreshListFragment extends ListFragment implements O
             smartRefreshLayout.setRefreshFooter(new ClassicsFooter(getActivity()));
             smartRefreshLayout.setEnableRefresh(isEnableRefresh());//是否允许下拉
             smartRefreshLayout.setEnableLoadMore(isEnableLoadMore());//设置是否启用上拉加载更多
-            smartRefreshLayout.setEnableAutoLoadMore(true);//是否启用列表惯性滑动到底部时自动加载更多
+            smartRefreshLayout.setEnableAutoLoadMore(false);//是否启用列表惯性滑动到底部时自动加载更多
             //设置刷新加载时禁止所有列表操作
             smartRefreshLayout.setDisableContentWhenRefresh(true);//设置是否开启在刷新时候禁止操作内容视图
             smartRefreshLayout.setDisableContentWhenLoading(true);//设置是否开启在加载时候禁止操作内容视图

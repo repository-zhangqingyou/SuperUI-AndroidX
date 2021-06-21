@@ -34,11 +34,13 @@
         <item name="android:windowAnimationStyle">@android:style/Animation.Activity</item>
     </style>
 
-    <style name="SuperUI_AnimBottom" parent="@android:style/Animation">
-        <item name="android:windowEnterAnimation">@anim/superui_popup_alpha_out</item>
-        <item name="android:windowExitAnimation">@anim/superui_popup_alpha_in</item>
+    <!-- 状态栏透明Activity-->
+    <style name="SuperUI_TransparentStatusBar" parent="SuperUI_AppTheme">
+        <!--可以页面拉伸到状态栏顶部-->
+        <item name="android:windowTranslucentStatus">false</item>
+        <!--是否可以页面拉伸到虚拟按键底部-->
+        <item name="android:windowTranslucentNavigation">false</item>
     </style>
-
 
     <!-- 全屏Dialog style -->
     <style name="SuperUI_TransparentDialog" parent="Theme.AppCompat.Light.NoActionBar">
@@ -82,6 +84,11 @@
         <item name="android:backgroundDimEnabled">true</item>
         <!--  用来控制具体透明度(值越小透明度越大,当前是80%透明度)-->
         <item name="android:backgroundDimAmount">0.5</item>
+    </style>
+
+    <style name="SuperUI_AnimBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/superui_popup_alpha_out</item>
+        <item name="android:windowExitAnimation">@anim/superui_popup_alpha_in</item>
     </style>
 
     <style name="SuperUI_ToolbarStyle" parent="Base.Widget.AppCompat.Toolbar">

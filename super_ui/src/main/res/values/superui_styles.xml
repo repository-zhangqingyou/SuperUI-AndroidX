@@ -38,7 +38,7 @@
     <style name="SuperUI_ActivityTranslucent" parent="SuperUI_AppTheme">
         <!--Activity全局透明-->
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Activity</item>
     </style>
 

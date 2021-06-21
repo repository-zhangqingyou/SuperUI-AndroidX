@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
 
     <style name="SuperUI_AppTheme" parent="XUITheme.Phone">
         <!-- 自定义自己的主题样式 -->
@@ -37,9 +45,11 @@
     <!-- 状态栏透明Activity-->
     <style name="SuperUI_TransparentStatusBar" parent="SuperUI_AppTheme">
         <!--可以页面拉伸到状态栏顶部-->
-        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
         <!--是否可以页面拉伸到虚拟按键底部-->
         <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent
+        </item>
     </style>
 
     <!-- 全屏Dialog style -->

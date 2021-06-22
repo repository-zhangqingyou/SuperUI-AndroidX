@@ -51,9 +51,11 @@ dependencies {
     api("com.github.bumptech.glide:glide:$versions.glide") {
         exclude group: "com.android.support"
     }
-    api 'org.greenrobot:greendao:3.3.0' // greendao数据库
     annotationProcessor "com.github.bumptech.glide:compiler:$versions.glide"
     api 'jp.wasabeef:glide-transformations:2.0.1'        //高斯模糊
+
+    api 'org.greenrobot:greendao:3.3.0' // greendao数据库
+
     //svg动画
     api 'com.github.yyued:SVGAPlayer-Android:2.5.13'
     // api 'com.eftimoff:android-pathview:1.0.8@aar'

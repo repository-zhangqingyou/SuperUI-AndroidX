@@ -27,7 +27,7 @@ public abstract class SimpleSmartRefreshLoadingListFragment extends SmartRefresh
 
     @Override
     public int getLayoutId() {
-        return R.layout.superui_smartrefresh_loadinglayout_recyclerview;
+        return R.layout.superui_smartrefresh_loadinglayout_recyclerview_scrollbar;
     }
 
     @Override

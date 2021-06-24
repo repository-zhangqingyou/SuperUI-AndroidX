@@ -8,6 +8,7 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scrollbarSize="@dimen/_2sdp"
         android:scrollbarThumbVertical="@color/colorAccent"
         android:scrollbars="vertical" />
 </com.scwang.smart.refresh.layout.SmartRefreshLayout>

@@ -101,7 +101,7 @@ dependencies {
     api 'com.github.zhpanvip:BannerViewPager:3.2.0'   //androidx  banner(支持ViewHolder，自定义指示器)
 
     //PictureSelector图片选择
-    api('com.github.LuckSiege.PictureSelector:picture_library:v2.2.3') {//v2.6.0
+    api('io.github.lucksiege:pictureselector:v2.7.3-rc03') {//com.github.LuckSiege.PictureSelector:picture_library:v2.2.3
         exclude group: 'com.android.support'
         exclude group: 'com.github.bumptech.glide'
     }

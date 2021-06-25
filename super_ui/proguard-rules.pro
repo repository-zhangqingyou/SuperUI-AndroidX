@@ -25,3 +25,15 @@
 -keep class com.qmuiteam.qmui.arch.record.RecordIdClassMapImpl { *; }
 -keep class com.qmuiteam.qmui.arch.scheme.SchemeMap {*;}
 -keep class com.qmuiteam.qmui.arch.scheme.SchemeMapImpl {*;}
+
+
+#PictureSelector 2.0
+-keep class com.luck.picture.lib.** { *; }
+
+#Ucrop
+-dontwarn com.yalantis.ucrop**
+-keep class com.yalantis.ucrop** { *; }
+-keep interface com.yalantis.ucrop** { *; }
+
+#Okio
+-dontwarn org.codehaus.mojo.animal_sniffer.*

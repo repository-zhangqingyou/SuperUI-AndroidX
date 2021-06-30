@@ -15,7 +15,6 @@ import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.core.FlowableTransformer;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.ObservableSource;
-import io.reactivex.rxjava3.core.ObservableTransformer;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 
@@ -46,7 +45,7 @@ public class RxHelper {
         };
     }
 
-    public static <T> ObservableTransformer<T, T> observableIO2Main(final RxFragment fragment) {
+    public static <T> io.reactivex.rxjava3.core.ObservableTransformer<T, T> observableIO2Main(final RxFragment fragment) {
         return upstream -> upstream.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).compose(fragment.<T>bindToLifecycle());
     }

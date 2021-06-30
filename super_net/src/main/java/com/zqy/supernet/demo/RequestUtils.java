@@ -7,7 +7,6 @@ import com.trello.rxlifecycle4.components.support.RxFragment;
 import com.zqy.supernet.SuperNetManager;
 import com.zqy.supernet.demo.bean.DemoBean;
 import com.zqy.supernet.help.BaseObserverCopy;
-import com.zqy.supernet.help.RxHelper;
 
 import java.io.File;
 import java.util.HashMap;
@@ -18,6 +17,8 @@ import io.reactivex.rxjava3.core.Observer;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+
+import static com.zqy.supernet.help.RxHelper.observableIO2Main;
 
 
 /**
@@ -41,7 +42,7 @@ public class RequestUtils {
      */
     public static void getDemo(RxActivity context, BaseObserverCopy<DemoBean> observer) {
         getApiUrl().getDemo()
-                .compose(RxHelper.observableIO2Main(context))
+                .compose(observableIO2Main(context))
                 .subscribe(observer);
     }
 
@@ -53,7 +54,7 @@ public class RequestUtils {
      */
     public static void getDemoList(RxActivity context, BaseObserverCopy<List<DemoBean>> observer) {
         getApiUrl()
-                .getDemoList().compose(RxHelper.observableIO2Main(context))
+                .getDemoList().compose(observableIO2Main(context))
                 .subscribe(observer);
     }
 
@@ -65,7 +66,7 @@ public class RequestUtils {
      */
     public static void postDemo(RxAppCompatActivity context, String name, String password, Observer<DemoBean> consumer) {
         getApiUrl()
-                .postUser(name, password).compose(RxHelper.observableIO2Main(context))
+                .postUser(name, password).compose(observableIO2Main(context))
                 .subscribe(consumer);
     }
 
@@ -80,7 +81,8 @@ public class RequestUtils {
         headers.put("Accept", "application/json");
         headers.put("Authorization", access_token);
         getApiUrl()
-                .put(headers, "厦门").compose(RxHelper.observableIO2Main(context))
+                .put(headers, "厦门")
+                .compose(observableIO2Main(context))
                 .subscribe(consumer);
     }
 
@@ -92,7 +94,8 @@ public class RequestUtils {
      */
     public static void deleteDemo(RxFragment context, String access_token, Observer<DemoBean> consumer) {
         getApiUrl()
-                .delete(access_token, 1).compose(RxHelper.observableIO2Main(context))
+                .delete(access_token, 1)
+                .compose(observableIO2Main(context))
                 .subscribe(consumer);
     }
 
@@ -114,8 +117,10 @@ public class RequestUtils {
 //                RequestBody.create(MediaType.parse("multipart/form-data"), file);
         MultipartBody.Part body =
                 MultipartBody.Part.createFormData("file", file.getName(), reqFile);
-        getApiUrl().uploadImage(header, body).compose(RxHelper.observableIO2Main(context))
+        getApiUrl().uploadImage(header, body).compose(observableIO2Main(context))
                 .subscribe(observer);
+
+
     }
 
     /**
@@ -135,7 +140,7 @@ public class RequestUtils {
             builder.addFormDataPart("file", file.getName(), photoRequestBody);
         }
         List<MultipartBody.Part> parts = builder.build().parts();
-        getApiUrl().uploadImage1(header, parts).compose(RxHelper.observableIO2Main(context))
+        getApiUrl().uploadImage1(header, parts).compose(observableIO2Main(context))
                 .subscribe(observer1);
     }
 }

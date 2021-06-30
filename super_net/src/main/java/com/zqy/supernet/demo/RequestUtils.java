@@ -6,7 +6,7 @@ import com.trello.rxlifecycle4.components.support.RxAppCompatActivity;
 import com.trello.rxlifecycle4.components.support.RxFragment;
 import com.zqy.supernet.SuperNetManager;
 import com.zqy.supernet.demo.bean.DemoBean;
-import com.zqy.supernet.help.BaseObserverCopy;
+import com.zqy.supernet.help.EntityObserver;
 
 import java.io.File;
 import java.util.HashMap;
@@ -40,7 +40,7 @@ public class RequestUtils {
      * @param context
      * @param observer
      */
-    public static void getDemo(RxActivity context, BaseObserverCopy<DemoBean> observer) {
+    public static void getDemo(RxActivity context, EntityObserver<DemoBean> observer) {
         getApiUrl().getDemo()
                 .compose(observableIO2Main(context))
                 .subscribe(observer);
@@ -52,7 +52,7 @@ public class RequestUtils {
      * @param context
      * @param observer
      */
-    public static void getDemoList(RxActivity context, BaseObserverCopy<List<DemoBean>> observer) {
+    public static void getDemoList(RxActivity context, EntityObserver<List<DemoBean>> observer) {
         getApiUrl()
                 .getDemoList().compose(observableIO2Main(context))
                 .subscribe(observer);

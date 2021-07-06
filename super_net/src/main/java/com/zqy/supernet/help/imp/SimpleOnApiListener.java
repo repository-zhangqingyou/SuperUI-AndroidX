@@ -10,7 +10,6 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 import okhttp3.Headers;
-import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okio.Buffer;
@@ -37,24 +36,25 @@ public class SimpleOnApiListener implements OnApiListener {
 
         try {
             url = request.url().toString();
-
             Headers headers = request.headers();
 
-            RequestBody requestBody = request.body();
-            Buffer buffer = new Buffer();
-            requestBody.writeTo(buffer);
-            Charset charset = StandardCharsets.UTF_8;
-            MediaType contentType = requestBody.contentType();
-            String paramsStr = buffer.readString(charset);
 
             StringBuilder stringBuilder=new StringBuilder();
             stringBuilder
                     .append("\n请求类型:" )
-                    .append(contentType != null ? contentType.toString() : "")
+                    .append(request.method())
                     .append("\n请求Headers:")
-                    .append(headers.toString())
-                    .append("\n请求参数:")
-                    .append(paramsStr);
+                    .append(headers.toString());
+            if ("POST".equals(request.method())){
+                RequestBody requestBody = request.body();
+                Buffer buffer = new Buffer();
+                requestBody.writeTo(buffer);
+                Charset charset = StandardCharsets.UTF_8;
+                String paramsStr = buffer.readString(charset);
+                stringBuilder
+                        .append("\n请求参数:")
+                        .append(paramsStr);
+            }
 
             Log.d(AppUtils.getAppName() + "-接口", "onStart-----url:" + url + stringBuilder.toString());
 

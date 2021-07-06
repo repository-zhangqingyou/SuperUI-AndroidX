@@ -56,7 +56,7 @@ public class SimpleOnApiListener implements OnApiListener {
                         .append(paramsStr);
             }
 
-            Log.d(AppUtils.getAppName() + "-接口", "onStart-----url:" + url + stringBuilder.toString());
+            Log.d(AppUtils.getAppName() + "-接口", "onStart-----url: " + url + stringBuilder.toString());
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -72,11 +72,11 @@ public class SimpleOnApiListener implements OnApiListener {
 
     @Override
     public void onError(Throwable msg) {
-        Log.d(AppUtils.getAppName() + "-接口", url + "------onError:" + msg.getMessage());
+        Log.d(AppUtils.getAppName() + "-接口", url + ":  ------onError: " + msg.getMessage());
     }
 
     @Override
     public void onSuccess(String beanName, String json) {
-        Log.d(AppUtils.getAppName() + "-接口", url + "------onSuccess----------json:" + json);
+        Log.d(AppUtils.getAppName() + "-接口", url + ":  ------onSuccess---------- json: " + json);
     }
 }

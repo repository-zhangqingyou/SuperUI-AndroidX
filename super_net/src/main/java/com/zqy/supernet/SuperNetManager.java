@@ -3,8 +3,8 @@ package com.zqy.supernet;
 import android.app.Application;
 
 import com.zqy.supernet.help.AskConfigure;
-import com.zqy.supernet.help.OnApiListener;
 import com.zqy.supernet.help.RetrofitHelp;
+import com.zqy.supernet.help.imp.OnApiListener;
 
 import retrofit2.Retrofit;
 

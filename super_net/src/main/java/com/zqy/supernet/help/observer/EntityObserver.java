@@ -1,4 +1,4 @@
-package com.zqy.supernet.help;
+package com.zqy.supernet.help.observer;
 
 import com.zqy.supernet.response.Result;
 

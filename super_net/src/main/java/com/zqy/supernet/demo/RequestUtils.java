@@ -6,7 +6,7 @@ import com.trello.rxlifecycle4.components.support.RxAppCompatActivity;
 import com.trello.rxlifecycle4.components.support.RxFragment;
 import com.zqy.supernet.SuperNetManager;
 import com.zqy.supernet.demo.bean.DemoBean;
-import com.zqy.supernet.help.EntityObserver;
+import com.zqy.supernet.help.observer.EntityObserver;
 
 import java.io.File;
 import java.util.HashMap;

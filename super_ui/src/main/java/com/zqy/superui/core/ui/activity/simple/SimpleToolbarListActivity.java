@@ -53,7 +53,8 @@ public abstract class SimpleToolbarListActivity extends ToolbarActivity {
         if (fragment != null) {
             //开启事务
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.add(R.id.ll_Container, fragment);
+            transaction.replace(R.id.ll_Container, fragment);
+            transaction.show(fragment);
             transaction.commit();
         }
     }

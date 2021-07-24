@@ -31,6 +31,7 @@ public abstract class SimpleSmartRefreshListFragment extends SmartRefreshListFra
     public void initView(View mRootView) {
         mRecyclerView = findViewById(R.id.recyclerView);
         mSmartRefreshLayout = findViewById(R.id.smartRefreshLayout);
+
     }
 
     @Override

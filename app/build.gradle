@@ -121,8 +121,6 @@ dependencies {
     implementation project(path: ':super_net')
     implementation project(path: ':super_utils')
     implementation project(path: ':super_ui')
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
 //    implementation 'com.bintray.zhangqingyou:super_utils:1.0.18'
 //    implementation 'com.bintray.zhangqingyou:super_xui_lib:1.1.5'

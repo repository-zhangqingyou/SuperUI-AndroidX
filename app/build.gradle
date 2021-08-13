@@ -109,8 +109,6 @@ android {
             outputFileName = "${getName()}(${new Date().format("yyyyMMddHHmm")}_${variant.versionName}_${variant.versionCode}).apk"
         }
     }
-
-
 }
 
 

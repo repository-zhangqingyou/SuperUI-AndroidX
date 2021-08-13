@@ -58,6 +58,10 @@ public abstract class SimpleSmartRefreshLoadingListFragment extends SmartRefresh
         return layoutManager;
     }
 
+    public LoadingLayout getLoadingLayout() {
+        return mLoadingLayout;
+    }
+
     @Override
     public RecyclerView.ItemDecoration getItemDecoration() {
         Paint paint = new Paint();

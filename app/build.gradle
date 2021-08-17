@@ -10,11 +10,8 @@ android {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         multiDexEnabled true
-
         ndk {
-            //选择要添加的对应cpu类型的.so库。
-            abiFilters 'armeabi', 'armeabi-v7a','x86'
-            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86'
         }
         dexOptions {
             //避免打包时内存不足，导致一个dex不完整，合并的时候发现大小不一致而报错

@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void initView() {
-       // mTvTest = findViewById(R.id.rbt_test);
+        mTvTest = findViewById(R.id.rbt_test);
         mTvTest.setOnClickListener(this);
         mAtvContent = (AppCompatTextView) findViewById(R.id.atv_content);
         mAtvContent.setOnClickListener(this);
@@ -175,7 +175,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-
 
 
     /**

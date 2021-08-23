@@ -106,7 +106,7 @@
         android:text="sdasda"
         app:zqy_radius="@dimen/_20sdp"
         app:zqy_ripple_color="@color/xui_config_color_light_yellow"
-        app:zqy_solid_color="@color/blue" />
+        app:zqy_solid_color="@android:color/holo_blue_light" />
 
 
 </LinearLayout>

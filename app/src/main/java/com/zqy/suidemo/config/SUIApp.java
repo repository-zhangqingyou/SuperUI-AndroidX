@@ -11,7 +11,6 @@ import com.blankj.utilcode.util.AppUtils;
 import com.google.gson.JsonSyntaxException;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
-import com.tencent.tinker.loader.app.TinkerApplication;
 import com.zqy.suidemo.database.DaoMaster;
 import com.zqy.suidemo.database.DaoSession;
 import com.zqy.superhttp.SuperHttpManager;
@@ -19,8 +18,10 @@ import com.zqy.superhttp.http.ApiCallbackService;
 import com.zqy.superui.SuperUIManager;
 import com.zqy.superutils.ToastUtil;
 import com.zqy.superutils.database.GreenDaoContext;
+import com.zqy.superutils.impl.CrashCallback;
 import com.zqy.superutils.manager.GreenDBManager;
 import com.zqy.superutils.manager.SuperUtilsManager;
+import com.zqy.superutils.model.Crash;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -30,12 +31,10 @@ import org.greenrobot.greendao.database.Database;
  * 时间: 2020/8/19 15:07
  * 描述:
  */
-public class SUIApp extends TinkerApplication {
+public class SUIApp extends Application {
     private static Application application;
 
-    protected SUIApp(int tinkerFlags) {
-        super(tinkerFlags);
-    }
+
 
     /**
      * 获取Application
@@ -65,6 +64,13 @@ public class SUIApp extends TinkerApplication {
         SuperUtilsManager.init(getApplication());//工具初始化
         SuperUtilsManager.setLogTag("SuperUI-AndroidX");//初始化日志Tag
         SuperUtilsManager.setCache(Environment.getExternalStorageDirectory() + "/.SuperUI-AndroidX");//初始化缓存路径
+        SuperUtilsManager.initBugly("d829c333cb", "SuperUI-AndroidX", false, new CrashCallback() {
+            @Override
+            public void onCrash(Crash crash) {
+
+            }
+        });
+
         SuperHttpManager.init(getApplication());
         SuperHttpManager.setDebug(true);
         SuperHttpManager.setApiCallbackService(new ApiCallbackService() {

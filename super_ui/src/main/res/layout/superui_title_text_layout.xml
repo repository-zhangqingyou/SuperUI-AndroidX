@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/_6sdp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:lineSpacingMultiplier="1.2"
+            android:textColor="@color/superui_black_light"
+            android:textSize="@dimen/_11ssp"
+            tools:text="CPU编号" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:lineSpacingMultiplier="1.2"
+            android:textColor="@color/superui_black_dark"
+            android:textSize="@dimen/_12ssp"
+            tools:text="xxxxxx" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/superui_gray_dividing_line_light" />
+</LinearLayout>

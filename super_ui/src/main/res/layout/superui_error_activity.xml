@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <!--
+        //手机信息
+            private String cpuAbi;//CPU架构 如： "x86","armeabi-v7a", "armeabi"
+            private String brand; //手机品牌 如： 雷电模拟器7.1.2
+            private String model;//手机型号 如： xxx
+            private String sdkVersionCode; //安卓sdk版本  如：25
+            private String sdkVersionName; //安卓版本  如：7.1.2
+            //错误信息
+            private CrashType crashType;//异常类型   0
+            private String errorType;//错误类型   java.lang.NullPointerException
+            private String errorMessage;//简单的错误消息   Attempt to invoke virtual method 'void com.zqy.superui.core.widget.textview.SuperTextView.setOnClickListener(android.view.View$OnClickListener)' on a null object reference
+            private String errorStack;//错误堆栈信息-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.zqy.superui.core.widget.TitleTextListView
+                android:id="@+id/tt_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/_12sdp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.zqy.superui.core.widget.textview.SuperTextView
+        android:id="@+id/tv_restart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:layout_marginVertical="@dimen/_12sdp"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_8sdp"
+        android:text="重启应用"
+        android:textSize="@dimen/_14ssp"
+        app:zqy_radius="@dimen/_5sdp"
+        app:zqy_solid_color="@color/colorAccent"
+        app:zqy_text_color="@android:color/white" />
+</LinearLayout>

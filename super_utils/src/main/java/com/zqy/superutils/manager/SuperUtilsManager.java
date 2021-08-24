@@ -42,6 +42,7 @@ public class SuperUtilsManager {
     private static Application application;
     private static String logTag;
     private static IdSupplier idSupplier;
+    private static CrashCallback crashCallback;
     private static boolean debug;
 
     public static void init(Application application) {
@@ -95,6 +96,15 @@ public class SuperUtilsManager {
     }
 
     /**
+     * 重新设置后 回调到ErrorActivity将失效
+     *
+     * @param crashCallback
+     */
+    public static void setCrashCallback(CrashCallback crashCallback) {
+        SuperUtilsManager.crashCallback = crashCallback;
+    }
+
+    /**
      * 移动安全联盟SDK获取设备信息
      *
      * @return
@@ -122,11 +132,10 @@ public class SuperUtilsManager {
      * //@param isInitBetaPatch 是否初始化补丁更新
      *
      * @param buglyAppId
-     * @param channel       渠道ud
-     * @param isBetaPatch   是否初始化热跟新
-     * @param crashCallback 全局异常回调
+     * @param channel     渠道ud
+     * @param isBetaPatch 是否初始化热跟新
      */
-    public static void initBugly(String buglyAppId, String channel, boolean isBetaPatch, final CrashCallback crashCallback) {
+    public static void initBugly(String buglyAppId, String channel, boolean isBetaPatch) {
         /**
          * true表示app启动自动初始化升级模块; false不会自动初始化;
          * 开发者如果担心sdk初始化影响app启动速度，可以设置为false，
@@ -139,7 +148,6 @@ public class SuperUtilsManager {
         Beta.autoCheckUpgrade = false;
 
         Beta.appChannel = channel;
-
         /*注册下载监听，监听下载事件*/
         Beta.registerDownloadListener(new DownloadListener() {
             @Override
@@ -222,21 +230,19 @@ public class SuperUtilsManager {
          */
         strategy.setAppChannel(channel);
         //异常捕获回调
-        if (crashCallback != null)
-            strategy.setCrashHandleCallback(new CrashReport.CrashHandleCallback() {
-                /**
-                 * Crash处理.
-                 *
-                 * @param crashType 错误类型：CRASHTYPE_JAVA，CRASHTYPE_NATIVE，CRASHTYPE_U3D ,CRASHTYPE_ANR
-                 * @param errorType 错误的类型名
-                 * @param errorMessage 错误的消息
-                 * @param errorStack 错误的堆栈
-                 * @return 返回额外的自定义信息上报
-                 */
-                public Map<String, String> onCrashHandleStart(int crashType, String errorType, String errorMessage, String errorStack) {
-
+        strategy.setCrashHandleCallback(new CrashReport.CrashHandleCallback() {
+            /**
+             * Crash处理.
+             *
+             * @param crashType 错误类型：CRASHTYPE_JAVA，CRASHTYPE_NATIVE，CRASHTYPE_U3D ,CRASHTYPE_ANR
+             * @param errorType 错误的类型名
+             * @param errorMessage 错误的消息
+             * @param errorStack 错误的堆栈
+             * @return 返回额外的自定义信息上报
+             */
+            public Map<String, String> onCrashHandleStart(int crashType, String errorType, String errorMessage, String errorStack) {
+                if (crashCallback != null) {
                     Crash crash = new Crash();
-
                     String[] abIs = DeviceUtils.getABIs();
                     if (abIs != null) {
                         crash.setCpuAbi(ArrayUtils.toString(abIs));//CPU位数
@@ -256,33 +262,32 @@ public class SuperUtilsManager {
                     crash.setErrorType(errorType);
                     crash.setErrorMessage(errorMessage);
                     crash.setErrorStack(errorStack);
-
                     crashCallback.onCrash(crash);
-
-                    return null;
                 }
+                return null;
+            }
 
-                /**
-                 * Crash处理.
-                 *
-                 * @param crashType 错误类型：CRASHTYPE_JAVA，CRASHTYPE_NATIVE，CRASHTYPE_U3D ,CRASHTYPE_ANR
-                 * @param errorType 错误的类型名
-                 * @param errorMessage 错误的消息
-                 * @param errorStack 错误的堆栈
-                 * @return byte[] 额外的2进制内容进行上报
-                 */
-                @Override
-                public byte[] onCrashHandleStart2GetExtraDatas(int crashType, String errorType,
-                                                               String errorMessage, String errorStack) {
-                    return null;
+            /**
+             * Crash处理.
+             *
+             * @param crashType 错误类型：CRASHTYPE_JAVA，CRASHTYPE_NATIVE，CRASHTYPE_U3D ,CRASHTYPE_ANR
+             * @param errorType 错误的类型名
+             * @param errorMessage 错误的消息
+             * @param errorStack 错误的堆栈
+             * @return byte[] 额外的2进制内容进行上报
+             */
+            @Override
+            public byte[] onCrashHandleStart2GetExtraDatas(int crashType, String errorType,
+                                                           String errorMessage, String errorStack) {
+                return null;
 //                try {
 //                    return "Extra data.".getBytes("UTF-8");
 //                } catch (Exception e) {
 //                    return null;
 //                }
-                }
+            }
 
-            });
+        });
         /***** 统一初始化Bugly产品，包含Beta *****/
         Bugly.init(getApplication(), buglyAppId, true, strategy);
     }

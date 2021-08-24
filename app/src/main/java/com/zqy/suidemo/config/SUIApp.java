@@ -18,10 +18,8 @@ import com.zqy.superhttp.http.ApiCallbackService;
 import com.zqy.superui.SuperUIManager;
 import com.zqy.superutils.ToastUtil;
 import com.zqy.superutils.database.GreenDaoContext;
-import com.zqy.superutils.impl.CrashCallback;
 import com.zqy.superutils.manager.GreenDBManager;
 import com.zqy.superutils.manager.SuperUtilsManager;
-import com.zqy.superutils.model.Crash;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -33,7 +31,6 @@ import org.greenrobot.greendao.database.Database;
  */
 public class SUIApp extends Application {
     private static Application application;
-
 
 
     /**
@@ -64,12 +61,7 @@ public class SUIApp extends Application {
         SuperUtilsManager.init(getApplication());//工具初始化
         SuperUtilsManager.setLogTag("SuperUI-AndroidX");//初始化日志Tag
         SuperUtilsManager.setCache(Environment.getExternalStorageDirectory() + "/.SuperUI-AndroidX");//初始化缓存路径
-        SuperUtilsManager.initBugly("d829c333cb", "SuperUI-AndroidX", false, new CrashCallback() {
-            @Override
-            public void onCrash(Crash crash) {
-
-            }
-        });
+       // SuperUtilsManager.initBugly("d829c333cb", "SuperUI-AndroidX", false);
 
         SuperHttpManager.init(getApplication());
         SuperHttpManager.setDebug(true);

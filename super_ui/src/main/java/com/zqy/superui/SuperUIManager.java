@@ -1,9 +1,19 @@
 package com.zqy.superui;
 
+import android.app.Activity;
 import android.app.Application;
+import android.content.Intent;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.xuexiang.xui.XUI;
+import com.zqy.superui.core.ui.activity.erro.SuperUIErrorActivity;
 import com.zqy.superui.loadinglayout.LoadingLayout;
+import com.zqy.superutils.JsonUtils;
+import com.zqy.superutils.impl.CrashCallback;
+import com.zqy.superutils.manager.SuperUtilsManager;
+import com.zqy.superutils.model.Crash;
+
+import java.util.List;
 
 /**
  * Author: zhangqingyou
@@ -66,6 +76,33 @@ public class SuperUIManager {
      */
     public static LoadingLayout.Config getLoadingLayoutConfig() {
         return LoadingLayout.getConfig();
+    }
+
+    /**
+     * 全局捕获异常页面
+     *
+     * @param act
+     */
+    public static void setErrorActivity(Class<? extends SuperUIErrorActivity> act) {
+        SuperUtilsManager.setCrashCallback(new CrashCallback() {
+            @Override
+            public void onCrash(Crash crash) {
+                Intent intent = new Intent(application, act);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra(SuperUIErrorActivity.CRASH_KEY, JsonUtils.objectToJson(crash));
+                application.startActivity(intent);
+
+                List<Activity> activityList = ActivityUtils.getActivityList();
+                for (Activity activity : activityList) {
+                    if (!activity.getClass().getSimpleName().equals(act.getSimpleName())) {
+                        activity.finish();
+                    }
+                }
+                //如果不关闭程序,会导致程序无法启动
+                android.os.Process.killProcess(android.os.Process.myPid());
+
+            }
+        });
     }
 
 

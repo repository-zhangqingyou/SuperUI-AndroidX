@@ -14,6 +14,8 @@ import com.zqy.superutils.manager.SuperUtilsManager;
 import com.zqy.superutils.model.Crash;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Author: zhangqingyou
@@ -98,8 +100,14 @@ public class SuperUIManager {
                         activity.finish();
                     }
                 }
-                //如果不关闭程序,会导致程序无法启动
-                android.os.Process.killProcess(android.os.Process.myPid());
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        //如果不关闭程序,会导致程序无法启动
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                    }
+                }, 1000);
+
 
             }
         });

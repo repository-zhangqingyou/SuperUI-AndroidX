@@ -40,6 +40,7 @@ public class SimpleErrorActivity extends SuperUIErrorActivity {
         super.initData();
         getToolbar().setTitle("");
         getTbText().setText("出错啦");
+        getToolbar().setNavigationIcon(null);
     }
 
     @Override

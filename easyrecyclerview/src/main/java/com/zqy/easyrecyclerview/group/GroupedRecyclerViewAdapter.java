@@ -88,7 +88,7 @@ public abstract class GroupedRecyclerViewAdapter<T>
 
     /**
      * 提供这个方法可以使外部改变子项的SpanSize。只有在GridLayoutManager下才起作用，也就是Gride子分组的情况下
-     * 这个方法的作用跟{@link SpanSizeLookup#getSpanSize(int)}一样。
+     * 这个方法的作用跟{@link //SpanSizeLookup#getSpanSize(int)}一样。
      *
      * @param groupPosition
      * @param childPosition

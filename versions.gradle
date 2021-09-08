@@ -13,6 +13,8 @@ versions.recyclerview_version = "1.2.1"
 versions.constraintlayout_version = "2.1.0"
 versions.material_version = '1.4.0'
 versions.androidx_v4_version = "1.0.0"
+versions.flexbox = "2.0.1"
+
 
 versions.glide = "4.7.1"
 versions.gson = "2.8.5"

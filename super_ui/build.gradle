@@ -62,6 +62,7 @@ dependencies {
     api "com.google.android.material:material:$versions.material_version"//对应support:design
     api "androidx.legacy:legacy-support-v4:$versions.androidx_v4_version"//对应support:support-v4
     api "androidx.recyclerview:recyclerview:${versions.recyclerview_version}"
+    api "com.google.android:flexbox:${versions.flexbox}"
     //
     implementation project(path: ':super_utils')
     implementation project(path: ':xui_lib_1.1.5')   //androidx项目

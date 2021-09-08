@@ -86,8 +86,6 @@ dependencies {
     api 'com.github.angcyo.DslTablayout:ViewPager1Delegate:1.6.1'  //可选
     api 'com.github.angcyo.DslTablayout:ViewPager2Delegate:1.6.1'//可选
 
-    //万能recyclerview与Adapter
-    api 'com.zhouyou:easyrecyclerview:1.0.6'
 
     //万能TabLayout 包含主流样式
     api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'

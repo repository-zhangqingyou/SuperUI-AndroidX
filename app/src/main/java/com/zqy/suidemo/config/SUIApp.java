@@ -59,7 +59,6 @@ public class SUIApp extends Application {
     private void initModule() {
 
         SuperUtilsManager.init(getApplication());//工具初始化
-        SuperUtilsManager.setLogTag("SuperUI-AndroidX");//初始化日志Tag
         SuperUtilsManager.setCache(Environment.getExternalStorageDirectory() + "/.SuperUI-AndroidX");//初始化缓存路径
        // SuperUtilsManager.initBugly("d829c333cb", "SuperUI-AndroidX", false);
 

@@ -117,10 +117,8 @@ dependencies {
     implementation project(path: ':super_utils')
     implementation project(path: ':super_ui')
     implementation project(path: ':easyrecyclerview')
-//    implementation 'com.bintray.zhangqingyou:super_utils:1.0.18'
-//    implementation 'com.bintray.zhangqingyou:super_xui_lib:1.1.5'
-//    implementation 'com.bintray.zhangqingyou:super_http:1.0.18'
-//    implementation 'com.bintray.zhangqingyou:super_ui:1.0.18'
+    //lombok插件
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
 
     //compileOnly只在编译时有效，不会参与打包 service自动注入包
     compileOnly 'com.google.auto.service:auto-service:1.0-rc7'

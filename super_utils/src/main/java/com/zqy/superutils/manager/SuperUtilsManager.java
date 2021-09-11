@@ -3,7 +3,6 @@ package com.zqy.superutils.manager;
 import android.app.Application;
 import android.os.Build;
 import android.os.Environment;
-import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -15,7 +14,6 @@ import com.bun.miitmdid.core.MdidSdkHelper;
 import com.bun.miitmdid.interfaces.IIdentifierListener;
 import com.bun.miitmdid.interfaces.IdSupplier;
 import com.opensource.svgaplayer.SVGAParser;
-import com.orhanobut.logger.Logger;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.BuglyStrategy;
 import com.tencent.bugly.beta.Beta;
@@ -40,7 +38,6 @@ import java.util.Map;
  */
 public class SuperUtilsManager {
     private static Application application;
-    private static String logTag;
     private static IdSupplier idSupplier;
     private static CrashCallback crashCallback;
     private static boolean debug;
@@ -48,10 +45,7 @@ public class SuperUtilsManager {
     public static void init(Application application) {
         SuperUtilsManager.application = application;
         Utils.init(application);//初始化android工具类
-        // Realm.init(application);//realm数据库
-        if (TextUtils.isEmpty(logTag)) {
-            Logger.init("日志");
-        }
+
         SVGAParser.Companion.shareParser().init(getApplication());
 
         ARouter.init(application);
@@ -75,15 +69,6 @@ public class SuperUtilsManager {
 
     }
 
-    /**
-     * 设置日志TAG
-     *
-     * @param logTag 日志TAG
-     */
-    public static void setLogTag(String logTag) {
-        SuperUtilsManager.logTag = logTag;
-        Logger.init(logTag);
-    }
 
     /**
      * 设置缓存配置

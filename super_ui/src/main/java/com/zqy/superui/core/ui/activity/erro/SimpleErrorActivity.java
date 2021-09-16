@@ -46,8 +46,8 @@ public class SimpleErrorActivity extends SuperUIErrorActivity {
     @Override
     public void onCrash(Crash crash) {
         mTtListView.addItem("CPU架构支持", crash.getCpuAbi());
-        mTtListView.addItem("手机品牌", crash.getBrand());
-        mTtListView.addItem("手机型号", crash.getModel());
+        mTtListView.addItem("设备品牌", crash.getBrand());
+        mTtListView.addItem("设备型号", crash.getModel());
         mTtListView.addItem("安卓API", crash.getSdkVersionCode());
         mTtListView.addItem("安卓版本", crash.getSdkVersionName());
         mTtListView.addItem("异常类型", crash.getCrashType().name());

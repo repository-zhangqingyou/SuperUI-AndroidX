@@ -50,7 +50,7 @@ public class SimpleErrorActivity extends SuperUIErrorActivity {
         mTtListView.addItem("设备型号", crash.getModel());
         mTtListView.addItem("安卓API", crash.getSdkVersionCode());
         mTtListView.addItem("安卓版本", crash.getSdkVersionName());
-        mTtListView.addItem("异常类型", crash.getCrashType().name());
+        mTtListView.addItem("异常类型", crash.getCrashType() != null ? crash.getCrashType().name() : "未知");
         mTtListView.addItem("错误类型", crash.getErrorType());
         mTtListView.addItem("错误消息", crash.getErrorMessage());
         mTtListView.addItem("堆栈信息", crash.getErrorStack());

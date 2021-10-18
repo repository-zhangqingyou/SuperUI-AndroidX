@@ -15,8 +15,6 @@
                 tools:replace="name,resource" />
         </provider>
 
-
-
     </application>
 </manifest>
 

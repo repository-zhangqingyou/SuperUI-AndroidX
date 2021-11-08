@@ -60,9 +60,12 @@ public class RSAEncrypt {
     private static final int MAX_DECRYPT_BLOCK = (DEFAULT_KEY_SIZE / 8);
 
     /**
-     * 获取公钥的key
+     * 公钥（前端用公钥加密）
      */
     public static final String PUBLIC_KEY = "MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJQnFakBlzpyx6MDHd3pGki4uZXxTn6YSVbAWDtf7X8Q/vt3YJLIB+QGwM8/7FxF14pNb6kSNBPpg9pgkEnxSHcCAwEAAQ==";
+    /**
+     * 私钥（后端用私钥解密）
+     */
     public static final String PRIVATE_KEY = "MIIBVQIBADANBgkqhkiG9w0BAQEFAASCAT8wggE7AgEAAkEAlCcVqQGXOnLHowMd3ekaSLi5lfFOfphJVsBYO1/tfxD++3dgksgH5AbAzz/sXEXXik1vqRI0E+mD2mCQSfFIdwIDAQABAkBFv5jc9ljCNaNzRVZcURAEyKLmyrJPu1ZbtzZSzbi8JwbetLol8EruA/kp2JHjuc9rzsVyLADpd4yfs8VlSS3RAiEAxeT0wuaFO49wiT/nsm98ZBBnGk5Sy505WFqFGYYwZAMCIQC/pzc4kzMs/VOZCUgZTFKcIqU5QKZCPBtEx1vYQ47RfQIgLdo0ACjLfBZrO9HrzINabhEC4qx9MKJ4VAl9R4G5GqMCIQCDR6uP2WUIwE5vWehFS/6abTD4UsyQOlQDfPvw2/YMkQIhAJGlDx7dHzoQ9GZXeStg99nqD1yQQfvctEJ67C57w8St";
 
 
@@ -108,7 +111,7 @@ public class RSAEncrypt {
      * @throws Exception 加密过程中的异常信息
      */
     public static String encryptPublicKey(String str, String publicKey, boolean isURLEncoder) {
-        return encryptPublicKey(str, publicKey, charsetName,isURLEncoder);
+        return encryptPublicKey(str, publicKey, charsetName, isURLEncoder);
     }
 
     /**
@@ -264,7 +267,8 @@ public class RSAEncrypt {
         try {
 
             byte[] decoded = EncodeUtils.base64Decode(privateKey);//基本64位解码
-            byte[] inputByte = EncodeUtils.base64Decode(URLDecoder.decode(str, "utf-8"));//基本64位解码
+            String decode = URLDecoder.decode(str, "utf-8");
+            byte[] inputByte = EncodeUtils.base64Decode(decode);//基本64位解码
 
             // 得到私钥对象
             PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(decoded);

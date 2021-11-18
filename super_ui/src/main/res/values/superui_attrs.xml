@@ -495,5 +495,13 @@
         <attr name="zqy_orientation" />
         <attr name="zqy_is_foreground" /> <!--是否前背景-->
     </declare-styleable>
+
+    <declare-styleable name="ArcView">
+        <attr name="zqy_start_color" format="color" />
+        <attr name="zqy_end_color" format="color" />
+        <!-- 圆弧半径是屏幕宽度的几倍-->
+        <attr name="zqy_arc_radius_times" format="float" />
+
+    </declare-styleable>
 </resources>
 

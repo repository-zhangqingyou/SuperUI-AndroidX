@@ -23,6 +23,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ImageViewInfo implements IPreviewInfo {
     private Object img;  //图片地址
+    private Bitmap bitmap;  //图片地址
     private Rect mBounds; // 记录坐标
     private String mVideoUrl;
 
@@ -46,8 +47,22 @@ public class ImageViewInfo implements IPreviewInfo {
         this.mBounds = bounds;
     }
 
-    public ImageViewInfo(String img, View view, String mVideoUrl) {
+    public ImageViewInfo(Object img, View view, String mVideoUrl) {
         this.img = img;
+        this.mVideoUrl = mVideoUrl;
+        Rect bounds = new Rect();
+        view.getGlobalVisibleRect(bounds);//获取坐标
+        this.mBounds = bounds;
+    }
+    public ImageViewInfo(Bitmap bitmap, View view) {
+        this.bitmap = bitmap;
+        Rect bounds = new Rect();
+        view.getGlobalVisibleRect(bounds);//获取坐标
+        this.mBounds = bounds;
+    }
+
+    public ImageViewInfo(Bitmap bitmap, View view, String mVideoUrl) {
+        this.bitmap = bitmap;
         this.mVideoUrl = mVideoUrl;
         Rect bounds = new Rect();
         view.getGlobalVisibleRect(bounds);//获取坐标
@@ -62,9 +77,7 @@ public class ImageViewInfo implements IPreviewInfo {
     }
 
     public Bitmap getImgBitmap() {
-        if (this.img instanceof Bitmap)
-            return (Bitmap) this.img;
-        return null;
+        return bitmap;
     }
 
     public Object getImg() {

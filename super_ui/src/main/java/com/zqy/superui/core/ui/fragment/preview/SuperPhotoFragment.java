@@ -3,6 +3,7 @@ package com.zqy.superui.core.ui.fragment.preview;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -225,6 +226,20 @@ public class SuperPhotoFragment extends Fragment {
                 if (mPreviewInfo.getImgBitmap() != null) {
                     Glide.with(getContext()).load(mPreviewInfo.getImgBitmap()).into(mImageView);
                 } else {
+                    if (!TextUtils.isEmpty(mPreviewInfo.getUrl())) {
+                        if (mPreviewInfo.getUrl().toLowerCase().contains(GIF)) {
+                            mImageView.setZoomable(false);
+                            //加载图
+                            MediaLoader.get().displayGifImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
+                        } else {
+                            //加载图
+                            MediaLoader.get().displayImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
+                        }
+                    }
+
+                }
+            } else {
+                if (!TextUtils.isEmpty(mPreviewInfo.getUrl())) {
                     if (mPreviewInfo.getUrl().toLowerCase().contains(GIF)) {
                         mImageView.setZoomable(false);
                         //加载图
@@ -233,15 +248,6 @@ public class SuperPhotoFragment extends Fragment {
                         //加载图
                         MediaLoader.get().displayImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
                     }
-                }
-            } else {
-                if (mPreviewInfo.getUrl().toLowerCase().contains(GIF)) {
-                    mImageView.setZoomable(false);
-                    //加载图
-                    MediaLoader.get().displayGifImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
-                } else {
-                    //加载图
-                    MediaLoader.get().displayImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
                 }
             }
 

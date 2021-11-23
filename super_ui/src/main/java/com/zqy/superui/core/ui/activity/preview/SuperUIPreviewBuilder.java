@@ -2,15 +2,13 @@ package com.zqy.superui.core.ui.activity.preview;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Parcelable;
 
 import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.xuexiang.xui.widget.imageview.preview.enitity.IPreviewInfo;
 import com.xuexiang.xui.widget.imageview.preview.loader.OnVideoClickListener;
-import com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment;
+import com.zqy.superui.core.module.ImageViewInfo;
 import com.zqy.superui.core.ui.fragment.preview.SuperPhotoFragment;
 
 import java.util.ArrayList;
@@ -82,8 +80,8 @@ public class SuperUIPreviewBuilder {
      * @param <T>
      * @return
      */
-    public <T extends IPreviewInfo> SuperUIPreviewBuilder setImgs(@NonNull List<T> imgUrls) {
-        intent.putParcelableArrayListExtra(KEY_IMAGE_PATHS, new ArrayList<Parcelable>(imgUrls));
+    public <T extends ImageViewInfo> SuperUIPreviewBuilder setImgs(@NonNull List<T> imgUrls) {
+        intent.putParcelableArrayListExtra(KEY_IMAGE_PATHS, new ArrayList<ImageViewInfo>(imgUrls));
         return this;
     }
 
@@ -93,8 +91,8 @@ public class SuperUIPreviewBuilder {
      * @param <E> 你的实体类类型
      * @return PreviewBuilder
      */
-    public <E extends IPreviewInfo> SuperUIPreviewBuilder setImg(@NonNull E imgUrl) {
-        ArrayList arrayList = new ArrayList<Parcelable>();
+    public <E extends ImageViewInfo> SuperUIPreviewBuilder setImg(@NonNull E imgUrl) {
+        ArrayList arrayList = new ArrayList<ImageViewInfo>();
         arrayList.add(imgUrl);
         intent.putParcelableArrayListExtra(KEY_IMAGE_PATHS, arrayList);
         return this;
@@ -230,7 +228,7 @@ public class SuperUIPreviewBuilder {
         } else {
             intent.setClass(mContext, className);
         }
-        BasePhotoFragment.listener = videoClickListener;
+        SuperPhotoFragment.listener = videoClickListener;
         mContext.startActivity(intent);
         mContext.overridePendingTransition(0, 0);
         intent = null;

@@ -2,7 +2,6 @@ package com.zqy.superutils.manager;
 
 import android.app.Application;
 import android.os.Build;
-import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -76,8 +75,8 @@ public class SuperUtilsManager {
      * @param cacheRootPath 设置外部存储目录缓存路径（文件夹）
      */
     public static void setCache(String cacheRootPath) {
-        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + cacheRootPath;
-        CacheManager.init(path);
+       // String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + cacheRootPath;
+        CacheManager.init(cacheRootPath);
     }
 
     /**

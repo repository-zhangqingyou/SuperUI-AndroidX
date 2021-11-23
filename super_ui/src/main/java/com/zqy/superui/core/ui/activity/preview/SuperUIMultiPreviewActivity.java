@@ -15,11 +15,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.xuexiang.xui.utils.CollectionUtils;
 import com.xuexiang.xui.widget.imageview.preview.MediaLoader;
-import com.xuexiang.xui.widget.imageview.preview.enitity.IPreviewInfo;
 import com.xuexiang.xui.widget.imageview.preview.view.BezierBannerView;
 import com.xuexiang.xui.widget.imageview.preview.view.PhotoViewPager;
 import com.xuexiang.xui.widget.imageview.preview.view.SmoothImageView;
 import com.zqy.superui.R;
+import com.zqy.superui.core.module.ImageViewInfo;
 import com.zqy.superui.core.ui.activity.simple.SimpleToolbarActivity;
 import com.zqy.superui.core.ui.fragment.preview.SuperPhotoFragment;
 
@@ -171,7 +171,7 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
 
     private boolean mIsTransformOut = false;
     /*** 图片的地址***/
-    private List<IPreviewInfo> mImgUrls;
+    private ArrayList<ImageViewInfo> mImgUrls;
     /*** 当前图片的位置 ***/
     private int mCurrentIndex;
     /*** 图片的展示的Fragment***/
@@ -212,7 +212,7 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
      * 初始化参数
      */
     private void initArgs() {
-        mImgUrls = getIntent().getParcelableArrayListExtra(KEY_IMAGE_PATHS);
+        mImgUrls = (ArrayList<ImageViewInfo>) getIntent().getSerializableExtra(KEY_IMAGE_PATHS);
         mCurrentIndex = getIntent().getIntExtra(KEY_POSITION, -1);
         mType = (SuperUIPreviewBuilder.IndicatorType) getIntent().getSerializableExtra(KEY_TYPE);
         mIsShow = getIntent().getBooleanExtra(KEY_IS_SHOW, true);
@@ -239,7 +239,7 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
      * @param currentIndex 选中索引
      * @param className    显示Fragment
      **/
-    protected void initFragment(List<IPreviewInfo> imgUrls, int currentIndex, Class<? extends SuperPhotoFragment> className) {
+    protected void initFragment(ArrayList<ImageViewInfo> imgUrls, int currentIndex, Class<? extends SuperPhotoFragment> className) {
         if (imgUrls != null) {
             int size = imgUrls.size();
             for (int i = 0; i < size; i++) {
@@ -265,6 +265,7 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
     /***退出预览的动画***/
     public void transformOut() {
         if (mIsTransformOut) {
+            finish();
             return;
         }
         mIsTransformOut = true;

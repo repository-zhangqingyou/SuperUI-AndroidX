@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,6 @@ import com.bumptech.glide.request.transition.Transition;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.imageview.photoview.PhotoViewAttacher;
 import com.xuexiang.xui.widget.imageview.preview.MediaLoader;
-import com.xuexiang.xui.widget.imageview.preview.enitity.IPreviewInfo;
 import com.xuexiang.xui.widget.imageview.preview.loader.ISimpleTarget;
 import com.xuexiang.xui.widget.imageview.preview.loader.OnVideoClickListener;
 import com.xuexiang.xui.widget.imageview.preview.ui.PreviewActivity;
@@ -50,12 +48,13 @@ public class SuperPhotoFragment extends Fragment {
     public static final String KEY_DRAG = "com.xuexiang.xui.widget.preview.KEY_DRAG";
     public static final String KEY_SENSITIVITY = "com.xuexiang.xui.widget.preview.KEY_SENSITIVITY";
     public static final String KEY_PROGRESS_COLOR = "com.xuexiang.xui.widget.preview.KEY_PROGRESS_COLOR";
-    private IPreviewInfo mPreviewInfo;
+    private ImageViewInfo mPreviewInfo;
     private boolean isTransPhoto = false;
     protected SmoothImageView mImageView;
     protected View mRootView;
     protected MaterialProgressBar mLoadingView;
     protected ISimpleTarget mISimpleTarget;
+    private SimpleTarget<Drawable> simpleTarget;
     protected ImageView mBtnVideo;
     public static OnVideoClickListener listener;
 
@@ -78,7 +77,7 @@ public class SuperPhotoFragment extends Fragment {
      * @return
      */
     public static SuperPhotoFragment newInstance(Class<? extends SuperPhotoFragment> fragmentClass,
-                                                 IPreviewInfo item, boolean currentIndex,
+                                                 ImageViewInfo item, boolean currentIndex,
                                                  boolean isSingleFling,
                                                  boolean isDrag,
                                                  float sensitivity,
@@ -167,7 +166,7 @@ public class SuperPhotoFragment extends Fragment {
         mBtnVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String video = mPreviewInfo.getVideoUrl();
+                String video = mPreviewInfo.getUrlVideo();
                 if (video != null && !video.isEmpty()) {
                     if (listener != null) {
                         listener.onPlayerVideo(video);
@@ -184,7 +183,7 @@ public class SuperPhotoFragment extends Fragment {
             @Override
             public void onResourceReady() {
                 mLoadingView.setVisibility(View.GONE);
-                String video = mPreviewInfo.getVideoUrl();
+                String video = mPreviewInfo.getUrlVideo();
                 if (video != null && !video.isEmpty()) {
                     mBtnVideo.setVisibility(View.VISIBLE);
                     ViewCompat.animate(mBtnVideo).alpha(1).setDuration(1000).start();
@@ -195,6 +194,31 @@ public class SuperPhotoFragment extends Fragment {
 
             @Override
             public void onLoadFailed(Drawable errorDrawable) {
+                mLoadingView.setVisibility(View.GONE);
+                mBtnVideo.setVisibility(View.GONE);
+                if (errorDrawable != null) {
+                    mImageView.setImageDrawable(errorDrawable);
+                }
+            }
+        };
+
+        simpleTarget = new SimpleTarget<Drawable>() {
+            @Override
+            public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                mImageView.setImageDrawable(resource);
+                mLoadingView.setVisibility(View.GONE);
+                String video = mPreviewInfo.getUrlVideo();
+                if (video != null && !video.isEmpty()) {
+                    mBtnVideo.setVisibility(View.VISIBLE);
+                    ViewCompat.animate(mBtnVideo).alpha(1).setDuration(1000).start();
+                } else {
+                    mBtnVideo.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                super.onLoadFailed(errorDrawable);
                 mLoadingView.setVisibility(View.GONE);
                 mBtnVideo.setVisibility(View.GONE);
                 if (errorDrawable != null) {
@@ -221,62 +245,32 @@ public class SuperPhotoFragment extends Fragment {
             assert mPreviewInfo != null;
             mImageView.setDrag(bundle.getBoolean(KEY_DRAG), bundle.getFloat(KEY_SENSITIVITY));
             mImageView.setThumbRect(mPreviewInfo.getBounds());
-            mRootView.setTag(mPreviewInfo.getUrl());
+            mRootView.setTag(mPreviewInfo.getUrlImg());
             //是否展示动画
             isTransPhoto = bundle.getBoolean(KEY_TRANS_PHOTO, false);
-            if (mPreviewInfo instanceof ImageViewInfo) {
-                ImageViewInfo mPreviewInfo = (ImageViewInfo) this.mPreviewInfo;
-                Bitmap imgBitmap = mPreviewInfo.getImgBitmap();
-                if (imgBitmap != null) {
-                    Glide.with(getContext()).load(imgBitmap).into(new SimpleTarget<Drawable>() {
-                        @Override
-                        public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-                            mImageView.setImageDrawable(resource);
-                            mLoadingView.setVisibility(View.GONE);
-                            String video = mPreviewInfo.getVideoUrl();
-                            if (video != null && !video.isEmpty()) {
-                                mBtnVideo.setVisibility(View.VISIBLE);
-                                ViewCompat.animate(mBtnVideo).alpha(1).setDuration(1000).start();
-                            } else {
-                                mBtnVideo.setVisibility(View.GONE);
-                            }
-                        }
 
-                        @Override
-                        public void onLoadFailed(@Nullable Drawable errorDrawable) {
-                            super.onLoadFailed(errorDrawable);
-                            mLoadingView.setVisibility(View.GONE);
-                            mBtnVideo.setVisibility(View.GONE);
-                            if (errorDrawable != null) {
-                                mImageView.setImageDrawable(errorDrawable);
-                            }
-                        }
-                    });
-                } else {
-                    if (!TextUtils.isEmpty(mPreviewInfo.getUrl())) {
-                        if (mPreviewInfo.getUrl().toLowerCase().contains(GIF)) {
-                            mImageView.setZoomable(false);
-                            //加载图
-                            MediaLoader.get().displayGifImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
-                        } else {
-                            //加载图
-                            MediaLoader.get().displayImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
-                        }
-                    }
-
-                }
+            ImageViewInfo mPreviewInfo = (ImageViewInfo) this.mPreviewInfo;
+            Bitmap bitmap = mPreviewInfo.getBitmap();
+            if (bitmap != null) {
+                Glide.with(getContext()).load(bitmap).into(simpleTarget);
             } else {
-                if (!TextUtils.isEmpty(mPreviewInfo.getUrl())) {
-                    if (mPreviewInfo.getUrl().toLowerCase().contains(GIF)) {
-                        mImageView.setZoomable(false);
-                        //加载图
-                        MediaLoader.get().displayGifImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
-                    } else {
-                        //加载图
-                        MediaLoader.get().displayImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
-                    }
-                }
+                Glide.with(getContext()).load(mPreviewInfo.getUrlImg()).into(simpleTarget);
             }
+
+
+//            } else {
+//                if (!TextUtils.isEmpty(mPreviewInfo.getUrl())) {
+//                    if (mPreviewInfo.getUrl().toLowerCase().contains(GIF)) {
+//                        mImageView.setZoomable(false);
+//                        //加载图
+//                        MediaLoader.get().displayGifImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
+//                    } else {
+//                        //加载图
+//                        MediaLoader.get().displayImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
+//                    }
+//                }
+//
+//            }
 
 
         }
@@ -313,7 +307,7 @@ public class SuperPhotoFragment extends Fragment {
             @Override
             public void onAlphaChange(int alpha) {
                 if (alpha == 255) {
-                    String video = mPreviewInfo.getVideoUrl();
+                    String video = mPreviewInfo.getUrlVideo();
                     if (video != null && !video.isEmpty()) {
                         mBtnVideo.setVisibility(View.VISIBLE);
                     } else {
@@ -383,7 +377,7 @@ public class SuperPhotoFragment extends Fragment {
         mRootView.setBackgroundColor(color);
     }
 
-    public IPreviewInfo getPreviewInfo() {
+    public ImageViewInfo getImageViewInfo() {
         return mPreviewInfo;
     }
 }

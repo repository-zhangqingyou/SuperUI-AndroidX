@@ -1,17 +1,10 @@
 package com.zqy.superui.core.module;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.View;
-
-import androidx.annotation.Nullable;
-
-import com.xuexiang.xui.widget.imageview.preview.enitity.IPreviewInfo;
-
-import java.io.ByteArrayOutputStream;
-import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,73 +18,39 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ImageViewInfo implements IPreviewInfo, Serializable {
-    private Object img;  //图片地址
-    private byte[] bitmap;  //
-    private Rect mBounds; // 记录坐标
-    private String mVideoUrl;
-
+public class ImageViewInfo implements Parcelable {
+    private String urlImg;  //网络图片地址
+    private String urlVideo;//网络视频地址
+    private Bitmap bitmap;//图片Bitmap
+    private Rect bounds; // 记录坐标
     private String mDescription = "描述信息";
 
-    public ImageViewInfo(Object img, Rect mBounds) {
-        this.img = img;
-        this.mBounds = mBounds;
+    public ImageViewInfo(String urlImg, Rect bounds) {
+        this.urlImg = urlImg;
+        this.bounds = bounds;
     }
 
-    public ImageViewInfo(Object img, Rect mBounds, String mVideoUrl) {
-        this.img = img;
-        this.mBounds = mBounds;
-        this.mVideoUrl = mVideoUrl;
+    public ImageViewInfo(String urlImg, Rect bounds, String urlVideo) {
+        this.urlImg = urlImg;
+        this.bounds = bounds;
+        this.urlVideo = urlVideo;
     }
 
-    public ImageViewInfo(Object img, View view) {
-        this.img = img;
+    public ImageViewInfo(String urlImg, View view) {
+        this.urlImg = urlImg;
         Rect bounds = new Rect();
         view.getGlobalVisibleRect(bounds);//获取坐标
-        this.mBounds = bounds;
+        this.bounds = bounds;
     }
 
-    public ImageViewInfo(Object img, View view, String mVideoUrl) {
-        this.img = img;
-        this.mVideoUrl = mVideoUrl;
+    public ImageViewInfo(String urlImg, View view, String urlVideo) {
+        this.urlImg = urlImg;
+        this.urlVideo = urlVideo;
         Rect bounds = new Rect();
         view.getGlobalVisibleRect(bounds);//获取坐标
-        this.mBounds = bounds;
+        this.bounds = bounds;
     }
 
-
-    @Override
-    public String getUrl() {
-        if (this.img instanceof String)
-            return (String) this.img;
-        return null;
-    }
-
-    public Bitmap getImgBitmap() {
-        return BitmapFactory.decodeByteArray(this.bitmap, 0, this.bitmap.length);//从字节数组解码位图 ;
-    }
-
-    public void setBitmap(Bitmap bitmap) {
-        //实例化字节数组输出流
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 0, baos);//压缩位图
-        this.bitmap = baos.toByteArray();//创建分配字节数组
-    }
-
-    public Object getImg() {
-        return this.img;
-    }
-
-    @Override
-    public Rect getBounds() {
-        return mBounds;
-    }
-
-    @Nullable
-    @Override
-    public String getVideoUrl() {
-        return mVideoUrl;
-    }
 
     @Override
     public int describeContents() {
@@ -100,17 +59,21 @@ public class ImageViewInfo implements IPreviewInfo, Serializable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(getUrl());
+        dest.writeString(getUrlImg());
+        dest.writeString(getUrlVideo());
+        dest.writeParcelable(getBitmap(), flags);
         dest.writeParcelable(getBounds(), flags);
         dest.writeString("描述信息");
-        dest.writeString(getVideoUrl());
+
     }
 
     protected ImageViewInfo(Parcel in) {
-        img = in.readString();
-        mBounds = in.readParcelable(Rect.class.getClassLoader());
+        urlImg = in.readString();
+        urlVideo = in.readString();
+        bitmap = in.readParcelable(Bitmap.class.getClassLoader());
+        bounds = in.readParcelable(Rect.class.getClassLoader());
         mDescription = in.readString();
-        mVideoUrl = in.readString();
+
     }
 
     public static final Creator<ImageViewInfo> CREATOR = new Creator<ImageViewInfo>() {

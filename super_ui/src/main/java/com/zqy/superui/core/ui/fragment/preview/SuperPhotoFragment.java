@@ -16,6 +16,8 @@ import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.imageview.photoview.PhotoViewAttacher;
 import com.xuexiang.xui.widget.imageview.preview.MediaLoader;
@@ -224,7 +226,30 @@ public class SuperPhotoFragment extends Fragment {
             if (mPreviewInfo instanceof ImageViewInfo) {
                 ImageViewInfo mPreviewInfo = (ImageViewInfo) this.mPreviewInfo;
                 if (mPreviewInfo.getImgBitmap() != null) {
-                    Glide.with(getContext()).load(mPreviewInfo.getImgBitmap()).into(mImageView);
+                    Glide.with(getContext()).load(mPreviewInfo.getImgBitmap()).into(new SimpleTarget<Drawable>() {
+                        @Override
+                        public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                            mImageView.setImageDrawable(resource);
+                            mLoadingView.setVisibility(View.GONE);
+                            String video = mPreviewInfo.getVideoUrl();
+                            if (video != null && !video.isEmpty()) {
+                                mBtnVideo.setVisibility(View.VISIBLE);
+                                ViewCompat.animate(mBtnVideo).alpha(1).setDuration(1000).start();
+                            } else {
+                                mBtnVideo.setVisibility(View.GONE);
+                            }
+                        }
+
+                        @Override
+                        public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                            super.onLoadFailed(errorDrawable);
+                            mLoadingView.setVisibility(View.GONE);
+                            mBtnVideo.setVisibility(View.GONE);
+                            if (errorDrawable != null) {
+                                mImageView.setImageDrawable(errorDrawable);
+                            }
+                        }
+                    });
                 } else {
                     if (!TextUtils.isEmpty(mPreviewInfo.getUrl())) {
                         if (mPreviewInfo.getUrl().toLowerCase().contains(GIF)) {

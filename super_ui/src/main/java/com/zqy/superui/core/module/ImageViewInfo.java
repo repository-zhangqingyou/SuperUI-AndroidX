@@ -56,7 +56,6 @@ public class ImageViewInfo implements IPreviewInfo {
     }
 
 
-
     @Override
     public String getUrl() {
         if (this.img instanceof String)
@@ -69,7 +68,7 @@ public class ImageViewInfo implements IPreviewInfo {
     }
 
     public void setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap;
+        this.bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
     }
 
     public Object getImg() {

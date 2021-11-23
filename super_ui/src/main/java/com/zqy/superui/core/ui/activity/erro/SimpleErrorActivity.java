@@ -30,17 +30,17 @@ public class SimpleErrorActivity extends SuperUIErrorActivity {
 
     @Override
     public boolean onStatusBarVisibility() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean onTransparentStatusBar() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean onStatusBarLightMode() {
-        return false;
+        return true;
     }
 
     @Override

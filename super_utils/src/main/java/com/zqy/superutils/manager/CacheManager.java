@@ -34,6 +34,11 @@ public class CacheManager {
 
     protected static void init(String cacheRootPath) {
         CacheManager.cacheRootPath = cacheRootPath;
+        File file = new File(cacheRootPath);
+        if (!file.exists()) {
+            file.mkdirs();//创建目录
+        }
+        // FileUtils.createOrExistsDir(cacheRootPath);//判断目录是否存在，不存在则判断是否创建成功
     }
 
     //*******************************系统包目录********************************

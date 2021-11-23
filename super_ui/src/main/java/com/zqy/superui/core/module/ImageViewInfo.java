@@ -1,12 +1,10 @@
 package com.zqy.superui.core.module;
 
+import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.View;
-
-import androidx.annotation.Nullable;
-
-import com.xuexiang.xui.widget.imageview.preview.enitity.IPreviewInfo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,54 +18,39 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ImageViewInfo implements IPreviewInfo {
-    private String mUrl;  //图片地址
-    private Rect mBounds; // 记录坐标
-    private String mVideoUrl;
-
+public class ImageViewInfo implements Parcelable {
+    private String urlImg;  //网络图片地址
+    private String urlVideo;//网络视频地址
+    private Bitmap bitmap;//图片Bitmap
+    private Rect bounds; // 记录坐标
     private String mDescription = "描述信息";
 
-    public ImageViewInfo(String mUrl, Rect mBounds) {
-        this.mUrl = mUrl;
-        this.mBounds = mBounds;
+    public ImageViewInfo(String urlImg, Rect bounds) {
+        this.urlImg = urlImg;
+        this.bounds = bounds;
     }
 
-    public ImageViewInfo(String mUrl, Rect mBounds, String mVideoUrl) {
-        this.mUrl = mUrl;
-        this.mBounds = mBounds;
-        this.mVideoUrl = mVideoUrl;
+    public ImageViewInfo(String urlImg, Rect bounds, String urlVideo) {
+        this.urlImg = urlImg;
+        this.bounds = bounds;
+        this.urlVideo = urlVideo;
     }
 
-    public ImageViewInfo(String mUrl, View view) {
-        this.mUrl = mUrl;
+    public ImageViewInfo(String urlImg, View view) {
+        this.urlImg = urlImg;
         Rect bounds = new Rect();
         view.getGlobalVisibleRect(bounds);//获取坐标
-        this.mBounds = bounds;
+        this.bounds = bounds;
     }
 
-    public ImageViewInfo(String mUrl, View view, String mVideoUrl) {
-        this.mUrl = mUrl;
-        this.mVideoUrl = mVideoUrl;
+    public ImageViewInfo(String urlImg, View view, String urlVideo) {
+        this.urlImg = urlImg;
+        this.urlVideo = urlVideo;
         Rect bounds = new Rect();
         view.getGlobalVisibleRect(bounds);//获取坐标
-        this.mBounds = bounds;
+        this.bounds = bounds;
     }
 
-    @Override
-    public String getUrl() {
-        return mUrl;
-    }
-
-    @Override
-    public Rect getBounds() {
-        return mBounds;
-    }
-
-    @Nullable
-    @Override
-    public String getVideoUrl() {
-        return mVideoUrl;
-    }
 
     @Override
     public int describeContents() {
@@ -76,17 +59,21 @@ public class ImageViewInfo implements IPreviewInfo {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(getUrl());
+        dest.writeString(getUrlImg());
+        dest.writeString(getUrlVideo());
+        dest.writeParcelable(getBitmap(), flags);
         dest.writeParcelable(getBounds(), flags);
         dest.writeString("描述信息");
-        dest.writeString(getVideoUrl());
+
     }
 
     protected ImageViewInfo(Parcel in) {
-        mUrl = in.readString();
-        mBounds = in.readParcelable(Rect.class.getClassLoader());
+        urlImg = in.readString();
+        urlVideo = in.readString();
+        bitmap = in.readParcelable(Bitmap.class.getClassLoader());
+        bounds = in.readParcelable(Rect.class.getClassLoader());
         mDescription = in.readString();
-        mVideoUrl = in.readString();
+
     }
 
     public static final Creator<ImageViewInfo> CREATOR = new Creator<ImageViewInfo>() {

@@ -1,6 +1,7 @@
 package com.zqy.superui.core.ui.activity.preview;
 
 import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -14,11 +15,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.xuexiang.xui.utils.CollectionUtils;
 import com.xuexiang.xui.widget.imageview.preview.MediaLoader;
-import com.xuexiang.xui.widget.imageview.preview.enitity.IPreviewInfo;
 import com.xuexiang.xui.widget.imageview.preview.view.BezierBannerView;
 import com.xuexiang.xui.widget.imageview.preview.view.PhotoViewPager;
 import com.xuexiang.xui.widget.imageview.preview.view.SmoothImageView;
 import com.zqy.superui.R;
+import com.zqy.superui.core.module.ImageViewInfo;
 import com.zqy.superui.core.ui.activity.simple.SimpleToolbarActivity;
 import com.zqy.superui.core.ui.fragment.preview.SuperPhotoFragment;
 
@@ -34,12 +35,20 @@ import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY
  * 作者: zhangqingyou
  * 时间: 2021/5/19
  * 描述: 多图预览
+ *       SuperUIPreviewBuilder.from(this)
+ *                         .setTitle("预览")
+ *                         .setImg(imageViewInfo)
+ *                         .setSingleFling(true)//设置超出内容点击退出（黑色区域）
+ *                         .setCurrentIndex(0)//设置默认索引
+ *                         .setProgressColor(R.color.colorAccent)
+ *                         .setType(SuperUIPreviewBuilder.IndicatorType.Dot)//指示器类型
+ *                         .setSingleShowType(false)// 是否设置为一张图片时 显示指示器
+ *                         .start();
  */
 public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
 
 
     public final static String IMG_URL_LIST = "";//图片地址集
-    public final static String TITLE_KEY = "标题";//
 
     @Override
     public Object getContentLayout() {
@@ -65,7 +74,10 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
     public void initView() {
         super.initView();
         getToolbar().setTitle("");
-        getTbText().setText("预览");
+        String title = getIntent().getStringExtra(TITLE_KEY);
+        if (!TextUtils.isEmpty(title)) getTbText().setText(title);
+        else
+            getTbText().setText("预览");
         initArgs();
     }
 
@@ -134,12 +146,21 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
 
     }
 
+    /**
+     * 返回监听
+     *
+     * @param v
+     */
+    public void onNavigationBackClick(View v) {
+        transformOut();
+    }
+
     @Override
     public int getToolbarMenu() {
         return 0;
     }
 
-
+    public static final String TITLE_KEY = "标题";//
     public static final String KEY_IMAGE_PATHS = "com.xuexiang.xui.widget.preview.KEY_IMAGE_PATHS";
     public static final String KEY_POSITION = "com.xuexiang.xui.widget.preview.KEY_POSITION";
     public static final String KEY_TYPE = "com.xuexiang.xui.widget.preview.KEY_TYPE";
@@ -150,7 +171,7 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
 
     private boolean mIsTransformOut = false;
     /*** 图片的地址***/
-    private List<IPreviewInfo> mImgUrls;
+    private ArrayList<ImageViewInfo> mImgUrls;
     /*** 当前图片的位置 ***/
     private int mCurrentIndex;
     /*** 图片的展示的Fragment***/
@@ -191,7 +212,7 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
      * 初始化参数
      */
     private void initArgs() {
-        mImgUrls = getIntent().getParcelableArrayListExtra(KEY_IMAGE_PATHS);
+        mImgUrls = (ArrayList<ImageViewInfo>) getIntent().getSerializableExtra(KEY_IMAGE_PATHS);
         mCurrentIndex = getIntent().getIntExtra(KEY_POSITION, -1);
         mType = (SuperUIPreviewBuilder.IndicatorType) getIntent().getSerializableExtra(KEY_TYPE);
         mIsShow = getIntent().getBooleanExtra(KEY_IS_SHOW, true);
@@ -218,7 +239,7 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
      * @param currentIndex 选中索引
      * @param className    显示Fragment
      **/
-    protected void initFragment(List<IPreviewInfo> imgUrls, int currentIndex, Class<? extends SuperPhotoFragment> className) {
+    protected void initFragment(ArrayList<ImageViewInfo> imgUrls, int currentIndex, Class<? extends SuperPhotoFragment> className) {
         if (imgUrls != null) {
             int size = imgUrls.size();
             for (int i = 0; i < size; i++) {
@@ -244,6 +265,7 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
     /***退出预览的动画***/
     public void transformOut() {
         if (mIsTransformOut) {
+            finish();
             return;
         }
         mIsTransformOut = true;

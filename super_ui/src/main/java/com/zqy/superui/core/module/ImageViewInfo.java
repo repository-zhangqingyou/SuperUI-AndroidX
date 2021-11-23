@@ -56,15 +56,19 @@ public class ImageViewInfo implements IPreviewInfo {
 
     @Override
     public String getUrl() {
-        if (img instanceof String)
+        if (this.img instanceof String)
             return (String) img;
         return null;
     }
 
     public Bitmap getImgBitmap() {
-        if (img instanceof Bitmap)
-            return (Bitmap) img;
+        if (this.img instanceof Bitmap)
+            return (Bitmap) this.img;
         return null;
+    }
+
+    public Object getImg() {
+        return this.img;
     }
 
     @Override

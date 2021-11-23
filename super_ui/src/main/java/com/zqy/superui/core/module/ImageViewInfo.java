@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import com.xuexiang.xui.widget.imageview.preview.enitity.IPreviewInfo;
 
 import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,7 +25,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ImageViewInfo implements IPreviewInfo {
+public class ImageViewInfo implements IPreviewInfo, Serializable {
     private Object img;  //图片地址
     private byte[] bitmap;  //
     private Rect mBounds; // 记录坐标

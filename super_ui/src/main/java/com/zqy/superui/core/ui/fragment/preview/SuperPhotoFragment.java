@@ -1,5 +1,6 @@
 package com.zqy.superui.core.ui.fragment.preview;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -225,8 +226,9 @@ public class SuperPhotoFragment extends Fragment {
             isTransPhoto = bundle.getBoolean(KEY_TRANS_PHOTO, false);
             if (mPreviewInfo instanceof ImageViewInfo) {
                 ImageViewInfo mPreviewInfo = (ImageViewInfo) this.mPreviewInfo;
-                if (mPreviewInfo.getImgBitmap() != null) {
-                    Glide.with(getContext()).load(mPreviewInfo.getImgBitmap()).into(new SimpleTarget<Drawable>() {
+                Bitmap imgBitmap = mPreviewInfo.getImgBitmap();
+                if (imgBitmap != null) {
+                    Glide.with(getContext()).load(imgBitmap).into(new SimpleTarget<Drawable>() {
                         @Override
                         public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
                             mImageView.setImageDrawable(resource);

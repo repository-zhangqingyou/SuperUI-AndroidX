@@ -117,6 +117,7 @@ dependencies {
     implementation project(path: ':super_utils')
     implementation project(path: ':super_ui')
     implementation project(path: ':easyrecyclerview')
+    implementation project(path: ':xui_lib_1.1.5')   //androidx项目
     //lombok插件
     annotationProcessor 'org.projectlombok:lombok:1.18.16'
 

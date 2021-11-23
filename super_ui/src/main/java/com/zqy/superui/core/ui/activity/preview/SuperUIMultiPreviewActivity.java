@@ -21,7 +21,7 @@ import com.xuexiang.xui.widget.imageview.preview.view.SmoothImageView;
 import com.zqy.superui.R;
 import com.zqy.superui.core.module.ImageViewInfo;
 import com.zqy.superui.core.ui.activity.simple.SimpleToolbarActivity;
-import com.zqy.superui.core.ui.fragment.preview.SuperPhotoFragment;
+import com.zqy.superui.core.ui.fragment.preview.SuperPreviewPhotoFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -132,7 +132,7 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
             @Override
             public void onGlobalLayout() {
                 mViewPager.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                SuperPhotoFragment fragment = CollectionUtils.getListItem(fragments, mCurrentIndex);
+                SuperPreviewPhotoFragment fragment = CollectionUtils.getListItem(fragments, mCurrentIndex);
                 if (fragment != null) {
                     fragment.transformIn();
                 }
@@ -175,7 +175,7 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
     /*** 当前图片的位置 ***/
     private int mCurrentIndex;
     /*** 图片的展示的Fragment***/
-    private List<SuperPhotoFragment> fragments = new ArrayList<>();
+    private List<SuperPreviewPhotoFragment> fragments = new ArrayList<>();
     /*** 展示图片的viewPager ***/
     private PhotoViewPager mViewPager;
     /*** 显示图片数**/
@@ -223,11 +223,11 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
         }
         try {
             SmoothImageView.setDuration(duration);
-            Class<? extends SuperPhotoFragment> clazz;
-            clazz = (Class<? extends SuperPhotoFragment>) getIntent().getSerializableExtra(KEY_CLASSNAME);
+            Class<? extends SuperPreviewPhotoFragment> clazz;
+            clazz = (Class<? extends SuperPreviewPhotoFragment>) getIntent().getSerializableExtra(KEY_CLASSNAME);
             initFragment(mImgUrls, mCurrentIndex, clazz);
         } catch (Exception e) {
-            initFragment(mImgUrls, mCurrentIndex, SuperPhotoFragment.class);
+            initFragment(mImgUrls, mCurrentIndex, SuperPreviewPhotoFragment.class);
         }
 
     }
@@ -239,11 +239,11 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
      * @param currentIndex 选中索引
      * @param className    显示Fragment
      **/
-    protected void initFragment(ArrayList<ImageViewInfo> imgUrls, int currentIndex, Class<? extends SuperPhotoFragment> className) {
+    protected void initFragment(ArrayList<ImageViewInfo> imgUrls, int currentIndex, Class<? extends SuperPreviewPhotoFragment> className) {
         if (imgUrls != null) {
             int size = imgUrls.size();
             for (int i = 0; i < size; i++) {
-                fragments.add(SuperPhotoFragment.
+                fragments.add(SuperPreviewPhotoFragment.
                         newInstance(className, imgUrls.get(i),
                                 currentIndex == i,
                                 getIntent().getBooleanExtra(KEY_SING_FILING, false),
@@ -271,7 +271,7 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
         mIsTransformOut = true;
         int currentItem = mViewPager.getCurrentItem();
         if (currentItem < getImgSize()) {
-            SuperPhotoFragment fragment = fragments.get(currentItem);
+            SuperPreviewPhotoFragment fragment = fragments.get(currentItem);
             if (mTvIndex != null) {
                 mTvIndex.setVisibility(View.GONE);
             } else {
@@ -291,7 +291,7 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
 
     @Override
     public void finish() {
-        SuperPhotoFragment.listener = null;
+        SuperPreviewPhotoFragment.listener = null;
         super.finish();
     }
 
@@ -299,7 +299,7 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
      * 得到PhotoFragment集合
      * @return List
      * **/
-    public List<SuperPhotoFragment> getFragments() {
+    public List<SuperPreviewPhotoFragment> getFragments() {
         return fragments;
     }
 

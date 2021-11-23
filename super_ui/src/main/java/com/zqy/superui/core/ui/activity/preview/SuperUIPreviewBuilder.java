@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.xuexiang.xui.widget.imageview.preview.loader.OnVideoClickListener;
 import com.zqy.superui.core.module.ImageViewInfo;
-import com.zqy.superui.core.ui.fragment.preview.SuperPhotoFragment;
+import com.zqy.superui.core.ui.fragment.preview.SuperPreviewPhotoFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +21,10 @@ import static com.zqy.superui.core.ui.activity.preview.SuperUIMultiPreviewActivi
 import static com.zqy.superui.core.ui.activity.preview.SuperUIMultiPreviewActivity.KEY_IS_SHOW;
 import static com.zqy.superui.core.ui.activity.preview.SuperUIMultiPreviewActivity.KEY_POSITION;
 import static com.zqy.superui.core.ui.activity.preview.SuperUIMultiPreviewActivity.KEY_TYPE;
-import static com.zqy.superui.core.ui.fragment.preview.SuperPhotoFragment.KEY_DRAG;
-import static com.zqy.superui.core.ui.fragment.preview.SuperPhotoFragment.KEY_PROGRESS_COLOR;
-import static com.zqy.superui.core.ui.fragment.preview.SuperPhotoFragment.KEY_SENSITIVITY;
-import static com.zqy.superui.core.ui.fragment.preview.SuperPhotoFragment.KEY_SING_FILING;
+import static com.zqy.superui.core.ui.fragment.preview.SuperPreviewPhotoFragment.KEY_DRAG;
+import static com.zqy.superui.core.ui.fragment.preview.SuperPreviewPhotoFragment.KEY_PROGRESS_COLOR;
+import static com.zqy.superui.core.ui.fragment.preview.SuperPreviewPhotoFragment.KEY_SENSITIVITY;
+import static com.zqy.superui.core.ui.fragment.preview.SuperPreviewPhotoFragment.KEY_SING_FILING;
 
 /**
  * 作者: zhangqingyou
@@ -103,7 +103,7 @@ public class SuperUIPreviewBuilder {
      * @param className 你的Fragment类
      * @return PreviewBuilder
      * **/
-    public SuperUIPreviewBuilder setPhotoFragment(@NonNull Class<? extends SuperPhotoFragment> className) {
+    public SuperUIPreviewBuilder setPhotoFragment(@NonNull Class<? extends SuperPreviewPhotoFragment> className) {
         intent.putExtra(KEY_CLASSNAME, className);
         return this;
     }
@@ -228,7 +228,7 @@ public class SuperUIPreviewBuilder {
         } else {
             intent.setClass(mContext, className);
         }
-        SuperPhotoFragment.listener = videoClickListener;
+        SuperPreviewPhotoFragment.listener = videoClickListener;
         mContext.startActivity(intent);
         mContext.overridePendingTransition(0, 0);
         intent = null;

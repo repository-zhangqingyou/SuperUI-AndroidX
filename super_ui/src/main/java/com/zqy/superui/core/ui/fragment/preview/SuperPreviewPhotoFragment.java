@@ -37,7 +37,7 @@ import com.zqy.superui.core.ui.activity.preview.SuperUIMultiPreviewActivity;
  * 时间: 2021/3/11
  * 描述: 图片预览单个图片的fragment
  */
-public class SuperPhotoFragment extends Fragment {
+public class SuperPreviewPhotoFragment extends Fragment {
     private static final String GIF = ".gif";
     /**
      * 预览图片 类型
@@ -76,17 +76,17 @@ public class SuperPhotoFragment extends Fragment {
      * @param progressColorId 进度条的颜色
      * @return
      */
-    public static SuperPhotoFragment newInstance(Class<? extends SuperPhotoFragment> fragmentClass,
-                                                 ImageViewInfo item, boolean currentIndex,
-                                                 boolean isSingleFling,
-                                                 boolean isDrag,
-                                                 float sensitivity,
-                                                 int progressColorId) {
-        SuperPhotoFragment fragment;
+    public static SuperPreviewPhotoFragment newInstance(Class<? extends SuperPreviewPhotoFragment> fragmentClass,
+                                                        ImageViewInfo item, boolean currentIndex,
+                                                        boolean isSingleFling,
+                                                        boolean isDrag,
+                                                        float sensitivity,
+                                                        int progressColorId) {
+        SuperPreviewPhotoFragment fragment;
         try {
             fragment = fragmentClass.newInstance();
         } catch (Exception e) {
-            fragment = new SuperPhotoFragment();
+            fragment = new SuperPreviewPhotoFragment();
         }
         Bundle bundle = new Bundle();
         bundle.putParcelable(KEY_PREVIEW_ITEM, item);
@@ -171,7 +171,7 @@ public class SuperPhotoFragment extends Fragment {
                     if (listener != null) {
                         listener.onPlayerVideo(video);
                     } else {
-                        VideoPlayerActivity.start(SuperPhotoFragment.this, video);
+                        VideoPlayerActivity.start(SuperPreviewPhotoFragment.this, video);
                     }
                 }
 

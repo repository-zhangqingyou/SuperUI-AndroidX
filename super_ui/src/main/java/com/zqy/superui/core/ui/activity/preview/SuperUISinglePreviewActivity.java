@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 import com.zqy.superui.R;
 import com.zqy.superui.core.module.ImageViewInfo;
 import com.zqy.superui.core.ui.activity.simple.SimpleToolbarActivity;
-import com.zqy.superui.core.ui.fragment.preview.SuperPhotoFragment;
+import com.zqy.superui.core.ui.fragment.preview.SuperPreviewPhotoFragment;
 
 /**
  * 作者: zhangqingyou
@@ -67,15 +67,15 @@ public class SuperUISinglePreviewActivity extends SimpleToolbarActivity {
         /*** 图片的地址***/
         Parcelable parcelableExtra = getIntent().getParcelableExtra(IMAGE_VIEW_INFO_KEY);
         if (parcelableExtra instanceof ImageViewInfo) {
-            SuperPhotoFragment superPhotoFragment = SuperPhotoFragment.
-                    newInstance(SuperPhotoFragment.class, (ImageViewInfo) parcelableExtra,
+            SuperPreviewPhotoFragment superPreviewPhotoFragment = SuperPreviewPhotoFragment.
+                    newInstance(SuperPreviewPhotoFragment.class, (ImageViewInfo) parcelableExtra,
                             false,//单图没有图片脚标
                             true,//是否单张
                             true,//   设置图片拖拽返回 @param isDrag true  可以 false 默认 true(关闭拖拽返回)   @param sensitivity 灵敏度
                             0.5f,
                             R.color.colorAccent);
 
-            showFragment(R.id.ll_ImgContainer, superPhotoFragment);
+            showFragment(R.id.ll_ImgContainer, superPreviewPhotoFragment);
 
 
         }

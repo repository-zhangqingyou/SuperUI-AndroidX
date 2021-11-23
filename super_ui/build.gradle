@@ -64,8 +64,8 @@ dependencies {
     //lombok插件
     annotationProcessor 'org.projectlombok:lombok:1.18.16'
     //
-    implementation project(path: ':super_utils')
-    implementation project(path: ':xui_lib_1.1.5')   //androidx项目
+    api project(path: ':super_utils')
+    api project(path: ':xui_lib_1.1.5')   //androidx项目
     api 'com.qmuiteam:qmui:2.0.0-alpha10'
 
 

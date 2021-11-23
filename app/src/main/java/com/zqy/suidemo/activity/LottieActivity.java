@@ -24,6 +24,21 @@ public class LottieActivity extends SuperUIActivity {
     }
 
     @Override
+    public boolean onStatusBarVisibility() {
+        return false;
+    }
+
+    @Override
+    public boolean onTransparentStatusBar() {
+        return false;
+    }
+
+    @Override
+    public boolean onStatusBarLightMode() {
+        return false;
+    }
+
+    @Override
     public void initView() {
 
         mAnimationView = findViewById(R.id.animation_view);

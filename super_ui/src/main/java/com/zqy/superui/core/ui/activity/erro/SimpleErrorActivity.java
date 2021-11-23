@@ -29,6 +29,21 @@ public class SimpleErrorActivity extends SuperUIErrorActivity {
     }
 
     @Override
+    public boolean onStatusBarVisibility() {
+        return false;
+    }
+
+    @Override
+    public boolean onTransparentStatusBar() {
+        return false;
+    }
+
+    @Override
+    public boolean onStatusBarLightMode() {
+        return false;
+    }
+
+    @Override
     public void initView() {
         super.initView();
         mTtListView = findViewById(R.id.tt_list_view);

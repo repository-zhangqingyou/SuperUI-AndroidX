@@ -88,25 +88,17 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <LinearLayout
-        android:id="@+id/ll_R"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/iv_R"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher" />
-    </LinearLayout>
-
-    <com.zqy.superui.core.widget.textview.SuperTextView
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_preview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="sdasda"
-        app:zqy_radius="@dimen/_20sdp"
-        app:zqy_ripple_color="@color/xui_config_color_light_yellow"
-        app:zqy_solid_color="@android:color/holo_blue_light" />
+        android:src="@mipmap/ic_launcher" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="图片预览"
+        app:zqy_radius="@dimen/_20sdp" />
 
 
 </LinearLayout>

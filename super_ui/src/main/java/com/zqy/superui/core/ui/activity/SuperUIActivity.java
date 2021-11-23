@@ -11,6 +11,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -80,11 +81,28 @@ public abstract class SuperUIActivity extends RxAppCompatActivity {
         } else if (layout instanceof View) {
             setContentView((View) layout);
         }
-
+        setStatusBarVisibility(onStatusBarVisibility());
+        if (onTransparentStatusBar()) transparentStatusBar();
+        setStatusBarLightMode(onStatusBarLightMode());
         initView();
         initData();
         listener();
     }
+
+    /**
+     * 状态栏是否可见
+     */
+    public abstract boolean onStatusBarVisibility();
+
+    /**
+     * 是否透明状态栏
+     */
+    public abstract boolean onTransparentStatusBar();
+
+    /**
+     * 状态栏是否为浅色模式
+     */
+    public abstract boolean onStatusBarLightMode();
 
     /**
      * 初始化view
@@ -132,6 +150,15 @@ public abstract class SuperUIActivity extends RxAppCompatActivity {
      */
     public void setNavBarLightMode(boolean isLightMode) {
         BarUtils.setNavBarLightMode(this, isLightMode);
+    }
+
+    /**
+     * 设置状态栏颜色
+     *
+     * @param color
+     */
+    public void setStatusBarColor(@ColorInt final int color) {
+        BarUtils.setStatusBarColor(this, color);
     }
 
     /**

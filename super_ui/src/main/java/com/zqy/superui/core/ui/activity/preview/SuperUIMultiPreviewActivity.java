@@ -1,6 +1,7 @@
 package com.zqy.superui.core.ui.activity.preview;
 
 import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -34,20 +35,19 @@ import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY
  * 作者: zhangqingyou
  * 时间: 2021/5/19
  * 描述: 多图预览
- *       SuperUIPreviewBuilder.from(this)
- *                         .setImg(imageViewInfo)
- *                         .setSingleFling(true)//设置超出内容点击退出（黑色区域）
- *                         .setCurrentIndex(0)//设置默认索引
- *                         .setProgressColor(R.color.colorAccent)
- *                         .setType(PreviewBuilder.IndicatorType.Dot)//指示器类型
- *                         .setSingleShowType(false)// 是否设置为一张图片时 显示指示器
- *                         .start();
+ * SuperUIPreviewBuilder.from(this)
+ * .setImg(imageViewInfo)
+ * .setSingleFling(true)//设置超出内容点击退出（黑色区域）
+ * .setCurrentIndex(0)//设置默认索引
+ * .setProgressColor(R.color.colorAccent)
+ * .setType(PreviewBuilder.IndicatorType.Dot)//指示器类型
+ * .setSingleShowType(false)// 是否设置为一张图片时 显示指示器
+ * .start();
  */
 public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
 
 
     public final static String IMG_URL_LIST = "";//图片地址集
-    public final static String TITLE_KEY = "标题";//
 
     @Override
     public Object getContentLayout() {
@@ -73,7 +73,10 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
     public void initView() {
         super.initView();
         getToolbar().setTitle("");
-        getTbText().setText("预览");
+        String title = getIntent().getStringExtra(TITLE_KEY);
+        if (!TextUtils.isEmpty(title)) getTbText().setText(title);
+        else
+            getTbText().setText("预览");
         initArgs();
     }
 
@@ -147,7 +150,7 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
         return 0;
     }
 
-
+    public static final String TITLE_KEY = "标题";//
     public static final String KEY_IMAGE_PATHS = "com.xuexiang.xui.widget.preview.KEY_IMAGE_PATHS";
     public static final String KEY_POSITION = "com.xuexiang.xui.widget.preview.KEY_POSITION";
     public static final String KEY_TYPE = "com.xuexiang.xui.widget.preview.KEY_TYPE";

@@ -16,17 +16,17 @@ import com.zqy.superui.core.ui.fragment.preview.SuperPhotoFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_DRAG;
-import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_PROGRESS_COLOR;
-import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_SENSITIVITY;
-import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_SING_FILING;
-import static com.xuexiang.xui.widget.imageview.preview.ui.PreviewActivity.KEY_CLASSNAME;
-import static com.xuexiang.xui.widget.imageview.preview.ui.PreviewActivity.KEY_DURATION;
-import static com.xuexiang.xui.widget.imageview.preview.ui.PreviewActivity.KEY_IMAGE_PATHS;
-import static com.xuexiang.xui.widget.imageview.preview.ui.PreviewActivity.KEY_IS_FULLSCREEN;
-import static com.xuexiang.xui.widget.imageview.preview.ui.PreviewActivity.KEY_IS_SHOW;
-import static com.xuexiang.xui.widget.imageview.preview.ui.PreviewActivity.KEY_POSITION;
-import static com.xuexiang.xui.widget.imageview.preview.ui.PreviewActivity.KEY_TYPE;
+import static com.zqy.superui.core.ui.activity.preview.SuperUIMultiPreviewActivity.KEY_CLASSNAME;
+import static com.zqy.superui.core.ui.activity.preview.SuperUIMultiPreviewActivity.KEY_DURATION;
+import static com.zqy.superui.core.ui.activity.preview.SuperUIMultiPreviewActivity.KEY_IMAGE_PATHS;
+import static com.zqy.superui.core.ui.activity.preview.SuperUIMultiPreviewActivity.KEY_IS_FULLSCREEN;
+import static com.zqy.superui.core.ui.activity.preview.SuperUIMultiPreviewActivity.KEY_IS_SHOW;
+import static com.zqy.superui.core.ui.activity.preview.SuperUIMultiPreviewActivity.KEY_POSITION;
+import static com.zqy.superui.core.ui.activity.preview.SuperUIMultiPreviewActivity.KEY_TYPE;
+import static com.zqy.superui.core.ui.fragment.preview.SuperPhotoFragment.KEY_DRAG;
+import static com.zqy.superui.core.ui.fragment.preview.SuperPhotoFragment.KEY_PROGRESS_COLOR;
+import static com.zqy.superui.core.ui.fragment.preview.SuperPhotoFragment.KEY_SENSITIVITY;
+import static com.zqy.superui.core.ui.fragment.preview.SuperPhotoFragment.KEY_SING_FILING;
 
 /**
  * 作者: zhangqingyou
@@ -107,6 +107,16 @@ public class SuperUIPreviewBuilder {
      * **/
     public SuperUIPreviewBuilder setPhotoFragment(@NonNull Class<? extends SuperPhotoFragment> className) {
         intent.putExtra(KEY_CLASSNAME, className);
+        return this;
+    }
+
+    /***
+     * 设置标题
+     * @param title 标题
+     * @return PreviewBuilder
+     */
+    public SuperUIPreviewBuilder setTitle(String title) {
+        intent.putExtra(SuperUIMultiPreviewActivity.TITLE_KEY, title);
         return this;
     }
 

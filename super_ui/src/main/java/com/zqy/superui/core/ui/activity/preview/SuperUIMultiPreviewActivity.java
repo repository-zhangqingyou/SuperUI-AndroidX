@@ -145,6 +145,15 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
 
     }
 
+    /**
+     * 返回监听
+     *
+     * @param v
+     */
+    public void onNavigationBackClick(View v) {
+        transformOut();
+    }
+
     @Override
     public int getToolbarMenu() {
         return 0;

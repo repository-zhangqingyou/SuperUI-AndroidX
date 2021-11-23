@@ -497,8 +497,8 @@
     </declare-styleable>
 
     <declare-styleable name="ArcView">
-        <attr name="zqy_start_color" format="color" />
-        <attr name="zqy_end_color" format="color" />
+        <attr name="zqy_start_color"  />
+        <attr name="zqy_end_color"  />
         <!-- 圆弧半径是屏幕宽度的几倍-->
         <attr name="zqy_arc_radius_times" format="float" />
 

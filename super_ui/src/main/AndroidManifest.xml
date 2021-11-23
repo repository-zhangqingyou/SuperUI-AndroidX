@@ -19,7 +19,7 @@
             android:name=".core.ui.activity.preview.SuperUISinglePreviewActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/SuperUI_ActivityTranslucent2"
+            android:theme="@style/SuperUI_ActivityTranslucent"
             />
         <activity
             android:name=".core.ui.activity.preview.SuperUIMultiPreviewActivity"

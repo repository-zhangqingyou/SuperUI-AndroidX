@@ -35,14 +35,15 @@ import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY
  * 作者: zhangqingyou
  * 时间: 2021/5/19
  * 描述: 多图预览
- * SuperUIPreviewBuilder.from(this)
- * .setImg(imageViewInfo)
- * .setSingleFling(true)//设置超出内容点击退出（黑色区域）
- * .setCurrentIndex(0)//设置默认索引
- * .setProgressColor(R.color.colorAccent)
- * .setType(PreviewBuilder.IndicatorType.Dot)//指示器类型
- * .setSingleShowType(false)// 是否设置为一张图片时 显示指示器
- * .start();
+ *       SuperUIPreviewBuilder.from(this)
+ *                         .setTitle("预览")
+ *                         .setImg(imageViewInfo)
+ *                         .setSingleFling(true)//设置超出内容点击退出（黑色区域）
+ *                         .setCurrentIndex(0)//设置默认索引
+ *                         .setProgressColor(R.color.colorAccent)
+ *                         .setType(SuperUIPreviewBuilder.IndicatorType.Dot)//指示器类型
+ *                         .setSingleShowType(false)// 是否设置为一张图片时 显示指示器
+ *                         .start();
  */
 public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
 

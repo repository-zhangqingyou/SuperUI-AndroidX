@@ -183,6 +183,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 // PreviewBuilder.from(this).setImg(imageViewInfo).start();
                 SuperUIPreviewBuilder.from(this)
+                        .setTitle("预览")
                         .setImg(imageViewInfo)
                         .setSingleFling(true)//设置超出内容点击退出（黑色区域）
                         .setCurrentIndex(0)//设置默认索引

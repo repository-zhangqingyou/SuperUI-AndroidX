@@ -1,5 +1,6 @@
 package com.zqy.superui.core.module;
 
+import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.os.Parcel;
 import android.view.View;
@@ -21,32 +22,32 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ImageViewInfo implements IPreviewInfo {
-    private String mUrl;  //图片地址
+    private Object img;  //图片地址
     private Rect mBounds; // 记录坐标
     private String mVideoUrl;
 
     private String mDescription = "描述信息";
 
-    public ImageViewInfo(String mUrl, Rect mBounds) {
-        this.mUrl = mUrl;
+    public ImageViewInfo(Object img, Rect mBounds) {
+        this.img = img;
         this.mBounds = mBounds;
     }
 
-    public ImageViewInfo(String mUrl, Rect mBounds, String mVideoUrl) {
-        this.mUrl = mUrl;
+    public ImageViewInfo(Object img, Rect mBounds, String mVideoUrl) {
+        this.img = img;
         this.mBounds = mBounds;
         this.mVideoUrl = mVideoUrl;
     }
 
-    public ImageViewInfo(String mUrl, View view) {
-        this.mUrl = mUrl;
+    public ImageViewInfo(Object img, View view) {
+        this.img = img;
         Rect bounds = new Rect();
         view.getGlobalVisibleRect(bounds);//获取坐标
         this.mBounds = bounds;
     }
 
-    public ImageViewInfo(String mUrl, View view, String mVideoUrl) {
-        this.mUrl = mUrl;
+    public ImageViewInfo(String img, View view, String mVideoUrl) {
+        this.img = img;
         this.mVideoUrl = mVideoUrl;
         Rect bounds = new Rect();
         view.getGlobalVisibleRect(bounds);//获取坐标
@@ -55,7 +56,15 @@ public class ImageViewInfo implements IPreviewInfo {
 
     @Override
     public String getUrl() {
-        return mUrl;
+        if (img instanceof String)
+            return (String) img;
+        return null;
+    }
+
+    public Bitmap getImgBitmap() {
+        if (img instanceof Bitmap)
+            return (Bitmap) img;
+        return null;
     }
 
     @Override
@@ -83,7 +92,7 @@ public class ImageViewInfo implements IPreviewInfo {
     }
 
     protected ImageViewInfo(Parcel in) {
-        mUrl = in.readString();
+        img = in.readString();
         mBounds = in.readParcelable(Rect.class.getClassLoader());
         mDescription = in.readString();
         mVideoUrl = in.readString();

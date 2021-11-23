@@ -74,7 +74,10 @@ public class SuperUISinglePreviewActivity extends SimpleToolbarActivity {
                             true,//   设置图片拖拽返回 @param isDrag true  可以 false 默认 true(关闭拖拽返回)   @param sensitivity 灵敏度
                             0.5f,
                             R.color.colorAccent);
+
             showFragment(R.id.ll_ImgContainer, superPhotoFragment);
+
+
         }
 
     }

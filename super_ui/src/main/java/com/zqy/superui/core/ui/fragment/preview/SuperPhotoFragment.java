@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.imageview.photoview.PhotoViewAttacher;
 import com.xuexiang.xui.widget.imageview.preview.MediaLoader;
@@ -25,6 +26,7 @@ import com.xuexiang.xui.widget.imageview.preview.ui.VideoPlayerActivity;
 import com.xuexiang.xui.widget.imageview.preview.view.SmoothImageView;
 import com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar;
 import com.zqy.superui.R;
+import com.zqy.superui.core.module.ImageViewInfo;
 import com.zqy.superui.core.ui.activity.preview.SuperUIMultiPreviewActivity;
 
 
@@ -218,13 +220,29 @@ public class SuperPhotoFragment extends Fragment {
             mRootView.setTag(mPreviewInfo.getUrl());
             //是否展示动画
             isTransPhoto = bundle.getBoolean(KEY_TRANS_PHOTO, false);
-            if (mPreviewInfo.getUrl().toLowerCase().contains(GIF)) {
-                mImageView.setZoomable(false);
-                //加载图
-                MediaLoader.get().displayGifImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
+            if (mPreviewInfo instanceof ImageViewInfo) {
+                ImageViewInfo mPreviewInfo = (ImageViewInfo) this.mPreviewInfo;
+                if (mPreviewInfo.getImgBitmap() != null) {
+                    Glide.with(getContext()).load(mPreviewInfo.getImgBitmap()).into(mImageView);
+                } else {
+                    if (mPreviewInfo.getUrl().toLowerCase().contains(GIF)) {
+                        mImageView.setZoomable(false);
+                        //加载图
+                        MediaLoader.get().displayGifImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
+                    } else {
+                        //加载图
+                        MediaLoader.get().displayImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
+                    }
+                }
             } else {
-                //加载图
-                MediaLoader.get().displayImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
+                if (mPreviewInfo.getUrl().toLowerCase().contains(GIF)) {
+                    mImageView.setZoomable(false);
+                    //加载图
+                    MediaLoader.get().displayGifImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
+                } else {
+                    //加载图
+                    MediaLoader.get().displayImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
+                }
             }
 
 

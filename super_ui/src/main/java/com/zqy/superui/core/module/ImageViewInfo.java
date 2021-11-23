@@ -55,20 +55,7 @@ public class ImageViewInfo implements IPreviewInfo {
         this.mBounds = bounds;
     }
 
-    public ImageViewInfo(Bitmap bitmap, View view) {
-        this.bitmap = bitmap;
-        Rect bounds = new Rect();
-        view.getGlobalVisibleRect(bounds);//获取坐标
-        this.mBounds = bounds;
-    }
 
-    public ImageViewInfo(Bitmap bitmap, View view, String mVideoUrl) {
-        this.bitmap = bitmap;
-        this.mVideoUrl = mVideoUrl;
-        Rect bounds = new Rect();
-        view.getGlobalVisibleRect(bounds);//获取坐标
-        this.mBounds = bounds;
-    }
 
     @Override
     public String getUrl() {
@@ -79,6 +66,10 @@ public class ImageViewInfo implements IPreviewInfo {
 
     public Bitmap getImgBitmap() {
         return this.bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 
     public Object getImg() {

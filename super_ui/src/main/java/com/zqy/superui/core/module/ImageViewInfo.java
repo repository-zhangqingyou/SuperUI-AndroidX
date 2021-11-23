@@ -1,6 +1,7 @@
 package com.zqy.superui.core.module;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.os.Parcel;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import com.xuexiang.xui.widget.imageview.preview.enitity.IPreviewInfo;
+
+import java.io.ByteArrayOutputStream;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +26,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ImageViewInfo implements IPreviewInfo {
     private Object img;  //图片地址
-    private Bitmap bitmap;  //图片地址
+    private byte[] bitmap;  //
     private Rect mBounds; // 记录坐标
     private String mVideoUrl;
 
@@ -64,11 +67,14 @@ public class ImageViewInfo implements IPreviewInfo {
     }
 
     public Bitmap getImgBitmap() {
-        return this.bitmap;
+        return BitmapFactory.decodeByteArray(this.bitmap, 0, this.bitmap.length);//从字节数组解码位图 ;
     }
 
     public void setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+        //实例化字节数组输出流
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, baos);//压缩位图
+        this.bitmap = baos.toByteArray();//创建分配字节数组
     }
 
     public Object getImg() {

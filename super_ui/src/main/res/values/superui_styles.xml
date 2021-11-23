@@ -52,9 +52,7 @@
         </item>
     </style>
 
-    <style name="SuperUI_ActivityTranslucent2">
-        <item name="android:windowContentOverlay">@null</item>
-    </style>
+
 
     <!-- 全屏Dialog style -->
     <style name="SuperUI_TransparentDialog" parent="Theme.AppCompat.Light.NoActionBar">

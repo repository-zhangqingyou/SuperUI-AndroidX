@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         initView();
@@ -201,6 +202,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ImageViewInfo imageViewInfo = new ImageViewInfo(null, mIvPreview);
                 imageViewInfo.setBitmap(bitmap);
                 SuperUIPreviewBuilder.from(this)
+                        .setIsToolbar(false)//是否有Toolbar
                         .setTitle("主机二维码")
                         .setImg(imageViewInfo)
                         .setSingleFling(true)//设置超出内容点击退出（黑色区域）

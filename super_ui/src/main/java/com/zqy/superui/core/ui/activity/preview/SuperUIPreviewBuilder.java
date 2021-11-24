@@ -109,6 +109,16 @@ public class SuperUIPreviewBuilder {
     }
 
     /***
+     * 是否有Toolbar
+     * @param isToolbar 是否有Toolbar
+     * @return PreviewBuilder
+     */
+    public SuperUIPreviewBuilder setIsToolbar(boolean isToolbar) {
+        intent.putExtra(SuperUIMultiPreviewActivity.IS_TOOLBAR_KEY, isToolbar);
+        return this;
+    }
+
+    /***
      * 设置标题
      * @param title 标题
      * @return PreviewBuilder

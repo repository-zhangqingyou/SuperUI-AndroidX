@@ -1,6 +1,7 @@
 package com.zqy.superui.core.ui.activity.preview;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -35,8 +37,9 @@ import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY
  * 作者: zhangqingyou
  * 时间: 2021/5/19
  * 描述: 多图预览
- *       SuperUIPreviewBuilder.from(this)
- *                         .setTitle("预览")
+ *    SuperUIPreviewBuilder.from(this)
+ *                         .setIsToolbar(false)//是否有Toolbar
+ *                         .setTitle("主机二维码")
  *                         .setImg(imageViewInfo)
  *                         .setSingleFling(true)//设置超出内容点击退出（黑色区域）
  *                         .setCurrentIndex(0)//设置默认索引
@@ -46,9 +49,23 @@ import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY
  *                         .start();
  */
 public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
+    private boolean isToolbar;
+    private String title;
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        isToolbar = getIntent().getBooleanExtra(IS_TOOLBAR_KEY, false);
+        title = getIntent().getStringExtra(TITLE_KEY);
+        super.onCreate(savedInstanceState);
+    }
 
-    public final static String IMG_URL_LIST = "";//图片地址集
+    @Override
+    public Object getLayout() {
+        if (isToolbar)
+            return R.layout.superui_simple_toolbar_activity;
+        else
+            return R.layout.superui_simple_activity;
+    }
 
     @Override
     public Object getContentLayout() {
@@ -67,17 +84,18 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
 
     @Override
     public boolean onStatusBarLightMode() {
-        return true;
+        return isToolbar;
     }
 
     @Override
     public void initView() {
         super.initView();
-        getToolbar().setTitle("");
-        String title = getIntent().getStringExtra(TITLE_KEY);
-        if (!TextUtils.isEmpty(title)) getTbText().setText(title);
-        else
-            getTbText().setText("预览");
+        if (isToolbar) {
+            getToolbar().setTitle("");
+            if (!TextUtils.isEmpty(title)) getTbText().setText(title);
+            else
+                getTbText().setText("预览");
+        }
         initArgs();
     }
 
@@ -161,6 +179,7 @@ public class SuperUIMultiPreviewActivity extends SimpleToolbarActivity {
     }
 
     public static final String TITLE_KEY = "标题";//
+    public static final String IS_TOOLBAR_KEY = "是否有Toolbar";//
     public static final String KEY_IMAGE_PATHS = "com.xuexiang.xui.widget.preview.KEY_IMAGE_PATHS";
     public static final String KEY_POSITION = "com.xuexiang.xui.widget.preview.KEY_POSITION";
     public static final String KEY_TYPE = "com.xuexiang.xui.widget.preview.KEY_TYPE";

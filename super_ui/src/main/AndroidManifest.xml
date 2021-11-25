@@ -14,7 +14,10 @@
                 android:resource="@xml/super_ui_file_paths"
                 tools:replace="name,resource" />
         </provider>
-
+        <!--android:windowSoftInputMode="stateHidden|adjustPan"
+                stateHidden  默认不显示输入法焦点
+                adjustPan，软键盘弹出时，平推整个界面
+                adjustResize，软键盘弹出时，推可推之处-->
         <activity
             android:name=".core.ui.activity.preview.SuperUISinglePreviewActivity"
             android:launchMode="singleTask"

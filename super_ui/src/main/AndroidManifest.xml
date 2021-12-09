@@ -30,6 +30,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/SuperUI_AppTheme" />
 
+        <activity
+            android:name=".core.ui.activity.erro.SimpleErrorActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/SuperUI_AppTheme" />
+
+
 
     </application>
 </manifest>

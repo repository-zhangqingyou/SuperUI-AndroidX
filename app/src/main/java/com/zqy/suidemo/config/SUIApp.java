@@ -16,6 +16,7 @@ import com.zqy.suidemo.database.DaoSession;
 import com.zqy.superhttp.SuperHttpManager;
 import com.zqy.superhttp.http.ApiCallbackService;
 import com.zqy.superui.SuperUIManager;
+import com.zqy.superui.core.ui.activity.erro.SimpleErrorActivity;
 import com.zqy.superutils.ToastUtil;
 import com.zqy.superutils.database.GreenDaoContext;
 import com.zqy.superutils.manager.GreenDBManager;
@@ -125,6 +126,7 @@ public class SUIApp extends Application {
             }
         });
         SuperUIManager.init(true, getApplication());
+        SuperUIManager.setErrorActivity(SimpleErrorActivity.class);
 
 
         // 常规SQLite数据库

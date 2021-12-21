@@ -27,6 +27,8 @@ public class GsonResponseBodyConverter<T> implements Converter<ResponseBody, T> 
 
     @Override
     public T convert(ResponseBody value) throws IOException {
+//        String string = value.string();
+//        gson.fromJson(string,adapter.); JsonUtils.jsonToList()
         JsonReader jsonReader = gson.newJsonReader(value.charStream());
         try {
             T result = adapter.read(jsonReader);
@@ -37,5 +39,7 @@ public class GsonResponseBodyConverter<T> implements Converter<ResponseBody, T> 
         } finally {
             value.close();
         }
+
+
     }
 }

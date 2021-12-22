@@ -20,7 +20,7 @@ public class ViewBindingFragment extends SuperUIFragment {
 
     @Override
     public void initView(View mRootView) {
-        binding.includeView.textView.setText("我是include");
+        binding.includeView2.textView.setText("我是include");
         binding.tvText.setText("ViewBindingFragment");
     }
 

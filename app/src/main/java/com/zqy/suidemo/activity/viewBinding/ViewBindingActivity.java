@@ -41,7 +41,7 @@ public class ViewBindingActivity extends SuperUIActivity {
     @Override
     public void initView() {
         binding.includeView.textView.setText("我是include");
-        binding.textView2.setText("跳转ViewBinding");
+        binding.textView2.setText("测试");
     }
 
     @Override

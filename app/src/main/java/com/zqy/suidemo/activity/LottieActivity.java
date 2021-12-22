@@ -9,9 +9,12 @@ import com.blankj.utilcode.util.LogUtils;
 import com.zqy.suidemo.R;
 import com.zqy.superui.core.ui.activity.SuperUIActivity;
 
+/**
+ * Lottie动画库示例
+ */
 public class LottieActivity extends SuperUIActivity {
 
-    private LottieAnimationView mAnimationView;
+    private LottieAnimationView mAnimationView;//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

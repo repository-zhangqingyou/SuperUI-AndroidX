@@ -7,7 +7,7 @@ import lombok.Getter;
 /**
  * 作者: zhangqingyou
  * 时间: 2021/7/23
- * 描述: Fragment配置
+ * 描述: Fragment配置 ViewBinding
  */
 @Getter
 public class FragmentBuilder {

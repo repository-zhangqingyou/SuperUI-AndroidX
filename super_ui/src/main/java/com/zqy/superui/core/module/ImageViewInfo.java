@@ -52,6 +52,8 @@ public class ImageViewInfo implements Parcelable {
     }
 
 
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -75,6 +77,17 @@ public class ImageViewInfo implements Parcelable {
         mDescription = in.readString();
 
     }
+//    public static final Creator<ImageViewInfo> CREATOR = new Creator<ImageViewInfo>() {
+//        @Override
+//        public ImageViewInfo createFromParcel(Parcel in) {
+//            return new ImageViewInfo(in);
+//        }
+//
+//        @Override
+//        public ImageViewInfo[] newArray(int size) {
+//            return new ImageViewInfo[size];
+//        }
+//    };
 
     public static final Creator<ImageViewInfo> CREATOR = new Creator<ImageViewInfo>() {
         @Override

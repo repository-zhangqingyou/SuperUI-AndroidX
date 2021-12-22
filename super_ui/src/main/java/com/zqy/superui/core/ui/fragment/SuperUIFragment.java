@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.IdRes;
-import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -43,7 +42,12 @@ public abstract class SuperUIFragment extends RxFragment {
         _10sdp = getResources().getDimensionPixelSize(R.dimen._10sdp);
         _12sdp = getResources().getDimensionPixelSize(R.dimen._12sdp);
         if (mRootView == null) {
-            mRootView = inflater.inflate(getLayoutId(), container, false);
+            Object layoutId = getLayoutId();
+            if (layoutId instanceof Integer){
+                mRootView = inflater.inflate((int)layoutId, container, false);
+            }else if (layoutId instanceof View){
+                mRootView=(View)layoutId;
+            }
             initView(mRootView);
             initData();
             listener();
@@ -57,8 +61,7 @@ public abstract class SuperUIFragment extends RxFragment {
      *
      * @return
      */
-    @LayoutRes
-    public abstract int getLayoutId();
+    public abstract Object getLayoutId();
 
     /**
      * 初始化view

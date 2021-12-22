@@ -26,7 +26,7 @@ public abstract class SimpleSmartRefreshLoadingListFragment extends SmartRefresh
     private RecyclerView.LayoutManager layoutManager;
 
     @Override
-    public int getLayoutId() {
+    public Object getLayoutId() {
         return R.layout.superui_smartrefresh_loadinglayout_recyclerview_scrollbar;
     }
 

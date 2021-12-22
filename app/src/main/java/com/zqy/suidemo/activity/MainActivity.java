@@ -24,6 +24,7 @@ import com.blankj.utilcode.util.SizeUtils;
 import com.google.gson.Gson;
 import com.qmuiteam.qmui.widget.QMUIRadiusImageView2;
 import com.zqy.suidemo.R;
+import com.zqy.suidemo.activity.viewBinding.ViewBindingActivity;
 import com.zqy.suidemo.model.AppInfo;
 import com.zqy.superui.core.enums.Gradient;
 import com.zqy.superui.core.module.ImageViewInfo;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private QMUIRadiusImageView2 mQMUIRadiusImageView2;
     private SuperTextView mTvLottie;
     private AppCompatImageView mIvPreview;
+    private SuperTextView mTvViewBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTvLottie.setOnClickListener(this);
         mIvPreview = findViewById(R.id.iv_preview);
         mIvPreview.setOnClickListener(this);
+
+        mTvViewBinding = findViewById(R.id.tv_view_binding);
+        mTvViewBinding.setOnClickListener(this);
         //  RSAEncrypt.genKeyPair();
 //        String s = RSAEncrypt.encryptPublicKey("123");
 //        String s1 = RSAEncrypt.decryptPrivateKey(s, RSAEncrypt.PRIVATE_KEY);
@@ -120,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             List<AppInfo> appInfoList = new Gson().fromJson(analyze, type);
             Log.d("json", appInfoList.toString());
         }
+
 
 
     }
@@ -211,6 +217,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .setType(SuperUIPreviewBuilder.IndicatorType.Dot)//指示器类型
                         .setSingleShowType(false)// 是否设置为一张图片时 显示指示器
                         .start();
+                break;
+            case R.id.tv_view_binding:
+                startActivity(new Intent(this, ViewBindingActivity.class));
                 break;
         }
     }

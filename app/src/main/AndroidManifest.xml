@@ -30,6 +30,7 @@
         android:usesCleartextTraffic="true"
         tools:replace="name,roundIcon,allowBackup,icon,label,theme,supportsRtl,usesCleartextTraffic">
 
+
         <!-- *****************************************activity START*************************************************** -->
         <activity android:name=".activity.MainActivity">
             <intent-filter>
@@ -38,9 +39,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activity.LottieActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.viewBinding.ViewBindingActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
     </application>

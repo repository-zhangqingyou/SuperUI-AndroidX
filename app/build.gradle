@@ -26,6 +26,12 @@ android {
         //添加如下配置就OK了
 //        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
     }
+    buildFeatures {
+        //dataBinding = true
+        //Android Studio对于ViewBinding的支持是从3.6版本开始的，AS 3.6版本内置了Gradle插件
+        viewBinding = true
+    }
+
 
 //    greendao {
 //        schemaVersion 1 //数据库版本号，升级数据库需要修改版本号
@@ -37,6 +43,22 @@ android {
     flavorDimensions "channel"
     productFlavors {
         SuperUI_Demo {
+            dimension "channel"
+            applicationId "com.zqy.sui.demo"
+            versionCode 1
+            versionName "1." + time + "." + codename
+            manifestPlaceholders = [
+                    APP_NAME      : "SuperUI-Demo",
+                    APP_ICON      : "@mipmap/ic_launcher",
+                    PACKAGE_NAME  : applicationId,
+                    JSHARE_PKGNAME: applicationId,
+                    JPUSH_PKGNAME : applicationId,
+                    JPUSH_APPKEY  : "f43583a474c09d91cd138e01", //JPush上注册的包名对应的appkey.
+                    JPUSH_CHANNEL : "SuperUI000", //渠道号（不能使用中文）
+                    TENCENT_APPID : "101551231",//腾讯开放平台注册应用得到的 appId,哪怕用不到也得放在这,不然manifest会有merge错误
+            ]
+        }
+        SuperUI_Demo备用 {
             dimension "channel"
             applicationId "com.zqy.sui.demo"
             versionCode 1

@@ -1,5 +1,7 @@
 package com.zqy.suidemo.activity;
 
+import static com.qmuiteam.qmui.layout.IQMUILayout.HIDE_RADIUS_SIDE_BOTTOM;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -35,8 +37,6 @@ import com.zqy.superutils.ParameterizedTypeImpl;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import static com.qmuiteam.qmui.layout.IQMUILayout.HIDE_RADIUS_SIDE_BOTTOM;
-
 //
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -60,12 +60,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void initView() {
-//        mTvTest = findViewById(R.id.rbt_test);
-//        mTvTest.setOnClickListener(this);
-//        mAtvContent = (AppCompatTextView) findViewById(R.id.atv_content);
-//        mAtvContent.setOnClickListener(this);
-//        mBtTest = findViewById(R.id.bt_test);
-//        mBtTest.setOnClickListener(this);
+        mTvTest = findViewById(R.id.rbt_test);
+        mTvTest.setOnClickListener(this);
+        mAtvContent = (AppCompatTextView) findViewById(R.id.atv_content);
+        mAtvContent.setOnClickListener(this);
+        mBtTest = findViewById(R.id.bt_test);
+        mBtTest.setOnClickListener(this);
         mSuperFrameLayout = findViewById(R.id.superFrameLayout);
         mQMUIRadiusImageView2 = findViewById(R.id.qMUIRadiusImageView2);
         mQMUIRadiusImageView2.setOnClickListener(this);

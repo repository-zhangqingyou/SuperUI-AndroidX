@@ -40,6 +40,8 @@ dependencies {
     api "com.google.android.material:material:$versions.material_version"//对应support:design
     api "androidx.legacy:legacy-support-v4:$versions.androidx_v4_version"//对应support:support-v4
     api "androidx.recyclerview:recyclerview:${versions.recyclerview_version}"
+    //lombok插件
+    annotationProcessor "org.projectlombok:lombok:${versions.lombok}"
 }
 
 buildscript {

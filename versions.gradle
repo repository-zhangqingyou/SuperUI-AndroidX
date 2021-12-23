@@ -24,6 +24,8 @@ versions.rxjava3 = "3.0.11"
 versions.rxandroid = "3.0.0"
 versions.rxlifecycle4 = "4.0.2"
 
+versions.lombok = "1.18.16"
+
 
 ext.versions = versions
 

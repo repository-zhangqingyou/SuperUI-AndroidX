@@ -29,8 +29,7 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.aar'])
     implementation group: "androidx.appcompat", name: "appcompat", version: "$versions.appcompat_version"
     //lombok插件
-    api "org.projectlombok:lombok:1.18.16"
-    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor "org.projectlombok:lombok:${versions.lombok}"
     //router
     api "com.alibaba:arouter-api:1.5.0"
     annotationProcessor "com.alibaba:arouter-compiler:1.2.2"

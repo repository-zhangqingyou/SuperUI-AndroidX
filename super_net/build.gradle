@@ -35,7 +35,7 @@ android {
 dependencies {
     implementation project(path: ':super_utils')
     //lombok插件
-    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor "org.projectlombok:lombok:${versions.lombok}"
     //rxjava3基本
     api "io.reactivex.rxjava3:rxjava:$versions.rxjava3"
     api "io.reactivex.rxjava3:rxandroid:$versions.rxandroid"

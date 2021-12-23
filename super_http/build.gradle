@@ -32,7 +32,8 @@ android {
 
 dependencies {
     implementation project(path: ':super_utils')
-
+    //lombok插件
+    annotationProcessor "org.projectlombok:lombok:${versions.lombok}"
     //必须使用
     api 'com.lzy.net:okgo:3.0.4'
 

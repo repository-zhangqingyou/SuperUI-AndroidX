@@ -62,7 +62,7 @@ dependencies {
     api "androidx.recyclerview:recyclerview:${versions.recyclerview_version}"
     api "com.google.android:flexbox:${versions.flexbox}"
     //lombok插件
-    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor "org.projectlombok:lombok:${versions.lombok}"
     //
     implementation project(path: ':super_utils')
     implementation project(path: ':xui_lib_1.1.5')   //androidx项目

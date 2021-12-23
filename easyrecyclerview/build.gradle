@@ -4,6 +4,8 @@ apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.zhangqingyou'
 android {
     compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+
     defaultConfig {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk

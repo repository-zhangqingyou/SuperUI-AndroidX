@@ -6,6 +6,8 @@ group = 'com.github.zhangqingyou'
 def rootDirPath = getRootDir().getPath()//获取项目根路劲
 android {
     compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+
     defaultConfig {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk

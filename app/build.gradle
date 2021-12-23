@@ -5,6 +5,8 @@ def time = "${new Date().format("yyyyMMdd")}"//
 def codename = "1"//当日迭代号
 android {
     compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+
     defaultConfig {
         applicationId "com.zqy.sui.demo"
         minSdkVersion build_versions.min_sdk

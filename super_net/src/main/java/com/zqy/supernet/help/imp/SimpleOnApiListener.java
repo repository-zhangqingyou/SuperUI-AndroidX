@@ -41,9 +41,9 @@ public class SimpleOnApiListener implements OnApiListener {
 
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder
-                    .append("\n请求类型:")
+                    .append("请求类型：")
                     .append(request.method())
-                    .append("\n请求Headers:")
+                    .append("\n请求Headers：")
                     .append(headers.toString());
             if ("POST".equals(request.method())) {
                 RequestBody requestBody = request.body();
@@ -52,11 +52,11 @@ public class SimpleOnApiListener implements OnApiListener {
                 Charset charset = StandardCharsets.UTF_8;
                 String paramsStr = buffer.readString(charset);
                 stringBuilder
-                        .append("\n请求参数:")
+                        .append("\n请求参数：")
                         .append(paramsStr);
             }
 
-            Log.d(AppUtils.getAppName() + "-接口", "onStart-----url: \n" + url + "------请求体内容：\n" + stringBuilder.toString());
+            Log.d(AppUtils.getAppName() + "-接口", "onStart-----url：" + url + "\n" + stringBuilder.toString());
 
         } catch (IOException e) {
             e.printStackTrace();

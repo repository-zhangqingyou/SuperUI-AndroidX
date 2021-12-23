@@ -22,7 +22,7 @@ public class PageModel<T> implements Serializable {
     //@ApiModelProperty(value = "数据")
     private T data;
 
-    public static <D> PageModel<D> getPageModel(Long total, D data) {
-        return new PageModel<D>(total, data);
-    }
+//    public static <D> PageModel<D> getPageModel(Long total, D data) {
+//        return new PageModel<D>(total, data);
+//    }
 }

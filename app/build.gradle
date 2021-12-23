@@ -120,6 +120,7 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation project(path: ':super_http')
     implementation project(path: ':super_net')
+    implementation project(path: ':msa')//移动安全联盟SDK
     implementation project(path: ':super_utils')
     implementation project(path: ':super_ui')
     implementation project(path: ':easyrecyclerview')

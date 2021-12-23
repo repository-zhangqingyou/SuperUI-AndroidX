@@ -5,6 +5,7 @@ include ':super_ui'
 include ':super_http'
 include ':super_net'
 include ':super_utils'
+include ':msa'//移动安全联盟SDK
 include ':easyrecyclerview'
 //include ':lib_google_androidx'
 rootProject.name = "SuperUI-AndroidX"

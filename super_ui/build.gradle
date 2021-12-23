@@ -53,7 +53,7 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api fileTree(dir: 'libs', include: ['*.aar'])
+    //api fileTree(dir: 'libs', include: ['*.aar'])
     api group: "androidx.appcompat", name: "appcompat", version: "$versions.appcompat_version"
     //对应appcompat-v7
     api group: "androidx.constraintlayout", name: "constraintlayout", version: "$versions.constraintlayout_version"

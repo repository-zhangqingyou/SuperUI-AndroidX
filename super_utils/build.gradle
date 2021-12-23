@@ -26,8 +26,9 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api fileTree(dir: 'libs', include: ['*.aar'])
+    //api fileTree(dir: 'libs', include: ['*.aar'])
     implementation group: "androidx.appcompat", name: "appcompat", version: "$versions.appcompat_version"
+    api project(path: ':msa')//移动安全联盟SDK
     //lombok插件
     annotationProcessor "org.projectlombok:lombok:${versions.lombok}"
     api "org.projectlombok:lombok:${versions.lombok}"

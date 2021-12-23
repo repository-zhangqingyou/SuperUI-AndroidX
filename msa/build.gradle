@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 //jitpack.io依赖仓库用
 apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.zhangqingyou'
+def rootDirPath = getRootDir().getPath()//获取项目根路劲
 android {
     compileSdkVersion build_versions.target_sdk
     defaultConfig {
@@ -10,40 +11,32 @@ android {
         versionCode 1
         versionName "1.0"
 
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+                includeCompileClasspath true
+            }
         }
-    }
-
-    //解决 Invoke-customs are only supported starting with Android O (--min-api 26)
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
     lintOptions {
         abortOnError false // 即使有报错也不会停止打包
         checkReleaseBuilds false // 打包Release版本的时候也不进行Lint检测
     }
-
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
 }
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     //api fileTree(dir: 'libs', include: ['*.aar'])
-    api group: "androidx.appcompat", name: "appcompat", version: "$versions.appcompat_version"
-    //对应appcompat-v7
-    api group: "androidx.constraintlayout", name: "constraintlayout", version: "$versions.constraintlayout_version"
-    api "com.google.android.material:material:$versions.material_version"//对应support:design
-    api "androidx.legacy:legacy-support-v4:$versions.androidx_v4_version"//对应support:support-v4
-    api "androidx.recyclerview:recyclerview:${versions.recyclerview_version}"
+    implementation group: "androidx.appcompat", name: "appcompat", version: "$versions.appcompat_version"
     //lombok插件
     annotationProcessor "org.projectlombok:lombok:${versions.lombok}"
+    api "org.projectlombok:lombok:${versions.lombok}"
 }
-
 buildscript {
     apply from: '../versions.gradle'
     repositories {
@@ -55,5 +48,3 @@ buildscript {
         classpath "com.github.dcendents:android-maven-gradle-plugin:$versions.android_maven_gradle_plugin"
     }
 }
-
-

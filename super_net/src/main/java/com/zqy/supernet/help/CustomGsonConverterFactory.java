@@ -3,6 +3,7 @@ package com.zqy.supernet.help;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.reflect.TypeToken;
+import com.zqy.supernet.SuperNetManager;
 import com.zqy.supernet.help.factory.GsonRequestBodyConverter;
 import com.zqy.supernet.help.factory.GsonResponseBodyConverter;
 
@@ -48,8 +49,14 @@ public class CustomGsonConverterFactory extends Converter.Factory {
     @Override
     public Converter<ResponseBody, ?> responseBodyConverter(
             Type type, Annotation[] annotations, Retrofit retrofit) {
-        TypeAdapter<?> adapter = gson.getAdapter(TypeToken.get(type));
-        return new GsonResponseBodyConverter<>(gson, adapter);
+       // TypeAdapter<?> adapter = gson.getAdapter(TypeToken.get(type));
+        GsonResponseBodyConverter<?> objectGsonResponseBodyConverter = new GsonResponseBodyConverter<>(gson, type);
+        String json = objectGsonResponseBodyConverter.getJson();
+
+        if (SuperNetManager.getOnApiListener() != null) {
+            SuperNetManager.getOnApiListener().onSuccess(retrofit.baseUrl().url().toString(), json);
+        }
+        return objectGsonResponseBodyConverter;
     }
 
     @Override

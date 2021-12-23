@@ -20,7 +20,7 @@ import okio.Buffer;
  * 描述: 简单全局响应结果回调
  */
 public class SimpleOnApiListener implements OnApiListener {
-    private String url;
+    //private String url;
 
     @Override
     public void onStart(Request request) {
@@ -35,17 +35,17 @@ public class SimpleOnApiListener implements OnApiListener {
 //        }
 
         try {
-            url = request.url().toString();
+            String url = request.url().toString();
             Headers headers = request.headers();
 
 
-            StringBuilder stringBuilder=new StringBuilder();
+            StringBuilder stringBuilder = new StringBuilder();
             stringBuilder
-                    .append("\n请求类型:" )
+                    .append("\n请求类型:")
                     .append(request.method())
                     .append("\n请求Headers:")
                     .append(headers.toString());
-            if ("POST".equals(request.method())){
+            if ("POST".equals(request.method())) {
                 RequestBody requestBody = request.body();
                 Buffer buffer = new Buffer();
                 requestBody.writeTo(buffer);
@@ -56,7 +56,7 @@ public class SimpleOnApiListener implements OnApiListener {
                         .append(paramsStr);
             }
 
-            Log.d(AppUtils.getAppName() + "-接口", "onStart-----url: " + url + stringBuilder.toString());
+            Log.d(AppUtils.getAppName() + "-接口", "onStart-----url: \n" + url + "------请求体内容：\n" + stringBuilder.toString());
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -72,11 +72,15 @@ public class SimpleOnApiListener implements OnApiListener {
 
     @Override
     public void onError(Throwable msg) {
-        Log.d(AppUtils.getAppName() + "-接口", url + ":  ------onError: " + msg.getMessage());
+        Log.d(AppUtils.getAppName() + "-接口", "------onError: \n" + msg.getMessage());
     }
 
+    /**
+     * @param tag  url或者其他标识
+     * @param json
+     */
     @Override
-    public void onSuccess(String beanName, String json) {
-        Log.d(AppUtils.getAppName() + "-接口", url + ":  ------onSuccess---------- json: " + json);
+    public void onSuccess(String tag, String json) {
+        Log.d(AppUtils.getAppName() + "-接口", tag + ":  ------onSuccess---------- json: \n" + json);
     }
 }

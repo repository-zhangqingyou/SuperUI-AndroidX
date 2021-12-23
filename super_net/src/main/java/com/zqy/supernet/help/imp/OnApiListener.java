@@ -12,7 +12,6 @@ public interface OnApiListener {
 
     /**
      * 请求网络开始前，UI线程
-     *
      */
     void onStart(Request request);
 
@@ -27,10 +26,14 @@ public interface OnApiListener {
      */
     void onError(Throwable e);
 
+
     /**
      * 对返回数据进行操作的回调， UI线程
+     *
+     * @param tag  url或者其他标识
+     * @param json
      */
-    void onSuccess(String beanName, String json);
+    void onSuccess(String tag, String json);
 
 
 }

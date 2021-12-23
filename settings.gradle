@@ -6,6 +6,6 @@ include ':super_http'
 include ':super_net'
 include ':super_utils'
 include ':easyrecyclerview'
-include ':lib_google_androidx'
+//include ':lib_google_androidx'
 rootProject.name = "SuperUI-AndroidX"
 

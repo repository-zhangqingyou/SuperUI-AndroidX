@@ -4,7 +4,6 @@ buildscript {
     apply from: './versions.gradle'
     repositories {
         google()
-        jcenter()
         mavenCentral()
         maven { url 'https://maven.google.com' }
         maven { url 'https://jitpack.io' }
@@ -41,10 +40,8 @@ buildscript {
 
 allprojects {
     repositories {
-
         mavenLocal()
         google()
-        jcenter()
         maven { url 'https://jitpack.io' }
         maven {
             url 'http://oss.jfrog.org/artifactory/oss-snapshot-local'

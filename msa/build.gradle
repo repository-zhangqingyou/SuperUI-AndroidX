@@ -4,6 +4,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.zhangqingyou'
 def rootDirPath = getRootDir().getPath()//获取项目根路劲
 android {
+    ndkVersion '21.1.6352462'
     compileSdkVersion build_versions.target_sdk
     defaultConfig {
         minSdkVersion build_versions.min_sdk

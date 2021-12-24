@@ -1,7 +1,5 @@
 apply plugin: 'com.android.library'
-//jitpack.io依赖仓库用
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.zhangqingyou'
+
 def rootDirPath = getRootDir().getPath()//获取项目根路劲
 android {
     compileSdkVersion build_versions.target_sdk
@@ -41,14 +39,18 @@ dependencies {
 
 }
 
-buildscript {
-    apply from: '../versions.gradle'
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        // 添加上传到jitpack.io依赖仓库所需的插件 （适配gradle 4.6）
-        classpath "com.github.dcendents:android-maven-gradle-plugin:$versions.android_maven_gradle_plugin"
-    }
-}
+
+//jitpack.io依赖仓库用
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.zhangqingyou'
+//buildscript {
+//    apply from: '../versions.gradle'
+//    repositories {
+//        google()
+//        jcenter()
+//    }
+//    dependencies {
+//        // 添加上传到jitpack.io依赖仓库所需的插件 （适配gradle 4.6）
+//        classpath "com.github.dcendents:android-maven-gradle-plugin:$versions.android_maven_gradle_plugin"
+//    }
+//}

@@ -1,5 +1,4 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-//apply plugin: 'com.jfrog.bintray'
+
 buildscript {
     apply from: './versions.gradle'
     repositories {
@@ -15,23 +14,20 @@ buildscript {
         maven {
             url 'https://dl.bintray.com/novoda-oss/snapshots/'
         }
-        //zqy的bintray仓库地址（bintray已停运）
-       // maven { url 'https://dl.bintray.com/zhangqingyou/Android' }
+
     }
     dependencies {
         //此处配置版本请勿改动，升高版本，存在不兼容问题  3.1.x 3.2.X  3.3.x 3.4.x  升级均存在兼容问题
         //对应的Gradle Version为: https\://services.gradle.org/distributions/gradle-4.10.1-all.zip
         //此处俩项配置很重要，升级版本改动，项目都会可能出现兼容报错，无法上传到Jcenter问题
         classpath "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+        // 添加上传到jitpack.io依赖仓库所需的插件 （适配gradle 4.6）
+        classpath "com.github.dcendents:android-maven-gradle-plugin:$versions.android_maven_gradle_plugin"
         //集成全量更新和热更新一体的平台
         classpath "com.tencent.bugly:tinker-support:$versions.tinker_support"
         // greendao数据库
         classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0' // add plugin
 
-
-        // bintray已停运
-//        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:$versions.gradle_bintray_plugin"//bintray官方构建上传插件
-//        classpath "com.novoda:bintray-release:$versions.bintray_release"// bintray三方构建上传插件
     }
 
 }
@@ -51,9 +47,6 @@ allprojects {
         maven {
             url 'https://dl.bintray.com/novoda-oss/snapshots/'
         }
-        //zqy的bintray仓库地址（bintray已停运）
-        // maven { url 'https://dl.bintray.com/zhangqingyou/Android' }
-
     }
     tasks.withType(Javadoc) {//防止编码问题
         enabled = false

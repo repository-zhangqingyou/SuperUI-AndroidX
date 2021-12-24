@@ -1,0 +1,14 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.zqy.msa"
+    tools:ignore="ProtectedPermissions,Instantiatable">
+    <!--    // asus-->
+    <uses-permission android:name="com.asus.msa.SupplementaryDID.ACCESS" />
+    <!--    //freeme-->
+    <uses-permission android:name="freemme.permission.msa" />
+
+    <application>
+
+    </application>
+</manifest>
+

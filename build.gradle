@@ -12,7 +12,6 @@ buildscript {
         maven {
             url "https://plugins.gradle.org/m2/"
         }
-
         maven {
             url 'https://dl.bintray.com/novoda-oss/snapshots/'
         }
@@ -44,12 +43,17 @@ allprojects {
         google()
         mavenCentral()
         jcenter()
+        maven { url 'https://maven.google.com' }
         maven { url 'https://jitpack.io' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven {
-            url 'http://oss.jfrog.org/artifactory/oss-snapshot-local'
+            url "https://plugins.gradle.org/m2/"
+        }
+        maven {
+            url 'https://dl.bintray.com/novoda-oss/snapshots/'
         }
         //zqy的bintray仓库地址（bintray已停运）
-        //maven { url 'https://dl.bintray.com/zhangqingyou/Android' }
+        // maven { url 'https://dl.bintray.com/zhangqingyou/Android' }
 
     }
     tasks.withType(Javadoc) {//防止编码问题

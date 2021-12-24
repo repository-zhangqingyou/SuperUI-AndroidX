@@ -1,10 +1,7 @@
 apply plugin: 'com.android.library'
-//jitpack.io依赖仓库用
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.zhangqingyou'
 def rootDirPath = getRootDir().getPath()//获取项目根路劲
+def version = "1.0.2"
 android {
-   // ndkVersion '21.1.6352462'
     compileSdkVersion build_versions.target_sdk
     buildToolsVersion build_versions.build_tools
 
@@ -12,7 +9,7 @@ android {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         versionCode 1
-        versionName "1.0"
+        versionName version
         ndk {
             abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86'
         }
@@ -42,85 +39,33 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:${versions.lombok}"
     api "org.projectlombok:lombok:${versions.lombok}"
 }
-buildscript {
-    apply from: '../versions.gradle'
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        // 添加上传到jitpack.io依赖仓库所需的插件 （适配gradle 4.6）
-        classpath "com.github.dcendents:android-maven-gradle-plugin:$versions.android_maven_gradle_plugin"
-    }
-}
 
 ext {
     PUBLISH_GROUP_ID = "io.gitee.zqycl"        //项目包名
     PUBLISH_ARTIFACT_ID = "msa"             //项目名
-    PUBLISH_VERSION = "1.0.0"                //版本号
+    PUBLISH_VERSION = version           //版本号
+
+    //*************打包到本地*********
+    LOCAL_GROUP_ID = "com.zqy.superui-androidx"   // 可以随意取，一般取包名
+    LOCAL_ARTIFACT_ID = "msa" // 可以随意取，一般取库的名字
+    LOCAL_VERSION = version  // 版本号
 }
 apply from: '../gradle-mvn-push.gradle'
-//apply plugin: 'maven'
-//apply plugin: 'signing'
-//def ossrhUsername = "zhangqingyou"
-//def ossrhPassword = "Zqy9915738704."
-//def PUBLISH_GROUP_ID = "io.gitee.zqycl" //这里可以不是直接申请时候的groupId只要开头是就可以
-//def PUBLISH_ARTIFACT_ID = "msa"
-//def PUBLISH_VERSION = "1.0.0" //这个是直接获取的库gradle里配置好的版本号，不用到处修改版本号，只需要维护一份就可以。
-//
-////签名
-//signing {
-//    required { gradle.taskGraph.hasTask("uploadArchives") }
-//    sign configurations.archives
-//}
-//
-//
-//uploadArchives {
+
+
+//jitpack.io依赖仓库用
+//apply plugin: 'com.github.dcendents.android-maven'
+//group = 'com.github.zhangqingyou'
+//buildscript {
+//    apply from: '../versions.gradle'
 //    repositories {
-//        mavenDeployer {
-//
-//            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-//
-//            repository(url: "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/") {
-//                authentication(userName: ossrhUsername, password: ossrhPassword)
-//            }
-//
-//            snapshotRepository(url: "https://s01.oss.sonatype.org/content/repositories/snapshots/") {
-//                authentication(userName: ossrhUsername, password: ossrhPassword)
-//            }
-//
-//            pom.groupId = PUBLISH_GROUP_ID
-//            pom.artifactId = PUBLISH_ARTIFACT_ID
-//            pom.version = PUBLISH_VERSION
-//
-//            pom.project {
-//                name '移动安全联盟'
-//                packaging 'aar' //我这里发布的是安卓的包，所有写的aar
-//                // optionally artifactId can be defined here
-//                description '标准获取移动设备唯一标识'
-//                url 'https://gitee.com/zqycl'
-//
-//                scm {
-//                    connection 'scm:https://gitee.com/zqycl/SuperUI-AndroidX.git'
-//                    developerConnection 'scm:git@gitee.com:zqycl/SuperUI-AndroidX.git'
-//                    url 'https://gitee.com/zqycl/SuperUI-AndroidX'
-//                }
-//
-//                licenses {
-//                    license {
-//                        name 'The Apache License, Version 2.0'
-//                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-//                    }
-//                }
-//
-//                developers {
-//                    developer {
-//                        id 'zhangqingyou'
-//                        name 'zhangqingyou'
-//                        email '1334738402@qq.com'
-//                    }
-//                }
-//            }
-//        }
+//        google()
+//        jcenter()
+//    }
+//    dependencies {
+//        // 添加上传到jitpack.io依赖仓库所需的插件 （适配gradle 4.6）
+//        classpath "com.github.dcendents:android-maven-gradle-plugin:$versions.android_maven_gradle_plugin"
 //    }
 //}
+
+

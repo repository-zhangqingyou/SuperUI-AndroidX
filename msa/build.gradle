@@ -45,7 +45,7 @@ ext {
     PUBLISH_ARTIFACT_ID = "msa"             //项目名
     PUBLISH_VERSION = version           //版本号
 
-    //*************打包到本地*********
+    //*************打包到本地**********
     LOCAL_GROUP_ID = "com.zqy.superui-androidx"   // 可以随意取，一般取包名
     LOCAL_ARTIFACT_ID = "msa" // 可以随意取，一般取库的名字
     LOCAL_VERSION = version  // 版本号

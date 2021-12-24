@@ -25,7 +25,6 @@ buildscript {
         classpath "com.android.tools.build:gradle:$versions.android_gradle_plugin"
         //集成全量更新和热更新一体的平台
         classpath "com.tencent.bugly:tinker-support:$versions.tinker_support"
-
         // greendao数据库
         classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0' // add plugin
 

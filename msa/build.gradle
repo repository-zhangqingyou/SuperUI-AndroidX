@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 def rootDirPath = getRootDir().getPath()//获取项目根路劲
 def version = "1.0.2"
 android {
-    ndkVersion '21.3.6528147'
+    ndkVersion '21.1.6352462'
     compileSdkVersion build_versions.target_sdk
     buildToolsVersion build_versions.build_tools
 

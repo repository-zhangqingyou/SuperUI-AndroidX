@@ -2,19 +2,16 @@
 buildscript {
     apply from: './versions.gradle'
     repositories {
+        maven { url "https://maven.aliyun.com/repository/public" }
+        maven{ url 'https://maven.aliyun.com/repository/google/' }
+        maven { url "https://dl.google.com/dl/android/maven2/" }
+        maven { url "https://jitpack.io" }
+        maven {url "https://plugins.gradle.org/m2/"}
+        maven { url 'https://dl.bintray.com/novoda-oss/snapshots/'}
+
         google()
         mavenCentral()
         jcenter()
-        maven { url 'https://maven.google.com' }
-        maven { url 'https://jitpack.io' }
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-        maven {
-            url 'https://dl.bintray.com/novoda-oss/snapshots/'
-        }
-
     }
     dependencies {
         //此处配置版本请勿改动，升高版本，存在不兼容问题  3.1.x 3.2.X  3.3.x 3.4.x  升级均存在兼容问题
@@ -35,18 +32,16 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url "https://maven.aliyun.com/repository/public" }
+        maven{ url 'https://maven.aliyun.com/repository/google/' }
+        maven { url "https://dl.google.com/dl/android/maven2/" }
+        maven { url "https://jitpack.io" }
+        maven {url "https://plugins.gradle.org/m2/"}
+        maven { url 'https://dl.bintray.com/novoda-oss/snapshots/'}
+
         google()
         mavenCentral()
         jcenter()
-        maven { url 'https://maven.google.com' }
-        maven { url 'https://jitpack.io' }
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-        maven {
-            url 'https://dl.bintray.com/novoda-oss/snapshots/'
-        }
     }
     tasks.withType(Javadoc) {//防止编码问题
         enabled = false

@@ -129,18 +129,24 @@ dependencies {
 
 
 }
-
-//jitpack.io依赖仓库用
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.zhangqingyou'
-buildscript {
-    apply from: '../versions.gradle'
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        // 添加上传到jitpack.io依赖仓库所需的插件 （适配gradle 4.6）
-        classpath "com.github.dcendents:android-maven-gradle-plugin:$versions.android_maven_gradle_plugin"
-    }
+//library module下的gradle 配置示例
+ext {
+    GROUP_ID = "com.zqy.superui-androidx"   // 可以随意取，一般取包名
+    ARTIFACT_ID = "super_ui" // 可以随意取，一般取库的名字
+    VERSION = version  // 版本号
 }
+apply from: '../maven_push.gradle'
+//jitpack.io依赖仓库用
+//apply plugin: 'com.github.dcendents.android-maven'
+//group = 'com.github.zhangqingyou'
+//buildscript {
+//    apply from: '../versions.gradle'
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//    dependencies {
+//        // 添加上传到jitpack.io依赖仓库所需的插件 （适配gradle 4.6）
+//        classpath "com.github.dcendents:android-maven-gradle-plugin:$versions.android_maven_gradle_plugin"
+//    }
+//}

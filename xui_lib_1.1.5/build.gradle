@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 
 def rootDirPath = getRootDir().getPath()//获取项目根路劲
+def version = "1.0.3"
 android {
     compileSdkVersion build_versions.target_sdk
     buildToolsVersion build_versions.build_tools

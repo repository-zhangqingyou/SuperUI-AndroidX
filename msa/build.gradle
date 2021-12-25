@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 
 def rootDirPath = getRootDir().getPath()//获取项目根路劲
-def version = "1.0.4"
 android {
     ndkVersion '21.1.6352462'
     compileSdkVersion build_versions.target_sdk
@@ -11,7 +10,7 @@ android {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         versionCode 1
-        versionName version
+        versionName "$versions.msa"
         ndk {
             abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86'
         }
@@ -47,7 +46,7 @@ dependencies {
 ext {
     GROUP_ID = "com.zqy.superui-androidx"   // 可以随意取，一般取包名
     ARTIFACT_ID = "msa" // 可以随意取，一般取库的名字
-    VERSION = version  // 版本号
+    VERSION = "$versions.msa"  // 版本号
 }
 apply from: '../maven_push.gradle'
 

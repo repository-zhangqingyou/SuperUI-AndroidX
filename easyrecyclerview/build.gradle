@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-def version = "1.0.4"
+
 android {
     compileSdkVersion build_versions.target_sdk
     buildToolsVersion build_versions.build_tools
@@ -8,7 +8,7 @@ android {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         versionCode 1
-        versionName version
+        versionName "$versions.easyrecyclerview"
 
     }
 
@@ -50,7 +50,7 @@ dependencies {
 ext {
     GROUP_ID = "com.zqy.superui-androidx"   // 可以随意取，一般取包名
     ARTIFACT_ID = "easyrecyclerview" // 可以随意取，一般取库的名字
-    VERSION = version  // 版本号
+    VERSION = "$versions.easyrecyclerview"  // 版本号
 }
 apply from: '../maven_push.gradle'
 

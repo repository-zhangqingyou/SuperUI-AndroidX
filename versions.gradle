@@ -17,18 +17,23 @@ versions.material_version = '1.4.0'
 versions.androidx_v4_version = "1.0.0"
 versions.flexbox = "2.0.1"
 
-
+//***************三方库**********
 versions.glide = "4.7.1"
 versions.gson = "2.8.5"
-
 versions.retrofit = "2.9.0"
 versions.rxjava3 = "3.0.11"
 versions.rxandroid = "3.0.0"
 versions.rxlifecycle4 = "4.0.2"
-
 versions.lombok = "1.18.16"
 
-
+//******maven打包上传版本**********
+versions.xui_lib = "1.0.7"
+versions.super_ui = "1.0.7"
+versions.super_http = "1.0.7"
+versions.super_net = "1.0.7"
+versions.super_utils = "1.0.7"
+versions.msa = "1.0.7"
+versions.easyrecyclerview = "1.0.7"
 ext.versions = versions
 
 def build_versions = [:]

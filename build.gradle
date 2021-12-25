@@ -1,17 +1,10 @@
-
 buildscript {
     apply from: './versions.gradle'
+
     repositories {
         google()
         mavenCentral()
         jcenter()
-
-        maven { url "https://maven.aliyun.com/repository/public" }
-        maven{ url 'https://maven.aliyun.com/repository/google/' }
-        maven { url "https://dl.google.com/dl/android/maven2/" }
-        maven { url "https://jitpack.io" }
-        maven {url "https://plugins.gradle.org/m2/"}
-        maven { url 'https://dl.bintray.com/novoda-oss/snapshots/'}
     }
     dependencies {
         //此处配置版本请勿改动，升高版本，存在不兼容问题  3.1.x 3.2.X  3.3.x 3.4.x  升级均存在兼容问题
@@ -24,6 +17,7 @@ buildscript {
         classpath "com.tencent.bugly:tinker-support:$versions.tinker_support"
         // greendao数据库
         classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0' // add plugin
+        classpath 'com.github.kezong:fat-aar:1.3.6'
 
     }
 
@@ -37,11 +31,11 @@ allprojects {
         jcenter()
 
         maven { url "https://maven.aliyun.com/repository/public" }
-        maven{ url 'https://maven.aliyun.com/repository/google/' }
+        maven { url 'https://maven.aliyun.com/repository/google/' }
         maven { url "https://dl.google.com/dl/android/maven2/" }
         maven { url "https://jitpack.io" }
-        maven {url "https://plugins.gradle.org/m2/"}
-        maven { url 'https://dl.bintray.com/novoda-oss/snapshots/'}
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url 'https://dl.bintray.com/novoda-oss/snapshots/' }
     }
     tasks.withType(Javadoc) {//防止编码问题
         enabled = false

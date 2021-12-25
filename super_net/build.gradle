@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 def rootDirPath = getRootDir().getPath()//获取项目根路劲
-def version = "1.0.4"
 android {
     compileSdkVersion build_versions.target_sdk
     buildToolsVersion build_versions.build_tools
@@ -9,7 +8,7 @@ android {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         versionCode 1
-        versionName version
+        versionName "$versions.super_net"
         //加上这一句
         javaCompileOptions {
             annotationProcessorOptions {
@@ -32,7 +31,8 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':super_utils')
+    // compileOnly:只在编译时有效，不会参与打包 (maven打包时不能参与，否则报错找不到版本号)
+    compileOnly project(path: ':super_utils')
     //lombok插件
     annotationProcessor "org.projectlombok:lombok:${versions.lombok}"
     //rxjava3基本
@@ -68,7 +68,7 @@ dependencies {
 ext {
     GROUP_ID = "com.zqy.superui-androidx"   // 可以随意取，一般取包名
     ARTIFACT_ID = "super_net" // 可以随意取，一般取库的名字
-    VERSION = version  // 版本号
+    VERSION = "$versions.super_net"  // 版本号
 }
 apply from: '../maven_push.gradle'
 //jitpack.io依赖仓库用

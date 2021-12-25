@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 
 def rootDirPath = getRootDir().getPath()//获取项目根路劲
-def version = "1.0.4"
+
 android {
     compileSdkVersion build_versions.target_sdk
     buildToolsVersion build_versions.build_tools
@@ -10,7 +10,7 @@ android {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         versionCode 1
-        versionName version
+        versionName "$versions.super_ui"
 
         ndk {
             //选择要添加的对应cpu类型的.so库。
@@ -64,12 +64,12 @@ dependencies {
     api "com.google.android:flexbox:${versions.flexbox}"
     //lombok插件
     annotationProcessor "org.projectlombok:lombok:${versions.lombok}"
-    //
-    implementation project(path: ':super_utils')
-    implementation project(path: ':xui_lib_1.1.5')   //androidx项目
+    // compileOnly:只在编译时有效，不会参与打包 (maven打包时不能参与，否则报错找不到版本号)
+    compileOnly  project(path: ':super_utils')
+    compileOnly  project(path: ':xui_lib_1.1.5')   //androidx项目
+
+
     api 'com.qmuiteam:qmui:2.0.0-alpha10'
-
-
     //AgentWeb 是一个基于的 Android WebView ，极度容易使用以及功能强大的库
     api 'com.github.Justson.AgentWeb:agentweb-core:v4.1.9-androidx' // (必选)
     api 'com.github.Justson.AgentWeb:agentweb-filechooser:v4.1.9-androidx' // (可选)
@@ -101,7 +101,8 @@ dependencies {
     api 'com.github.zhpanvip:BannerViewPager:3.2.0'   //androidx  banner(支持ViewHolder，自定义指示器)
 
     //PictureSelector图片选择
-    api('io.github.lucksiege:pictureselector:v2.7.3-rc03') {//com.github.LuckSiege.PictureSelector:picture_library:v2.2.3
+    api('io.github.lucksiege:pictureselector:v2.7.3-rc03') {
+//com.github.LuckSiege.PictureSelector:picture_library:v2.2.3
         exclude group: 'com.android.support'
         exclude group: 'com.github.bumptech.glide'
     }
@@ -134,7 +135,7 @@ dependencies {
 ext {
     GROUP_ID = "com.zqy.superui-androidx"   // 可以随意取，一般取包名
     ARTIFACT_ID = "super_ui" // 可以随意取，一般取库的名字
-    VERSION = version  // 版本号
+    VERSION = "$versions.super_ui"  // 版本号
 }
 apply from: '../maven_push.gradle'
 //jitpack.io依赖仓库用

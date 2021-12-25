@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 
 def rootDirPath = getRootDir().getPath()//获取项目根路劲
-def version = "1.0.4"
 android {
     compileSdkVersion build_versions.target_sdk
     buildToolsVersion build_versions.build_tools
@@ -9,6 +8,8 @@ android {
     defaultConfig {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "$versions.xui_lib"
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
@@ -44,7 +45,7 @@ dependencies {
 ext {
     GROUP_ID = "com.zqy.superui-androidx"   // 可以随意取，一般取包名
     ARTIFACT_ID = "xui_lib_1.1.5" // 可以随意取，一般取库的名字
-    VERSION = version  // 版本号
+    VERSION = "$versions.xui_lib"  // 版本号
 }
 apply from: '../maven_push.gradle'
 //jitpack.io依赖仓库用

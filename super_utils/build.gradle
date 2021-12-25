@@ -78,7 +78,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        jcenter()
     }
     dependencies {
         // 添加上传到jitpack.io依赖仓库所需的插件 （适配gradle 4.6）
